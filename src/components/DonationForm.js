@@ -1,15 +1,8 @@
-import React, { Component } from 'react';
-// import BankStore from '../stores/BankStore';
+import React from 'react';
 
-
-export default class DonationForm extends Component {
-  render() {
-    // let { bankDetail } = this.props;
-    // let id = this.location.query.id;
-    return (
-      <div>
-        
-      </div>
-    )
-  }
-};
+const DonationForm = () => (
+  <div>
+    {String('')}
+  </div>
+);
+export default DonationForm;

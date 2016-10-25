@@ -106,11 +106,10 @@ export default class BankDetail extends Component {
         const { sender, date, amount, description } = bankDetail;
         if (Number(amount) < 0) {
           borrowed = amount * (-1);
-          messageAmount += Number(amount);
         } else {
           payedIn = amount;
-          messageAmount += Number(amount);
         }
+        messageAmount += Number(amount);
         startingAmount = Number(amountNumber) + messageAmount;
         return (
           <tr key={index}>
