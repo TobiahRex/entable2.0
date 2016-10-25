@@ -1,151 +1,123 @@
-var Bank = require('./Bank');
+const Bank = require('./Bank');
 
-exports.create = (req, res) => {
-  console.log('TROPO CREATE: ', req.body);
-
-  var call = parseCall(req.body);
-  if (!call) return res.end();
-
-  Bank.create({ name: call.input,
-               chair: call.sender,
-               members: [],
-               transactions: [] })
-    .then(() => {
-      // res.end()
-      return Bank.find({});
-    })
-    .then((banks) => {
-      res.socketEmitter('banks', banks);
-      res.end();
-    })
-    .catch(() => res.end());
-
-
-  // (err) => {
-  //   if (err) console.log(err);
-  //   return res.end();
-  // });
-};
-
-exports.trans = (req, res) => {
-  console.log('TROPO TRANS: ', req.body);
-
-  var call = parseCallCSV(req.body);
-  if (!call) return res.end();
-
-  Bank.find({})
-    .then((banks) => {
-      var members = {};
-      console.log('banks: ', banks);
-      banks.forEach((bank) => {
-        members[bank.chair] = bank.chair;
-        bank.members.forEach((member) => {
-          members[member] = bank.chair;
-        });
-      });
-
-      // console.log('members: ', members);
-      // console.log('call.sender: ', call.sender);
-      // console.log('members[call.sender]: ', members[call.sender]);
-      // console.log('typeof call.sender: ', typeof call.sender);
-
-      if (members[call.sender] !== undefined) {
-
-        const edit = banks.filter((curr) => curr.chair === members[call.sender]);
-        const trans = edit[0].transactions;
-
-        trans.push({ amount: call.input[0], description: call.input[1], sender: call.sender });
-        console.log('edit: ', edit);
-        return Bank.findOneAndUpdate({ chair: members[call.sender] },
-                                     { $set: { transactions: trans } });
-      // } else {
-      //   console.log('in else');
-      //   return res.end();
-      }
-    })
-    .then(() => {
-      // res.end()
-      return Bank.find({});
-    })
-    .then((banks) => {
-      res.socketEmitter('banks', banks);
-      res.end();
-    })
-    .catch(() => res.end());
-
-
-  // res.end();
-};
-
-exports.member = (req, res) => {
-  // console.log('TROPO MEMBER: ', req.body);
-  var call = parseCallCSV(req.body);
-  if (!call) return res.end();
-
-  Bank.find({ chair: call.sender })
-    .then((bank) => {
-      call.input.forEach((element) => {
-        bank[0].members.push(element);
-      });
-
-      //bank[0].members.push(call.input);
-      var newMembers = bank[0].members;
-      return Bank.findOneAndUpdate({ chair: call.sender },
-                                   { $set: { members: newMembers } });
-    })
-    .then(() => {
-      // res.end()
-      return Bank.find({});
-    })
-    .then((banks) => {
-      res.socketEmitter('banks', banks);
-      res.end();
-    })
-    .catch(() => res.end());
-};
-
-function parseCallCSV(body) {
-  var callObj = null;
+const parseCallCSV = (body) => {
+  let callObj = null;
 
   try {
     callObj = JSON.parse(body.call);
   } catch (err) {
-    console.log(err);
+    process.stdout.write('??? Parse ERROR: \n', err, '\n');
     return callObj;
   }
 
-  var textArr = callObj.text.split('#');
-  var inputArr = textArr[1].split(',');
+  const textArr = callObj.text.split('#');
+  const inputArr = textArr[1].split(',');
 
   return {
     type: textArr[0],
     input: inputArr,
     sender: callObj.sender,
   };
-}
-
-function parseCall(body) {
-  var callObj = null;
+};
+const parseCall = (body) => {
+  let callObj = null;
 
   try {
     callObj = JSON.parse(body.call);
   } catch (err) {
-    console.log(err);
+    process.stdout.write('??? Parse ERROR: \n', err, '\n');
     return callObj;
   }
 
-  var textArr = callObj.text.split('#');
+  const textArr = callObj.text.split('#');
 
   return {
     type: textArr[0],
     input: textArr[1],
     sender: callObj.sender,
   };
-}
+};
 
-exports.all = (req, res) => {
-  console.log('INSIDE ALL');
-  Bank.find({}, (err, data) => {
-    res.status(err ? 400 : 200).send(err || data);
-  });
+exports.all = (req, res) => Bank.find({})
+.exec()
+.then(dbBanks => res.send(dbBanks))
+.catch(err => res.status(400).send(err));
+
+exports.create = (req, res) => {
+  process.stdout.write('!>> TROPO CREATE: \n', req.body);
+
+  const call = parseCall(req.body);  // wtf is "parseCall" ?
+
+  if (!call) return res.end();
+  const bankInfo = {
+    name: call.input,
+    chair: call.sender,
+    members: [],
+    transactions: [],
+  };
+
+  return Bank.create(bankInfo)
+  .then(() => Bank.find({}))
+  .then(dbBanks => res.socketEmitter('banks', dbBanks).end())
+  .catch(err => res.socketEmitter('banks', err).end());
+};
+
+exports.trans = (req, res) => {
+  process.stdout.write('!>> TROPO TRANS: \n', req.body);
+
+  const call = parseCallCSV(req.body);
+
+  if (!call) return res.end();
+  return Bank.find({}).exec()
+  .then((dbBanks) => {
+    const members = {};
+
+    dbBanks.forEach((bank) => {
+      members[bank.chair] = bank.chair;
+      bank.members.forEach((member) => {
+        members[member] = bank.chair;
+      });
+    });
+
+    if (members[call.sender] !== undefined) {
+      const filteredBanks = dbBanks.filter(curr => curr.chair === members[call.sender]);
+      const trans = filteredBanks[0].transactions;
+
+      trans.push({
+        amount: call.input[0],
+        description: call.input[1],
+        sender: call.sender,
+      });
+
+      return Bank.findOneAndUpdate({ chair: members[call.sender] },
+        { $set: { transactions: trans },
+      });
+    }
+
+    return process.stdout.write('?>> Call Sender = undefined.');
+  })
+  .then(() => Bank.find({}).exec())
+  .then(banks => res.socketEmitter('banks', banks).end())
+  .catch(err => res.socketEmitter('banks', err).end());
+};
+
+exports.member = (req, res) => {
+  process.stdout.write('!>> TROPO MEMBER: \n', req.body);
+
+  const call = parseCallCSV(req.body);
+
+  if (!call) return res.end();
+
+  return Bank.find({ chair: call.sender }).exec()
+  .then((bank) => {
+    call.input.forEach(element => bank[0].members.push(element));
+
+    const newMembers = bank[0].members;
+    return Bank.findOneAndUpdate({ chair: call.sender },
+      { $set: { members: newMembers },
+    });
+  })
+  .then(() => Bank.find({}).exec())
+  .then(banks => res.socketEmitter('banks', banks).end())
+  .catch(err => res.socketEmitter('banks', err).end());
 };
