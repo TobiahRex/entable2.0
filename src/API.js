@@ -1,26 +1,16 @@
-import ServerActions from './actions/ServerActions';
-import EntableActions from './actions/EntableActions';
 import axios from 'axios';
-const io = require('socket.io-client');
+import io from 'socket.io-client';
+import ServerActions from './actions/ServerActions';
 
-console.log('IN API');
-var socket = io();
-socket.on('banks', function(data) {
-  console.log('SOCKET IO BANKS: ', data);
-  ServerActions.updateBanks(data);
-});
+const socket = io();
+socket.on('banks', data => ServerActions.updateBanks(data));
 
 const API = {
   getAll() {
-    console.log('INSIDE GET ALL');
     axios.get('/api/tropo')
-      .then((res) => {
-        console.log('API CALL BANKS', res);
-        ServerActions.updateBanks(res.data);
-      })
-      .catch(console.error);
+      .then(res => ServerActions.updateBanks(res.data))
+      .catch((err) => { throw new Error('/api/tropo ERROR:', err); });
   },
-
 };
 
 export default API;
