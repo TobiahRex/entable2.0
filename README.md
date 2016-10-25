@@ -7,7 +7,7 @@
 ## DEPLOYED:
 On Heroku [here](https://dry-retreat-51470.herokuapp.com/).
 
-<img src="http://imgur.com/a/ifxYI" />
+<img src="http://i.imgur.com/M2VN5hg.png" />
 
 Latest Release: October 23rd, 2016.
 
