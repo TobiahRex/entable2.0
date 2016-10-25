@@ -60,10 +60,7 @@ app.use((req, res, next) => {
 // ROUTES
 app.use('/api', require('./routes/api'));
 
-app.get('*', (req, res) => {
-  var filepath = path.resolve('./build/index.html');
-  res.sendFile(filepath);
-});
+app.get('*', (req, res) => res.sendFile(path.resolve('./build/index.html')));
 
 // SERVER LISTEN
 server.listen(PORT, (err) => {
