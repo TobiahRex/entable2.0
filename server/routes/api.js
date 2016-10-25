@@ -1,5 +1,6 @@
 const express = require('express');
-const router = express.Router();
+
+const router = new express.Router();
 
 router.use('/tropo', require('./tropo'));
 

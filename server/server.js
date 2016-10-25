@@ -21,7 +21,7 @@ const io = require('socket.io')(server);
 mongoose.Promise = Promise;
 let socketEmitter;
 io.on('connection', (socket) => {
-  process.stdout.write('\n >>> Socket Connection!\n');
+  process.stdout.write('\n>>> Socket Connection!\n');
   socketEmitter = (type, data) => socket.emit(type, data);
 });
 

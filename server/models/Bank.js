@@ -5,9 +5,8 @@ const BankSchema = new mongoose.Schema({
   chair: { type: String },
   members: { type: Array },
   transactions: { type: Array },
-  //received: { type: Date, default: Date.now },
 });
 
-const Bank = mongoose.model('banks', BankSchema);
+const Bank = mongoose.model('Banks', BankSchema);
 
 module.exports = Bank;
