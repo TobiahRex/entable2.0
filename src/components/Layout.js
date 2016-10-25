@@ -1,12 +1,8 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
-import Landing from './Landing'
+import React from 'react';
 
-export default class Layout extends Component {
-
-  render() {
-    return (
-      
-    );
-  }
-}
+const Layout = () => (
+  <div>
+    {String('')}
+  </div>
+);
+export default Layout;
