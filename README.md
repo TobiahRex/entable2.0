@@ -8,32 +8,10 @@
 Manages table banking for women in developing countries.
 
 Deployed on Heroku [here](https://dry-retreat-51470.herokuapp.com/).
+
 Latest Release: October 23rd, 2016.
 
 <img src="http://i.imgur.com/M2VN5hg.png" />
-
-
-<!-- ## Technologies:
-  - Redux
-  - Express
-  - Mongo & Mongoose
-    * Database manipulation is 100% promise based. Uses mongoose & bluebird for Promise library.
-  - Node
-  - Sagas
-  - Material UI
-  - Babel
-  - ESlint (Airbnb Style Guide)
-    * `"parser": "babel-eslint",
-    "plugins": ["react", "es2015", "stage-2"]`
-    * configured for class-properties.
-  - Firebase -->
-
-<!-- ## Setup:
-  - `npm install`
-  - `npm start` for development server
-  - `npm build` for production server
-
-  NOTE: I Highly recommend running npm update --save to update package json before running "npm start" or "npm build". -->
 
 ## CONTRIBUTORS:
   1. [Holly Zhou](https://github.com/marsholly)
@@ -50,35 +28,3 @@ Latest Release: October 23rd, 2016.
 
   * MVP 2:
     - Projected release, Mid November 2016 by Tobiah, Holly, Josh, Donovan, Ziya, and Richard.
-  <!-- - October 21st-23rd:
-    * (1. PLAN): Wrap up front end login & logout.
-    * (2. PLAN): Begin audio recording and Bluemix TTS.
-    * (3. PLAN): Save Bluemix results to Users profile in Firebase.
-
-  - October 20th:
-    * Refactored list of comps into re-usable comps. Modularized smart comps.
-      - LoginCard: modified
-      - RegisterCard: modified
-      - TextField template: created
-      - Thing.js: modified/modularized
-      - editGroup: created
-      - submitGroup: created
-
-  - October 19th
-    * Plugged in Login & Register Containers to respective Sagas.
-    * Created Error handling for Login & Register Components, w/msgs from BE API rendering to dialogs in the FE.
-    * Added "activeDevices" to BE schema, and FE store to track logged in devices.
-
-  - October 18th, backend manual auth API fully functional.
-    * Register new user.
-    * Email Register Verification.
-    * Login User.
-    * Get profile with middleware authorization check.
-
-  - October 16th - 17th:  UI Components completed:
-    * Login
-    * Register
-    * Home
-
-  - October 14th - 15th: API Saga's Completed.
-    * Crud on backend using SAGAs completed. -->
