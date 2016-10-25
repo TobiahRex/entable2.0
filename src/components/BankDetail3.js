@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 const BankDetail3 = () => {
   const fakeTimeStampDelete = moment().format('lll');
-
+  window.scrollTo(0, 0);
   const dummy = [
     { Name: 'Bank of Sauri',
     Country: 'Kenya',

@@ -10,6 +10,7 @@ export default class BankDetail extends Component {
       banks: BankStore.getBanks(),
     };
     this._onChange = this._onChange.bind(this);
+    window.scrollTo(0, 0);
   }
 
   componentWillMount() {
