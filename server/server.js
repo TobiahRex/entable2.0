@@ -2,48 +2,39 @@
 const PORT = process.env.PORT || 8000;
 
 // PACKAGE REQUIRES
-const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-// require('dotenv').config();
 const webpack = require('webpack');
 const webpackConfig = require('../webpack.config');
-
-// CONFIG MONGOOSE
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpackDevMiddleware = require('webpack-dev-middleware');
 const mongoose = require('mongoose');
-mongoose.Promise = Promise;
-const MONGO_URI = 'mongodb://cat:hellokitty123@ds061246.mlab.com:61246/entable';
+const api = require('./routes/api');
 
-mongoose.connect(MONGO_URI, (err) => {
-  console.log(err || `Mongo connected to ${MONGO_URI}`);
-});
-
-// APP DECLARATION
+// Server & Sockets
 const app = express();
-// const server = http.createServer(app);
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+const server = require('http').Server(app); //eslint-disable-line
+const io = require('socket.io')(server);
 
-
-//WEBPACK CONFIG
-const compiler = webpack(webpackConfig);
-app.use(require('webpack-dev-middleware')(compiler, {
- noInfo: true,
- publicPath: webpackConfig.output.publicPath,
-}));
-app.use(require('webpack-hot-middleware')(compiler));
-
-// SOCKETIO
-var socketEmitter;
+mongoose.Promise = Promise;
+let socketEmitter;
 io.on('connection', (socket) => {
-  console.log('SOCKET ON');
+  process.stdout.write('\n >>> Socket Connection!\n');
   socketEmitter = (type, data) => socket.emit(type, data);
 });
 
+// Webpack Config
+const compiler = webpack(webpackConfig);
+app.use(webpackDevMiddleware(compiler, {
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath,
+}));
+app.use(webpackHotMiddleware(compiler));
 app.use((req, res, next) => {
-  res.socketEmitter = socketEmitter;
+  const resRef = res;
+  resRef.socketEmitter = socketEmitter;
   next();
 });
 
@@ -53,17 +44,20 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
-  res.handle = (err, data) => res.status( err ? 400 : 200).send(err || data);
+  const resRef = res;
+  resRef.handle = (err, data) =>
+    resRef.status(err ? 400 : 200).send(err || data);
   next();
 });
 
 // ROUTES
-app.use('/api', require('./routes/api'));
-
+app.use('/api', api);
 app.get('*', (req, res) => res.sendFile(path.resolve('./build/index.html')));
 
-// SERVER LISTEN
-server.listen(PORT, (err) => {
- if (err) throw err;
- process.stdout.write(`Server listening at http://localhost:${PORT}`);
-});
+// Listeners
+server.listen(PORT, err =>
+  process.stdout.write(err || `==> 📡  Server @: ${PORT}
+`));
+const MONGO = process.env.MONGODB_URI || 'mongodb://localhost/entable';
+mongoose.connect(MONGO, err => process.stdout.write(err ||
+`==> 📜  MONGO @: ${MONGO}`));

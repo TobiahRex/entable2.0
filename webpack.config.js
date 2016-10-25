@@ -1,25 +1,23 @@
-const webpack = require('webpack')
-const path = require('path')
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   debug: true,
   devtool: 'inline-source-map',
   entry: [
     'webpack-hot-middleware/client?reload=true',
-    './src/index.js'
+    './src/index.js',
   ],
   output: {
     path: path.resolve('build'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin()
+    new webpack.optimize.OccurrenceOrderPlugin(),
   ],
-
-
   module: {
     loaders: [
       {
@@ -27,9 +25,9 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react']
-        }
-      }
-    ]
-  }
-}
+          presets: ['es2015', 'react'],
+        },
+      },
+    ],
+  },
+};
