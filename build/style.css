@@ -1,0 +1,562 @@
+.navbar {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+button {
+  border: none;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 800;
+}
+
+.btn, .btn-default {
+  border: none;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 800;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+a:hover {
+  text-decoration: none;
+  color: #222;
+  transition: .5s;
+  text-shadow: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+p {
+  color: #222;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 800;
+}
+
+h1 {
+  font-size: 3.5em;
+  text
+}
+
+h2 {
+  font-size: 3em;
+}
+
+h3 {
+  font-size: 2.5em;
+}
+
+h4 {
+  font-size: 2em;
+}
+
+h5 {
+  font-size: 1.5em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+/*----- COLORS -----
+main greeen - #2ecc71
+highlight green - #27ae60
+
+----- COLORS END -----*/
+
+/* ================= HEADER ================= */
+
+.jm-main-header  {
+  width:100%;
+  background-image:url("enable-women-to-be-the-boss.jpg");
+  background-size:cover;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.mainLogo {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.mainHeader {
+  align-self: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 3.5em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  font-weight: 800;
+  text-align: center;
+}
+
+.mainSubHeader {
+  align-self: center;
+  font-family: 'Ubuntu', sans-serif;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+
+.mainBtn {
+  margin: 20px auto;
+  display: inline-block;
+  align-self: center;
+  background-color: #2ecc71;
+  max-width: 500px;
+  border: none !important;
+  padding: 1em 2.5em;
+  font-size: 1.5em;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.mainBtn:hover {
+   background-color: #27ae60;
+   transition: .8s;
+   box-shadow: none;
+   color: #fff;
+
+}
+
+.mainNavLink {
+  color: #fff;
+  font-size: 15px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 800;
+}
+
+/*----- Latest Banks View ----- */
+
+.banksContainer {
+
+}
+
+.bankCallToAction {
+  background-color: #2ecc71;
+  color: #fff;
+  padding: 1.5em;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.bkMargin {
+  margin-bottom: 15px;
+}
+
+
+.bankSingleDisplay .panel .panel-default {
+  padding: 20px;
+  margin: 0;
+  display: flex;
+}
+
+.panel {
+  background-color: #eee;
+}
+
+.bankViewBtn {
+  background-color: #2ecc71;
+  padding: 10px 20px 10px 20px;
+  text-transform: uppercase;
+  margin: 20px;
+  color: #fff;
+}
+
+.bankViewBtn:hover {
+   background-color: #27ae60;
+   transition: .8s;
+}
+
+.bankImg {
+  position: relative;
+}
+
+.bankName {
+  color: #fff;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.bankViewDesc {
+  padding: 15px;
+  display: absolute;
+  align-self: center
+  background-color: #222;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+}
+
+.bankViewBtnDisplay {
+  background-color: #222;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* ------ INFORMATION SECTION ----- */
+
+/*.informationContainer {
+
+}*/
+.infoFormContainer {
+  background-color: #2ecc71;
+  min-height: 400px;
+/*  width:100%;*/
+  background-image:url("blur.jpg");
+  background-size:cover;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.infoTextHeader {
+  align-self: center;
+  width: 70%;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.infoForm {
+  align-self: center;
+  width: 70%;
+  border-radius: 0;
+}
+
+.form-control {
+  border-radius: 0;
+  border: none;
+  height: 40px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  text-align: center;
+  -webkit-appearance: none;
+}
+
+.information {
+  color: #fff;
+  width: 90%;
+  text-align: center;
+}
+
+.btnHome {
+  border-radius: none;
+  height: 40px;
+}
+
+.bankDetialImg {
+width: 100%;
+align-self: center;
+}
+
+.btn, .btn-default {
+  border-radius: 0;
+  background-color: #2ecc71;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.btnHome:hover {
+  background-color: #27ae60;
+  transition: .8s;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.infoHowItWorks{
+  display: flex;
+  flex-direction: column;
+  text-transform: center;
+  justify-content: center;
+  background-color: #222;
+  min-height: 400px;
+}
+
+.information {
+  position: relative;
+  align-self: center;
+  padding: 1em;
+  margin: 10px;
+  background-color: #2ecc71;
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.num {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  background-color: #fff;
+  color: #2ecc71;
+  top: 0;
+  left: 0;
+}
+
+/*------ footer ------*/
+
+.footer {
+  background-color: #2ecc71;
+}
+
+.footer p {
+  color: #fff;
+}
+
+.footerTitle {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.credits {
+  background-color: #222;
+  text-align: center;
+}
+
+.credits > p {
+  color: #fff;
+  padding: 10px;
+  font-style: italic;
+}
+
+/*------ Banking Page ------*/
+
+.imgContainer {
+  text-align: center;
+  min-height: 400px;
+  background-color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bankDetialImg {
+  width: 100%;
+  align-self: center;
+}
+
+.groupImg {
+  align-self: center;
+  padding: 50px;
+}
+
+.groupInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.groupDesc {
+  margin: 10px 15px;
+  align-self: center;
+}
+
+.groupName {
+  margin: 10px 15px;
+  background-color: #2ecc71;
+  padding: 4px 10px 10px 10px;
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  text-align: center;
+}
+
+.moniesDisplay {
+  margin: 10px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.startingTotal {
+  background-color: #222;
+  padding: 10px;
+  text-align: center;
+  width: 45%;
+  color: #fff;
+}
+.currentTotal {
+  background-color: #2ecc71;
+  padding: 10px;
+  text-align: center;
+  width: 45%;
+  color: #fff;
+}
+/*.groupDonateBtn {
+
+}*/
+
+.donateBtnContainer {
+ background-color: #222;
+}
+
+.donateBtn {
+  margin: 25px 15px;
+  color: #fff;
+  padding: 10px;
+  height: 60px;
+  text-transform: uppercase;
+  width: 98%;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  background-color: #2ecc71;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.transactionHeader {
+  padding: 5px 10px 15px 10px;
+  color: #fff;
+  background-color: #222;
+  text-align: center;
+}
+
+.transactionItem {
+  margin-bottom: 25px;
+}
+
+.timeStamp {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.bankerName {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #2ecc71;
+}
+
+/*------ Donations Page ------*/
+
+.donationBankName {
+  align-self: center;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.donationBankName form {
+  margin-bottom: 30px;
+}
+
+.bankImgBanner {
+  width: 100%;
+  min-height: 400px;
+  padding: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.donationOptions {
+  background-color: #222;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.giftBtnContainer {
+
+}
+
+.giftBtn, .noBTcoins {
+  background-color: #2ecc71;
+  padding: 10px 40px 10px 40px;
+  text-transform: uppercase;
+  margin: 30px;
+  color: #fff;
+  width: 300px;
+}
+
+.btnFormBottom {
+
+  border-radius: none;
+  height: 40px;
+  margin-bottom: 50px
+
+}
+
+.btnFormBottom:hover {
+  background-color: #27ae60;
+  transition: .8s;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.transactionHeaderDonation {
+  padding: 5px 10px 15px 10px;
+  color: #222;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+}
+
+.noBtnCoinsContainer {
+
+}
+
+.noBTcoins {
+
+}
+
+
+@media only screen and (max-width : 3840px) {
+
+  .jm-main-header { /*ADJUST MAIN IMAGE MIN HEIGHT AT BREAK*/
+    min-height: 800px;
+  }
+
+}
+
+@media only screen and (max-width : 1920px) {
+
+  .jm-main-header { /*ADJUST MAIN IMAGE MIN HEIGHT AT BREAK*/
+    min-height: 600px;
+  }
+
+}
+
+
+@media only screen and (max-width : 1200px) {
+
+}
+
+@media only screen and (max-width : 979px) {
+
+}
+
+@media only screen and (max-width : 767px) {
+
+  .jm-main-header { /*ADJUST MAIN IMAGE MIN HEIGHT AT BREAK*/
+    min-height: 400px;
+  }
+}
+
+@media only screen and (max-width : 480px) {
+
+  .jm-main-header { /*ADJUST MAIN IMAGE MIN HEIGHT AT BREAK*/
+    min-height: 400px;
+  }
+
+}
+
+@media only screen and (max-width : 320px) {
+
+  .jm-main-header { /*ADJUST MAIN IMAGE MIN HEIGHT AT BREAK*/
+    min-height: 400px;
+  }
+}
