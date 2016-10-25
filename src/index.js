@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 import Navbar from './components/Navbar';
-import Home from './components/Home';
+import Homepage from './components/Home';
 import BankDetail from './components/BankDetail';
 import BankDetail2 from './components/BankDetail2';
 import BankDetail3 from './components/BankDetail3';
@@ -13,13 +13,10 @@ import BankDetail6 from './components/BankDetail6';
 import BankDetail7 from './components/BankDetail7';
 import Donation from './components/Donation';
 
-import API from './API';
-import BankStore from './stores/BankStore';
-
 render(
   <Router history={browserHistory}>
     <Route path="/" component={Navbar}>
-      <IndexRoute component={Home} />
+      <IndexRoute component={Homepage} />
       <Route path="bank" component={BankDetail} />
       <Route path="bank2" component={BankDetail2} />
       <Route path="bank3" component={BankDetail3} />
