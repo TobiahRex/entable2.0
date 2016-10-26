@@ -1,5 +1,5 @@
-const express = require('express');
-const Tropo = require('../models/Tropo');
+import express from 'express';
+import Tropo from '../models/Tropo';
 
 const router = new express.Router();
 
@@ -8,4 +8,4 @@ router.post('/trans', Tropo.trans);
 router.post('/member', Tropo.member);
 router.get('/', Tropo.all);
 
-module.exports = router;
+export default router;

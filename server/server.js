@@ -1,21 +1,21 @@
+// PACKAGE REQUIRES
+import bodyParser from 'body-parser';
+import express from 'express';
+import http from 'http';
+import morgan from 'morgan';
+import path from 'path';
+import mongoose from 'mongoose';
+import webpack from 'webpack';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackConfig from '../webpack.config';
+import api from './api/index';
+
+
 // CONSTANTS
 const PORT = process.env.PORT || 8000;
-
-// PACKAGE REQUIRES
-const bodyParser = require('body-parser');
-const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
-const webpack = require('webpack');
-const webpackConfig = require('../webpack.config');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const mongoose = require('mongoose');
-const api = require('./routes/api');
-
-// Server & Sockets
 const app = express();
-const server = require('http').Server(app); //eslint-disable-line
+const server = http.Server(app); //eslint-disable-line
 const io = require('socket.io')(server);
 
 mongoose.Promise = Promise;
@@ -25,7 +25,6 @@ io.on('connection', (socket) => {
   socketEmitter = (type, data) => socket.emit(type, data);
 });
 
-// Webpack Config
 const compiler = webpack(webpackConfig);
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
@@ -37,8 +36,6 @@ app.use((req, res, next) => {
   resRef.socketEmitter = socketEmitter;
   next();
 });
-
-// GENERAL MIDDLEWARE
 app.use(express.static('build'));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -49,12 +46,10 @@ app.use((req, res, next) => {
     resRef.status(err ? 400 : 200).send(err || data);
   next();
 });
-
-// ROUTES
 app.use('/api', api);
 app.get('*', (req, res) => res.sendFile(path.resolve('./build/index.html')));
 
-// Listeners
+
 server.listen(PORT, err =>
   process.stdout.write(err || `==> 📡  Server @: ${PORT}
 `));
