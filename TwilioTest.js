@@ -20,12 +20,9 @@ const client = twilio(accountSid, authToken);
 const app = express();
 
 app.post('/sms', (req, res) => {
-  console.log('req.body: ', req.body);
   const twiml = new twilio.TwimlResponse();
   twiml.message('Thanks for your donation. It has been received.');
   const headers = { 'Content-Type': 'text/html' };
   res.writeHead(200, headers);
   res.end(twiml.toString());
 });
-
-http.createServer(app).listen(8000, err => console.log(err || 'Server @ 8000'));

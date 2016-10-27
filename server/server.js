@@ -1,5 +1,6 @@
 // PACKAGE REQUIRES
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 import express from 'express';
 import http from 'http';
 import morgan from 'morgan';
@@ -18,7 +19,9 @@ const app = express();
 const server = http.Server(app); //eslint-disable-line
 const io = require('socket.io')(server);
 
+// CONFIGS
 mongoose.Promise = Promise;
+dotenv.load({ silent: true });
 let socketEmitter;
 io.on('connection', (socket) => {
   process.stdout.write('\n>>> Socket Connection!\n');
@@ -34,6 +37,12 @@ app.use(webpackHotMiddleware(compiler));
 app.use((req, res, next) => {
   const resRef = res;
   resRef.socketEmitter = socketEmitter;
+  next();
+});
+app.use((req, res, next) => {
+  const resRef = res;
+  resRef.twilio.sms = (err, twiml) =>
+  res.status(err ? 400 : 200).set('Content-Type', 'text-plain').send(err || twiml);
   next();
 });
 app.use(express.static('build'));
