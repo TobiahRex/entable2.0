@@ -16,6 +16,7 @@ import api from './api/index';
 // CONSTANTS
 const PORT = process.env.PORT || 8000;
 const app = express();
+const compiler = webpack(webpackConfig);
 const server = http.Server(app); //eslint-disable-line
 const io = require('socket.io')(server);
 
@@ -28,12 +29,15 @@ io.on('connection', (socket) => {
   socketEmitter = (type, data) => socket.emit(type, data);
 });
 
-const compiler = webpack(webpackConfig);
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(express.static('build'));
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
   publicPath: webpackConfig.output.publicPath,
 }));
 app.use(webpackHotMiddleware(compiler));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   const resRef = res;
   resRef.socketEmitter = socketEmitter;
@@ -41,18 +45,14 @@ app.use((req, res, next) => {
 });
 app.use((req, res, next) => {
   const resRef = res;
-  resRef.twilio.sms = (err, twiml) =>
-  res.status(err ? 400 : 200).set('Content-Type', 'text-plain').send(err || twiml);
-  next();
-});
-app.use(express.static('build'));
-app.use(morgan('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use((req, res, next) => {
-  const resRef = res;
   resRef.handle = (err, data) =>
     resRef.status(err ? 400 : 200).send(err || data);
+  next();
+});
+app.use((req, res, next) => {
+  const resRef = res;
+  resRef.twiml = (err, twiml) =>
+  res.status(err ? 400 : 200).set('Content-Type', 'text/xml').send(err || twiml);
   next();
 });
 app.use('/api', api);
@@ -60,8 +60,8 @@ app.get('*', (req, res) => res.sendFile(path.resolve('./build/index.html')));
 
 
 server.listen(PORT, err =>
-  process.stdout.write(err || `==> 📡  Server @: ${PORT}
+  process.stdout.write(err || `==> 📡  Server @ ${PORT}
 `));
 const MONGO = process.env.MONGODB_URI || 'mongodb://localhost/entable';
-mongoose.connect(MONGO, err => process.stdout.write(err ||
-`==> 📜  MONGO @: ${MONGO}`));
+mongoose.connect(MONGO, err => process.stdout.write(err || `==> 📜  MONGO @ ${MONGO}
+`));
