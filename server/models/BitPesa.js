@@ -15,8 +15,8 @@ export const findAccounts = () => {
   });
 };
 
-export const findAccountById = (id) => {
-  coinbase.getAccount(id, (err, acct) => {
+export const findAccountById = () => {
+  coinbase.getAccount(coinbaseId, (err, acct) => {
     process.stdout.write('bal: ', acct.balance.amount, '\ncurrency: ', acct.balance.currency, '\n');
   });
 };
@@ -31,6 +31,23 @@ export const sendBitcoin = (cb, address, amount, desc) => {
       description: desc,  // string
     };
     return account.sendMoney(params, (err2, txn) => {
+      if (err2) return cb(err2);
+      process.stdout.write('my txn id is: ', txn.id);
+      return cb(null, txn);
+    });
+  });
+};
+
+export const requestBitcoin = (cb, address, amount, desc) => {
+  findAccountById(coinbaseId, (err, account) => {
+    if (err) return cb(err);
+    const params = {
+      amount,             // floating
+      to: address,        // email
+      currency: 'BTC',
+      description: desc,  // string
+    };
+    return account.requestMoney(params, (err2, txn) => {
       if (err2) return cb(err2);
       process.stdout.write('my txn id is: ', txn.id);
       return cb(null, txn);
