@@ -18,7 +18,7 @@ const coinbase = new Client({
 const cbAccounts = [];
 let priceBTCUSD = '';
 
-function findAccounts() {
+export const findAccounts = () => {
   coinbase.getAccounts({}, (err, accounts) => {
     accounts.forEach((acct) => {
       const acctsDictionary = {};
@@ -32,26 +32,20 @@ function findAccounts() {
       acctsDictionary.caFile = [...acct.coinbase.caFile];
       cbAccounts.push(acctsDictionary);
     });
-    console.log('\n-----------------------\n');
-    console.log('accountsArray: \n', cbAccounts);
   });
-}
+};
 
-function findAccountById(id) {
-  coinbase.getAccount(id, (err, acct) => {
-    console.log('acct: \n', acct);
-  });
-}
-// findAccountById('46d59554-234c-5cc6-9eb3-83c6e9d0cf1b');
 
-function findBTCBuyPrice(pair) {
+export const findBTCBuyPrice = pair =>
+Promise.fromCallback((cb) => {
   const cross = pair.toUpperCase();
-  coinbase.getBuyPrice({ currencyPair: `BTC-${cross}` }, (err, obj) => {
-    if (obj.data.currency === cross) return (priceBTCUSD = obj.data.amount);
-    console.log('Price: \n', obj);
-  });
-}
+  return coinbase.getBuyPrice({ currencyPair: `BTC-${cross}` }, cb);
+});
 // findBTCBuyPrice('usd');
 
+export const findAccountById = id =>
+  Promise.fromCallback(cb => coinbase.getAccount(id, cb));
+// findAccountById('46d59554-234c-5cc6-9eb3-83c6e9d0cf1b');
+
 export const findUser = () =>
-Promise.fromCallback(cb => coinbase.getCurrentUser(cb));
+  Promise.fromCallback(cb => coinbase.getCurrentUser(cb));
