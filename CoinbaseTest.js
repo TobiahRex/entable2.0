@@ -58,12 +58,13 @@ function getUserInfo() {
     headers: {
       method: 'GET',
       Authorization: `Bearer ${process.env.COINBASE_DEVELOPER_ACCESS_TOKEN}`,
+      Accept: 'application/json',
       'Content-Type': 'application/json',
       'CB-VERSION': '2016-08-10',
-      'CB-ACCESS-TIMESTAMP': Date.now(),
+      'CB-ACCESS-TIMESTAMP': Math.floor(Date.now() / 1000),
     },
   };
 
-  request(options, (err, res) => console.log(err ? `ERROR: ${err}` : `SUCCESS >>> ${JSON.stringify(res)}`));
+  request(options, (err, res, body) => console.log(err ? `ERROR: ${err}` : `SUCCESS >>> ${body}`));
 }
 getUserInfo();
