@@ -4,21 +4,22 @@ https://465f2fb0.ngrok.io/coinbase/notifications
 https://465f2fb0.ngrok.io/oauth
 */
 import dotenv from 'dotenv';
-import coinbase from 'coinbase';
+import Promise from 'bluebird';
+import coinbaseNode from 'coinbase';
 import request from 'request';
 
 dotenv.load({ silent: true });
 const cbBaseUrl = 'https://api.coinbase.com/v2';
-const Client = coinbase.Client;
-const client = new Client({
-  accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
-  refreshToken: undefined,
+const Client = coinbaseNode.Client;
+const coinbase = new Client({
+  apiKey: process.env.COINBASE_API_KEY,
+  apiSecret: process.env.COINBASE_API_SECRET,
 });
 const cbAccounts = [];
 let priceBTCUSD = '';
 
 function findAccounts() {
-  client.getAccounts({}, (err, accounts) => {
+  coinbase.getAccounts({}, (err, accounts) => {
     accounts.forEach((acct) => {
       const acctsDictionary = {};
       acctsDictionary.id = acct.id;
@@ -28,7 +29,7 @@ function findAccounts() {
       acctsDictionary.currency = acct.currency;
       acctsDictionary.balance = acct.balance;
       acctsDictionary.resource_path = acct.resource_path;
-      acctsDictionary.caFile = [...acct.client.caFile];
+      acctsDictionary.caFile = [...acct.coinbase.caFile];
       cbAccounts.push(acctsDictionary);
     });
     console.log('\n-----------------------\n');
@@ -37,7 +38,7 @@ function findAccounts() {
 }
 
 function findAccountById(id) {
-  client.getAccount(id, (err, acct) => {
+  coinbase.getAccount(id, (err, acct) => {
     console.log('acct: \n', acct);
   });
 }
@@ -45,26 +46,12 @@ function findAccountById(id) {
 
 function findBTCBuyPrice(pair) {
   const cross = pair.toUpperCase();
-  client.getBuyPrice({ currencyPair: `BTC-${cross}` }, (err, obj) => {
+  coinbase.getBuyPrice({ currencyPair: `BTC-${cross}` }, (err, obj) => {
     if (obj.data.currency === cross) return (priceBTCUSD = obj.data.amount);
     console.log('Price: \n', obj);
   });
 }
 // findBTCBuyPrice('usd');
 
-function getUserInfo() {
-  const options = {
-    url: `${cbBaseUrl}/user`,
-    headers: {
-      method: 'GET',
-      Authorization: `Bearer ${process.env.COINBASE_DEVELOPER_ACCESS_TOKEN}`,
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'CB-VERSION': '2016-08-10',
-      'CB-ACCESS-TIMESTAMP': Math.floor(Date.now() / 1000),
-    },
-  };
-
-  request(options, (err, res, body) => console.log(err ? `ERROR: ${err}` : `SUCCESS >>> ${body}`));
-}
-getUserInfo();
+export const findUser = () =>
+Promise.fromCallback(cb => coinbase.getCurrentUser(cb));
