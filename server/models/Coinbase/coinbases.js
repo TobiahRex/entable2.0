@@ -8,7 +8,7 @@ import * as Coinbase from './coinbase.apiMethods';
 
 const cbAccountSchema = new mongoose.Schema({
   account: {
-    cb_id: { type: String },
+    payment_method: { type: String },
     name: { type: String },
     balance: {
       ammount: { type: String },
@@ -41,16 +41,26 @@ cbAccountSchema.statics.getBTCprices = (pair, cb) => {
   })
   .then((cbSell) => {
     sell = cbSell;
-    return cb(null, {
-      buy,
-      sell,
-      pair,
-    });
+    return cb(null, { buy, sell, pair });
   })
   .catch(err => cb(err));
 };
 
+cbAccountSchema.statics.buyBitcoin = (id, amount, cb) => {
+  CoinbaseAccount.findById(id)
+  .then((dbAcct) => {
+    const order = {
+      amount,
+      current: 'BTC',
+      payment_method: dbAcct.payment_method,
+    };
+    return Coinbase.orderBuy(order);
+  })
+  .then(order => Coinbase.commitBuy(order))
+  .then(res => cb(null, res))
+  .catch(error => cb({ ERROR: 'Could not buy Bitcoin.', error }));
+};
 
-const cbAccount = mongoose.model('cbAccount', cbAccountSchema);
+const CoinbaseAccount = mongoose.model('CoinbaseAccount', cbAccountSchema);
 
-export default cbAccount;
+export default CoinbaseAccount;

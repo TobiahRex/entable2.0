@@ -10,11 +10,35 @@ import coinbaseNode from 'coinbase';
 dotenv.load({ silent: true });
 
 const Client = coinbaseNode.Client;
-const coinbase = new Client({
-  // apiKey: process.env.COINBASE_VAULT_API_KEY,
-  // apiSecret: process.env.COINBASE_VAULT_API_KEY,
-  accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
+const CoinbaseUSD = new Client({
+  apiKey: process.env.COINBASE_USD_API_KEY,
+  apiSecret: process.env.COINBASE_USD_API_SECRET,
+  // accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
 });
+const CoinbaseBTC = new Client({
+  apiKey: process.env.COINBASE_BTC_API_KEY,
+  apiSecret: process.env.COINBASE_BTC_API_SECRET,
+  // accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
+});
+const CoinbaseVAULT = new Client({
+  apiKey: process.env.COINBASE_VAULT_API_KEY,
+  apiSecret: process.env.COINBASE_VAULT_API_SECRET,
+  // accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
+});
+
+const selectWallet = (wallet) => {
+  switch(wallet) {
+    case 'vault': return CoinbaseVault; break;
+    case 'btc': return CoinbaseBTC; break;
+    case 'usd': return CoinbaseUSD; break;
+  }
+}
+
+export const orderBuy = (orderObj, wallet) =>
+Promise.fromCallback(cb => {
+  let Coinbase = selectWallet(wallet);
+  Coinbase.
+})
 
 export const findAccounts = () =>
 Promise.fromCallback(cb => coinbase.getAccounts({}, cb));
