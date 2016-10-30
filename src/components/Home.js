@@ -4,6 +4,7 @@ import Banks from './Banks';
 import Info from './Info';
 import Footer from './Footer';
 
+
 export const Home = () => (
   <div>
     <Header />

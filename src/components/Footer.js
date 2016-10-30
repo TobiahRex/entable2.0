@@ -7,8 +7,11 @@ const Footer = () => (
         <div className="col-md-4">
           <h6 className="footerTitle">More On Table Banking</h6>
           <ul>
-            <li><a href="http://www.un.org/africarenewal/magazine/august-2015/loans-women-smart-economics">UN on Table Banking</a></li>
-            <li><a href="http://joywo.org/table-banking/">JoyWo Table Banking</a></li>
+            <li>
+              <a href="http://www.un.org/africarenewal/magazine/august-2015/loans-women-smart-economics">UN on Table Banking</a>
+            </li>
+            <li>
+              <a href="http://joywo.org/table-banking/">JoyWo Table Banking</a></li>
             <li><a href="https://www.theguardian.com/global-development/2014/nov/14/table-banking-kenya-women-poverty">Guardian & Trizah {('Chebet\'s')} Story</a></li>
             <li><a href="http://www.startupacademy.co.ke/blog/chamas-and-table-banking-a-viable-source-of-funding/">Chamas and Table Banking</a></li>
           </ul>

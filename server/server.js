@@ -22,7 +22,7 @@ const io = require('socket.io')(server);
 
 // CONFIGS
 mongoose.Promise = Promise;
-dotenv.load({ silent: true });
+dotenv.config({ silent: true });
 let socketEmitter;
 io.on('connection', (socket) => {
   process.stdout.write('\n>>> Socket Connection!\n');
