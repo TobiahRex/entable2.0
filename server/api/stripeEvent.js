@@ -1,13 +1,13 @@
 import express from 'express';
-import * as Stripe from '../models/Stripe';
+import * as StripeEvents from '../models/Stripe/stripeEvents';
 
 const router = new express.Router();
 
 router.post('/all_events', (req, res) =>
-Stripe.veryifyAndSave(req.body, res.handle));
+StripeEvents.veryifyAndSave(req.body, res.handle));
 
 // router.post('/transfer_created', (req, res) =>
-// Stripe.verifyTransfer(req.body, res.handle));
+// StripeEvents.verifyTransfer(req.body, res.handle));
 
 // router.post('/transfer_failed',);
 //
@@ -16,6 +16,6 @@ Stripe.veryifyAndSave(req.body, res.handle));
 //
 // router.post('/balance_available', )
 // router.post('/account_updated', (req, res) =>
-// Stripe.verifyAccount(req.body, res.handle));
+// StripeEvents.verifyAccount(req.body, res.handle));
 
 export default router;
