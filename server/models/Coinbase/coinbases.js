@@ -3,35 +3,38 @@ https://465f2fb0.ngrok.io/coinbase/verified
 https://465f2fb0.ngrok.io/coinbase/notifications
 https://465f2fb0.ngrok.io/oauth
 */
-import dotenv from 'dotenv';
-import Promise from 'bluebird';
-import coinbaseNode from 'coinbase';
+import mongoose from 'mongoose';
+import * as Coinbase from './coinbase.apiMethods';
 
-dotenv.load({ silent: true });
-
-const Client = coinbaseNode.Client;
-const coinbaseBTC = new Client({
-  apiKey: process.env.COINBASE_BTC_API_KEY,
-  apiSecret: process.env.COINBASE_BTC_API_SECRET,
+const cbAccountSchema = new mongoose.Schema({
+  account: {
+    cb_id: { type: String },
+    name: { type: String },
+    balance: {
+      ammount: { type: String },
+      currency: { type: String },
+    },
+    public_address: { type: String },
+  },
+  deposits: {
+    pending: [],
+    completed: [],
+  },
+  withdrawals: {
+    pending: [],
+    completed: [],
+  },
+  transactions: {
+    pending: [],
+    completed: [],
+  },
 });
 
-export const findAccounts = () =>
-Promise.fromCallback(cb => coinbaseBTC.getAccounts({}, cb));
+cbAccountSchema.statics.getBTCprices = (pair) => {
+  Coinbase
+}
 
 
-export const findBTCBuyPrice = pair =>
-Promise.fromCallback((cb) => {
-  const cross = pair.toUpperCase();
-  return coinbaseBTC.getBuyPrice({ currencyPair: `BTC-${cross}` }, cb);
-});
-// findBTCBuyPrice('usd');
+const cbAccount = mongoose.model('cbAccount', cbAccountSchema);
 
-export const findAccountById = id =>
-Promise.fromCallback(cb => coinbaseBTC.getAccount(id, cb));
-// findAccountById('46d59554-234c-5cc6-9eb3-83c6e9d0cf1b');
-
-export const findUser = () =>
-Promise.fromCallback(cb => coinbaseBTC.getCurrentUser(cb));
-
-export const getPaymentMethods = () =>
-Promise.fromCallback(cb => coinbaseBTC.getPaymentMethods(cb));
+export default cbAccount;
