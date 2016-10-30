@@ -30,9 +30,25 @@ const cbAccountSchema = new mongoose.Schema({
   },
 });
 
-cbAccountSchema.statics.getBTCprices = (pair) => {
-  Coinbase
-}
+cbAccountSchema.statics.getBTCprices = (pair, cb) => {
+  let buy;
+  let sell;
+
+  Coinbase.findBTCBuyPrice(pair)
+  .then((cbBuy) => {
+    buy = cbBuy;
+    return Coinbase.findBTCSellPrice(pair);
+  })
+  .then((cbSell) => {
+    sell = cbSell;
+    return cb(null, {
+      buy,
+      sell,
+      pair,
+    });
+  })
+  .catch(err => cb(err));
+};
 
 
 const cbAccount = mongoose.model('cbAccount', cbAccountSchema);
