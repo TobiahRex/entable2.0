@@ -15,10 +15,18 @@ const Coinbase = new Client({
   apiSecret: process.env.COINBASE_USD_API_SECRET,
   // accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
 });
+
+// ------------------- BUY & Sell BTC Methods -------------------
+
 // Use the "placeOrder" witht the "commitBuy" together.
-export const placeOrder = orderObj =>
+export const placeBuyOrder = orderObj =>
 Promise.fromCallback(cb => Coinbase.buy(orderObj, cb));
 export const commitBuy = tx =>
+Promise.fromCallback(cb => tx.commit(null, cb));
+
+export const placeSellOrder = orderObj =>
+Promise.fromCallback(cb => Coinbase.sell(orderObj, cb));
+export const commitSell = tx =>
 Promise.fromCallback(cb => tx.commit(null, cb));
 
 // Use the "accountBuys" with "getPendingBuys" together.
@@ -26,9 +34,10 @@ export const getPendingBuys = () =>
 Promise.fromCallback(cb => coinbase.getAccount(process.env.COINBASE_BTC_ACCT_ID, cb));
 export const accountBuys = acct =>
 Promise.fromCallback(cb => acct.getBuys(null, cb));
-// ------------------------------------------------
 
 
+
+// ------------------- Query Methods -------------------
 export const findAccounts = () =>
 Promise.fromCallback(cb => coinbase.getAccounts({}, cb));
 
@@ -52,6 +61,9 @@ Promise.fromCallback(cb => coinbase.getCurrentUser(cb));
 
 export const getPaymentMethods = () =>
 Promise.fromCallback(cb => coinbase.getPaymentMethods(cb));
+
+// ------------------- Transfer Methods -------------------
+
 
 // -------------- REFACTOR below --------------
 

@@ -55,7 +55,7 @@ cbAccountSchema.statics.buyBitcoin = (id, amount, cb) => {
       commit: false,
       payment_method: dbAcct.payment_method,
     };
-    return CoinbaseUSD.placeOrder(order);
+    return CoinbaseUSD.placeBuyOrder(order);
   })
   .then(buyOrder => CoinbaseUSD.commitBuy(buyOrder))
   .then(res => cb(null, res))
