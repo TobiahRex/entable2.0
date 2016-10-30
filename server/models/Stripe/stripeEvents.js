@@ -1,4 +1,3 @@
-import Promise from 'bluebird';
 import stripeNode from 'stripe';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
@@ -10,9 +9,8 @@ const stripeEventSchema = new mongoose.Schema({
 dotenv.config({ silent: true });
 
 const stripe = stripeNode(process.env.STRIPE_LIVE_SECRET_KEY);
-Promise.promisify(stripe);
 
-export const txfrToBank = amount =>
+stripeEventSchema.statics.txfrToBank = amount =>
 stripe.transfer.create({
   amount,
   currency: 'usd',
@@ -21,7 +19,7 @@ stripe.transfer.create({
   stripe_account: process.env.STRIPE_DEFAULT_BANK_ACCT_ID,
 });
 
-export const txfrToDebitCard = amount =>
+stripeEventSchema.statics.txfrToDebitCard = amount =>
 stripe.transfer.create({
   amount,
   currency: 'usd',
@@ -30,14 +28,13 @@ stripe.transfer.create({
   stripe_account: process.env.STRIPE_DEFAULT_DEBIT_CARD_ACCT_ID,
 });
 
-export const saveEvent = eventObj => {
-  stripeAccount.findById();
-};
+stripeEventSchema.statics.saveEvent = eventObj =>
+StripeEvent.create(eventObj);
 
-export const saveAndVerifyEvent = (reqBody, cb) => {
+stripeEventSchema.statics.verifyAndSave = (reqBody, cb) => {
   stripe.events.retrieve(reqBody.id)
-  .then(event => saveEvent(event))
-  .then(() => cb(null, null))
+  .then(event => StripeEvent.saveEvent(event))
+  .then(() => cb(null, { SUCCESS: 'Event saved.' }))
   .catch(err => cb(err));
 };
 
