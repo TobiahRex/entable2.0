@@ -4,7 +4,7 @@ https://465f2fb0.ngrok.io/coinbase/notifications
 https://465f2fb0.ngrok.io/oauth
 */
 import mongoose from 'mongoose';
-import * as Coinbase from './coinbase.apiMethods';
+import * as CoinbaseUSD from './coinbase.usd.api';
 
 const cbAccountSchema = new mongoose.Schema({
   account: {
@@ -34,10 +34,10 @@ cbAccountSchema.statics.getBTCprices = (pair, cb) => {
   let buy;
   let sell;
 
-  Coinbase.findBTCBuyPrice(pair)
+  CoinbaseUSD.findBTCBuyPrice(pair)
   .then((cbBuy) => {
     buy = cbBuy;
-    return Coinbase.findBTCSellPrice(pair);
+    return CoinbaseUSD.findBTCSellPrice(pair);
   })
   .then((cbSell) => {
     sell = cbSell;
@@ -52,11 +52,12 @@ cbAccountSchema.statics.buyBitcoin = (id, amount, cb) => {
     const order = {
       amount,
       current: 'BTC',
+      commit: false,
       payment_method: dbAcct.payment_method,
     };
-    return Coinbase.orderBuy(order);
+    return CoinbaseUSD.placeOrder(order);
   })
-  .then(order => Coinbase.commitBuy(order))
+  .then(buyOrder => CoinbaseUSD.commitBuy(buyOrder))
   .then(res => cb(null, res))
   .catch(error => cb({ ERROR: 'Could not buy Bitcoin.', error }));
 };
