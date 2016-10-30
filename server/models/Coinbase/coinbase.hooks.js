@@ -27,3 +27,13 @@ const buyCompleted = (event, cb) => {
   .then(() => cb(null, { EVENT_ALERT: `A '${event.type}' event was received from Coinbase and successfully saved.`, user: dbAcctRef._id }))
   .catch(error => cb({ EVENT_ERROR: `A '${event.type}' event was received from Coinbase, however it was not successfully saved to the database.`, error }));
 };
+
+const saveHook = (eventObj, cb) => {
+  switch (eventObj.type) {
+    case 'wallet:buys:created': return buyCreated(eventObj, cb);
+    case 'wallet:buys:completed': return buyCompleted(eventObj, cb);
+    default: return cb({ EVENT_ERROR: 'Could not determine hook type, Check "saveHook" method.' });
+  }
+};
+
+export default saveHook;
