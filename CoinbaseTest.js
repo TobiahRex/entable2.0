@@ -19,23 +19,22 @@ const coinbase = new Client({
 export const findAccounts = () =>
 Promise.fromCallback(cb => coinbase.getAccounts({}, cb));
 
-
 export const findBTCBuyPrice = pair =>
 Promise.fromCallback((cb) => {
   const cross = pair.toUpperCase();
   return coinbase.getBuyPrice({ currencyPair: `BTC-${cross}` }, cb);
 });
-// findBTCBuyPrice('usd');
 
+// Use the "accountBuys" with "getPendingBuys" together.
 export const getPendingBuys = () =>
 Promise.fromCallback(cb => coinbase.getAccount(process.env.COINBASE_BTC_ACCT_ID, cb));
 
 export const accountBuys = acct =>
 Promise.fromCallback(cb => acct.getBuys(null, cb));
+// ------------------------------------------------
 
 export const findAccountById = id =>
 Promise.fromCallback(cb => coinbase.getAccount(id, cb));
-// findAccountById('46d59554-234c-5cc6-9eb3-83c6e9d0cf1b');
 
 export const findUser = () =>
 Promise.fromCallback(cb => coinbase.getCurrentUser(cb));
