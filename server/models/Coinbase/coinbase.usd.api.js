@@ -1,8 +1,3 @@
-/*
-https://465f2fb0.ngrok.io/coinbase/verified
-https://465f2fb0.ngrok.io/coinbase/notifications
-https://465f2fb0.ngrok.io/oauth
-*/
 import dotenv from 'dotenv';
 import Promise from 'bluebird';
 import coinbaseNode from 'coinbase';
