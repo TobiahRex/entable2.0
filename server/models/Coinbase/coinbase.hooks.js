@@ -28,7 +28,7 @@ const buyCompleted = (event, cb) => {
   .catch(error => cb({ EVENT_ERROR: `A '${event.type}' event was received from Coinbase, however it was not successfully saved to the database.`, error }));
 };
 
-const saveHook = (eventObj, cb) => {
+const saveNotification = (eventObj, cb) => {
   switch (eventObj.type) {
     case 'wallet:buys:created': return buyCreated(eventObj, cb);
     case 'wallet:buys:completed': return buyCompleted(eventObj, cb);
@@ -36,4 +36,4 @@ const saveHook = (eventObj, cb) => {
   }
 };
 
-export default saveHook;
+export default saveNotification;
