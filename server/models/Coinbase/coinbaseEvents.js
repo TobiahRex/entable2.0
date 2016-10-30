@@ -5,8 +5,8 @@ import dotenv from 'dotenv';
 dotenv.load({ silent: true });
 const Client = coinbaseNode.Client;
 const coinbase = new Client({
-  apiKey: process.env.COINBASE_API_KEY,
-  apiSecret: process.env.COINBASE_API_SECRET,
+  apiKey: process.env.COINBASE_BTC_API_KEY,
+  apiSecret: process.env.COINBASE_BTC_API_SECRET,
 });
 const coinbaseId = process.env.COINBASE_ACCT_ID;
 

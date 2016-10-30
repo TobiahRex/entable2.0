@@ -10,28 +10,28 @@ import coinbaseNode from 'coinbase';
 dotenv.load({ silent: true });
 
 const Client = coinbaseNode.Client;
-const coinbase = new Client({
-  apiKey: process.env.COINBASE_VAULT_API_KEY,
-  apiSecret: process.env.COINBASE_VAULT_API_SECRET,
+const coinbaseBTC = new Client({
+  apiKey: process.env.COINBASE_BTC_API_KEY,
+  apiSecret: process.env.COINBASE_BTC_API_SECRET,
 });
 
 export const findAccounts = () =>
-Promise.fromCallback(cb => coinbase.getAccounts({}, cb));
+Promise.fromCallback(cb => coinbaseBTC.getAccounts({}, cb));
 
 
 export const findBTCBuyPrice = pair =>
 Promise.fromCallback((cb) => {
   const cross = pair.toUpperCase();
-  return coinbase.getBuyPrice({ currencyPair: `BTC-${cross}` }, cb);
+  return coinbaseBTC.getBuyPrice({ currencyPair: `BTC-${cross}` }, cb);
 });
 // findBTCBuyPrice('usd');
 
 export const findAccountById = id =>
-Promise.fromCallback(cb => coinbase.getAccount(id, cb));
+Promise.fromCallback(cb => coinbaseBTC.getAccount(id, cb));
 // findAccountById('46d59554-234c-5cc6-9eb3-83c6e9d0cf1b');
 
 export const findUser = () =>
-Promise.fromCallback(cb => coinbase.getCurrentUser(cb));
+Promise.fromCallback(cb => coinbaseBTC.getCurrentUser(cb));
 
 export const getPaymentMethods = () =>
-Promise.fromCallback(cb => coinbase.getPaymentMethods(cb));
+Promise.fromCallback(cb => coinbaseBTC.getPaymentMethods(cb));
