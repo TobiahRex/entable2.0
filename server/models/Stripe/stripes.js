@@ -3,12 +3,29 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
 const stripeAccountSchema = new mongoose.Schema({
-  events: [{ type: Object }],
+  Donation: {
+    pending: [],                // a token has been created using stripe.
+    charged: [],                // the token from stripe has been charge.
+    conversion_pending: [],     // has been sent to FIAT account for conversion.
+    conversion_completed: [],   // has been converted to Bitcoin on Coinbase.
+  },
 });
 
 dotenv.config({ silent: true });
 
 const stripe = stripeNode(process.env.STRIPE_LIVE_SECRET_KEY);
+
+stripeAccountSchema.statics.saveDonationInfo = donationInfo =>
+StripeAccount.create()
+.then((newAccount) => {
+  newAccount.Donation.pending.push(donationInfo);
+  return newAccount.save();
+})
+.catch(error => error);
+
+stripeAccountSchema.statics.savedChargeInfo = (chargeInfo) => {
+  StripeAccount.findById()
+}
 
 stripeAccountSchema.statics.txfrToBank = amount =>
 stripe.transfer.create({
