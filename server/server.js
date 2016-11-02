@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(express.static('build'));
+app.use(express.static('public'));
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
   publicPath: webpackConfig.output.publicPath,
@@ -56,7 +56,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/api', api);
-app.get('*', (req, res) => res.sendFile(path.resolve('./build/index.html')));
+app.get('*', (req, res) => res.sendFile(path.resolve('./public/index.html')));
 
 
 server.listen(PORT, err =>
