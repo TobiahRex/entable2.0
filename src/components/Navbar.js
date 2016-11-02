@@ -45,5 +45,5 @@ const Navbar = props => {
 Navbar.propTypes = {
   children: PropTypes.node.isRequired,
 };
-console.log('NavBar: ', NavBar);
+
 export default Navbar;
