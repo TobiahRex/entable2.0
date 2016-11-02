@@ -1,14 +1,19 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-const Navbar = props => {
-  console.log('main props: \n', props);
+const Navbar = ({ children }) => {
   return (
     <div>
       <nav className="navbar navbar-inverse navbar-default">
         <div className="container">
           <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button
+              type="button"
+              className="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+              aria-expanded="false"
+            >
               <span className="sr-only" />
               <span className="icon-bar" />
               <span className="icon-bar" />
@@ -37,7 +42,7 @@ const Navbar = props => {
           </div>
         </div>
       </nav>
-      {props.children}
+      {children}
     </div>
   );
 };
