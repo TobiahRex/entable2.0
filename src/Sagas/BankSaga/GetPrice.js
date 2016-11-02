@@ -6,7 +6,7 @@ export default function* create(api, action) {
   const response = yield call(() => api.getExchangeRate(action.pair));
 
   if (response.ok) {
-    yield [put(BankSActions.getExchangeRateSuccess(response.data))];
+    yield [put(BankActions.getExchangeRateSuccess(response.data))];
   } else {
     yield put(apiActions.apiFail(response.problem));
   }
