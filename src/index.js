@@ -4,14 +4,16 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-import routes from './Navigation';
+import routes from './Navigation/index';
 
 import createStore from './Redux/index';
 
-const store = createStore();
+console.log('routes: ', routes);
 
+const store = createStore();
 render(
   <Provider store={store}>
     <Router history={browserHistory} router={routes} />
-  </Provider>
+  </Provider>,
+  document.getElementById('root')
 );

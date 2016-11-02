@@ -17,6 +17,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        BASE_URL: process.env.BASE_URL,
+      },
+    }),
   ],
   module: {
     loaders: [
