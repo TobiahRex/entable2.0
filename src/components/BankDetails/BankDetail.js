@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
-import BankStore from '../../stores/BankStore';
 import Footer from '../Footer';
 import Banks from './bankData/index';
 
@@ -11,22 +10,10 @@ export default class BankDetail extends Component {
   constructor() {
     super();
     this.state = {
-      banks: BankStore.getBanks(),
+      // banks: BankStore.getBanks(),
     };
     this.onChange = this.onChange.bind(this);
     window.scrollTo(0, 0);
-  }
-
-  componentWillMount() {
-    BankStore.startListening(this.onChange);
-  }
-
-  componentWillUnmount() {
-    BankStore.stopListening(this.onChange);
-  }
-
-  onChange() {
-    this.setState({ banks: BankStore.getBanks() });
   }
 
   render() {

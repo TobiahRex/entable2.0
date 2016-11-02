@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-import Banks from './BankDetails/bankData/index';
+import bankData from './BankDetails/bankData/index';
 
-const toBank = () => browserHistory.push('/bank');
-const toBank2 = () => browserHistory.push('/bank2');
-const toBank3 = () => browserHistory.push('/bank3');
-const toBank4 = () => browserHistory.push('/bank4');
-const toBank5 = () => browserHistory.push('/bank5');
-const toBank6 = () => browserHistory.push('/bank6');
-const toFund = () => browserHistory.push('/donation');
+const toBank = () => browserHistory.push('bank');
+const toBank2 = () => browserHistory.push('bank2');
+const toBank3 = () => browserHistory.push('bank3');
+const toBank4 = () => browserHistory.push('bank4');
+const toBank5 = () => browserHistory.push('bank5');
+const toBank6 = () => browserHistory.push('bank6');
+const toFund = () => browserHistory.push('donation');
 
 
 export default class Banks extends Component {
@@ -25,7 +25,7 @@ export default class Banks extends Component {
   }
 
   render() {
-    const dummy = Banks.data;
+    const dummy = bankData.data;
     // const { banks } = this.state;
     return (
       <div className="banksContainer">

@@ -1,6 +1,6 @@
 import { create } from 'apisauce';
 
-const createAPI = (baseurl = process.env.BASE_URL) => {
+const createAPI = (baseurl = 'http://localhost:8000/') => {
   const api = create({
     baseurl,
     headers: {
