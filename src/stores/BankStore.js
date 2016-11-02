@@ -2,7 +2,7 @@ import { EventEmitter } from 'events';
 import AppDispatcher from '../AppDispatcher';
 import API from '../API';
 
-API.getAll();
+// API.getAll();
 
 let _banks = [];
 
