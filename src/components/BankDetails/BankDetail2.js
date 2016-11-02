@@ -1,9 +1,12 @@
 import React from 'react';
 import moment from 'moment';
-import Footer from './Footer';
+import Footer from '../Footer';
 
-const BankDetail5 = () => {
+
+const BankDetail2 = () => {
   const fakeTimeStampDelete = moment().format('lll');
+  window.scrollTo(0, 0);
+
   const dummy = [
     { Name: 'Bank of Sauri',
     Country: 'Kenya',
@@ -59,6 +62,7 @@ const BankDetail5 = () => {
     Starting: '$175',
     Current: '$960' },
   ];
+
   return (
     <div>
       <div className="container-fluid">
@@ -68,29 +72,29 @@ const BankDetail5 = () => {
               <img
                 className="bankDetialImg"
                 role="presentation"
-                src={dummy[3].Images[0]}
+                src={dummy[0].Images[0]}
               />
             </div>
           </div>
           <div className="col-md-6 groupInfo">
             <div className="groupDesc">
               <div className="groupName">
-                <h3>{dummy[3].Name}</h3>
+                <h3>{dummy[0].Name}</h3>
               </div>
               <div className="groupDesc">
-                <h4>{dummy[3].Name} Details and Information: </h4>
-                <p>{dummy[3].Description1}</p>
-                <p>{dummy[3].Description2}</p>
-                <p>{dummy[3].Description3}</p>
+                <h4>{dummy[0].Name} Details and Information: </h4>
+                <p>{dummy[0].Description1}</p>
+                <p>{dummy[0].Description2}</p>
+                <p>{dummy[0].Description3}</p>
               </div>
               <div className="moniesDisplay">
                 <div className="startingTotal">
                   <h6>Starting Amount:</h6>
-                  <h4>{dummy[3].Starting}</h4>
+                  <h4>{dummy[0].Starting}</h4>
                 </div>
                 <div className="currentTotal">
                   <h6>Currently Held:</h6>
-                  <h4>{dummy[3].Current}</h4>
+                  <h4>{dummy[0].Current}</h4>
                 </div>
               </div>
             </div>
@@ -211,7 +215,7 @@ const BankDetail5 = () => {
           <div className="transactionItem">
             <h6>{String(' ')}</h6>
             <p><span className="timeStamp">{fakeTimeStampDelete}</span> <span className="bankerName">  Betty Hascal - <i>Bank Manager</i></span></p>
-            <p>{('Olive\'s')} farm bought breeding pigs.</p>
+            <p>{'Olive\'s'} farm bought breeding pigs.</p>
             <hr className="bankHistoryHr" />
           </div>
           <div className="transactionItem">
@@ -227,7 +231,7 @@ const BankDetail5 = () => {
             <hr className="bankHistoryHr" />
           </div>
           <div className="transactionItem">
-            <h6>{String(' ')}</h6>
+            <br />
             <p><span className="timeStamp">{fakeTimeStampDelete}</span> <span className="bankerName">  Betty Hascal - <i>Bank Manager</i></span></p>
             <p>Kileen is recovering well in hospital.</p>
             <hr className="bankHistoryHr" />
@@ -238,4 +242,4 @@ const BankDetail5 = () => {
     </div>
   );
 };
-export default BankDetail5;
+export default BankDetail2;

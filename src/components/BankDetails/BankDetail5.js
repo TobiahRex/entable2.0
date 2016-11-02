@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
-import Footer from './Footer';
+import Footer from '../Footer';
 
-const BankDetail7 = () => {
+const BankDetail5 = () => {
   const fakeTimeStampDelete = moment().format('lll');
   const dummy = [
     { Name: 'Bank of Sauri',
@@ -68,29 +68,29 @@ const BankDetail7 = () => {
               <img
                 className="bankDetialImg"
                 role="presentation"
-                src={dummy[4].Images[0]}
+                src={dummy[3].Images[0]}
               />
             </div>
           </div>
           <div className="col-md-6 groupInfo">
             <div className="groupDesc">
               <div className="groupName">
-                <h3>{dummy[4].Name}</h3>
+                <h3>{dummy[3].Name}</h3>
               </div>
               <div className="groupDesc">
-                <h4>{dummy[4].Name} Details and Information: </h4>
-                <p>{dummy[4].Description1}</p>
-                <p>{dummy[4].Description2}</p>
-                <p>{dummy[4].Description4}</p>
+                <h4>{dummy[3].Name} Details and Information: </h4>
+                <p>{dummy[3].Description1}</p>
+                <p>{dummy[3].Description2}</p>
+                <p>{dummy[3].Description3}</p>
               </div>
               <div className="moniesDisplay">
                 <div className="startingTotal">
                   <h6>Starting Amount:</h6>
-                  <h4>{dummy[4].Starting}</h4>
+                  <h4>{dummy[3].Starting}</h4>
                 </div>
                 <div className="currentTotal">
                   <h6>Currently Held:</h6>
-                  <h4>{dummy[4].Current}</h4>
+                  <h4>{dummy[3].Current}</h4>
                 </div>
               </div>
             </div>
@@ -238,4 +238,4 @@ const BankDetail7 = () => {
     </div>
   );
 };
-export default BankDetail7;
+export default BankDetail5;

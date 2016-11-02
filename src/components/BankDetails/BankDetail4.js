@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import Footer from './Footer';
+import Footer from '../Footer';
 
 const BankDetail4 = () => {
   const fakeTimeStampDelete = moment().format('lll');

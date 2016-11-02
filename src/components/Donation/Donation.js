@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
-import Footer from './Footer';
+import Footer from '../Footer';
 
 export default class Donation extends Component {
   constructor() {

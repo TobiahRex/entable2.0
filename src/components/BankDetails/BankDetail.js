@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import BankStore from '../stores/BankStore';
-import Footer from './Footer';
+import BankStore from '../../stores/BankStore';
+import Footer from '../Footer';
 
 export default class BankDetail extends Component {
   constructor() {
