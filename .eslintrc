@@ -6,6 +6,7 @@
     "document": true,
     "window": true,
     "StripeEvent": true,
+    "CoinbaseAccount": true,
   },
   "rules": {
     "no-underscore-dangle": 0,

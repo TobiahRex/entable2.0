@@ -10,10 +10,11 @@ const Coinbase = new Client({
   apiSecret: process.env.COINBASE_USD_API_SECRET,
   // accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
 });
+const usdAcctId = process.env.COINBASE_USD_ACCT_ID;
 
 // ------------------- BUY & Sell BTC Methods -------------------
 
-// Use the "placeOrder" witht the "commitBuy" together.
+// Use the "placeOrder" with the "commitBuy" together.
 export const placeBuyOrder = orderObj =>
 Promise.fromCallback(cb => Coinbase.buy(orderObj, cb));
 export const commitBuy = tx =>
@@ -26,11 +27,9 @@ Promise.fromCallback(cb => tx.commit(null, cb));
 
 // Use the "accountBuys" with "getPendingBuys" together.
 export const getPendingBuys = () =>
-Promise.fromCallback(cb => coinbase.getAccount(process.env.COINBASE_BTC_ACCT_ID, cb));
+Promise.fromCallback(cb => coinbase.getAccount(usdAcctId, cb));
 export const accountBuys = acct =>
 Promise.fromCallback(cb => acct.getBuys(null, cb));
-
-
 
 // ------------------- Query Methods -------------------
 export const findAccounts = () =>
@@ -61,7 +60,6 @@ Promise.fromCallback(cb => coinbase.getPaymentMethods(cb));
 
 
 // -------------- REFACTOR below --------------
-
 export const sendBitcoin = (address, reqBody, desc) =>
 Promise.fromCallback(cb => findAccounts()
 .then(account =>
@@ -75,10 +73,10 @@ Promise.fromCallback(cb => findAccounts()
 .catch(cb));
 
 export const requestBitcoin = (cb, address, amount, desc) => {
-  findAccountById(coinbaseId, (err, account) => {
+  findAccountById(usdAcctId, (err, account) => {
     if (err) return cb(err);
     const params = {
-      amount,             // f800loating
+      amount,             // floating
       to: address,        // email
       currency: 'BTC',
       description: desc,  // string

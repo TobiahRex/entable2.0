@@ -1,10 +1,10 @@
 import express from 'express';
-import * as StripeEvents from '../models/Stripe/stripeEvents';
+import * as StripeHooks from '../models/Stripe/stripe.hooks';
 
 const router = new express.Router();
 
-router.post('/all_events', (req, res) =>
-StripeEvents.veryifyAndSave(req.body, res.handle));
+router.post('/notifications', (req, res) =>
+StripeHooks.saveNotification(req.body, res.handle));
 
 // router.post('/transfer_created', (req, res) =>
 // StripeEvents.verifyTransfer(req.body, res.handle));

@@ -1,4 +1,5 @@
 import express from 'express';
+import Stripe from '../models/Stripe/stripes';
 
 const router = new express.Router();
 
@@ -9,5 +10,7 @@ const router = new express.Router();
   2. Donor gives Entable permission to retrieve Donor's Coinbase info using Stripe API
 
 */
+router.post('/donation/:tx_token', (req, res) =>
+Stripe.rxDonation(req.params.tx_token, req.body, res.handle));
 
 export default router;

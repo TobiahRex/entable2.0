@@ -10,6 +10,16 @@ import coinbaseNode from 'coinbase';
 dotenv.load({ silent: true });
 
 const Client = coinbaseNode.Client;
+const CoinbaseUSD = new Client({
+  apiKey: process.env.COINBASE_VAULT_API_KEY,
+  apiSecret: process.env.COINBASE_VAULT_API_KEY,
+  // accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
+});
+const coinbase = new Client({
+  apiKey: process.env.COINBASE_VAULT_API_KEY,
+  apiSecret: process.env.COINBASE_VAULT_API_KEY,
+  // accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
+});
 const coinbase = new Client({
   // apiKey: process.env.COINBASE_VAULT_API_KEY,
   // apiSecret: process.env.COINBASE_VAULT_API_KEY,
@@ -24,6 +34,12 @@ Promise.fromCallback((cb) => {
   const cross = pair.toUpperCase();
   return coinbase.getBuyPrice({ currencyPair: `BTC-${cross}` }, cb);
 });
+
+export const orderBuy = (orderObj) =>
+Promise(cb => {
+  coinbase.
+})
+
 
 // Use the "accountBuys" with "getPendingBuys" together.
 export const getPendingBuys = () =>

@@ -10,13 +10,15 @@ Promise.fromCallback(cb => stripe.charges.create({
   amount: donationInfo.amount,
   currency: donationInfo.currency,
   source: token,
-  description: 'Entable Donation',
-}, cb))
+  description: `Mongo ID: _id=${donationInfo._id}`,
+}, cb));
 
-export const rxDonation = (token, donationInfo, cb) => {
+const rxDonation = (token, donationInfo, cb) => {
   StripeAccount.saveDonationInfo(donationInfo)
   .then(savedInfo => acceptDonation(token, savedInfo))
   .then(charge => StripeAccount.savedChargeInfo(charge))
   .then(savedCharge => cb(null, savedCharge))
   .catch(error => cb({ ERROR_DONATION: 'There was an error processing your donation.', error }));
 };
+
+export default rxDonation;
