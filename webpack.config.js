@@ -19,7 +19,7 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        BASE_URL: process.env.BASE_URL,
+        BASE_URL: JSON.stringify(process.env.BASE_URL),
       },
     }),
   ],
