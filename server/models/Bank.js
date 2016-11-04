@@ -4,7 +4,7 @@ const bankSchema = new mongoose.Schema({
   contact: {
     primary: {
       phone: {
-        number: { type: String },
+        number: { type: String, default: '<empty>' },
         twilio: { type: Boolean, default: true },
       },
       text: { type: String, default: '<empty>' },
@@ -12,7 +12,9 @@ const bankSchema = new mongoose.Schema({
   },
   people: {
     chair: { type: String, default: '<empty>' },
-    donors: { type: String, default: '<empty>' },
+    donors: [{ name: {
+      type: String, default: '<empty>' },
+    }],
     members: [{
       name: { type: String, default: '<empty>' },
     }],
@@ -26,11 +28,14 @@ const bankSchema = new mongoose.Schema({
     images: [{ type: String, required: true }],
   },
   finance: {
+    currency: {
+      locale: { type: String, default: 'NGN' },
+      tracking: { type: String, default: 'USD', enum: ['USD', 'BTC'] },
+    },
     balance: {
       starting: { type: Number, default: 0 },
       current: { type: Number, default: 0 },
     },
-    currency: { type: String, default: 'NGN' },
     addresses: {
       bitcoin: { type: String, default: '<empty>' },
     },
