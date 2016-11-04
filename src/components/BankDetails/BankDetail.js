@@ -5,14 +5,13 @@ import Banks from './bankData/index';
 
 export default class BankDetail extends Component {
   static propTypes = {
-    location: PropTypes.string,
+    location: PropTypes.node,
   }
   constructor() {
     super();
     this.state = {
-      // banks: BankStore.getBanks(),
+      banks: [], // TODO this needs this.props.banks
     };
-    this.onChange = this.onChange.bind(this);
     window.scrollTo(0, 0);
   }
 

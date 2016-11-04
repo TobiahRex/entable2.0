@@ -1,13 +1,15 @@
 export default {
   data: [
-    { Name: 'Bank of Sauri',
-    Country: 'Kenya',
-    Description1: 'Located in western Kenya, the Sauri cluster lies in Yala Division, Siaya District, Nyanza Province.',
-    Description2: 'In Sauri, almost 80% of the population earned less than $1 per day, and 59% of children under five exhibited stunting, a sign of chronic malnutrition.',
-    Description3: 'The bank aims to alleviate these issues and develop the local economy.',
-    Images: ['sauri-kenya-feature.jpg', 'http://millenniumvillages.org/wp-content/uploads/2013/02/sauri-kenya-feature.jpg'],
-    Starting: '$350',
-    Current: '$1050' },
+    {
+      Name: 'Bank of Sauri',
+      Country: 'Kenya',
+      Description1: 'Located in western Kenya, the Sauri cluster lies in Yala Division, Siaya District, Nyanza Province.',
+      Description2: 'In Sauri, almost 80% of the population earned less than $1 per day, and 59% of children under five exhibited stunting, a sign of chronic malnutrition.',
+      Description3: 'The bank aims to alleviate these issues and develop the local economy.',
+      Images: ['sauri-kenya-feature.jpg', 'http://millenniumvillages.org/wp-content/uploads/2013/02/sauri-kenya-feature.jpg'],
+      Starting: '$350',
+      Current: '$1050',
+    },
 
     { Name: 'Dertu Village Bank',
     Country: 'Kenya',
