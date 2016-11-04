@@ -70,7 +70,7 @@ const Bank = mongoose.model('Bank', bankSchema);
 
 export default Bank;
 
-/*
+/*  Dummy Data
 export default {
 data: [
 {
