@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import Footer from '../Footer';
+import Footer from '../Components/Footer';
+import BankHistory from '../Components/BankHistory';
 
 class BankDetail extends Component {
   static propTypes = {
     location: PropTypes.node,
   }
+
   constructor() {
     super();
     this.state = {
@@ -16,7 +18,6 @@ class BankDetail extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('nextProps: ', nextProps);
     this.setState({ banks: nextProps.banks });
   }
 
@@ -71,6 +72,7 @@ class BankDetail extends Component {
     return (
       <div>
         <div className="container-fluid">
+
           <div className="row">
             <div className="col-md-6 imgContainer">
               <div className="groupImg">
@@ -105,9 +107,11 @@ class BankDetail extends Component {
               </div>
             </div>
           </div>
+
           <div className="groupDonateBtn">
             <button className="donateBtn">Add Funds to This Bank</button>
           </div>
+
           <div className="tableContainer">
             <table className="table table-striped">
               <thead>
@@ -124,35 +128,13 @@ class BankDetail extends Component {
               </tbody>
             </table>
           </div>
+
           <div className="transactionHeader">
             <h3>Bank History & Notes to Sponsors</h3>
           </div>
-          <div className="transactionHistoryContainer text-center">
-            <div className="transactionItem">
-              <br />
-              <p><span className="timeStamp">{fakeTimeStampDelete}</span> <span className="bankerName">  Betty Hascal - <i>Bank Manager</i></span></p>
-              <p>{String('Sara\'s')} son started school with new books.</p>
-              <hr className="bankHistoryHr" />
-            </div>
-            <div className="transactionItem">
-              <br />
-              <p><span className="timeStamp">{fakeTimeStampDelete}</span> <span className="bankerName">  Betty Hascal - <i>Bank Manager</i></span></p>
-              <p>{('Anile\'s')} farm bought breeding pigs.</p>
-              <hr className="bankHistoryHr" />
-            </div>
-            <div className="transactionItem">
-              <br />
-              <p><span className="timeStamp">{fakeTimeStampDelete}</span> <span className="bankerName">  Betty Hascal - <i>Bank Manager</i></span></p>
-              <p>Aide bought supplies to increase productivity of chicken operation.</p>
-              <hr className="bankHistoryHr" />
-            </div>
-            <div className="transactionItem">
-              <br />
-              <p><span className="timeStamp">{fakeTimeStampDelete}</span> <span className="bankerName">  Betty Hascal - <i>Bank Manager</i></span></p>
-              <p>{'Sarah\'s'} son started school with new books.</p>
-              <hr className="bankHistoryHr" />
-            </div>
-          </div>
+
+          <BankHistory />
+
         </div>
         <Footer />
       </div>

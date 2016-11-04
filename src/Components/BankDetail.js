@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import Footer from '../Footer';
+import Footer from './Footer';
 
 class BankDetail extends Component {
   static propTypes = {

@@ -50,8 +50,14 @@ const bankSchema = new mongoose.Schema({
         donor: '',
       }],
       withdrawals: [{
-        for: '', // person name
         date: '',
+        member: '', // person name
+        amount: 0,
+        description: '',
+      }],
+      payins: [{
+        date: '',
+        member: '',
         amount: 0,
         description: '',
       }],
