@@ -20,7 +20,6 @@ const bankSchema = new mongoose.Schema({
   description: {
     name: { type: String, required: true, default: '<empty>' },
     country: { type: String, required: true, default: '<empty>' },
-    division: { type: String, required: true, default: '<empty>' },
     desc1: { type: String, required: true, default: '<empty>' },
     desc2: { type: String, required: true, default: '<empty>' },
     desc3: { type: String, required: true, default: '<empty>' },
