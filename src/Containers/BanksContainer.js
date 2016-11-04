@@ -61,11 +61,11 @@ class BankDetail extends Component {
 
         return (
           <tr key={index}>
-            {/* <td>{membersInfo[sender]}</td>
-              <td>{date}</td>
-              <td>{borrowed}</td>
-              <td>{payedIn}</td>
-            <td>{description}</td> */}
+          {/* <td>{membersInfo[sender]}</td>
+          <td>{date}</td>
+          <td>{borrowed}</td>
+          <td>{payedIn}</td>
+          <td>{description}</td> */}
           </tr>
         );
       });
@@ -73,11 +73,14 @@ class BankDetail extends Component {
       rows = <tr />;
     }
 
+    const banks = this.state.banks.map(bank =>
+      <BankDisplay key={bank._id} bank={bank} />
+    );
+
     return (
       <div>
-        {/* BankDetail receives all the relevant information on a specific bank. */}
-        <BankDisplay />
-        <Footer />
+      {banks}
+      <Footer />
       </div>
     );
   }

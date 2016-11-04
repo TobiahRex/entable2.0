@@ -1,25 +1,41 @@
 import React from 'react';
 
+import BankImage from './BankSplashImg';
+import BankDescription from './BankDescription';
+import AddFundsButton from './AddFundsButton';
+import BankActivity from './BankActivity';
+import BankHistory from './BankHistory';
+
 const BankDisplay = ({ bank }) => {
 
   return (
     <div className="container-fluid">
-
       <div className="row">
-        {/* This component depicts one of the images from the Banks data set. */}
-        <BankImage />
+        {/*
+          This component depicts one of the images from the Banks data set.
 
-        {/* BankDescription simply displays all the relevant information about the Bank. */}
-        <BankDescription />
+          It should receive the images array from the bank obj.
+        */}
+        <BankImage images={bank.description.images} />
+
+        {/*
+          BankDescription simply displays all the relevant information about the Bank.
+
+          It should pass in the decription object from the bank object.
+        */}
+        <BankDescription description={bank.description} />
       </div>
 
-      {/* This button should navigate them to "/donation" with this banks information*/}
-      <AddFundsButton />
+      {/*
+        This button should navigate them to "/donation" with this banks information.
+      */}
+      <AddFundsButton bankInfo={bank} />
 
       {/* This component receives an array of all the transactions. */}
-      <BankActivity transactions={this.state.banks} />
+      <BankActivity transactions={bank.transactions} />
 
-      <BankHistory history={this.state.history || ''} />
+      {/* This component receives bank history information. */}
+      <BankHistory history={bank.history || ''} />
 
     </div>
   );
