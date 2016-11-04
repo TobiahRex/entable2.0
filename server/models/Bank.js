@@ -5,40 +5,41 @@ const bankSchema = new mongoose.Schema({
     primary: {
       phone: {
         number: { type: String, required: true },
-        twilio: { type: Boolean },
+        twilio: { type: Boolean, default: true },
       },
-      text: { type: String, required: true },
+      text: { type: String, required: true, default: '<empty>' },
     },
   },
   people: {
-    chair: { type: String },
-    donors: { type: String },
+    chair: { type: String, default: '<empty>' },
+    donors: { type: String, default: '<empty>' },
     members: [{
-      name: { type: String },
+      name: { type: String, default: '<empty>' },
     }],
   },
   description: {
-    name: { type: String, required: true },
-    country: { type: String, required: true },
-    desc1: { type: String, required: true },
-    desc2: { type: String, required: true },
-    desc3: { type: String, required: true },
-    division: { type: String, required: true },
+    name: { type: String, required: true, default: '<empty>' },
+    country: { type: String, required: true, default: '<empty>' },
+    desc1: { type: String, required: true, default: '<empty>' },
+    desc2: { type: String, required: true, default: '<empty>' },
+    desc3: { type: String, required: true, default: '<empty>' },
+    division: { type: String, required: true, default: '<empty>' },
     images: [{ type: String, required: true }],
   },
   finance: {
     currency: { type: String, default: 'NGN' },
     addresses: {
-      bitcoin: { type: String, default: 'NONE' },
+      bitcoin: { type: String, default: '<empty>' },
     },
     transactions: [
       {
-        txids: {
-          coinbase: { type: String },
-          bitpesa: { type: String },
+        api_ids: {
+          coinbase: { type: String, default: '<empty>' },
+          bitpesa: { type: String, default: '<empty>' },
         },
         date: { type: Date, default: Date.now },
-        ammount: { type: Number },
+        currency: { type: String, default: 'BTC' },
+        ammount: { type: Number, default: '0.00000' },
         verified: { type: Boolean, default: false },
       },
     ],
