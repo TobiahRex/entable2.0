@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
+import bankActions from './BankRedux';
 
 export default (rootReducer, rootSaga) => {
   const middlewares = [];
@@ -16,9 +17,8 @@ export default (rootReducer, rootSaga) => {
     window.devToolsExtension ? window.devToolsExtension() : x => x
   );
 
-
   const store = createStore(rootReducer, compose(...enhancers));
-
+  store.dispatch(bankActions.getAllBanks());
   sagaMiddleware.run(rootSaga);
 
   return store;

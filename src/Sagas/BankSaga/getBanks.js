@@ -6,7 +6,7 @@ export default function* (api) {
   const response = yield call(api.getBanks);
 
   if (response.ok) {
-    yield [put(BankActions.receivedBanks(response.data)),
+    yield [put(BankActions.getAllBanksSuccess(response.data)),
     put(apiActions.apiSuccess())];
   } else {
     yield put(apiActions.apiFail(response.data));

@@ -10,10 +10,20 @@ const { Types, Creators } = createActions({
 export const BankTypes = Types;
 export default Creators;
 
-export const INITIAL_STATE = [];
+export const INITIAL_STATE = {
+  banks: [],
+  rate: {},
+};
 
-const receivedBanks = (state = [], { banks }) => banks || state;
-const receivedRate = (state = {}, { rate }) => rate || state;
+const receivedBanks = (state = [], { banks }) => ({
+  banks,
+  rate: state.rate,
+});
+
+const receivedRate = (state, { rate }) => ({
+  banks: state.banks,
+  rate,
+});
 
 export const bankReducer = createReducer(INITIAL_STATE, {
   [Types.GET_ALL_BANKS_SUCCESS]: receivedBanks,
