@@ -81,29 +81,8 @@ class BankDetail extends Component {
             {/* This component depicts one of the images from the Banks data set. */}
             <BankImage />
             
-            <div className="col-md-6 groupInfo">
-              <div className="groupDesc">
-                <div className="groupName">
-                  {/* <h3>{dummy[5].description.name}</h3> */}
-                </div>
-                <div className="groupDesc">
-                  {/* <h4>{dummy[5].description.name} Details and Information: </h4>
-                    <p>{dummy[5].description.desc1}</p>
-                    <p>{dummy[5].description.desc2}</p>
-                  <p>{dummy[5].description.desc3}</p> */}
-                </div>
-                <div className="moniesDisplay">
-                  <div className="startingTotal">
-                    <h6>Starting Amount:</h6>
-                    <h4>${amountNumber}</h4>
-                  </div>
-                  <div className="currentTotal">
-                    <h6>Currently Held:</h6>
-                    <h4>${startingAmount}</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* BankDescription simply displays all the relevant information about the Bank. */}
+            <BankDescription />
           </div>
 
           {/* This button should navigate them to "/donation" with this banks information*/}
