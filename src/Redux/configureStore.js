@@ -18,8 +18,8 @@ export default (rootReducer, rootSaga) => {
   );
 
   const store = createStore(rootReducer, compose(...enhancers));
-  store.dispatch(bankActions.getAllBanks());
   sagaMiddleware.run(rootSaga);
 
+  store.dispatch(bankActions.getAllBanks());
   return store;
 };

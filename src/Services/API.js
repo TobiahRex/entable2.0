@@ -1,18 +1,21 @@
 import { create } from 'apisauce';
 
-const createAPI = (baseurl = 'http://localhost:8000/') => {
+const createAPI = (baseURL = 'http://localhost:8000/') => {
   const api = create({
-    baseurl,
+    baseURL,
     headers: {
       'Cache-control': 'no-cache',
     },
   });
+
+  const getAllBanks = () => api.get('api/banks/');
 
   const getExchangeRate = pair =>
   api.get('api/coinbase/btc/coinbase/rate', pair);
 
   return {
     getExchangeRate,
+    getAllBanks,
   };
 };
 
