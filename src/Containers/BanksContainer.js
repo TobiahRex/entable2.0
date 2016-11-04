@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+// ------------------ Components ------------------
 import Footer from '../Components/Footer';
 import BankHistory from '../Components/BankHistory';
 import AddFundsButton from '../Components/AddFundsButton';
+import BankActivity from '../Components/BankActivity';
 
 class BankDetail extends Component {
   static propTypes = {
@@ -76,15 +78,9 @@ class BankDetail extends Component {
         <div className="container-fluid">
 
           <div className="row">
-            <div className="col-md-6 imgContainer">
-              <div className="groupImg">
-                <img
-                  className="bankDetialImg"
-                  role="presentation"
-                  // src={dummy[5].description.images[0]}
-                />
-              </div>
-            </div>
+            {/* This component depicts one of the images from the Banks data set. */}
+            <BankImage />
+            
             <div className="col-md-6 groupInfo">
               <div className="groupDesc">
                 <div className="groupName">
@@ -115,7 +111,7 @@ class BankDetail extends Component {
 
           {/* This component receives an array of all the transactions. */}
           <BankActivity transactions={this.state.banks} />
-          
+
           <BankHistory history={this.state.history || ''} />
 
         </div>
