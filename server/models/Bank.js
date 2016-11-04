@@ -4,7 +4,7 @@ const bankSchema = new mongoose.Schema({
   contact: {
     primary: {
       phone: {
-        number: { type: String, required: true },
+        number: { type: String },
         twilio: { type: Boolean, default: true },
       },
       text: { type: String, required: true, default: '<empty>' },
