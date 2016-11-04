@@ -2,6 +2,8 @@ import express from 'express';
 import Bank from '../models/Bank';
 
 const router = new express.Router();
+// ----------------------REMOVE BEFORE DEPLOY ---------------------------------
+router.delete('/', (req, res) => Bank.remove({}, res.handle));
 // ----------------------------------------------------------------------------
 router.route('/')
 .get((req, res) => Bank.find({}, res.handle))
