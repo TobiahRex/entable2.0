@@ -1,11 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
 // ------------------ Components ------------------
 import Footer from '../Components/Footer';
-import BankHistory from '../Components/BankHistory';
-import AddFundsButton from '../Components/AddFundsButton';
-import BankActivity from '../Components/BankActivity';
+import BankDisplay from '../Components/BankHistory';
 
 class BankDetail extends Component {
   static propTypes = {
@@ -25,29 +22,16 @@ class BankDetail extends Component {
     this.setState({ banks: nextProps.banks });
   }
 
-  render() {
-    const fakeTimeStampDelete = moment().format('lll');
+  renderBanks = () => this.state.banks.map(bank =>
+    <BankDisplay key={bank._id} bank={bank} />
+  )
 
-    const { banks } = this.state;
-    let { amountNumber } = this.props.location.query;
-    let startingAmount = 0;
-    let rows;
-
-    if (!amountNumber) amountNumber = 0;
-
-    
-
-    const banks = this.state.banks.map(bank =>
-      <BankDisplay key={bank._id} bank={bank} />
-    );
-
-    return (
-      <div>
-      {banks}
+  render = () => (
+    <div>
+      {this.renderBanks()}
       <Footer />
-      </div>
-    );
-  }
+    </div>
+  );
 }
 const mapStateToProps = ({ bank }) =>
 ({ banks: bank.banks });
