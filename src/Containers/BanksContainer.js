@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import Footer from '../Components/Footer';
 import BankHistory from '../Components/BankHistory';
+import AddFundsButton from '../Components/AddFundsButton';
 
 class BankDetail extends Component {
   static propTypes = {
@@ -13,6 +14,7 @@ class BankDetail extends Component {
     super();
     this.state = {
       banks: [],
+      history: '<empty>',
     };
     window.scrollTo(0, 0);
   }
@@ -108,32 +110,13 @@ class BankDetail extends Component {
             </div>
           </div>
 
-          <div className="groupDonateBtn">
-            <button className="donateBtn">Add Funds to This Bank</button>
-          </div>
+          {/* This button should navigate them to "/donation" with this banks information*/}
+          <AddFundsButton />
 
-          <div className="tableContainer">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>Bank Member</th>
-                  <th>Date</th>
-                  <th>Borrowed Out</th>
-                  <th>Payed In</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rows}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="transactionHeader">
-            <h3>Bank History & Notes to Sponsors</h3>
-          </div>
-
-          <BankHistory />
+          {/* This component receives an array of all the transactions. */}
+          <BankActivity transactions={this.state.banks} />
+          
+          <BankHistory history={this.state.history || ''} />
 
         </div>
         <Footer />
