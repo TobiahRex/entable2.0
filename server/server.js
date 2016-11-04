@@ -14,7 +14,6 @@ import api from './api/index';
 
 // CONSTANTS
 const PORT = process.env.PORT || 8000;
-process.env.BASE_URL = `http://localhost:${PORT}/`;
 const app = express();
 const compiler = webpack(webpackConfig);
 const server = http.Server(app); //eslint-disable-line
