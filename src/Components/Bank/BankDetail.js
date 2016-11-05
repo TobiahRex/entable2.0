@@ -35,7 +35,7 @@ class BankDetail extends Component {
 
     return (
       <div>
-        {this.state.bank ? <BankDisplay bank={this.state.bank} /> : ''}
+        {this.state.bank ? <BankDisplay bank={this.state.bank} /> : 'BANK IS UNDEFINED'}
         <Footer />
       </div>
     );

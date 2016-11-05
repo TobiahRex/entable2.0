@@ -1,26 +1,26 @@
 import React, { PropTypes } from 'react';
 
-const BankDescription = ({ bank }) => (
+const BankDescription = ({ description, finance }) => (
   <div className="col-md-6 groupInfo">
 
     <div className="groupDesc">
       <div className="groupName">
-        <h3>{bank.description.name}</h3>
+        <h3>{description.name}</h3>
       </div>
       <div className="groupDesc">
-        <h4>{bank.description.name} Details and Information: </h4>
-        <p>{bank.description.desc1}</p>
-        <p>{bank.description.desc2}</p>
-        <p>{bank.description.desc3}</p>
+        <h4>{description.name} Details and Information: </h4>
+        <p>{description.desc1}</p>
+        <p>{description.desc2}</p>
+        <p>{description.desc3}</p>
       </div>
       <div className="moniesDisplay">
         <div className="startingTotal">
           <h6>Starting Amount:</h6>
-          <h4>${bank.finance.balance.starting}</h4>
+          <h4>${finance.balance.starting}</h4>
         </div>
         <div className="currentTotal">
           <h6>Currently Held:</h6>
-          <h4>${bank.finance.balance.current}</h4>
+          <h4>${finance.balance.current}</h4>
         </div>
       </div>
     </div>
@@ -28,6 +28,7 @@ const BankDescription = ({ bank }) => (
 );
 
 BankDescription.propTypes = {
-  bank: PropTypes.objectOf(PropTypes.object),
+  description: PropTypes.objectOf(PropTypes.string),
+  finance: PropTypes.objectOf(PropTypes.object),
 };
 export default BankDescription;

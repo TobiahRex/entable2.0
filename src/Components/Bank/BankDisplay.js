@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import BankImage from './BankSplashImg';
 import BankDescription from './BankDescription';
@@ -7,7 +7,7 @@ import BankActivity from './BankActivity';
 import BankHistory from './BankHistory';
 
 const BankDisplay = ({ bank }) => {
-  console.log('bank: ', bank);
+  console.log('BANK DISPLAY: bank = ', bank);
   return (
     <div className="container-fluid">
       <div className="row">
@@ -23,13 +23,16 @@ const BankDisplay = ({ bank }) => {
 
           It should pass in the decription object from the bank object.
         */}
-        <BankDescription description={bank.description} />
+        <BankDescription
+          description={bank.description}
+          finance={bank.finance}
+        />
       </div>
 
       {/*
         This button should navigate them to "/donation" with this banks information.
       */}
-      <AddFundsButton bankInfo={bank} />
+      <AddFundsButton bankid={bank._id} />
 
       {/* This component receives an array of all the transactions. */}
       <BankActivity transactions={bank.transactions} />
@@ -39,5 +42,9 @@ const BankDisplay = ({ bank }) => {
 
     </div>
   );
+};
+
+BankDisplay.propTypes = {
+  bank: PropTypes.objectOf(PropTypes.object),
 };
 export default BankDisplay;

@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-const BankSplashImage = ({ image }) => (
+const BankSplashImage = ({ images }) => (
   <div className="col-md-6 imgContainer">
     <div className="groupImg">
       <img
         className="bankDetialImg"
         role="presentation"
-        src={image}
+        src={images[0]}
       />
     </div>
   </div>
 );
+BankSplashImage.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string),
+};
 export default BankSplashImage;
