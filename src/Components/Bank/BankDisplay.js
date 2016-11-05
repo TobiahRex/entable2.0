@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 
 import BankImage from './BankSplashImg';
 import BankDescription from './BankDescription';
@@ -8,6 +9,7 @@ import BankHistory from './BankHistory';
 
 const BankDisplay = ({ bank }) => {
   console.log('BANK DISPLAY: bank = ', bank);
+  console.log('type of bank._id: ', typeof bank._id);
   return (
     <div className="container-fluid">
       <div className="row">
@@ -32,7 +34,9 @@ const BankDisplay = ({ bank }) => {
       {/*
         This button should navigate them to "/donation" with this banks information.
       */}
-      <AddFundsButton bankid={bank._id} />
+      <AddFundsButton
+        onClick={() => browserHistory.push(`/donation/${bank._id}`)}
+      />
 
       {/* This component receives an array of all the transactions. */}
       <BankActivity transactions={bank.transactions} />
