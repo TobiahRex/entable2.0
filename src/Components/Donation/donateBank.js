@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
 import Footer from '../Footer';
+import TextForm from './TextAddressForm';
 
 export default class Donation extends Component {
   constructor() {
@@ -56,61 +57,7 @@ export default class Donation extends Component {
                 4% covers USD to Bitcoin to Mpesa transaction fees of third party money handlers.
               </h5>
             </div>
-            <form className="infoForm" onSubmit={this.sendText}>
-              <div className="form-group">
-                <label className="sr-only" htmlFor="entableBitcoinAddress">
-                  Our Bit Coin Address
-                </label>
-                <input
-                  id="entableBitcoinAddress"
-                  type="text"
-                  className="form-control"
-                  defaultValue="19Ms9tlqtcqAJ1ue36e9kjnyzkkLy18EQuBY"
-                />
-              </div>
 
-              <div className="form-group">
-                <label className="sr-only" htmlFor="email" >
-                  Supporter Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  className="form-control"
-                  placeholder="your_email_here@gmail.com"
-                  onChange={e =>
-                  this.onInputChange(e.target.getAttribute('id'), e.target.value)}
-                />
-              </div>
-
-              <div className="form-group">
-                <label className="sr-only" htmlFor="exampleInputPassword3">
-                  {('Supporter\'s')} Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  className="form-control"
-                  placeholder="Your Name"
-                  onChange={e =>
-                  this.onInputChange(e.target.getAttribute('id'), e.target.value)}
-                />
-              </div>
-              <div className="form-group">
-                <label className="sr-only" htmlFor="exampleInputPassword3">
-                  {('Supporter\'s')} Phone number
-                </label>
-                <input
-                  id="phone"
-                  type="text"
-                  className="form-control"
-                  placeholder="Your Phone Number (1-415-123-4567)"
-                  onChange={e =>
-                  this.onInputChange(e.target.getAttribute('id'), e.target.value)}
-                />
-              </div>
-              <button type="submit" className="btn btn-default btn-block btnFormBottom">Text Me Bitcoin Address</button>
-            </form>
           </div>
 
           <div className="donationOptions">
