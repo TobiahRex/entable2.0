@@ -5,7 +5,7 @@ import BankImage from './BankSplashImg';
 import BankDescription from './BankDescription';
 import AddFundsButton from '../AddFundsButton';
 import BankActivity from './BankActivity';
-import BankHistory from './BankHistory';
+import TransactionHistory from './TransactionHistory';
 
 const BankDisplay = ({ bank }) => (
   <div className="container-fluid">
@@ -22,7 +22,7 @@ const BankDisplay = ({ bank }) => (
       onClick={() => browserHistory.push(`/donation/${bank._id}`)}
     />
     <BankActivity transactions={bank.transactions} />
-    <BankHistory history={bank.history || ''} />
+    <TransactionHistory history={bank.history || ''} />
 
   </div>
 );

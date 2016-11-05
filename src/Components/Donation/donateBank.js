@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router';
 import moment from 'moment';
 import Footer from '../Footer';
 import TextForm from './TextAddressForm';
+import TransactionHistory from '../Bank/TransactionHistory';
 
 export default class Donation extends Component {
   constructor() {
@@ -57,7 +58,10 @@ export default class Donation extends Component {
                 4% covers USD to Bitcoin to Mpesa transaction fees of third party money handlers.
               </h5>
             </div>
-
+            <TextForm
+              onInputChange={this.onInputChange}
+              sendText={this.sendText}
+            />
           </div>
 
           <div className="donationOptions">
@@ -73,32 +77,8 @@ export default class Donation extends Component {
             <h3>Bank History & Notes to Sponsors</h3>
           </div>
 
-          <div className="transactionHistoryContainer text-center">
-            <div className="transactionItem">
-              <h6>{String('')}</h6>
-              <p><span className="timeStamp">{fakeTimeStampDelete}</span> <span className="bankerName">  Betty Hascal - <i>Bank Manager</i></span></p>
-              <p>{('Sarah\'s')} son started school with new books.</p>
-              <hr className="bankHistoryHr" />
-            </div>
-            <div className="transactionItem">
-              <h6>{String('')}</h6>
-              <p><span className="timeStamp">{fakeTimeStampDelete}</span> <span className="bankerName">  Betty Hascal - <i>Bank Manager</i></span></p>
-              <p>{('Anile\'s')} farm bought breeding pigs.</p>
-              <hr className="bankHistoryHr" />
-            </div>
-            <div className="transactionItem">
-              <h6>{String('')}</h6>
-              <p><span className="timeStamp">{fakeTimeStampDelete}</span> <span className="bankerName">  Betty Hascal - <i>Bank Manager</i></span></p>
-              <p>Aide bought supplies to increase productivity of chicken operation.</p>
-              <hr className="bankHistoryHr" />
-            </div>
-            <div className="transactionItem">
-              <h6>{String('')}</h6>
-              <p><span className="timeStamp">{fakeTimeStampDelete}</span> <span className="bankerName">  Betty Hascal - <i>Bank Manager</i></span></p>
-              <p>{('Sarah\'s')} son started school with new books.</p>
-              <hr className="bankHistoryHr" />
-            </div>
-          </div>
+          <TransactionHistory />
+
         </div>
         <div>
           <Footer />

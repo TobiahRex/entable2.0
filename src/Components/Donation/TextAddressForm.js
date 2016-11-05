@@ -1,6 +1,7 @@
+import React, { PropTypes } from 'react';
 
-const TextForm = (props) => (
-  <form className="infoForm" onSubmit={this.sendText}>
+const TextForm = ({ sendText, onInputChange }) => (
+  <form className="infoForm" onSubmit={sendText}>
     <div className="form-group">
       <label className="sr-only" htmlFor="entableBitcoinAddress">
         Our Bit Coin Address
@@ -23,7 +24,7 @@ const TextForm = (props) => (
         className="form-control"
         placeholder="your_email_here@gmail.com"
         onChange={e =>
-        this.onInputChange(e.target.getAttribute('id'), e.target.value)}
+        onInputChange(e.target.getAttribute('id'), e.target.value)}
       />
     </div>
 
@@ -37,7 +38,7 @@ const TextForm = (props) => (
         className="form-control"
         placeholder="Your Name"
         onChange={e =>
-        this.onInputChange(e.target.getAttribute('id'), e.target.value)}
+        onInputChange(e.target.getAttribute('id'), e.target.value)}
       />
     </div>
     <div className="form-group">
@@ -50,11 +51,15 @@ const TextForm = (props) => (
         className="form-control"
         placeholder="Your Phone Number (1-415-123-4567)"
         onChange={e =>
-        this.onInputChange(e.target.getAttribute('id'), e.target.value)}
+        onInputChange(e.target.getAttribute('id'), e.target.value)}
       />
     </div>
     <button type="submit" className="btn btn-default btn-block btnFormBottom">Text Me Bitcoin Address</button>
   </form>
-)
+);
 
+TextForm.propTypes = {
+  onInputChange: PropTypes.func.isRequired,
+  sendText: PropTypes.func.isRequired,
+};
 export default TextForm;

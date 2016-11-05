@@ -5,10 +5,6 @@ const BankHistory = (props) => {
   const fakeTimeStamp = moment().format('lll');
   return (
     <span>
-      <div className="transactionHeader">
-        <h3>Bank History & Notes to Sponsors</h3>
-      </div>
-
       <div className="transactionHistoryContainer text-center">
         <div className="transactionItem">
           <br />
