@@ -1,34 +1,45 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import Footer from './Footer';
+import Footer from '../Footer';
 
 class BankDetail extends Component {
   static propTypes = {
-    location: PropTypes.node,
+    banks: PropTypes.objectOf(PropTypes.object),
+    routeParams: {
+      id: PropTypes.string,
+    },
   }
   constructor() {
     super();
     this.state = {
-      banks: [],
+      bank: {},
     };
-    window.scrollTo(0, 0);
+  }
+
+  componentWillMount() {
+    this.filterBanks(this.routeParams.id, this.props.banks);
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('nextProps: ', nextProps);
-    this.setState({ banks: nextProps.banks });
+    this.filterBanks(this.routeParams.id, nextProps.banks);
+  }
+
+  filterBanks = (id, banks) => {
+    let bank = {};
+    bank = banks.filter(bankObj => (bankObj._id === id));
+    this.setState({ bank });
   }
 
   render() {
+    window.scrollTo(0, 0);
+    console.log('this.props: ', this.props);
     const fakeTimeStampDelete = moment().format('lll');
 
     const { banks } = this.state;
-    let { amountNumber } = this.props.location.query;
+
     let startingAmount = 0;
     let rows;
-
-    if (!amountNumber) amountNumber = 0;
 
     if (banks.length) {
       rows = banks.map((bank, index) => {

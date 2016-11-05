@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import BankCard from '../Components/BankCard';
+import BankCard from '../Components/Bank/BankCard';
 
 const Banks = ({ banks }) => {
   let bankList = [];

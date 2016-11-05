@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 // ------------------ Components ------------------
 import Footer from '../Components/Footer';
-import BankDisplay from '../Components/BankHistory';
+import BankDisplay from '../Components/Bank/BankHistory';
 
 class BanksContainer extends Component {
   static propTypes = {

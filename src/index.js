@@ -11,7 +11,10 @@ import routes from './Navigation/main';
 const store = createStore();
 render(
   <Provider store={store}>
-    <Router history={browserHistory} onUpdate={() => console.log('path: ', window.location.pathname)} routes={routes} />
+    <Router
+      history={browserHistory}
+      onUpdate={() => console.log('path: ', window.location.pathname)} routes={routes}
+    />
   </Provider>,
   document.getElementById('root')
 );

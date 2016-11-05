@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const BankDescription = ({ bank }) => (
   <div className="col-md-6 groupInfo">
@@ -27,4 +27,7 @@ const BankDescription = ({ bank }) => (
   </div>
 );
 
+BankDescription.propTypes = {
+  bank: PropTypes.objectOf(PropTypes.object),
+};
 export default BankDescription;
