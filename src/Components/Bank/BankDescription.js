@@ -28,7 +28,9 @@ const BankDescription = ({ description, finance }) => (
 );
 
 BankDescription.propTypes = {
-  description: PropTypes.objectOf(PropTypes.string),
+  description: PropTypes.shape({
+    images: PropTypes.arrayOf(PropTypes.string),
+  }),
   finance: PropTypes.objectOf(PropTypes.object),
 };
 export default BankDescription;

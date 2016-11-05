@@ -30,7 +30,7 @@ if (banks.length) {
   rows = <tr />;
 }
 */
-const BankActivity = ({ transactions }) => {
+const BankActivity = ({ transactions = []}) => {
   const rows = transactions.map((transaction) => {
     return 'empty';
     // <tr key={transaction.date}>

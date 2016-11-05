@@ -6,7 +6,7 @@ const BankSplashImage = ({ images }) => (
       <img
         className="bankDetialImg"
         role="presentation"
-        src={images[0]}
+        src={`/${images[0]}`}
       />
     </div>
   </div>
