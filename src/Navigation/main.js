@@ -4,13 +4,15 @@ import { Router, Route, IndexRoute } from 'react-router';
 import Navbar from '../Components/Navbar';
 import Homepage from '../Containers/Home';
 import BankDetail from '../Components/BankDetails/BankDetail';
-import Donation from '../Components/Donation/Donation';
+import donateBank from '../Components/Donation/donateBank';
+import donateGeneral from '../Components/Donation/donateBank';
 
 export default (
   <Route path="/" component={Navbar}>
     <IndexRoute component={Homepage} />
     <Router path="bank/:id" component={BankDetail} />
-    <Router path="donation" component={Donation} />
+    <Router path="donation" component={donateGeneral} />
+    <Router path="donation/:id" component={donateBank} />
     {/* <Router path="bank2" component={BankDetail2} />
       <Router path="bank3" component={BankDetail3} />
       <Router path="bank4" component={BankDetail4} />
