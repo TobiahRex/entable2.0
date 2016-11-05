@@ -15,20 +15,7 @@ export const Home = ({ banks }) => (
   </div>
 );
 Home.propTypes = {
-  banks: PropTypes.arrayOf({
-    contact: PropTypes.objectOf({
-      primary: PropTypes.objectOf({
-        phone: PropTypes.shape({
-          number: PropTypes.string,
-          twilio: PropTypes.bool,
-        }),
-        text: PropTypes.string,
-      }),
-    }),
-    description: PropTypes.objectOf({
-      images: PropTypes.arrayOf(PropTypes.string),
-    }),
-  }),
+  banks: PropTypes.arrayOf(PropTypes.object),
 };
 
 const mapStateToProps = state => ({

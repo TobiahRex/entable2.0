@@ -36,8 +36,6 @@ const Banks = ({ banks }) => {
   );
 };
 Banks.propTypes = {
-  banks: PropTypes.arrayOf(
-    PropTypes.node
-  ),
+  banks: PropTypes.arrayOf(PropTypes.object),
 };
 export default Banks;
