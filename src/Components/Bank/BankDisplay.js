@@ -2,12 +2,12 @@ import React from 'react';
 
 import BankImage from './BankSplashImg';
 import BankDescription from './BankDescription';
-import AddFundsButton from './AddFundsButton';
+import AddFundsButton from '../AddFundsButton';
 import BankActivity from './BankActivity';
 import BankHistory from './BankHistory';
 
 const BankDisplay = ({ bank }) => {
-
+  console.log('bank: ', bank);
   return (
     <div className="container-fluid">
       <div className="row">
