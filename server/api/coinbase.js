@@ -10,4 +10,8 @@ router.get('/btc/rate', (req, res) => Coinbase.getExchangeRate(req.body, res.han
 
 router.post('/btc/send/:address', (req, res) => Coinbase.sendBitcoin(req.params.address, req.body, res.handle));
 
+// ----------------------------- Webhooks -------------------------------------
+
+router.post('/btc/notifications', (req, res) => CbHooks.saveNotification(req.body, res.handle));
+
 export default router;

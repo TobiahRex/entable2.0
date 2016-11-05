@@ -13,4 +13,10 @@ const router = new express.Router();
 router.post('/donation/:tx_token', (req, res) =>
 Stripe.rxDonation(req.params.tx_token, req.body, res.handle));
 
+// ----------------------------- Webhooks -------------------------------------
+
+router.post('/notifications', (req, res) =>
+StripeHooks.saveNotification(req.body, res.handle));
+
+
 export default router;

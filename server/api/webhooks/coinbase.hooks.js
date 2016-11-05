@@ -1,4 +1,4 @@
-import CoinbaseAccount from './coinbases';
+import CoinbaseAccount from '../models/apiModels/coinbases';
 
 const buyCreated = (event, cb) => {
   let dbAcctRef;

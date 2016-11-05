@@ -27,34 +27,34 @@ Promise.fromCallback(cb => tx.commit(null, cb));
 
 // Use the "accountBuys" with "getPendingBuys" together.
 export const getPendingBuys = () =>
-Promise.fromCallback(cb => coinbase.getAccount(usdAcctId, cb));
+Promise.fromCallback(cb => Coinbase.getAccount(usdAcctId, cb));
 export const accountBuys = acct =>
 Promise.fromCallback(cb => acct.getBuys(null, cb));
 
 // ------------------- Query Methods -------------------
 export const findAccounts = () =>
-Promise.fromCallback(cb => coinbase.getAccounts({}, cb));
+Promise.fromCallback(cb => Coinbase.getAccounts({}, cb));
 
 export const findBTCBuyPrice = pair =>
 Promise.fromCallback((cb) => {
   const cross = pair.toUpperCase();
-  return coinbase.getBuyPrice({ currencyPair: `BTC-${cross}` }, cb);
+  return Coinbase.getBuyPrice({ currencyPair: `BTC-${cross}` }, cb);
 });
 
 export const findBTCSellPrice = pair =>
 Promise.fromCallback((cb) => {
   const cross = pair.toUpperCase();
-  return coinbase.getSellPrice({ currencyPair: `BTC-${cross}` }, cb);
+  return Coinbase.getSellPrice({ currencyPair: `BTC-${cross}` }, cb);
 });
 
 export const findAccountById = id =>
-Promise.fromCallback(cb => coinbase.getAccount(id, cb));
+Promise.fromCallback(cb => Coinbase.getAccount(id, cb));
 
 export const findUser = () =>
-Promise.fromCallback(cb => coinbase.getCurrentUser(cb));
+Promise.fromCallback(cb => Coinbase.getCurrentUser(cb));
 
 export const getPaymentMethods = () =>
-Promise.fromCallback(cb => coinbase.getPaymentMethods(cb));
+Promise.fromCallback(cb => Coinbase.getPaymentMethods(cb));
 
 // ------------------- Transfer Methods -------------------
 

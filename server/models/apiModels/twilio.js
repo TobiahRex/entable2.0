@@ -22,8 +22,19 @@ export const sendBankerMessage = (msg, phone, cb) => {
     to: phone,
     from: entablePhone,
     body: msg,
-  }, (err, message) => {
-    if (err) return cb(err);
-    return cb(null, message);
-  });
+  }, cb);
+};
+
+export const sendTextBtcAddress = (phone, cb) => {
+  const accountSid = process.env.TWILIO_TEST_SID;
+  const authToken = process.env.TWILIO_TEST_AUTH_TOKEN;
+  const entablePhone = process.env.TWILIO_TEST_PHONE;
+  const cbBTCaddress = process.env.COINBASE_BTC_ADDRESS;
+
+  const client = twilio(accountSid, authToken);
+  client.message.create({
+    to: phone,
+    from: entablePhone,
+    body: cbBTCaddress,
+  }, cb);
 };

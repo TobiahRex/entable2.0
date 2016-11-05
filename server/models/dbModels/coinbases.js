@@ -4,7 +4,7 @@ https://465f2fb0.ngrok.io/coinbase/notifications
 https://465f2fb0.ngrok.io/oauth
 */
 import mongoose from 'mongoose';
-import * as CoinbaseUSD from './coinbase.usd.api';
+import * as CoinbaseUSD from '../apiModels/coinbase.usd';
 
 const cbAccountSchema = new mongoose.Schema({
   account: {
