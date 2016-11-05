@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 
-const BankCard = ({ key, image, desc1, desc2 }) => (
+const BankCard = ({ bankId, image, desc1, desc2 }) => (
   <div className="col-md-4 text-center bkMargin">
     <div className="bankSingleDisplay panel panel-default">
       <img className="bankImg" role="presentation" src={image} width="100%" height="80%" />
@@ -9,13 +9,13 @@ const BankCard = ({ key, image, desc1, desc2 }) => (
       <div className="bankViewBtnDisplay">
         <button
           className="bankViewBtn"
-          onClick={() => browserHistory.push(`/donation/${key}`)}
+          onClick={() => browserHistory.push(`/donation/${bankId}`)}
         >
           Fund Bank
         </button>
         <button
           className="bankViewBtn"
-          onClick={() => browserHistory.push(`/bank/${key}`)}
+          onClick={() => browserHistory.push(`/bank/${bankId}`)}
         >
           View Bank
         </button>
@@ -29,7 +29,7 @@ const BankCard = ({ key, image, desc1, desc2 }) => (
 );
 
 BankCard.propTypes = {
-  key: PropTypes.string.isRequired,
+  bankId: PropTypes.string.isRequired,
   image: PropTypes.string,
   desc1: PropTypes.string.isRequired,
   desc2: PropTypes.string,

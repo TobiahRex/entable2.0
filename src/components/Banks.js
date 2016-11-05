@@ -1,32 +1,23 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import BankCard from '../Components/BankCard';
 
-export default class Banks extends Component {
-  constructor() {
-    super();
-    this.state = {
-      banks: [],
-    };
-  }
-  componentWillReceiveProps({ banks }) {
-    this.setState({ banks });
-  }
-
-  renderBankCards = () => {
-    if (this.state.banks.length) {
-      return this.state.banks.map(bank => (
-        <BankCard
-          key={bank._id}
-          image={bank.description.images[0]}
-          desc1={bank.description.desc1}
-          desc2={bank.description.desc2}
-        />)
-      );
-    }
-    return [];
+const Banks = ({ banks }) => {
+  let bankList = [];
+  if (banks.length) {
+    bankList = banks.map(bank => (
+      <BankCard
+        key={bank._id}
+        bankId={bank._id}
+        image={bank.description.images[0]}
+        desc1={bank.description.desc1}
+        desc2={bank.description.desc2}
+      />)
+    );
+  } else {
+    bankList = [];
   }
 
-  render = () => (
+  return (
     <div className="banksContainer">
       <div className="bankCallToAction">
         <h4>Entable is an SMS (Tropo) powered table banking platform
@@ -38,9 +29,15 @@ export default class Banks extends Component {
         <div className="container">
           {/* This component function creates a list of <BankCard />
           components.  Observe render function for more details. */}
-          {this.renderBankCards()}
+          {bankList}
         </div>
       </div>
     </div>
   );
-}
+};
+Banks.propTypes = {
+  banks: PropTypes.arrayOf(
+    PropTypes.node
+  ),
+};
+export default Banks;
