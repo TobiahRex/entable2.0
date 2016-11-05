@@ -27,9 +27,9 @@ const Banks = ({ banks }) => {
 
       <div className="row bankRows">
         <div className="container">
-          {/* This component function creates a list of <BankCard />
-          components.  Observe render function for more details. */}
+
           {bankList}
+
         </div>
       </div>
     </div>
