@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 
-const BankHistory = () => {
-  const fakeTimeStamp = this.props.timeStamp || moment().format('lll');
+const BankHistory = (props) => {
+  const fakeTimeStamp = moment().format('lll');
   return (
     <span>
       <div className="transactionHeader">

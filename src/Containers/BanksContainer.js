@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Footer from '../Components/Footer';
 import BankDisplay from '../Components/BankHistory';
 
-class BankDetail extends Component {
+class BanksContainer extends Component {
   static propTypes = {
     location: PropTypes.node,
   }
@@ -38,4 +38,4 @@ const mapStateToProps = ({ bank }) =>
 
 // const mapDispatchToProps = dispatch =>
 
-export default connect(mapStateToProps, null)(BankDetail);
+export default connect(mapStateToProps, null)(BanksContainer);
