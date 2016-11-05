@@ -6,9 +6,9 @@ import Footer from '../Footer';
 class BankDetail extends Component {
   static propTypes = {
     banks: PropTypes.objectOf(PropTypes.object),
-    routeParams: {
+    routeParams: PropTypes.objectOf({
       id: PropTypes.string,
-    },
+    }),
   }
   constructor() {
     super();
@@ -18,11 +18,11 @@ class BankDetail extends Component {
   }
 
   componentWillMount() {
-    this.filterBanks(this.routeParams.id, this.props.banks);
+    this.filterBanks(this.props.routeParams.id, this.props.banks);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.filterBanks(this.routeParams.id, nextProps.banks);
+    this.filterBanks(this.props.routeParams.id, nextProps.banks);
   }
 
   filterBanks = (id, banks) => {
@@ -36,7 +36,7 @@ class BankDetail extends Component {
     console.log('this.props: ', this.props);
     const fakeTimeStampDelete = moment().format('lll');
 
-    const { banks } = this.state;
+    const { contact, description, finance, people } = this.state;
 
     let startingAmount = 0;
     let rows;
@@ -106,11 +106,11 @@ class BankDetail extends Component {
                 <div className="moniesDisplay">
                   <div className="startingTotal">
                     <h6>Starting Amount:</h6>
-                    <h4>${amountNumber}</h4>
+                    <h4>${finance.balance.starting}</h4>
                   </div>
                   <div className="currentTotal">
                     <h6>Currently Held:</h6>
-                    <h4>${startingAmount}</h4>
+                    <h4>${finance.balance.current}</h4>
                   </div>
                 </div>
               </div>
