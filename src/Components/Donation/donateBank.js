@@ -1,20 +1,29 @@
-import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import Footer from '../Footer';
 import TextForm from './TextAddressForm';
 import TransactionHistory from '../Bank/TransactionHistory';
+import DonationButtons from './DonationButtons';
 
-export default class Donation extends Component {
+class Donation extends React.Component {
+  static propTypes = {
+    banks: PropTypes.objectOf(PropTypes.object),
+  }
   constructor() {
     super();
     this.state = {
+      bank: {},
       email: '',
       name: '',
       phone: '',
     };
   }
 
+  componentWillMount() {
+    const bank = this.props.banks.filter(bankObj => bankObj._id === this.routeParams.id);
+    this.setState({ bank });
+  }
 
   onInputChange = (id, value) => this.setState({ [id]: value })
 
@@ -39,6 +48,7 @@ export default class Donation extends Component {
   }
 
   render() {
+    console.log('this.props: ', this.props);
     window.scrollTo(0, 0);
     const mainBankImage = {
       backgroundImage: 'url("/enable-women-to-be-the-boss.jpg")',
@@ -64,19 +74,14 @@ export default class Donation extends Component {
             />
           </div>
 
-          <div className="donationOptions">
-            <div className="giftBtnContainer">
-              <button className="giftBtn">Send As A Gift</button>
-            </div>
-            <div className="noBtnCoinsContainer">
-              <button className="noBTcoins">Register as a Donor</button>
-            </div>
-          </div>
+          <DonationButtons
+            sendGift={this.sendGift}
+            registerAsDonor={this.registerAsDonor}
+          />
 
           <div className="transactionHeaderDonation">
             <h3>Bank History & Notes to Sponsors</h3>
           </div>
-
           <TransactionHistory />
 
         </div>
@@ -87,3 +92,8 @@ export default class Donation extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  banks: state.bank.banks,
+});
+
+export default connect(mapStateToProps, null)(Donation);

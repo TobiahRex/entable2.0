@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-const BankHistory = (props) => {
+const TransactionHistory = (props) => {
   const fakeTimeStamp = moment().format('lll');
   return (
     <span>
@@ -10,8 +10,7 @@ const BankHistory = (props) => {
           <br />
           <p>
             <span className="timeStamp">{fakeTimeStamp}</span>
-            <span className="bankerName">
-              Betty Hascal - <i>Bank Manager</i>
+            <span className="bankerName">  Betty Hascal - <i>Bank Manager</i>
             </span>
           </p>
           <p>{String('Sara\'s')} son started school with new books.</p>
@@ -40,4 +39,4 @@ const BankHistory = (props) => {
   );
 };
 
-export default BankHistory;
+export default TransactionHistory;
