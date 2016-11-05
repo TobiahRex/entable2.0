@@ -7,15 +7,33 @@ export default class Donation extends Component {
   constructor() {
     super();
     this.state = {
-      // banks: BankStore.getBanks(),
+      email: '',
+      name: '',
+      phone: '',
     };
-    this._onSubmit = this._onSubmit.bind(this);
   }
 
-  _onSubmit(e) {
+
+  onInputChange = (id, value) => this.setState({ [id]: value })
+
+  sendText = (e) => {
     e.preventDefault();
-    const amount = this.refs.amount.value;
-    browserHistory.push({ pathname: '/bank', query: { amountNumber: amount } });
+    /*
+    1) Send user text from Backend using this phone number.
+    2) Send user to the TextSuccess page.
+    */
+  }
+
+  registerAsDonor = () => {
+    /*
+      Send user to the Register page.
+    */
+  }
+
+  sendGift = () => {
+    /*
+      1) Initiate Stripe Checkout process.
+    */
   }
 
   render() {
@@ -35,59 +53,63 @@ export default class Donation extends Component {
               <h5>
                 96% of your donation goes directly to the owners of this bank.
                 <br />
-                4% covers USD to Bitcoin to Mpesa transactions fees of third party money handlers.
+                4% covers USD to Bitcoin to Mpesa transaction fees of third party money handlers.
               </h5>
             </div>
-            <form className="infoForm" onSubmit={this._onSubmit}>
+            <form className="infoForm" onSubmit={this.sendText}>
               <div className="form-group">
-                <label
-                  className="sr-only"
-                  htmlFor="exampleInputEmail3"
-                >
-                  Supporter Email
+                <label className="sr-only" htmlFor="entableBitcoinAddress">
+                  Our Bit Coin Address
                 </label>
                 <input
-                  type="email"
+                  id="entableBitcoinAddress"
+                  type="text"
                   className="form-control"
-                  id="exampleInputEmail3"
-                  defaultValue="your_email_here@gmail.com"
-                />
-              </div>
-              <div className="form-group">
-                <label className="sr-only" htmlFor="exampleInputPassword3">
-                  Bit Coin Address
-                </label>
-                <input
-                  type="tex
-                  " className="form-control"
-                  id="exampleInputPassword3"
                   defaultValue="19Ms9tlqtcqAJ1ue36e9kjnyzkkLy18EQuBY"
                 />
               </div>
+
+              <div className="form-group">
+                <label className="sr-only" htmlFor="email" >
+                  Supporter Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  className="form-control"
+                  placeholder="your_email_here@gmail.com"
+                  onChange={e =>
+                  this.onInputChange(e.target.getAttribute('id'), e.target.value)}
+                />
+              </div>
+
               <div className="form-group">
                 <label className="sr-only" htmlFor="exampleInputPassword3">
                   {('Supporter\'s')} Name
                 </label>
                 <input
+                  id="name"
                   type="text"
                   className="form-control"
-                  id="exampleInputPassword"
-                  defaultValue="Your Name"
+                  placeholder="Your Name"
+                  onChange={e =>
+                  this.onInputChange(e.target.getAttribute('id'), e.target.value)}
                 />
               </div>
               <div className="form-group">
                 <label className="sr-only" htmlFor="exampleInputPassword3">
-                  Your Phone number
+                  {('Supporter\'s')} Phone number
                 </label>
                 <input
+                  id="phone"
                   type="text"
                   className="form-control"
-                  id="exampleInputPassword3"
-                  placeholder="1-415-123-4567"
-                  ref="userPhone"
+                  placeholder="Your Phone Number (1-415-123-4567)"
+                  onChange={e =>
+                  this.onInputChange(e.target.getAttribute('id'), e.target.value)}
                 />
               </div>
-              <button type="submit" className="btn btn-default btn-block btnFormBottom">Send Me Bitcoin Address As Text</button>
+              <button type="submit" className="btn btn-default btn-block btnFormBottom">Text Me Bitcoin Address</button>
             </form>
           </div>
 
@@ -96,7 +118,7 @@ export default class Donation extends Component {
               <button className="giftBtn">Send As A Gift</button>
             </div>
             <div className="noBtnCoinsContainer">
-              <button className="noBTcoins">I {('Don\'t')} Have Bitcoin</button>
+              <button className="noBTcoins">Register as a Donor</button>
             </div>
           </div>
 
