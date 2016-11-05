@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 
 const BankCard = ({ key, image, desc1, desc2 }) => (
@@ -28,4 +28,10 @@ const BankCard = ({ key, image, desc1, desc2 }) => (
   </div>
 );
 
+BankCard.propTypes = {
+  key: PropTypes.string.isRequired,
+  image: PropTypes.string,
+  desc1: PropTypes.string.isRequired,
+  desc2: PropTypes.string,
+};
 export default BankCard;
