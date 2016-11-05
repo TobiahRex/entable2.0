@@ -8,7 +8,8 @@ import DonationButtons from './DonationButtons';
 
 class Donation extends React.Component {
   static propTypes = {
-    banks: PropTypes.objectOf(PropTypes.object),
+    banks: PropTypes.arrayOf(PropTypes.object),
+    routeParams: PropTypes.objectOf(PropTypes.string),
   }
   constructor() {
     super();
@@ -21,12 +22,19 @@ class Donation extends React.Component {
   }
 
   componentWillMount() {
-    const bank = this.props.banks.filter(bankObj => bankObj._id === this.routeParams.id);
-    this.setState({ bank });
+    this.filterBank(this.props.routeParams.id, this.props.banks);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.filterBank(this.props.routeParams.id, nextProps.banks);
   }
 
   onInputChange = (id, value) => this.setState({ [id]: value })
 
+  filterBank = (id, banks) => {
+    const bank = banks.filter(bankObj => bankObj._id === this.props.routeParams.id);
+    this.setState({ bank: bank[0] });
+  }
   sendText = (e) => {
     e.preventDefault();
     /*
@@ -48,7 +56,7 @@ class Donation extends React.Component {
   }
 
   render() {
-    console.log('this.props: ', this.props);
+    console.log('this.state: ', this.state);
     window.scrollTo(0, 0);
     const mainBankImage = {
       backgroundImage: 'url("/enable-women-to-be-the-boss.jpg")',
