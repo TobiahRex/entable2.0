@@ -19,8 +19,9 @@ export default class Donation extends Component {
   }
 
   render() {
+    window.scrollTo(0, 0);
     const mainBankImage = {
-      backgroundImage: 'url(enable-women-to-be-the-boss.jpg)',
+      backgroundImage: 'url("/enable-women-to-be-the-boss.jpg")',
     };
 
     const fakeTimeStampDelete = moment().format('lll');
@@ -39,30 +40,57 @@ export default class Donation extends Component {
             </div>
             <form className="infoForm" onSubmit={this._onSubmit}>
               <div className="form-group">
-                <label className="sr-only" htmlFor="exampleInputEmail3">Supporter Email</label>
-                <input type="email" className="form-control" id="exampleInputEmail3" defaultValue="sample@gmail.com" />
+                <label
+                  className="sr-only"
+                  htmlFor="exampleInputEmail3"
+                >
+                  Supporter Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail3"
+                  defaultValue="your_email_here@gmail.com"
+                />
               </div>
               <div className="form-group">
-                <label className="sr-only" htmlFor="exampleInputPassword3">Bit Coin Address</label>
-                <input type="text" className="form-control" id="exampleInputPassword3" defaultValue="19Ms9tlqtcqAJ1ue36e9kjnyzkkLy18EQuBY" />
+                <label className="sr-only" htmlFor="exampleInputPassword3">
+                  Bit Coin Address
+                </label>
+                <input
+                  type="tex
+                  " className="form-control"
+                  id="exampleInputPassword3"
+                  defaultValue="19Ms9tlqtcqAJ1ue36e9kjnyzkkLy18EQuBY"
+                />
               </div>
               <div className="form-group">
-                <label className="sr-only" htmlFor="exampleInputPassword3">{('Supporter\'s')} Name</label>
-                <input type="text" className="form-control" id="exampleInputPassword3" defaultValue="Holly Zhou" />
+                <label className="sr-only" htmlFor="exampleInputPassword3">
+                  {('Supporter\'s')} Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleInputPassword"
+                  defaultValue="Your Name"
+                />
               </div>
               <div className="form-group">
-                <label className="sr-only" htmlFor="exampleInputPassword3">Amount</label>
+                <label className="sr-only" htmlFor="exampleInputPassword3">
+                  Your Phone number
+                </label>
                 <input
                   type="text"
                   className="form-control"
                   id="exampleInputPassword3"
-                  placeholder="200"
-                  ref="amount"
+                  placeholder="1-415-123-4567"
+                  ref="userPhone"
                 />
               </div>
-              <button type="submit" className="btn btn-default btn-block btnFormBottom">Send Payment</button>
+              <button type="submit" className="btn btn-default btn-block btnFormBottom">Send Me Bitcoin Address As Text</button>
             </form>
           </div>
+
           <div className="donationOptions">
             <div className="giftBtnContainer">
               <button className="giftBtn">Send As A Gift</button>
@@ -71,9 +99,11 @@ export default class Donation extends Component {
               <button className="noBTcoins">I {('Don\'t')} Have Bitcoin</button>
             </div>
           </div>
+
           <div className="transactionHeaderDonation">
             <h3>Bank History & Notes to Sponsors</h3>
           </div>
+
           <div className="transactionHistoryContainer text-center">
             <div className="transactionItem">
               <h6>{String('')}</h6>
