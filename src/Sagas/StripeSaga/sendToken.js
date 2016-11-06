@@ -12,6 +12,7 @@ export default function* sendToken(api, { token, info }) {
     put(apiActions.apiSuccess())];
   } else {
     yield [put(stripeActions.sendTokenFail(response.data)),
+      put(donationActions.donationFail(response.problem)),
     put(apiActions.apiFail(response.problem))];
   }
 }
