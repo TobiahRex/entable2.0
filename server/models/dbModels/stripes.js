@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 const stripeAcctSchema = new mongoose.Schema({
   Donation: {
     info: {},
+    charge_info: {},
     pending: { type: Boolean },
     // a token has been created by stripe.
     charged: { type: Boolean },
@@ -22,18 +23,24 @@ const stripe = stripeNode(process.env.STRIPE_LIVE_SECRET_KEY);
 
 stripeAcctSchema.statics.saveDonationInfo = donationInfo =>
 StripeAcct.create()
-.then((newAccount) => {
-  newAccount.Donation.pending.push(donationInfo);
-  return newAccount.save();
+.then((newAcct) => {
+  const dbStripeAcct = newAcct;
+  dbStripeAcct.info = donationInfo;
+  dbStripeAcct.Donation.pending = true;
+  return dbStripeAcct.save();
 })
 .catch(error => error);
 
-stripeAcctSchema.statics.savedChargeInfo = (id, chargeInfo) => {
-  StripeAcct.findById(id)
-  .then(dbStripeAcct => {
-    dbStripeAcct.Donation.pending
-  })
-};
+stripeAcctSchema.statics.savedChargeInfo = (id, chargeInfo) =>
+StripeAcct.findById(id)
+.then((dbStripeAcctRef) => {
+  const dbStripeAcct = dbStripeAcctRef;
+  dbStripeAcct.charge_info = chargeInfo;
+  dbStripeAcct.Donation.pending = false;
+  dbStripeAcct.Donation.charged = true;
+  return dbStripeAcct.save();
+})
+.catch(err => err);
 
 stripeAcctSchema.statics.txfrToBank = amount =>
 stripe.transfer.create({
