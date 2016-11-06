@@ -14,9 +14,13 @@ Promise.fromCallback(cb => stripe.charges.create({
 }, cb));
 
 export const rxDonation = (token, donationInfo, cb) => {
+  let dbRefId;
   StripeAcct.saveDonationInfo(donationInfo)
-  .then(savedInfo => acceptDonation(token, savedInfo))
-  .then(charge => StripeAcct.savedChargeInfo(charge))
+  .then((dbDonation) => {
+    dbRefId = dbDonation._id;
+    acceptDonation(token, dbDonation)
+  })
+  .then(charge => StripeAcct.saveChargeInfo(dbRefId, charge))
   .then(savedCharge => cb(null, savedCharge))
   .catch(error => cb({
     ERROR_DONATION: 'There was an error processing your donation.', error,

@@ -31,7 +31,7 @@ StripeAcct.create()
 })
 .catch(error => error);
 
-stripeAcctSchema.statics.savedChargeInfo = (id, chargeInfo) =>
+stripeAcctSchema.statics.saveChargeInfo = (id, chargeInfo) =>
 StripeAcct.findById(id)
 .then((dbStripeAcctRef) => {
   const dbStripeAcct = dbStripeAcctRef;
