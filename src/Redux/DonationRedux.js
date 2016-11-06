@@ -1,8 +1,8 @@
 import { createActions, createReducer } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
-  sendDonation: null,
-  donationSuccess: ['amount'],
+  sendDonation: ['amount'],
+  donationSuccess: null,
   donationFail: ['response'],
 });
 

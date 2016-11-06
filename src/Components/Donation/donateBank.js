@@ -15,7 +15,7 @@ class Donation extends React.Component {
     routeParams: PropTypes.objectOf(PropTypes.string),
     sendText: PropTypes.func.isRequired,
     sendToken: PropTypes.func.isRequired,
-    donationSent: PropTypes.func.isRequired,
+    sendDonation: PropTypes.func.isRequired,
   }
   constructor() {
     super();
@@ -73,7 +73,7 @@ class Donation extends React.Component {
           currency: this.state.currency,
           amount: this.state.amount,
         });
-        this.props.donationSent(this.state.amount);
+        this.props.sendDonation(this.state.amount);
       },
     });
 
@@ -139,7 +139,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   sendText: phone => dispatch(TwilioActions.sendText(phone)),
   sendToken: (token, info) => dispatch(StripeActions.sendToken(token, info)),
-  donationSent: amount => dispatch(DonationActions.donationSent(amount)),
+  sendDonation: amount => dispatch(DonationActions.sendDonation(amount)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Donation);
