@@ -1,7 +1,7 @@
 import stripeNode from 'stripe';
 import dotenv from 'dotenv';
 import StripeAcct from '../dbModels/stripes';
-console.log('StripeAcct >>>\n', StripeAcct);
+
 dotenv.config({ silent: true });
 const stripe = stripeNode(process.env.STRIPE_LIVE_SECRET_KEY);
 
@@ -18,10 +18,12 @@ export const rxDonation = (token, donationInfo, cb) => {
   StripeAcct.saveDonationInfo(donationInfo)
   .then((dbDonation) => {
     dbRefId = dbDonation._id;
-    acceptDonation(token, dbDonation);
+    acceptDonation(token, donationInfo);
   })
-  .then(charge => StripeAcct.saveChargeInfo(dbRefId, charge))
-  .then(savedCharge => cb(null, savedCharge))
+  .then(charge => {
+    console.log('charge: ', charge);
+    StripeAcct.saveChargeInfo(dbRefId, charge, cb)
+  })
   .catch(error => cb({
     ERROR_DONATION: 'There was an error processing your donation.', error,
   }));

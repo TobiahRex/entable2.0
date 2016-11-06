@@ -2,9 +2,16 @@ import stripeNode from 'stripe';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
+dotenv.config({ silent: true });
+const stripe = stripeNode(process.env.STRIPE_LIVE_SECRET_KEY);
+
 const stripeAcctSchema = new mongoose.Schema({
-  Donation: {
-    info: {},
+  donation: {
+    info: {
+      date: { type: Date, default: Date.now },
+      curreny: { type: String, default: 'USD' },
+      amount: { type: Number, default: 0 },
+    },
     charge_info: {},
     pending: { type: Boolean },
     // a token has been created by stripe.
@@ -17,21 +24,15 @@ const stripeAcctSchema = new mongoose.Schema({
   },
 });
 
-dotenv.config({ silent: true });
-
-const stripe = stripeNode(process.env.STRIPE_LIVE_SECRET_KEY);
-
 stripeAcctSchema.statics.saveDonationInfo = donationInfo =>
-StripeAcct.create()
-.then((newAcct) => {
-  const dbStripeAcct = newAcct;
-  dbStripeAcct.info = donationInfo;
-  dbStripeAcct.Donation.pending = true;
-  return dbStripeAcct.save();
-})
-.catch(error => error);
+StripeAcct.create({
+  donation: {
+    info: donationInfo,
+    pending: true,
+  },
+});
 
-stripeAcctSchema.statics.saveChargeInfo = (id, chargeInfo) =>
+stripeAcctSchema.statics.saveChargeInfo = (id, chargeInfo, cb) =>
 StripeAcct.findById(id)
 .then((dbStripeAcctRef) => {
   const dbStripeAcct = dbStripeAcctRef;
@@ -40,6 +41,7 @@ StripeAcct.findById(id)
   dbStripeAcct.Donation.charged = true;
   return dbStripeAcct.save();
 })
+.then(savedStripeAcct => cb(null, savedStripeAcct))
 .catch(err => err);
 
 stripeAcctSchema.statics.txfrToBank = amount =>

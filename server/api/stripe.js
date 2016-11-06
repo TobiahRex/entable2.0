@@ -1,5 +1,6 @@
 import express from 'express';
 import * as Stripe from '../models/apiModels/stripe';
+import StripeAcct from '../models/dbModels/stripes';
 
 const router = new express.Router();
 
@@ -10,6 +11,10 @@ const router = new express.Router();
   2. Donor gives Entable permission to retrieve Donor's Coinbase info using Stripe API
 
 */
+router.route('/')
+.get((req, res) => StripeAcct.find({}, res.handle))
+.delete((req, res) => StripeAcct.remove({}, res.handle));
+
 router.post('/donation', (req, res) => Stripe.rxDonation(req.body, res.handle));
 
 // ----------------------------- Webhooks -------------------------------------

@@ -23,6 +23,8 @@ class Donation extends React.Component {
       name: '',
       phone: '',
       token: '',
+      currency: 'USD',
+      amount: 2000,
     };
   }
 
@@ -65,8 +67,10 @@ class Donation extends React.Component {
       image: '/favicon.ico',
       locale: 'auto',
       token: (token) => {
-        console.log('token: ', token);
-        this.props.sendToken(token);
+        this.props.sendToken(token, {
+          currency: this.state.currency,
+          amount: this.state.amount,
+        });
       },
     });
 
@@ -74,11 +78,12 @@ class Donation extends React.Component {
       name: 'Entable',
       description: 'Send Donation as a Gift',
       zipCode: true,
-      amount: 2000,
+      amount: this.state.amount,
     });
-
+    e.preventDefault();
 
     handler.close();
+    e.preventDefault();
   }
 
   render() {
