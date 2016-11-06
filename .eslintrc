@@ -8,6 +8,7 @@
     "StripeEvent": true,
     "CoinbaseAccount": true,
     "StripeCheckout": true,
+    "StripeAcct": true,
   },
   "rules": {
     "no-underscore-dangle": 0,

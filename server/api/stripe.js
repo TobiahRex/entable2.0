@@ -1,6 +1,6 @@
 import express from 'express';
 import * as Stripe from '../models/apiModels/stripe';
-console.log('Stripe: ', Stripe);
+
 const router = new express.Router();
 
 /*
