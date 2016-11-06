@@ -1,4 +1,7 @@
 import twilio from 'twilio';
+import dotenv from 'dotenv';
+
+dotenv.config({ silent: true });
 
 const createTwimlMsg = (msg) => {
   const twiml = new twilio.TwimlResponse();
@@ -15,12 +18,12 @@ export const replyGreeting = cb => cb(null, createTwimlMsg('Cheers from Entable!
 export const replyOk = cb => cb(null, createTwimlMsg('okie dokie'));
 
 export const sendBankerMessage = (msg, phone, cb) => {
-  const accountSid = process.env.TWILIO_TEST_SID;
-  const authToken = process.env.TWILIO_TEST_AUTH_TOKEN;
+  const accountSid = process.env.TWILIO_ENTABLE_SID;
+  const authToken = process.env.TWILIO_ENTABLE_AUTH_TOKEN;
   const entablePhone = process.env.TWILIO_ENTABLE_TEST_PHONE;
 
   const client = twilio(accountSid, authToken);
-  client.message.create({
+  client.messages.create({
     to: phone,
     from: entablePhone,
     body: msg,
@@ -28,20 +31,20 @@ export const sendBankerMessage = (msg, phone, cb) => {
 };
 
 export const textAddressBtc = (phone, cb) => {
-  const accountSid = process.env.TWILIO_TEST_SID;
-  const authToken = process.env.TWILIO_TEST_AUTH_TOKEN;
+  const accountSid = process.env.TWILIO_ENTABLE_SID;
+  const authToken = process.env.TWILIO_ENTABLE_AUTH_TOKEN;
   const entablePhone = process.env.TWILIO_ENTABLE_TEST_PHONE;
   const cbBTCaddress = process.env.COINBASE_BTC_PUBLIC_ADDRESS;
 
   const client = twilio(accountSid, authToken);
-  client.message.create({
-    to: phone,
+  client.messages.create({
+    to: `+${phone}`,
     from: entablePhone,
-    body: `Hey again from Entable,
-    Here's our Public Bitcoin Address:
-
-    ${cbBTCaddress}
-
-    Thank you very much for you interest in Entable & Table Banking.`,
+    body: 'Hey again from Entable, Here\'s our Public Bitcoin Address, and thanks again for your interest in Entable & Table Banking.',
+  }, cb);
+  client.messages.create({
+    to: `+${phone}`,
+    from: entablePhone,
+    body: cbBTCaddress,
   }, cb);
 };
