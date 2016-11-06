@@ -11,6 +11,7 @@ class Donation extends React.Component {
   static propTypes = {
     banks: PropTypes.arrayOf(PropTypes.object),
     routeParams: PropTypes.objectOf(PropTypes.string),
+    sendText: PropTypes.func.isRequired,
   }
   constructor() {
     super();
