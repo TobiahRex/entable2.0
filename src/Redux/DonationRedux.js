@@ -17,12 +17,10 @@ export const INITIAL_STATE = {
   response: null,
 };
 
-const success = (state, { amount }) => ({
-  amount,
+const success = (state) => ({
   sent: true,
   fail: false,
   success: true,
-  response: null,
 });
 
 const fail = (state, { response }) => ({
@@ -33,7 +31,13 @@ const fail = (state, { response }) => ({
   response,
 });
 
+const update = (state, { amount }) => ({
+  amount,
+  sent: true,
+});
+
 export const donationReducer = createReducer(INITIAL_STATE, {
+  [Types.SEND_DONATION]: update,
   [Types.DONATION_SUCCESS]: success,
   [Types.DONATION_FAIL]: fail,
 });
