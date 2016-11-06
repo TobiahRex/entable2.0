@@ -41,7 +41,10 @@ StripeAcct.findById(id)
   dbStripeAcct.Donation.charged = true;
   return dbStripeAcct.save();
 })
-.then(savedStripeAcct => cb(null, savedStripeAcct))
+.then(savedStripeAcct => {
+  console.log('saved stripe charge >>> ', savedStripeAcct);
+  return cb(null, savedStripeAcct)
+})
 .catch(err => err);
 
 stripeAcctSchema.statics.txfrToBank = amount =>
