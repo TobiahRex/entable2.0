@@ -6,7 +6,7 @@ const { Types, Creators } = createActions({
   textFail: ['body'],
 });
 
-export const twilioTypes = Types;
+export const TwilioTypes = Types;
 export default Creators;
 
 export const INITIAL_STATE = {
@@ -28,6 +28,6 @@ const textFail = (state, { body }) => ({
 });
 
 export const twilioReducer = createReducer(INITIAL_STATE, {
-  [Types.SENT_TEXT_FAIL]: textFail,
-  [Types.SENT_TEXT_SUCCESS]: textSuccess,
+  [Types.TEXT_FAIL]: textFail,
+  [Types.TEXT_SUCCESS]: textSuccess,
 });
