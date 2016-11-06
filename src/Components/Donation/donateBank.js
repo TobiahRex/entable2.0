@@ -12,6 +12,7 @@ class Donation extends React.Component {
     banks: PropTypes.arrayOf(PropTypes.object),
     routeParams: PropTypes.objectOf(PropTypes.string),
     sendText: PropTypes.func.isRequired,
+    sendToken: PropTypes.func.isRequired,
   }
   constructor() {
     super();
@@ -20,6 +21,7 @@ class Donation extends React.Component {
       email: '',
       name: '',
       phone: '',
+      token: '',
     };
   }
 
@@ -56,6 +58,7 @@ class Donation extends React.Component {
     /*
       1) Initiate Stripe Checkout process.
     */
+    this.props.sendToken(this.state.token);
   }
 
   render() {
@@ -108,6 +111,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   sendText: phone => dispatch(TwilioActions.sendText(phone)),
+  sendToken: token => dispatch(TwilioActions.sendToken(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Donation);

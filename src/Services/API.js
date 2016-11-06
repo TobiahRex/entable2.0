@@ -13,10 +13,13 @@ const createAPI = (baseURL = process.env.BASE_URL) => {
 
   const sendText = text => api.post(`api/twilio/text_btc/${text}`);
 
+  const sendToken = token => api.post(`api/stripe/donation/${token}`);
+
   return {
     getExchangeRate,
     getAllBanks,
     sendText,
+    sendToken,
   };
 };
 
