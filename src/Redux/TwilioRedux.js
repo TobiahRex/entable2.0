@@ -10,20 +10,20 @@ export const TwilioTypes = Types;
 export default Creators;
 
 export const INITIAL_STATE = {
-  text_success: null,
-  text_error: null,
+  btcText_success: null,
+  btcText_error: null,
   response: {},
 };
 
 const textSuccess = (state, { body }) => ({
-  text_success: true,
-  text_error: false,
+  btcText_success: true,
+  btcText_error: false,
   response: body,
 });
 
 const textFail = (state, { body }) => ({
-  text_errror: true,
-  text_success: false,
+  btcText_error: true,
+  btcText_success: false,
   response: body,
 });
 

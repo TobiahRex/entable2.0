@@ -42,7 +42,8 @@ StripeAcct.findById(id)
   return dbStripeAcct.save();
 })
 .then(savedStripeAcct => cb(null, savedStripeAcct))
-.catch(() => cb({ ERROR: 'Could not save information to Database.' }));
+.catch(() =>
+cb({ ERROR: 'Could not save charge information to the Database.' }));
 
 stripeAcctSchema.statics.txfrToBank = amount =>
 stripe.transfer.create({
