@@ -30,6 +30,7 @@ const fail = (state, { response }) => ({
   sent: true,
   fail: true,
   success: false,
+  response,
 });
 
 export default donationReducer = createReducer(INITIAL_STATE, {
