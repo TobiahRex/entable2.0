@@ -5,6 +5,7 @@ import Footer from '../Footer';
 import TextForm from './TextAddressForm';
 import TransactionHistory from '../Bank/TransactionHistory';
 import DonationButtons from './DonationButtons';
+import TwilioActions from '../../Redux/TwilioRedux';
 
 class Donation extends React.Component {
   static propTypes = {
@@ -41,6 +42,7 @@ class Donation extends React.Component {
     1) Send user text from Backend using this phone number.
     2) Send user to the TextSuccess page.
     */
+    this.props.sendText(this.state.phone);
   }
 
   registerAsDonor = () => {
@@ -103,5 +105,8 @@ class Donation extends React.Component {
 const mapStateToProps = state => ({
   banks: state.bank.banks,
 });
+const mapDispatchToProps = dispatch => ({
+  sendText: phone => dispatch(TwilioActions.sendText(phone)),
+});
 
-export default connect(mapStateToProps, null)(Donation);
+export default connect(mapStateToProps, mapDispatchToProps)(Donation);
