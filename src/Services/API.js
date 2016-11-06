@@ -6,14 +6,17 @@ const createAPI = (baseURL = process.env.BASE_URL) => {
     headers: { 'Cache-control': 'no-cache' },
   });
 
-  const getAllBanks = () => api.get('api/banks/');
+  const getAllBanks = () =>
+  api.get('api/banks/');
 
   const getExchangeRate = pair =>
   api.get('api/coinbase/btc/coinbase/rate', pair);
 
-  const sendText = text => api.post(`api/twilio/text_btc/${text}`);
+  const sendText = text =>
+  api.post(`api/twilio/text_btc/${text}`);
 
-  const sendToken = token => api.post('api/stripe/donation', token);
+  const sendToken = (token, info) =>
+  api.post('api/stripe/donation', { token, info });
 
   return {
     getExchangeRate,

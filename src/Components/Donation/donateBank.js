@@ -87,8 +87,6 @@ class Donation extends React.Component {
   }
 
   render() {
-    console.log('this.state: ', this.state);
-    console.log('StripeCheckout: ', StripeCheckout);
     window.scrollTo(0, 0);
     const mainBankImage = {
       backgroundImage: 'url("/enable-women-to-be-the-boss.jpg")',
@@ -137,7 +135,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   sendText: phone => dispatch(TwilioActions.sendText(phone)),
-  sendToken: token => dispatch(StripeActions.sendToken(token)),
+  sendToken: (token, info) => dispatch(StripeActions.sendToken(token, info)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Donation);

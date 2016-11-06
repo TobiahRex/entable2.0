@@ -1,7 +1,7 @@
 import { createActions, createReducer } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
-  sendToken: ['token'],
+  sendToken: ['token', 'info'],
   sendTokenSuccess: ['response'],
   sendTokenFail: ['response'],
 });
