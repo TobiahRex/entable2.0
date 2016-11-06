@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
 import bankActions from './BankRedux';
+import apiActions from './ApiRedux';
 
 export default (rootReducer, rootSaga) => {
   const middlewares = [];
@@ -21,5 +22,6 @@ export default (rootReducer, rootSaga) => {
   sagaMiddleware.run(rootSaga);
 
   store.dispatch(bankActions.getAllBanks());
+  store.dispatch(apiActions.fetching());
   return store;
 };
