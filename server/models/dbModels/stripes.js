@@ -71,3 +71,5 @@ stripeAcctSchema.statics.verifyAndSave = (reqBody, cb) => {
 };
 
 const StripeAcct = mongoose.model('StripeEvent', stripeAcctSchema);
+
+export default StripeAcct;

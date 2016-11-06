@@ -10,13 +10,11 @@ const router = new express.Router();
   2. Donor gives Entable permission to retrieve Donor's Coinbase info using Stripe API
 
 */
-router.post('/donation', (req, res) =>
-Stripe.rxDonation(req.body, req.body, res.handle));
+router.post('/donation', (req, res) => Stripe.rxDonation(req.body, res.handle));
 
 // ----------------------------- Webhooks -------------------------------------
 
-router.post('/notifications', (req, res) =>
-StripeHooks.saveNotification(req.body, res.handle));
+router.post('/notifications', (req, res) => StripeHooks.saveNotification(req.body, res.handle));
 
 
 export default router;
