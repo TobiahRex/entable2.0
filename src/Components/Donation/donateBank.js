@@ -7,6 +7,7 @@ import TransactionHistory from '../Bank/TransactionHistory';
 import DonationButtons from './DonationButtons';
 import TwilioActions from '../../Redux/TwilioRedux';
 import StripeActions from '../../Redux/StripeRedux';
+import DonationActions from '../../Redux/DonationRedux';
 
 class Donation extends React.Component {
   static propTypes = {
@@ -14,6 +15,7 @@ class Donation extends React.Component {
     routeParams: PropTypes.objectOf(PropTypes.string),
     sendText: PropTypes.func.isRequired,
     sendToken: PropTypes.func.isRequired,
+    donationSent: PropTypes.func.isRequired,
   }
   constructor() {
     super();
@@ -71,6 +73,7 @@ class Donation extends React.Component {
           currency: this.state.currency,
           amount: this.state.amount,
         });
+        this.props.donationSent(this.state.amount);
       },
     });
 
@@ -136,13 +139,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   sendText: phone => dispatch(TwilioActions.sendText(phone)),
   sendToken: (token, info) => dispatch(StripeActions.sendToken(token, info)),
+  donationSent: amount => dispatch(DonationActions.donationSent(amount)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Donation);
-
-<button id="customButton">Purchase</button>
-
-
-// window.addEventListener('popstate', function() {
-//   handler.close();
-// });
