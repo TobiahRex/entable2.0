@@ -9,7 +9,7 @@ const stripeAcctSchema = new mongoose.Schema({
   donation: {
     info: {
       date: { type: Date, default: Date.now },
-      curreny: { type: String, default: 'USD' },
+      currency: { type: String, default: 'USD' },
       amount: { type: Number, default: 0 },
     },
     charge_info: {},
