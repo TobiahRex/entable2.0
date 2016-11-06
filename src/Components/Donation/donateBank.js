@@ -54,15 +54,34 @@ class Donation extends React.Component {
     */
   }
 
-  sendGift = () => {
+  sendGift = (e) => {
+    e.preventDefault();
     /*
       1) Initiate Stripe Checkout process.
     */
-    this.props.sendToken(this.state.token);
+    const handler = StripeCheckout.configure({
+      key: 'pk_test_iF4PzIrhBrCmphaxI5HQWSnZ',
+      image: '/favicon.ico',
+      locale: 'auto',
+      token: (token) => {
+        this.props.sendToken(token);
+      },
+    });
+
+    handler.open({
+      name: 'Entable',
+      description: 'Donation',
+      zipCode: true,
+      amount: 2000,
+    });
+
+
+    handler.close();
   }
 
   render() {
     console.log('this.state: ', this.state);
+    console.log('StripeCheckout: ', StripeCheckout);
     window.scrollTo(0, 0);
     const mainBankImage = {
       backgroundImage: 'url("/enable-women-to-be-the-boss.jpg")',
@@ -115,3 +134,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Donation);
+
+<button id="customButton">Purchase</button>
+
+
+// window.addEventListener('popstate', function() {
+//   handler.close();
+// });

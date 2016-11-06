@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 const DonationButtons = ({ sendGift, registerAsDonor }) => (
   <div className="donationOptions">
     <div className="giftBtnContainer">
-      <button className="giftBtn" onClick={sendGift}>
+      <button className="giftBtn" onClick={e => sendGift(e)}>
         Send As A Gift
       </button>
     </div>
