@@ -6,6 +6,7 @@ import TextForm from './TextAddressForm';
 import TransactionHistory from '../Bank/TransactionHistory';
 import DonationButtons from './DonationButtons';
 import TwilioActions from '../../Redux/TwilioRedux';
+import StripeActions from '../../Redux/StripeRedux';
 
 class Donation extends React.Component {
   static propTypes = {
@@ -64,13 +65,14 @@ class Donation extends React.Component {
       image: '/favicon.ico',
       locale: 'auto',
       token: (token) => {
+        console.log('token: ', token);
         this.props.sendToken(token);
       },
     });
 
     handler.open({
       name: 'Entable',
-      description: 'Donation',
+      description: 'Send Donation as a Gift',
       zipCode: true,
       amount: 2000,
     });
@@ -130,7 +132,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   sendText: phone => dispatch(TwilioActions.sendText(phone)),
-  sendToken: token => dispatch(TwilioActions.sendToken(token)),
+  sendToken: token => dispatch(StripeActions.sendToken(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Donation);

@@ -5,7 +5,7 @@ import StripeAccount from '../dbModels/stripes';
 dotenv.config({ silent: true });
 const stripe = stripeNode(process.env.STRIPE_LIVE_SECRET_KEY);
 
-const acceptDonation = (token, donationInfo) =>
+export const acceptDonation = (token, donationInfo) =>
 Promise.fromCallback(cb => stripe.charges.create({
   amount: donationInfo.amount,
   currency: donationInfo.currency,
@@ -13,7 +13,7 @@ Promise.fromCallback(cb => stripe.charges.create({
   description: `Mongo ID: _id=${donationInfo._id}`,
 }, cb));
 
-const rxDonation = (token, donationInfo, cb) => {
+export const rxDonation = (token, donationInfo, cb) => {
   StripeAccount.saveDonationInfo(donationInfo)
   .then(savedInfo => acceptDonation(token, savedInfo))
   .then(charge => StripeAccount.savedChargeInfo(charge))
@@ -22,5 +22,3 @@ const rxDonation = (token, donationInfo, cb) => {
     ERROR_DONATION: 'There was an error processing your donation.', error,
   }));
 };
-
-export default rxDonation;
