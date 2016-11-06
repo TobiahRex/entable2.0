@@ -12,19 +12,21 @@ export default Creators;
 export const INITIAL_STATE = {
   amount: 0,
   sent: null,
-  success: null,
   fail: null,
+  success: null,
   response: null,
 };
 
-const success = (state) => ({
+const success = state => ({
+  amount: state.amount,
   sent: true,
   fail: false,
   success: true,
+  response: null,
 });
 
 const fail = (state, { response }) => ({
-  amount: 0,
+  amount: state.amount,
   sent: true,
   fail: true,
   success: false,
@@ -34,6 +36,9 @@ const fail = (state, { response }) => ({
 const update = (state, { amount }) => ({
   amount,
   sent: true,
+  fail: false,
+  succcess: true,
+  response: null,
 });
 
 export const donationReducer = createReducer(INITIAL_STATE, {

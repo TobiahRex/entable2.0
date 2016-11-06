@@ -9,10 +9,10 @@ export default function* sendToken(api, { token, info }) {
   if (response.ok) {
     yield [put(stripeActions.sendTokenSuccess(response.data)),
       put(donationActions.donationSuccess()),
-    put(apiActions.apiSuccess())];
+      put(apiActions.apiSuccess())];
   } else {
     yield [put(stripeActions.sendTokenFail(response.data)),
       put(donationActions.donationFail(response.problem)),
-    put(apiActions.apiFail(response.problem))];
+      put(apiActions.apiFail(response.problem))];
   }
 }
