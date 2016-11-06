@@ -1,5 +1,5 @@
 import express from 'express';
-import Coinbase from '../models/Coinbase/coinbases';
+import Coinbase from '../models/dbModels/coinbases';
 
 const router = new express.Router();
 

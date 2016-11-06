@@ -1,5 +1,5 @@
 import express from 'express';
-import Bank from '../models/Bank';
+import Bank from '../models/dbModels/banks';
 
 const router = new express.Router();
 // ----------------------REMOVE BEFORE DEPLOY ---------------------------------
