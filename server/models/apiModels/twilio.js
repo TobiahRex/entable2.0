@@ -41,10 +41,12 @@ export const textAddressBtc = (phone, cb) => {
     to: `+${phone}`,
     from: entablePhone,
     body: 'Hey again from Entable, Here\'s our Public Bitcoin Address, and thanks again for your interest in Entable & Table Banking.',
-  }, cb);
-  client.messages.create({
-    to: `+${phone}`,
-    from: entablePhone,
-    body: cbBTCaddress,
-  }, cb);
+  }, (err) => {
+    if (err) return cb(err);
+    return client.messages.create({
+      to: `+${phone}`,
+      from: entablePhone,
+      body: cbBTCaddress,
+    }, cb);
+  });
 };
