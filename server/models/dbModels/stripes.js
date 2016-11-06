@@ -37,15 +37,12 @@ StripeAcct.findById(id)
 .then((dbStripeAcctRef) => {
   const dbStripeAcct = dbStripeAcctRef;
   dbStripeAcct.charge_info = chargeInfo;
-  dbStripeAcct.Donation.pending = false;
-  dbStripeAcct.Donation.charged = true;
+  dbStripeAcct.donation.pending = false;
+  dbStripeAcct.donation.charged = true;
   return dbStripeAcct.save();
 })
-.then(savedStripeAcct => {
-  console.log('saved stripe charge >>> ', savedStripeAcct);
-  return cb(null, savedStripeAcct)
-})
-.catch(err => err);
+.then(savedStripeAcct => cb(null, savedStripeAcct))
+.catch(() => cb({ ERROR: 'Could not save information to Database.' }));
 
 stripeAcctSchema.statics.txfrToBank = amount =>
 stripe.transfer.create({
@@ -72,7 +69,7 @@ stripeAcctSchema.statics.verifyAndSave = (reqBody, cb) => {
   stripe.events.retrieve(reqBody.id)
   .then(event => StripeAcct.saveEvent(event))
   .then(() => cb(null, { SUCCESS: 'Event saved.' }))
-  .catch(err => cb(err));
+  .catch(err => cb({ ERROR: 'Could not save that information.' }));
 };
 
 const StripeAcct = mongoose.model('StripeEvent', stripeAcctSchema);

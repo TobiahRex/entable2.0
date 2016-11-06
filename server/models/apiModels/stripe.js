@@ -31,14 +31,9 @@ export const rxDonation = ({ token, info }, cb) => {
     dbRefId = dbDonation._id;
     return acceptDonation(token, dbDonation.donation.info);
   })
-  .then(charge => {
-    console.log('CHARGE >>> ', charge);
-    StripeAcct.saveChargeInfo(dbRefId, charge, cb)
-  })
-  .catch(error => {
-    console.log('error >>>\n', error);
-    return cb({
-    ERROR_DONATION: 'There was an error processing your donation.', error
-  })
-});
+  .then(charge => StripeAcct.saveChargeInfo(dbRefId, charge, cb))
+  .catch(error => cb({
+    ERROR_DONATION: 'There was an error processing your donation.',
+    error,
+  }));
 };
