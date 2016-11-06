@@ -5,13 +5,14 @@ const createTwimlMsg = (msg) => {
   return twiml.message(msg).toString();
 };
 
+export const replyReceived = (reqBody, cb) => {
+  console.log('req.body >>> \n', req.body);
+  return cb(null, null);
+};
+
 export const replyGreeting = cb => cb(null, createTwimlMsg('Cheers from Entable!\n We appreciate your interest in helping the people of Africa. \n\nIf you would like to make a donation, text "#donate<ammount>" to us. And we will send you more information on how you can participate.\n Thanks again!'));
 
-export const replyReceived = (reqBody, cb) => {
-  console.log('req.body: ', req.body);
-}
-
-export const replyOk = cb => cb(null, createTwimlMsg('okie doki'));
+export const replyOk = cb => cb(null, createTwimlMsg('okie dokie'));
 
 export const sendBankerMessage = (msg, phone, cb) => {
   const accountSid = process.env.TWILIO_TEST_SID;
@@ -36,6 +37,11 @@ export const textAddressBtc = (phone, cb) => {
   client.message.create({
     to: phone,
     from: entablePhone,
-    body: cbBTCaddress,
+    body: `Hey again from Entable,
+    Here's our Public Bitcoin Address:
+
+    ${cbBTCaddress}
+
+    Thank you very much for you interest in Entable & Table Banking.`,
   }, cb);
 };
