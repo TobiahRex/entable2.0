@@ -9,7 +9,7 @@ const { Types, Creators } = createActions({
 export const StripeTypes = Types;
 export default Creators;
 
-export const INITIAL_STATE: {
+export const INITIAL_STATE = {
   sendToken_success: null,
   sendToken_fail: null,
   response: null,
