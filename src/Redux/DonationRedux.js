@@ -9,13 +9,13 @@ const { Types, Creators } = createActions({
 export const donationTypes = Types;
 export default Creators;
 
-export default INITIAL_STATE = {
+export const INITIAL_STATE = {
   amount: 0,
   sent: null,
   success: null,
   fail: null,
   response: null,
-}
+};
 
 const success = (state, { amount }) => ({
   amount,
@@ -33,7 +33,7 @@ const fail = (state, { response }) => ({
   response,
 });
 
-export default donationReducer = createReducer(INITIAL_STATE, {
+export const donationReducer = createReducer(INITIAL_STATE, {
   [Types.DONATION_SUCCESS]: success,
   [Types.DONATION_FAIL]: fail,
 });
