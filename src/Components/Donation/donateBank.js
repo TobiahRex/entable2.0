@@ -55,14 +55,14 @@ class Donation extends React.Component {
 
   registerAsDonor = () => {
     /*
-      Send user to the Register page.
+    Send user to the Register page.
     */
   }
 
   sendGift = (e) => {
     e.preventDefault();
     /*
-      1) Initiate Stripe Checkout process.
+    1) Initiate Stripe Checkout process.
     */
     const handler = StripeCheckout.configure({
       key: 'pk_test_iF4PzIrhBrCmphaxI5HQWSnZ',

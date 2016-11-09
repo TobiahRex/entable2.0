@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 require('dotenv').config({ silent: true });
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 const URL = process.env.DEPLOY_URL || '';
 process.env.BASE_URL = URL || `http://localhost:${PORT}/`;
 
