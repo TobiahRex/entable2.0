@@ -8,7 +8,7 @@ const Banks = ({ banks }) => {
       <BankCard
         key={bank._id}
         bankId={bank._id}
-        image={bank.description.images[0]}
+        image={`/${bank.description.images[0]}`}
         desc1={bank.description.desc1}
         desc2={bank.description.desc2}
       />)

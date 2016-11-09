@@ -20,7 +20,7 @@ const Navbar = ({ children }) => (
           </button>
           <a className="navbar-brand" href="/">
             <img
-              src="entable_logo_final_white.png"
+              src="/entable_logo_final_white.png"
               height="20px"
               role="presentation"
             />

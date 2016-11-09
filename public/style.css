@@ -76,7 +76,7 @@ highlight green - #27ae60
 
 .jm-main-header  {
   width:100%;
-  background-image:url("enable-women-to-be-the-boss.jpg");
+  background-image:url("/enable-women-to-be-the-boss.jpg");
   background-size:cover;
   text-align: center;
   color: white;
@@ -213,7 +213,7 @@ highlight green - #27ae60
   background-color: #2ecc71;
   min-height: 400px;
 /*  width:100%;*/
-  background-image:url("blur.jpg");
+  background-image:url("/blur.jpg");
   background-size:cover;
   text-align: center;
   display: flex;
