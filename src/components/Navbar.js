@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 const Navbar = ({ children }) => (
   <div>
@@ -35,7 +35,9 @@ const Navbar = ({ children }) => (
               <Link to="bank">Bank Example</Link>
             </li>
             <li className="mainNavLink">
-              <Link to="donation">Sponsor a Bank</Link>
+              <Link to="/sponsor">
+                Become a Donor
+              </Link>
             </li>
           </ul>
         </div>

@@ -12,7 +12,7 @@ export default (
     <IndexRoute component={Homepage} />
     <Router path="bank/:id" component={BankDetail} />
     {/* <Router path="bank/example" component={BankExample} /> */}
-    <Router path="donation" component={donateGen} />
+    <Router path="sponsor" component={donateGen} />
     <Router path="donation/:id" component={donateBank} />
   </Route>
 );

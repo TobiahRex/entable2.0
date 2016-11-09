@@ -20,11 +20,11 @@ const Banks = ({ banks }) => {
   return (
     <div className="banksContainer">
       <div className="bankCallToAction">
-        <h4>Entable is an SMS (Tropo) powered table banking platform
-          that pairs under-served women without access to financial
-        services to sponsors seeking complete transparency and direct impact.</h4>
+        <h4>Entable is an SMS (Twilio) powered table banking platform
+        that pairs under-served women</h4>
+        <h4> - without access to financial services -</h4>
+        <h4> to sponsors seeking complete transparency and direct impact.</h4>
       </div>
-
       <div className="row bankRows">
         <div className="container">
 
