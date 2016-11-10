@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { browserHistory } from 'react-router';
 
 import BankImage from './BankSplashImg';
 import BankDescription from './BankDescription';
@@ -17,10 +16,7 @@ const BankDisplay = ({ bank }) => (
         finance={bank.finance}
       />
     </div>
-
-    <AddFundsButton
-      onClick={() => browserHistory.push(`/donation/${bank._id}`)}
-    />
+    <AddFundsButton _id={bank._id} />
     <BankActivity transactions={bank.transactions} />
     <TransactionHistory history={bank.history || ''} />
 

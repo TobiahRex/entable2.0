@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 
-const AddFunds = () => (
+const AddFunds = ({ _id }) => (
   <div className="groupDonateBtn">
-    <button className="donateBtn">Add Funds to This Bank</button>
+    <button onClick={() => browserHistory.push(`/donation/${_id}`)} className="donateBtn">Add Funds to This Bank</button>
   </div>
 );
 AddFunds.propTypes = {
-  bankId: PropTypes.string,
+  _id: PropTypes.string,
 };
 export default AddFunds;

@@ -32,7 +32,7 @@ const Navbar = ({ children }) => (
         >
           <ul className="nav navbar-nav navbar-right">
             <li className="mainNavLink">
-              <Link to="bank">Bank Example</Link>
+              <Link to="/bank">Bank Example</Link>
             </li>
             <li className="mainNavLink">
               <Link to="/sponsor">

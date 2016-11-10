@@ -31,7 +31,6 @@ class BankDetail extends Component {
 
   render() {
     window.scrollTo(0, 0);
-    console.log('BANK DETAIL: this.state: ', this.state);
 
     return (
       <div>
