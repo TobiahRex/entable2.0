@@ -181,6 +181,11 @@ highlight green - #27ae60
   position: relative;
 }
 
+.bankCardName {
+  margin-bottom: 0px;
+  padding: 5px;
+}
+
 .bankName {
   color: #fff;
   position: absolute;
@@ -190,7 +195,7 @@ highlight green - #27ae60
 }
 
 .bankViewDesc {
-  padding: 15px;
+  padding: 8px;
   display: absolute;
   align-self: center
   background-color: #222;
@@ -230,7 +235,7 @@ highlight green - #27ae60
 
 .infoForm {
   align-self: center;
-  width: 70%;
+  width: 50%;
   border-radius: 0;
 }
 
@@ -443,6 +448,7 @@ align-self: center;
 
 .donationBankName {
   align-self: center;
+  flex-direction: column;
   color: #fff;
   text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   text-align: center;
@@ -487,7 +493,7 @@ align-self: center;
 
   border-radius: none;
   height: 40px;
-  margin-bottom: 50px
+  margin-bottom: 22px
 
 }
 
