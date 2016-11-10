@@ -6,6 +6,7 @@ import Homepage from '../Containers/Home';
 import BankDetail from '../Components/Bank/BankDetail';
 import donateBank from '../Components/Donation/donateBank';
 import donateGen from '../Components/Donation/donateGen';
+import flexBoxTest from '../Components/flexBoxTest';
 
 export default (
   <Route path="/" component={Navbar}>
@@ -14,5 +15,6 @@ export default (
     {/* <Router path="bank/example" component={BankExample} /> */}
     <Router path="sponsor" component={donateGen} />
     <Router path="donation/:id" component={donateBank} />
+    <Router path="flex" component={flexBoxTest} />
   </Route>
 );
