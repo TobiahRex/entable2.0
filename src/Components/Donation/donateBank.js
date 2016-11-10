@@ -113,6 +113,11 @@ class Donation extends React.Component {
         margin: 30,
         color: '#fff',
         width: 300,
+        alignSelf: 'center',
+        flexDirection: 'column',
+      },
+      bankDiv: {
+        display: 'flex',
       },
     };
 
@@ -122,7 +127,7 @@ class Donation extends React.Component {
       <div>
         <div className=" donationContainer">
           <div className="bankImgBanner" style={mainBankImage}>
-            <div className="donationBankName">
+            <div style={styles.bankDiv} className="donationBankName">
               <h2 style={styles.bankName}>{bankName}</h2>
               <h5>
                 96% of your donation goes directly to the owners of this bank.
