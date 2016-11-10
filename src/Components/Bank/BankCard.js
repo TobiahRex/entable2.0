@@ -1,10 +1,19 @@
 import React, { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 
-const BankCard = ({ bankId, image, desc1, desc2 }) => (
+const BankCard = ({ name, bankId, image, desc1, desc2 }) => (
   <div className="col-md-4 text-center bkMargin">
     <div className="bankSingleDisplay panel panel-default">
-      <img className="bankImg" role="presentation" src={image} width="100%" height="80%" />
+      <p className="bankCardName">
+        {name}
+      </p>
+      <img
+        className="bankImg"
+        role="presentation"
+        src={image}
+        width="100%"
+        height="80%"
+      />
       <div className="imgTxtContainer" />
       <div className="bankViewBtnDisplay">
         <button
@@ -22,13 +31,13 @@ const BankCard = ({ bankId, image, desc1, desc2 }) => (
       </div>
       <p className="bankViewDesc">
         {desc1}
-        {desc2}
       </p>
     </div>
   </div>
 );
 
 BankCard.propTypes = {
+  name: PropTypes.string.isRequired,
   bankId: PropTypes.string.isRequired,
   image: PropTypes.string,
   desc1: PropTypes.string.isRequired,

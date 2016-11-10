@@ -38,6 +38,11 @@ class Donation extends React.Component {
     this.filterBank(this.props.routeParams.id, nextProps.banks);
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    console.log('nextState', nextState);
+    console.log('nextProps', nextProps);
+  }
+
   onInputChange = (id, value) => this.setState({ [id]: value })
 
   filterBank = (id, banks) => {
@@ -91,20 +96,34 @@ class Donation extends React.Component {
     event.preventDefault();
   }
 
+
   render() {
     window.scrollTo(0, 0);
     const mainBankImage = {
-      backgroundImage: 'url("/enable-women-to-be-the-boss.jpg")',
+      backgroundImage: `url("/${this.state.bank.description.images[0]}")`,
+    };
+
+    const styles = {
+      bankName: {
+        backgroundColor: '#2ecc71',
+        paddingTop: 10,
+        paddingRight: 40,
+        paddingBottom: 10,
+        paddingLeft: 40,
+        margin: 30,
+        color: '#fff',
+        width: 300,
+      },
     };
 
     const fakeTimeStampDelete = moment().format('lll');
-    const bankName = "Women's Bank of Anlos";
+    const bankName = this.state.bank.description.name;
     return (
       <div>
         <div className=" donationContainer">
           <div className="bankImgBanner" style={mainBankImage}>
             <div className="donationBankName">
-              <h2>{bankName}</h2>
+              <h2 style={styles.bankName}>{bankName}</h2>
               <h5>
                 96% of your donation goes directly to the owners of this bank.
                 <br />

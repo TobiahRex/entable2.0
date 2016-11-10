@@ -6,6 +6,7 @@ const Banks = ({ banks }) => {
   if (banks.length) {
     bankList = banks.map(bank => (
       <BankCard
+        name={bank.description.name}
         key={bank._id}
         bankId={bank._id}
         image={`/${bank.description.images[0]}`}
@@ -21,9 +22,8 @@ const Banks = ({ banks }) => {
     <div className="banksContainer">
       <div className="bankCallToAction">
         <h4>Entable is an SMS (Twilio) powered table banking platform
-        that pairs under-served women</h4>
-        <h4> - without access to financial services -</h4>
-        <h4> to sponsors seeking complete transparency and direct impact.</h4>
+          that pairs under - served women
+        - without access to financial services -  to sponsors seeking complete transparency and direct impact.</h4>
       </div>
       <div className="row bankRows">
         <div className="container">

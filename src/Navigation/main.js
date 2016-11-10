@@ -5,7 +5,7 @@ import Navbar from '../Components/Navbar';
 import Homepage from '../Containers/Home';
 import BankDetail from '../Components/Bank/BankDetail';
 import Register from '../Containers/Register';
-// import BankExample from '../Components/Bank/BankExample';
+
 import donateBank from '../Components/Donation/donateBank';
 import donateGen from '../Components/Donation/donateGen';
 import flexBoxTest from '../Components/flexBoxTest';
