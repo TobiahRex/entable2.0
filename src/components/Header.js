@@ -15,7 +15,7 @@ const Header = () => (
             />
             <h1 className="mainHeader">Not a Seat at the Table but Ownership of It.</h1>
             <h5 className="mainSubHeader">Table Banking that puts women in full control of their finances. </h5>
-            <Link to={'/donation'}className="mainBtn">Fund A Bank With No Middle Men</Link>
+            <Link to={'/example'}className="mainBtn">Fund A Bank With No Middle Men</Link>
           </div>
         </div>
       </div>{/* --- ROW --- */}

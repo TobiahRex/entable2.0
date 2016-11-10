@@ -28,7 +28,7 @@ const Info = () => (
           <div className="num">
             4
           </div>
-          <h6>Using {('Tropo\'s')} SMS API,
+          <h6>Using {('Twilio\'s')} SMS API,
           bankers subimit transactions and updates directly to entable</h6>
         </div>
       </div>
