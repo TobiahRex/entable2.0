@@ -4,11 +4,13 @@ import { browserHistory } from 'react-router';
 const styles = {
   bankTitle: {
     backgroundColor: '#2ecc71',
+    marginBottom: 0,
     paddingTop: 10,
     paddingBottom: 10,
     color: '#fff',
     fontSize: 20,
-    fontWeight: 400,
+    fontWeight: 600,
+    fontFamily: "'Ubuntu', sans-serif",
   },
 };
 const BankCard = ({ name, bankId, image, desc1 }) => (
