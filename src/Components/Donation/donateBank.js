@@ -60,6 +60,7 @@ class Donation extends React.Component {
   }
 
   sendGift = (e) => {
+    console.log('e: ', e);
     e.preventDefault();
     /*
     1) Initiate Stripe Checkout process.
@@ -69,6 +70,7 @@ class Donation extends React.Component {
       image: '/favicon.ico',
       locale: 'auto',
       token: (token) => {
+        event.preventDefault();
         this.props.sendToken(token, {
           currency: this.state.currency,
           amount: this.state.amount,
@@ -83,10 +85,10 @@ class Donation extends React.Component {
       zipCode: true,
       amount: this.state.amount,
     });
-    e.preventDefault();
+    event.preventDefault();
 
     handler.close();
-    e.preventDefault();
+    event.preventDefault();
   }
 
   render() {
@@ -116,7 +118,7 @@ class Donation extends React.Component {
           </div>
 
           <DonationButtons
-            sendGift={this.sendGift}
+            sendGift={e => this.sendGift(e)}
             registerAsDonor={this.registerAsDonor}
           />
 

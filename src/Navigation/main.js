@@ -13,7 +13,7 @@ export default (
   <Route path="/" component={Navbar}>
     <IndexRoute component={Homepage} />
     <Router path="bank/:id" component={BankDetail} />
-    {/* <Router path="bank/example" component={BankExample} /> */}
+    <Router path="example" component={donateBank} />
     <Router path="sponsor" component={donateGen} />
     <Router path="donation/:id" component={donateBank} />
     <Router path="flex" component={flexBoxTest} />
