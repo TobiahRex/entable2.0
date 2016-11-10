@@ -101,6 +101,10 @@ class Donation extends React.Component {
     window.scrollTo(0, 0);
     const mainBankImage = {
       backgroundImage: `url("/${this.state.bank.description.images[0]}")`,
+      backgroundPosition: 'center',
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor: '#222',
     };
 
     const styles = {
