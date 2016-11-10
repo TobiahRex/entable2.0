@@ -1,10 +1,20 @@
 import React, { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 
-const BankCard = ({ name, bankId, image, desc1, desc2 }) => (
+const styles = {
+  bankTitle: {
+    backgroundColor: '#2ecc71',
+    paddingTop: 10,
+    paddingBottom: 10,
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 400,
+  },
+};
+const BankCard = ({ name, bankId, image, desc1 }) => (
   <div className="col-md-4 text-center bkMargin">
     <div className="bankSingleDisplay panel panel-default">
-      <p className="bankCardName">
+      <p style={styles.bankTitle}>
         {name}
       </p>
       <img
@@ -41,6 +51,5 @@ BankCard.propTypes = {
   bankId: PropTypes.string.isRequired,
   image: PropTypes.string,
   desc1: PropTypes.string.isRequired,
-  desc2: PropTypes.string,
 };
 export default BankCard;

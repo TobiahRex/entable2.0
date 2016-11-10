@@ -235,7 +235,8 @@ highlight green - #27ae60
 
 .infoForm {
   align-self: center;
-  width: 50%;
+  width: 600px;
+  max-width: 600px;
   border-radius: 0;
 }
 
