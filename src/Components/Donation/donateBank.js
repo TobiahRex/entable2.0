@@ -99,13 +99,6 @@ class Donation extends React.Component {
 
   render() {
     window.scrollTo(0, 0);
-    const mainBankImage = {
-      backgroundImage: `url("/${this.state.bank.description.images[0]}")`,
-      backgroundPosition: 'center',
-      backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat',
-      backgroundColor: '#222',
-    };
 
     const styles = {
       bankName: {
@@ -123,6 +116,13 @@ class Donation extends React.Component {
       bankDiv: {
         display: 'flex',
       },
+      bankImage: {
+        backgroundImage: `url("/${this.state.bank.description.images[0]}")`,
+        backgroundPosition: 'center',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#222',
+      },
     };
 
     const fakeTimeStampDelete = moment().format('lll');
@@ -130,7 +130,7 @@ class Donation extends React.Component {
     return (
       <div>
         <div className=" donationContainer">
-          <div className="bankImgBanner" style={mainBankImage}>
+          <div className="bankImgBanner" style={styles.bankImage}>
             <div style={styles.bankDiv} className="donationBankName">
               <h2 style={styles.bankName}>{bankName}</h2>
               <h5>
