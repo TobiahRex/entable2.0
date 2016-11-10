@@ -14,19 +14,19 @@ const TextForm = ({ sendText, onInputChange }) => (
       />
     </div>
 
-    <div className="form-group">
+    {/* <div className="form-group">
       <label className="sr-only" htmlFor="email" >
-        Supporter Email
+      Supporter Email
       </label>
       <input
-        id="email"
-        type="email"
-        className="form-control"
-        placeholder="your_email_here@gmail.com"
-        onChange={e =>
-        onInputChange(e.target.getAttribute('id'), e.target.value)}
+      id="email"
+      type="email"
+      className="form-control"
+      placeholder="your_email_here@gmail.com"
+      onChange={e =>
+      onInputChange(e.target.getAttribute('id'), e.target.value)}
       />
-    </div>
+    </div> */}
 
     <div className="form-group">
       <label className="sr-only" htmlFor="exampleInputPassword3">
