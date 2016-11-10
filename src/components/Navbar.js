@@ -35,7 +35,7 @@ const Navbar = ({ children }) => (
               <Link to="/example">Bank Example</Link>
             </li>
             <li className="mainNavLink">
-              <Link to="/sponsor">
+              <Link to="/register">
                 Become a Donor
               </Link>
             </li>
