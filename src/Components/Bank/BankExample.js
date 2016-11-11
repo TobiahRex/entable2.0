@@ -118,10 +118,7 @@ class Donation extends React.Component {
             />
           </div>
 
-          <DonationButtons
-            sendGift={e => this.sendGift(e)}
-            registerAsDonor={this.registerAsDonor}
-          />
+          <DonationButtons sendGift={e => this.sendGift(e)} />
 
           <div className="transactionHeaderDonation">
             <h3>Bank History & Notes to Sponsors</h3>

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 
-const DonationButtons = ({ sendGift, registerAsDonor }) => (
+const DonationButtons = ({ sendGift }) => (
   <div className="donationOptions">
     <div className="giftBtnContainer">
       <button className="giftBtn" onClick={e => sendGift(e)}>
@@ -8,7 +9,10 @@ const DonationButtons = ({ sendGift, registerAsDonor }) => (
       </button>
     </div>
     <div className="noBtnCoinsContainer">
-      <button className="noBTcoins" onClick={registerAsDonor}>
+      <button
+        className="noBTcoins"
+        onClick={() => browserHistory.push('/register')}
+      >
         Register as a Donor
       </button>
     </div>
