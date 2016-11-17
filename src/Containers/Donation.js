@@ -13,11 +13,25 @@ class DonationPg extends React.Component {
       },
       acceptTerms: false,
     };
+  }
 
-    componentWillReceiveProps(nextProps) {
-      
+  componentWillReceiveProps(nextProps) {
+    console.log('Donation Page - nextProps: ', nextProps);
+  }
+
+  componetWillUpdate(nextProps, nextState) {
+    if (this.state.acceptTerms) {
+      console.info('USER ACCEPTED TERMS: ', nextState.acceptTerms);
+    } else {
+      console.warn('User has NOT accepted Donation terms.', nextState.acceptTerms);
     }
-
+  }
+  render() {
+    return (
+      <div>
+        This is the Donation page.
+      </div>
+    );
   }
 }
 
