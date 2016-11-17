@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 
-var config = {
+const config = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.authDomain,
   databaseURL: process.env.databaseURL,
@@ -9,3 +9,5 @@ var config = {
 };
 
 firebase.initializeApp(config);
+export const firebaseDB = firebase.database();
+export const rootRef = firebase.database().ref();
