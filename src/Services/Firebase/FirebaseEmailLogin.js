@@ -1,6 +1,6 @@
+import { firebaseAuth, firebaseDB } from './FirebaseConfig';
 
-
-export default () =>
+export default (email, password) =>
 firebaseAuth.signInWithEmailAndPassword(email, password)
 .then((user) => {
   firebaseDB.ref(`active/${user.uid}`).set({
@@ -16,10 +16,7 @@ firebaseAuth.signInWithEmailAndPassword(email, password)
         user = profileSnap.val();
         const settings = settingsSnap.val();
         const users = activeSnap.val();
-        const location = JSON.parse(this.state.location || this.state.lastPosition);
-        this.props.receivedUser(user, settings, location);
-        this.props.receivedActiveUsers(users);
-        browserHistory.push('/');
+        return { user, settings, users };
       });
     });
   });
