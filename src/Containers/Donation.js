@@ -26,6 +26,13 @@ class DonationPg extends React.Component {
       console.warn('User has NOT accepted Donation terms.', nextState.acceptTerms);
     }
   }
+
+  submitDonation() {
+    if (this.state.amount > 300) {
+      throw Error('Sorry that donation amount is too much.  Please use our Wire Transfer form instead.');
+    }
+  }
+
   render() {
     return (
       <div>
