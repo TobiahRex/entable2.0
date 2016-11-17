@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import BankDisplay from './BankDisplay';
 import Footer from '../Footer';
 
-class BankDetail extends Component {
+class BankDetail extends React.Component {
   static propTypes = {
     banks: PropTypes.arrayOf(PropTypes.object),
     routeParams: PropTypes.objectOf(PropTypes.string),
@@ -31,10 +31,11 @@ class BankDetail extends Component {
 
   render() {
     window.scrollTo(0, 0);
+    const renderBank = this.state.bank ? <BankDisplay bank={this.state.bank} /> : 'BANK IS UNDEFINED';
 
     return (
       <div>
-        {this.state.bank ? <BankDisplay bank={this.state.bank} /> : 'BANK IS UNDEFINED'}
+        {renderBank}
         <Footer />
       </div>
     );

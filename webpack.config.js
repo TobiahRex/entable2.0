@@ -25,6 +25,10 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         BASE_URL: JSON.stringify(process.env.BASE_URL),
+        authDomain: JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
+        databaseURL: JSON.stringify(process.env.FIREBASE_DATABASE_URL),
+        storageBucket: JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
+        msgSenderId: JSON.stringify(process.env.FIREBASE_MSG_SENDER_ID),
       },
     }),
   ],
@@ -34,6 +38,9 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+        query: {
+          presets: ['react', 'es2015', 'stage-2'],
+        },
       },
     ],
   },

@@ -20,6 +20,5 @@ const DonationButtons = ({ sendGift }) => (
 );
 DonationButtons.propTypes = {
   sendGift: PropTypes.func.isRequired,
-  registerAsDonor: PropTypes.func.isRequired,
 };
 export default DonationButtons;

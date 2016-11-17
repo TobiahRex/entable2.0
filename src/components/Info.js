@@ -40,9 +40,9 @@ const Info = () => (
           <div className="form-group">
             <input type="email" className="form-control" placeholder="Email" />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <input type="password" className="form-control" placeholder="Password" />
-          </div>
+          </div> */}
           <button type="submit" className="btn btn-default btn-block btnHome">Learn More</button>
         </form>
       </div>

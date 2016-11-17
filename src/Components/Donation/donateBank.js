@@ -38,11 +38,6 @@ class Donation extends React.Component {
     this.filterBank(this.props.routeParams.id, nextProps.banks);
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    console.log('nextState', nextState);
-    console.log('nextProps', nextProps);
-  }
-
   onInputChange = (id, value) => this.setState({ [id]: value })
 
   filterBank = (id, banks) => {
@@ -65,7 +60,6 @@ class Donation extends React.Component {
   }
 
   sendGift = (e) => {
-    console.log('e: ', e);
     e.preventDefault();
     /*
     1) Initiate Stripe Checkout process.
@@ -127,6 +121,7 @@ class Donation extends React.Component {
 
     const fakeTimeStampDelete = moment().format('lll');
     const bankName = this.state.bank.description.name;
+
     return (
       <div>
         <div className=" donationContainer">
@@ -144,17 +139,14 @@ class Donation extends React.Component {
               sendText={this.sendText}
             />
           </div>
-
           <DonationButtons
             sendGift={e => this.sendGift(e)}
             registerAsDonor={this.registerAsDonor}
           />
-
           <div className="transactionHeaderDonation">
             <h3>Bank History & Notes to Sponsors</h3>
           </div>
           <TransactionHistory />
-
         </div>
         <div>
           <Footer />

@@ -117,7 +117,7 @@ class Donation extends React.Component {
               sendText={this.sendText}
             />
           </div>
-
+          
           <DonationButtons sendGift={e => this.sendGift(e)} />
 
           <div className="transactionHeaderDonation">
