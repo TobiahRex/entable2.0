@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects';
 import userActions from '../../Redux/UserRedux';
 import apiActions from '../../Redux/ApiRedux';
 
-export default function* login(api, { credentials }) {
+export default function* loginUser(api, { credentials }) {
   const response = yield call(() => api.loginUser(credentials));
 
   if (response.ok) {
