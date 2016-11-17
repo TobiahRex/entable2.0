@@ -2,7 +2,7 @@ import { createActions, createReducer } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
   loginUser: ['credentials'],
-  loginUserFail: ['credentials'],
+  loginUserFail: ['error'],
   loginUserSuccess: ['user'],
   logoutUser: null,
   logoutUserFail: ['error'],
@@ -56,6 +56,18 @@ const logoutSuccess = () => ({
   location: null,
   photoUrl: null,
   settings: null,
+  error: null,
+});
+
+const logoutFail = (state, { error }) => ({
+  uid: state.uid,
+  username: state.username,
+  email: state.email,
+  lastLogin: state.lastLogin,
+  location: state.location,
+  photoUrl: state.photoUrl,
+  settings: state.settings,
+  error,
 });
 
 export const userReducer = createReducer(INITIAL_STATE, {
