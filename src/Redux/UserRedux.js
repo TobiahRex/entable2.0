@@ -1,6 +1,11 @@
 import { createActions, createReducer } from 'reduxsauce';
 
 const { Types, Creators } = createReducer({
+  loginUserFail: ['user'],
+  loginUserSuccess: [],
+  logoutUserFail: [''],
+  logoutUserSuccess: null,
+  logoutUser
   uid: ['id'],
   username: ['username'],
   email: ['email'],
@@ -25,7 +30,7 @@ export const INITIAL_STATE = {
 };
 
 
-const received = (state, { user, location, settings }) => ({
+const received = (state, { user }) => ({
   uid: user.id,
   username: user.username,
   email: user.email,
