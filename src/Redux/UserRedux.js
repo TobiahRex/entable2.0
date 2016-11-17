@@ -1,19 +1,12 @@
 import { createActions, createReducer } from 'reduxsauce';
 
-const { Types, Creators } = createReducer({
-  loginUserFail: ['user'],
-  loginUserSuccess: [],
-  logoutUserFail: [''],
+const { Types, Creators } = createActions({
+  loginUser: ['credentials'],
+  loginUserFail: ['credentials'],
+  loginUserSuccess: ['user'],
+  logoutUser: null,
+  logoutUserFail: ['error'],
   logoutUserSuccess: null,
-  logoutUser
-  uid: ['id'],
-  username: ['username'],
-  email: ['email'],
-  lastLogin: ['login'],
-  location: ['location'],
-  locale: ['locale'],
-  photoUrl: ['url'],
-  settings: ['settings'],
 });
 
 export const UserTypes = Types;
@@ -27,21 +20,35 @@ export const INITIAL_STATE = {
   location: null,
   photoUrl: null,
   settings: null,
+  error: null,
 };
 
 
-const received = (state, { user }) => ({
+const loginSuccess = (state, { user }) => ({
   uid: user.id,
   username: user.username,
   email: user.email,
   lastLogin: user.lastLogin,
-  location,
+  location: user.location,
   registered: user.registered,
   photoUrl: user.photoUrl,
-  settings,
+  setttings: user.settings,
+  error: null,
 });
 
-const logout = () => ({
+const loginFail = (state, { error }) => ({
+  uid: null,
+  username: null,
+  email: null,
+  lastLogin: null,
+  location: null,
+  registered: null,
+  photoUrl: null,
+  setttings: null,
+  error,
+});
+
+const logoutSuccess = () => ({
   uid: null,
   username: null,
   email: null,
@@ -52,6 +59,8 @@ const logout = () => ({
 });
 
 export const userReducer = createReducer(INITIAL_STATE, {
-  [Types.USER_RECEIVED]: received,
-  [Types.LOGOUT_SUCCESS]: logout,
+  [Types.LOGIN_SUCCESS]: loginSuccess,
+  [Types.LOGIN_FAIL]: loginFail,
+  [Types.LOGOUT_SUCCESS]: logoutSuccess,
+  [Types.LOGOUT_FAIL]: logoutFail,
 });
