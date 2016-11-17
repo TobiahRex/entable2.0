@@ -22,35 +22,31 @@ export const INITIAL_STATE = {
   location: null,
   photoUrl: null,
   settings: null,
-}
+};
 
 
 const received = (state, { user, location, settings }) => ({
-  uid: action.user.id,
-  username: action.user.username,
-  email: action.user.email,
-  lastLogin: action.user.lastLogin,
-  location: action.location,
-  registered: action.user.registered,
-  photoUrl: action.user.photoUrl,
-  settings: action.settings
-})
+  uid: user.id,
+  username: user.username,
+  email: user.email,
+  lastLogin: user.lastLogin,
+  location,
+  registered: user.registered,
+  photoUrl: user.photoUrl,
+  settings,
+});
 
-const logout = (state) => ({
+const logout = () => ({
   uid: null,
   username: null,
   email: null,
   lastLogin: null,
   location: null,
   photoUrl: null,
-  settings: null
+  settings: null,
 });
 
-const ACTION_HANDLERS = {
-  [Types.USER_RECEIVED]: received,
-  [Types.LOGOUT_SUCCESS]: logout
-}
-
 export const userReducer = createReducer(INITIAL_STATE, {
-
-};
+  [Types.USER_RECEIVED]: received,
+  [Types.LOGOUT_SUCCESS]: logout,
+});
