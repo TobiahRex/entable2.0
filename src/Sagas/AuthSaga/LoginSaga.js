@@ -9,6 +9,7 @@ export default function* login(api, { credentials }) {
     yield [put(userActions.loginSuccess(response.data)),
     put(apiActions.apiSuccess())];
   } else {
-    yield [put(apiActions.apiFail(response.data))];
+    yield [put(userActions.loginFail(response.problem)),
+      put(apiActions.apiFail(response.data))];
   }
 }
