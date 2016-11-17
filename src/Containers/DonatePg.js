@@ -41,5 +41,8 @@ class DonationPg extends React.Component {
     );
   }
 }
+// const mapStateToProps = (state) => ({
+//
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DonationPg);
+export default connect(null, null)(DonationPg);
