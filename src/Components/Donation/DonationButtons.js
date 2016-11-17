@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { browserHistory } from 'react-router';
 
-const DonationButtons = ({ sendGift }) => (
+const DonationButtons = () => (
   <div className="donationOptions">
     <div className="giftBtnContainer">
-      <button className="giftBtn" onClick={e => sendGift(e)}>
+      <button className="giftBtn" onClick={() => browserHistory.push('/donate')}>
         Send As A Gift
       </button>
     </div>
@@ -18,7 +18,4 @@ const DonationButtons = ({ sendGift }) => (
     </div>
   </div>
 );
-DonationButtons.propTypes = {
-  sendGift: PropTypes.func.isRequired,
-};
 export default DonationButtons;
