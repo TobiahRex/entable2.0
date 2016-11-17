@@ -6,6 +6,7 @@ import Homepage from '../Containers/Home';
 import BankDetail from '../Components/Bank/BankDetail';
 import BankExample from '../Components/Bank/BankExample';
 import Register from '../Containers/Register';
+import DonatePg from '../Containers/DonatePg';
 
 import donateBank from '../Components/Donation/donateBank';
 import donateGen from '../Components/Donation/donateGen';
@@ -17,6 +18,7 @@ export default (
     <IndexRoute component={Homepage} />
     <Router path="bank/:id" component={BankDetail} />
     <Router path="register" component={Register} />
+    <Router path="donate" component={DonatePg} />
     <Router path="example" component={BankExample} />
     <Router path="sponsor" component={donateGen} />
     <Router path="donation/:id" component={donateBank} />
