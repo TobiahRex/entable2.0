@@ -11,7 +11,7 @@ class AmtModal extends React.Component {
   static propTypes = {
     close: PropTypes.func.isRequired,
     showModal: PropTypes.bool.isRequired,
-    sendGift: PropTypes.func.isRequired,
+    sendGift: PropTypes.func,
   }
   constructor(props) {
     super(props);
@@ -38,7 +38,7 @@ class AmtModal extends React.Component {
     if (this.state.amount > 3000) {
       alert('The amount should be less than $3000.  Please try again.');
     } else {
-      this.props.sendGift(this.state.amount);
+      this.props.sendGift(null, this.state.amount);
     }
   }
 

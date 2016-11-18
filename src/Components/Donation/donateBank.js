@@ -86,7 +86,7 @@ class DonationBank extends React.Component {
     */
   }
 
-  sendGift = (e) => {
+  sendGift = (e, amount) => {
     e.preventDefault();
     /*
     1) Initiate Stripe Checkout process.
@@ -108,14 +108,12 @@ class DonationBank extends React.Component {
       name: 'Entable',
       description: 'Send Donation as a Gift',
       zipCode: true,
-      amount: this.state.amount,
+      amount,
     });
     handler.close();
   }
 
-  showAmountModal = () => {
-    this.setState({ showModal: true });
-  }
+  showAmountModal = () => this.setState({ showModal: true });
 
   closeModal = () => this.setState({ showModal: false })
 
