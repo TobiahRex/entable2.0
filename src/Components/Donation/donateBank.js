@@ -71,6 +71,7 @@ class DonationBank extends React.Component {
     const bank = banks.filter(bankObj => bankObj._id === this.props.routeParams.id);
     this.setState({ bank: bank[0] });
   }
+
   sendText = (e) => {
     e.preventDefault();
     /*
@@ -86,54 +87,46 @@ class DonationBank extends React.Component {
     */
   }
 
-  sendGift = (e, amount) => {
-    if (e) {
-      e.preventDefault;
-    } else {
-      if (amount === 0) {
-        return alert('Please choose a donation amount.');
-      }
-      const handler = StripeCheckout.configure({
-        key: 'pk_test_iF4PzIrhBrCmphaxI5HQWSnZ',
-        image: '/favicon.ico',
-        locale: 'auto',
-        token: (token) => {
-          this.props.sendToken(token, {
-            currency: this.state.currency,
-            amount: this.state.amount,
-          });
-          this.props.sendDonation(this.state.amount);
-        },
-      });
-      console.log('amount: ', amount);
-      handler.open({
-        name: 'Entable',
-        description: 'Send Donation as a Gift',
-        zipCode: true,
-        amount: Number(amount),
-      });
-
-      return handler.close();
-    }
-  }
-
   showAmountModal = () => this.setState({ showModal: true });
-
-  verifyAmount = (amount) => {
-    if (amount > 300000) {
-      alert('That amount is too large. Please choose an amount less than $3000.00');
-    } else {
-      this.setState({ amount });
-    }
-  }
 
   submit = (e) => {
     e.preventDefault();
-    if (this.state < 1000) {
+    if (Number(this.state.amount) < 10) {
       alert('Please choose an amount to donate from the options listed, or select "Other Amount" to create a custom amount.');
+    } else if (Number(this.state.amount) > 3000) {
+      alert('That amount is too large. Please choose an amount less than $3000.00');
     } else {
       this.sendGift(null, this.state.amount);
     }
+  }
+
+  sendGift = (e, amount) => {
+    if (e) e.preventDefault();
+
+    if (amount === '0') {
+      return alert('Please choose a donation amount.');
+    }
+    const handler = StripeCheckout.configure({
+      key: 'pk_test_iF4PzIrhBrCmphaxI5HQWSnZ',
+      image: '/favicon.ico',
+      locale: 'auto',
+      token: (token) => {
+        this.props.sendToken(token, {
+          currency: this.state.currency,
+          amount: this.state.amount,
+        });
+        this.props.sendDonation(this.state.amount);
+      },
+    });
+
+    handler.open({
+      name: 'Entable',
+      description: 'Send Donation as a Gift',
+      zipCode: true,
+      amount: Number(`${amount}00`),
+    });
+
+    return handler.close();
   }
 
   closeModal = () => this.setState({ showModal: false })
