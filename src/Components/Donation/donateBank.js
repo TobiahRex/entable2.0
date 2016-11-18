@@ -9,7 +9,34 @@ import TwilioActions from '../../Redux/TwilioRedux';
 import StripeActions from '../../Redux/StripeRedux';
 import DonationActions from '../../Redux/DonationRedux';
 
-class Donation extends React.Component {
+import AmountModal from '../../Containers/DonationAmtModal';
+
+const styles = {
+  bankName: {
+    backgroundColor: '#2ecc71',
+    paddingTop: 10,
+    paddingRight: 40,
+    paddingBottom: 10,
+    paddingLeft: 40,
+    margin: 30,
+    color: '#fff',
+    width: 300,
+    alignSelf: 'center',
+    flexDirection: 'column',
+  },
+  bankDiv: {
+    display: 'flex',
+  },
+  bankImage: {
+    backgroundImage: `url("/${this.state.bank.description.images[0]}")`,
+    backgroundPosition: 'center',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor: '#222',
+  },
+};
+
+class DonationBank extends React.Component {
   static propTypes = {
     banks: PropTypes.arrayOf(PropTypes.object),
     routeParams: PropTypes.objectOf(PropTypes.string),
@@ -28,7 +55,7 @@ class Donation extends React.Component {
       currency: 'USD',
       amount: 2000,
       otherAmount: '0.00',
-      showModa: false,
+      showModal: false,
     };
   }
 
@@ -88,38 +115,12 @@ class Donation extends React.Component {
     handler.close();
   }
 
-  showOtherAmountModal = () => {
+  showAmountModal = () => {
     this.setState({ showModal: true });
   }
 
   render() {
     window.scrollTo(0, 0);
-
-    const styles = {
-      bankName: {
-        backgroundColor: '#2ecc71',
-        paddingTop: 10,
-        paddingRight: 40,
-        paddingBottom: 10,
-        paddingLeft: 40,
-        margin: 30,
-        color: '#fff',
-        width: 300,
-        alignSelf: 'center',
-        flexDirection: 'column',
-      },
-      bankDiv: {
-        display: 'flex',
-      },
-      bankImage: {
-        backgroundImage: `url("/${this.state.bank.description.images[0]}")`,
-        backgroundPosition: 'center',
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor: '#222',
-      },
-    };
-
     const fakeTimeStampDelete = moment().format('lll');
     const bankName = this.state.bank.description.name;
 
@@ -148,7 +149,8 @@ class Donation extends React.Component {
               <button className="giftPrice">$100</button>
               <button
                 className="giftPrice otherPrice"
-                onClick={this.showOtherAmountModal}
+                type="button"
+                onClick={this.showAmountModal}
               >
                 Other Amount
               </button>
@@ -170,6 +172,7 @@ class Donation extends React.Component {
         <div>
           <Footer />
         </div>
+        <AmountModal showModal={this.state.showModal} />
       </div>
     );
   }
@@ -183,4 +186,4 @@ const mapDispatchToProps = dispatch => ({
   sendDonation: amount => dispatch(DonationActions.sendDonation(amount)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Donation);
+export default connect(mapStateToProps, mapDispatchToProps)(DonationBank);
