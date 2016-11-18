@@ -27,6 +27,8 @@ class Donation extends React.Component {
       token: '',
       currency: 'USD',
       amount: 2000,
+      otherAmount: '0.00',
+      showModa: false,
     };
   }
 
@@ -69,7 +71,6 @@ class Donation extends React.Component {
       image: '/favicon.ico',
       locale: 'auto',
       token: (token) => {
-        event.preventDefault();
         this.props.sendToken(token, {
           currency: this.state.currency,
           amount: this.state.amount,
@@ -84,12 +85,12 @@ class Donation extends React.Component {
       zipCode: true,
       amount: this.state.amount,
     });
-    event.preventDefault();
-
     handler.close();
-    event.preventDefault();
   }
 
+  showOtherAmountModal = () => {
+    this.setState({ showModal: true });
+  }
 
   render() {
     window.scrollTo(0, 0);
@@ -145,6 +146,12 @@ class Donation extends React.Component {
               <button className="giftPrice">$20</button>
               <button className="giftPrice">$50</button>
               <button className="giftPrice">$100</button>
+              <button
+                className="giftPrice otherPrice"
+                onClick={this.showOtherAmountModal}
+              >
+                Other Amount
+              </button>
             </div>
             <div>
               <p className="priceText">$10.00 is the minimum donation online.  All donations are tax deductible.

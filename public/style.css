@@ -525,7 +525,9 @@ align-self: center;
   color: #fff;
   width: 100px;
 }
-
+.giftPrice.otherPrice {
+  width: 150px;
+}
 .priceText {
   font-size: 14px;
   color: #fff;
