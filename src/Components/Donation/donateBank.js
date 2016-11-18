@@ -100,7 +100,7 @@ class DonationBank extends React.Component {
 
   verifyOtherAmount = (amountString) => {
     const amount = Number(amountString);
-    if (amount > 300000) {
+    if (amount > 3000) {
       alert('That amount is too large.  Please choose an amount less than $3000');
     } else {
       this.setState({ amount });
