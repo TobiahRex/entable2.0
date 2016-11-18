@@ -30,6 +30,7 @@ a:hover {
 
 li {
   list-style-type: none;
+  font-size: 16px;
 }
 
 p {
@@ -331,6 +332,7 @@ align-self: center;
 
 .footer p {
   color: #fff;
+  font-size: 15px;
 }
 
 .footerTitle {
@@ -495,6 +497,7 @@ align-self: center;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding-bottom: 40px;
 }
 
 .giftBtnContainer {
@@ -507,6 +510,7 @@ align-self: center;
   text-transform: uppercase;
   margin: 30px;
   color: #fff;
+  height: 50px;
   width: 300px;
 }
 
