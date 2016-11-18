@@ -173,7 +173,11 @@ class DonationBank extends React.Component {
         <div>
           <Footer />
         </div>
-        <AmountModal showModal={this.state.showModal} close={this.closeModal} />
+        <AmountModal
+          showModal={this.state.showModal}
+          close={this.closeModal}
+          sendGift={this.sendGift}
+        />
       </div>
     );
   }
