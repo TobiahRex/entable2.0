@@ -28,7 +28,7 @@ class DonationBank extends React.Component {
       phone: '',
       token: '',
       currency: 'USD',
-      amount: 2000,
+      amount: 0,
       otherAmount: '0.00',
       showModal: false,
     };
@@ -88,9 +88,9 @@ class DonationBank extends React.Component {
 
   sendGift = (e, amount) => {
     e.preventDefault();
-    /*
-    1) Initiate Stripe Checkout process.
-    */
+    if (amount === 0) {
+      return alert('Please choose a donation amount.');
+    }
     const handler = StripeCheckout.configure({
       key: 'pk_test_iF4PzIrhBrCmphaxI5HQWSnZ',
       image: '/favicon.ico',
@@ -110,10 +110,18 @@ class DonationBank extends React.Component {
       zipCode: true,
       amount,
     });
-    handler.close();
+    return handler.close();
   }
 
   showAmountModal = () => this.setState({ showModal: true });
+
+  verifyAmount = (amount) => {
+    if (amount > 300000) {
+      alert('That amount is too large. Please choose an amount less than $3000.00');
+    } else {
+      this.setState({ amount });
+    }
+  }
 
   closeModal = () => this.setState({ showModal: false })
 
@@ -160,7 +168,7 @@ class DonationBank extends React.Component {
             </div>
           </div>
           <DonationButtons
-            sendGift={e => this.sendGift(e)}
+            sendGift={e => this.sendGift(e, this.state.amount)}
             registerAsDonor={this.registerAsDonor}
           />
           <div className="transactionHeaderDonation">
@@ -173,6 +181,8 @@ class DonationBank extends React.Component {
         </div>
         <AmountModal
           showModal={this.state.showModal}
+          verifyAmount={this.verifyAmount}
+          submit={this.submit}
           close={this.closeModal}
           sendGift={this.sendGift}
         />
