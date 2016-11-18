@@ -7,16 +7,25 @@ class AmtModal extends React.Component {
     this.state = {
       amount: 0,
       agree: false,
+      showModal: false,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('MODAL received props: \n', nextProps);
+  componentWillReceiveProps({ showModal }) {
+    if (showModal !== this.state.showModal) {
+      this.setState({ showModal });
+    }
   }
+  shouldComponentUpdate({ showModal }) {
+    if (this.state.showModal === showModal) return false;
+    return true;
+  }
+
+  close = () => this.setState({ showModal: false })
 
   render() {
     return (
-      <Modal show={this.props.showModal} onHide={this.close}>
+      <Modal show={this.state.showModal} onHide={this.close}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
