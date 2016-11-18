@@ -7,7 +7,7 @@ import {
   FormControl,
 } from 'react-bootstrap/lib/';
 
-const AmtModal = ({ showModal, verifyAmount, submit, close, sendGift }) => (
+const AmtModal = ({ showModal, verifyOtherAmount, submit, close, sendGift }) => (
   <Modal
     show={showModal}
     onHide={close}
@@ -37,7 +37,7 @@ const AmtModal = ({ showModal, verifyAmount, submit, close, sendGift }) => (
               <FormControl
                 bsClass="amountValue"
                 type="number"
-                onChange={e => verifyAmount(e.target.value)}
+                onChange={e => verifyOtherAmount(e.target.value)}
               />
               <InputGroup.Addon>.00</InputGroup.Addon>
             </InputGroup>
@@ -53,7 +53,7 @@ const AmtModal = ({ showModal, verifyAmount, submit, close, sendGift }) => (
   </Modal>
 );
 AmtModal.propTypes = {
-  verifyAmount: PropTypes.func.isRequired,
+  verifyOtherAmount: PropTypes.func.isRequired,
   close: PropTypes.func.isRequired,
   submit: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,

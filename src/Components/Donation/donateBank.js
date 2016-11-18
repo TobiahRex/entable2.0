@@ -194,7 +194,7 @@ class DonationBank extends React.Component {
         </div>
         <AmountModal
           showModal={this.state.showModal}
-          verifyAmount={this.verifyAmount}
+          verifyOtherAmount={this.verifyOtherAmount}
           submit={this.submit}
           close={this.closeModal}
           sendGift={this.sendGift}
