@@ -592,6 +592,12 @@ align-self: center;
   border-collapse: separate;
   width: 200px;
 }
+.amtModalFooter {
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+  border-top: 1px solid #e5e5e5;
+}
 
 
 @media only screen and (max-width : 3840px) {

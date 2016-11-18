@@ -15,12 +15,15 @@ const AmtModal = ({ showModal, verifyAmount, submit, close, sendGift }) => (
     <Modal.Header closeButton>
       <Modal.Title>Other Amount</Modal.Title>
     </Modal.Header>
+    <br />
     <Modal.Body bsClass="text-center">
       <h5>Choose Donation Amount.</h5>
       <p>
         We accept donations between $10 and $3000.00
       </p>
-      <hr />
+      <br />
+      <br />
+      <br />
       <div className="amountParent">
         <div>
           <p className="amountQ">
@@ -41,9 +44,9 @@ const AmtModal = ({ showModal, verifyAmount, submit, close, sendGift }) => (
           </FormGroup>
         </div>
       </div>
-
+      <br />
     </Modal.Body>
-    <Modal.Footer>
+    <Modal.Footer bsClass="amtModalFooter">
       <Button onClick={close}>Cancel</Button>
       <Button onClick={e => submit(e)}>Submit</Button>
     </Modal.Footer>
