@@ -123,6 +123,14 @@ class DonationBank extends React.Component {
     }
   }
 
+  submit = () => {
+    if (this.state < 1000) {
+      alert('Please choose an amount to donate from the options listed, or select "Other Amount" to create a custom amount.');
+    } else {
+      this.sendGift(null, this.state.amount);
+    }
+  }
+
   closeModal = () => this.setState({ showModal: false })
 
   render() {
