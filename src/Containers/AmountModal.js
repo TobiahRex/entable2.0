@@ -40,7 +40,7 @@ class AmtModal extends React.Component {
         <Modal.Header closeButton>
           <Modal.Title>Other Amount</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body bsClass="text-center">
           <h5>Choose Donation Amount.</h5>
           <p>
             We accept donations between $10 and $3000.00
@@ -48,7 +48,7 @@ class AmtModal extends React.Component {
           <hr />
           <div className="amountParent">
             <div>
-              <p>
+              <p className="amountQ">
                 How much would you like to donate?
               </p>
             </div>
@@ -56,7 +56,7 @@ class AmtModal extends React.Component {
               <FormGroup>
                 <InputGroup bsClass="amountInput">
                   <InputGroup.Addon>$</InputGroup.Addon>
-                  <FormControl type="number" />
+                  <FormControl bsClass="amountValue" type="number" />
                   <InputGroup.Addon>.00</InputGroup.Addon>
                 </InputGroup>
               </FormGroup>

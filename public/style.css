@@ -567,7 +567,24 @@ align-self: center;
 /* ---------- Amount Modal ---------- */
 .amountParent {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
+}
+.amountQ {
+  padding: 12px;
+  font-size: 18px;
+  margin-bottom: 0px;
+}
+.amountValue {
+  border-radius: 0;
+  border: 1px solid #ccc;
+  height: 40px;
+  box-shadow: none;
+  text-align: center;
+  -webkit-appearance: none;
+  color: #444;
+  font-size: 18px;
+  width: 130px;
 }
 .amountInput {
   position: relative;
