@@ -18,7 +18,7 @@ const Footer = () => (
         </div>
         <div className="col-md-8">
           <h6 className="footerTitle">What is Table Banking?</h6>
-          <p>A table bank starts with a small sum of money ranging from 300.00 - 3,000.00 USD.
+          <p>A table bank starts with a small sum of money ranging from $300.00 - $3,000.00 USD.
             The starting funds are controlled by a board of women from surrounding villages.
           Together they decide who is leant money, the rates and the terms.</p>
           <p>The bankers meet once per month to make scheduled repayments and
