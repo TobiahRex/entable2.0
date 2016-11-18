@@ -93,10 +93,17 @@ class DonationBank extends React.Component {
     e.preventDefault();
     if (Number(this.state.amount) < 10) {
       alert('Please choose an amount to donate from the options listed, or select "Other Amount" to create a custom amount.');
-    } else if (Number(this.state.amount) > 3000) {
-      alert('That amount is too large. Please choose an amount less than $3000.00');
     } else {
       this.sendGift(null, this.state.amount);
+    }
+  }
+
+  verifyOtherAmount = (amountString) => {
+    const amount = Number(amountString);
+    if (amount > 300000) {
+      alert('That amount is too large.  Please choose an amount less than $3000');
+    } else {
+      this.setState({ amount });
     }
   }
 
