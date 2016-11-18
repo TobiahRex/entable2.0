@@ -531,6 +531,7 @@ align-self: center;
   margin: 15px;
   color: #fff;
   width: 100px;
+  outline: none;
 }
 .giftPrice:hover {
   background-color: #2ecc71;
@@ -549,6 +550,7 @@ align-self: center;
   margin: 15px;
   color: #fff;
   width: 100px;
+  outline: none;
 }
 .giftPrice.otherPrice {
   width: 150px;

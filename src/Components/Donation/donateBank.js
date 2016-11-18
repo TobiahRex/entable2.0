@@ -163,10 +163,22 @@ class DonationBank extends React.Component {
           </div>
           <div className="priceOptions">
             <div className="giftBtnContainer">
-              <button className="giftPrice">$10</button>
-              <button className="giftPrice">$20</button>
-              <button className="giftPrice">$50</button>
-              <button className="giftPrice">$100</button>
+              <button
+                className="giftPrice"
+                onClick={() => this.setState({ amount: 10 })}
+              >$10</button>
+              <button
+                className="giftPrice"
+                onClick={() => this.setState({ amount: 20 })}
+              >$20</button>
+              <button
+                className="giftPrice"
+                onClick={() => this.setState({ amount: 50 })}
+              >$50</button>
+              <button
+                className="giftPrice"
+                onClick={() => this.setState({ amount: 100 })}
+              >$100</button>
               <button
                 className="giftPrice otherPrice"
                 type="button"
