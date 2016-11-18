@@ -188,7 +188,7 @@ class DonationBank extends React.Component {
               </button>
             </div>
             <div>
-              <p className="priceText">$10.00 is the minimum donation online.  All donations are tax deductible.
+              <p className="priceText">$10.00 is the minimum online donation.  All donations are tax deductible.
               </p>
             </div>
           </div>
