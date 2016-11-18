@@ -528,6 +528,7 @@ align-self: center;
 .giftPrice.otherPrice {
   width: 150px;
 }
+
 .priceText {
   font-size: 14px;
   color: #fff;
@@ -561,6 +562,18 @@ align-self: center;
 
 .noBTcoins {
 
+}
+
+/* ---------- Amount Modal ---------- */
+.amountParent {
+  display: flex;
+  justify-content: space-around;
+}
+.amountInput {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  width: 200px;
 }
 
 

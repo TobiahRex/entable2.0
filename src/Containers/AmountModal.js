@@ -1,7 +1,17 @@
 import React, { PropTypes } from 'react';
-import Modal from 'react-bootstrap/lib/Modal';
+import {
+  Modal,
+  Button,
+  FormGroup,
+  InputGroup,
+  FormControl,
+} from 'react-bootstrap/lib/';
 
 class AmtModal extends React.Component {
+  static propTypes = {
+    close: PropTypes.func.isRequired,
+    showModal: PropTypes.bool.isRequired,
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -23,22 +33,39 @@ class AmtModal extends React.Component {
 
   render() {
     return (
-      <Modal show={this.state.showModal} onHide={this.props.close}>
+      <Modal
+        show={this.state.showModal}
+        onHide={this.props.close}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Other Amount</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Text in a modal</h4>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-          <h4>Popover in a modal</h4>
+          <h5>Choose Donation Amount.</h5>
+          <p>
+            We accept donations between $10 and $3000.00
+          </p>
           <hr />
+          <div className="amountParent">
+            <div>
+              <p>
+                How much would you like to donate?
+              </p>
+            </div>
+            <div>
+              <FormGroup>
+                <InputGroup bsClass="amountInput">
+                  <InputGroup.Addon>$</InputGroup.Addon>
+                  <FormControl type="number" />
+                  <InputGroup.Addon>.00</InputGroup.Addon>
+                </InputGroup>
+              </FormGroup>
+            </div>
+          </div>
 
-          <h4>Overflowing text to show scroll behavior</h4>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
         </Modal.Body>
         <Modal.Footer>
-          <button onClick={this.props.close}>Close</button>
+          <Button onClick={this.props.close}>Close</Button>
         </Modal.Footer>
       </Modal>
     );
