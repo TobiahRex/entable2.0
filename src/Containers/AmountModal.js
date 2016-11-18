@@ -12,6 +12,7 @@ class AmtModal extends React.Component {
   }
 
   componentWillReceiveProps({ showModal }) {
+    console.log('MODAL: ', showModal);
     if (showModal !== this.state.showModal) {
       this.setState({ showModal });
     }
