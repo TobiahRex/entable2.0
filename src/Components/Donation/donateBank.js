@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
+// import moment from 'moment';
 import Footer from '../Footer';
 import TextForm from './TextAddressForm';
 import TransactionHistory from '../Bank/TransactionHistory';
@@ -9,32 +9,7 @@ import TwilioActions from '../../Redux/TwilioRedux';
 import StripeActions from '../../Redux/StripeRedux';
 import DonationActions from '../../Redux/DonationRedux';
 
-import AmountModal from '../../Containers/DonationAmtModal';
-
-const styles = {
-  bankName: {
-    backgroundColor: '#2ecc71',
-    paddingTop: 10,
-    paddingRight: 40,
-    paddingBottom: 10,
-    paddingLeft: 40,
-    margin: 30,
-    color: '#fff',
-    width: 300,
-    alignSelf: 'center',
-    flexDirection: 'column',
-  },
-  bankDiv: {
-    display: 'flex',
-  },
-  bankImage: {
-    backgroundImage: `url("/${this.state.bank.description.images[0]}")`,
-    backgroundPosition: 'center',
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor: '#222',
-  },
-};
+import AmountModal from '../../Containers/AmountModal';
 
 class DonationBank extends React.Component {
   static propTypes = {
@@ -56,6 +31,29 @@ class DonationBank extends React.Component {
       amount: 2000,
       otherAmount: '0.00',
       showModal: false,
+    };
+    this.styles = {
+      bankName: {
+        backgroundColor: '#2ecc71',
+        paddingTop: 10,
+        paddingRight: 40,
+        paddingBottom: 10,
+        paddingLeft: 40,
+        margin: 30,
+        color: '#fff',
+        width: 300,
+        alignSelf: 'center',
+        flexDirection: 'column',
+      },
+      bankDiv: {
+        display: 'flex',
+      },
+      bankImage: {
+        backgroundPosition: 'center',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#222',
+      },
     };
   }
 
@@ -119,17 +117,20 @@ class DonationBank extends React.Component {
     this.setState({ showModal: true });
   }
 
+  closeModal = () => this.setState({ showModal: false })
+
   render() {
     window.scrollTo(0, 0);
-    const fakeTimeStampDelete = moment().format('lll');
+    // const fakeTimeStampDelete = moment().format('lll');
+    this.styles.bankImage.backgroundImage = `url("/${this.state.bank.description.images[0]}")`;
     const bankName = this.state.bank.description.name;
 
     return (
       <div>
         <div className=" donationContainer">
-          <div className="bankImgBanner" style={styles.bankImage}>
-            <div style={styles.bankDiv} className="donationBankName">
-              <h2 style={styles.bankName}>{bankName}</h2>
+          <div className="bankImgBanner" style={this.styles.bankImage}>
+            <div style={this.styles.bankDiv} className="donationBankName">
+              <h2 style={this.styles.bankName}>{bankName}</h2>
               <h5>
                 96% of your donation goes directly to the owners of this bank.
                 <br />
@@ -172,7 +173,7 @@ class DonationBank extends React.Component {
         <div>
           <Footer />
         </div>
-        <AmountModal showModal={this.state.showModal} />
+        <AmountModal showModal={this.state.showModal} close={this.closeModal} />
       </div>
     );
   }

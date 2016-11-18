@@ -12,7 +12,6 @@ class AmtModal extends React.Component {
   }
 
   componentWillReceiveProps({ showModal }) {
-    console.log('MODAL: ', showModal);
     if (showModal !== this.state.showModal) {
       this.setState({ showModal });
     }
@@ -22,11 +21,9 @@ class AmtModal extends React.Component {
     return true;
   }
 
-  close = () => this.setState({ showModal: false })
-
   render() {
     return (
-      <Modal show={this.state.showModal} onHide={this.close}>
+      <Modal show={this.state.showModal} onHide={this.props.close}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
@@ -41,7 +38,7 @@ class AmtModal extends React.Component {
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
         </Modal.Body>
         <Modal.Footer>
-          <button onClick={this.close}>Close</button>
+          <button onClick={this.props.close}>Close</button>
         </Modal.Footer>
       </Modal>
     );
