@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const TextForm = ({ sendText, onInputChange }) => (
+const TextBitcoinForm = ({ sendText, onInputChange }) => (
   <form className="infoForm" onSubmit={sendText}>
     <div className="form-group">
       <label className="sr-only" htmlFor="entableBitcoinAddress">
@@ -38,7 +38,7 @@ const TextForm = ({ sendText, onInputChange }) => (
         className="form-control"
         placeholder="Your Name"
         onChange={e =>
-        onInputChange(e.target.getAttribute('id'), e.target.value)}
+          onInputChange(e.target.getAttribute('id'), e.target.value)}
       />
     </div>
     <div className="form-group">
@@ -58,8 +58,8 @@ const TextForm = ({ sendText, onInputChange }) => (
   </form>
 );
 
-TextForm.propTypes = {
+TextBitcoinForm.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   sendText: PropTypes.func.isRequired,
 };
-export default TextForm;
+export default TextBitcoinForm;

@@ -1,6 +1,6 @@
 import { firebaseAuth, firebaseDB } from './FirebaseConfig';
 
-export default (email, password) =>
+export const firebaseEmailSignIn = (email, password) =>
 firebaseAuth.signInWithEmailAndPassword(email, password)
 .then((user) => {
   firebaseDB.ref(`active/${user.uid}`).set({
@@ -25,3 +25,5 @@ firebaseAuth.signInWithEmailAndPassword(email, password)
   this.props.loginFailure();
   throw Error('Sign In Error', err.message);
 });
+
+export const firebaseSignInFacebook = () => console.log('this is the facebook social login');
