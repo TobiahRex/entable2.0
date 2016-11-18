@@ -45,7 +45,7 @@ const AmtModal = ({ showModal, verifyAmount, submit, close, sendGift }) => (
     </Modal.Body>
     <Modal.Footer>
       <Button onClick={close}>Cancel</Button>
-      <Button onClick={submit}>Submit</Button>
+      <Button onClick={e => submit(e)}>Submit</Button>
     </Modal.Footer>
   </Modal>
 );
