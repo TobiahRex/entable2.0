@@ -8,8 +8,7 @@ const createAPI = (baseURL = process.env.BASE_URL) => {
 
   // --------------------------------------------------------
 
-  const getAllBanks = () =>
-  api.get('api/banks/');
+  const getAllBanks = () => api.get('api/banks/');
 
   const getExchangeRate = pair =>
   api.get('api/coinbase/btc/coinbase/rate', pair);

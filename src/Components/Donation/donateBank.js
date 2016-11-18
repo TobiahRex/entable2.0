@@ -139,6 +139,18 @@ class Donation extends React.Component {
               sendText={this.sendText}
             />
           </div>
+          <div className="priceOptions">
+            <div className="giftBtnContainer">
+              <button className="giftPrice">$10</button>
+              <button className="giftPrice">$20</button>
+              <button className="giftPrice">$50</button>
+              <button className="giftPrice">$100</button>
+            </div>
+            <div>
+              <p className="priceText">$10.00 is the minimum donation online.  All donations are tax deductible.
+              </p>
+            </div>
+          </div>
           <DonationButtons
             sendGift={e => this.sendGift(e)}
             registerAsDonor={this.registerAsDonor}
