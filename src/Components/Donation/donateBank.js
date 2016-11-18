@@ -87,30 +87,34 @@ class DonationBank extends React.Component {
   }
 
   sendGift = (e, amount) => {
-    e.preventDefault();
-    if (amount === 0) {
-      return alert('Please choose a donation amount.');
-    }
-    const handler = StripeCheckout.configure({
-      key: 'pk_test_iF4PzIrhBrCmphaxI5HQWSnZ',
-      image: '/favicon.ico',
-      locale: 'auto',
-      token: (token) => {
-        this.props.sendToken(token, {
-          currency: this.state.currency,
-          amount: this.state.amount,
-        });
-        this.props.sendDonation(this.state.amount);
-      },
-    });
+    if (e) {
+      e.preventDefault;
+    } else {
+      if (amount === 0) {
+        return alert('Please choose a donation amount.');
+      }
+      const handler = StripeCheckout.configure({
+        key: 'pk_test_iF4PzIrhBrCmphaxI5HQWSnZ',
+        image: '/favicon.ico',
+        locale: 'auto',
+        token: (token) => {
+          this.props.sendToken(token, {
+            currency: this.state.currency,
+            amount: this.state.amount,
+          });
+          this.props.sendDonation(this.state.amount);
+        },
+      });
+      console.log('amount: ', amount);
+      handler.open({
+        name: 'Entable',
+        description: 'Send Donation as a Gift',
+        zipCode: true,
+        amount: Number(amount),
+      });
 
-    handler.open({
-      name: 'Entable',
-      description: 'Send Donation as a Gift',
-      zipCode: true,
-      amount,
-    });
-    return handler.close();
+      return handler.close();
+    }
   }
 
   showAmountModal = () => this.setState({ showModal: true });
@@ -123,7 +127,8 @@ class DonationBank extends React.Component {
     }
   }
 
-  submit = () => {
+  submit = (e) => {
+    e.preventDefault();
     if (this.state < 1000) {
       alert('Please choose an amount to donate from the options listed, or select "Other Amount" to create a custom amount.');
     } else {
@@ -195,16 +200,16 @@ class DonationBank extends React.Component {
           sendGift={this.sendGift}
         />
       </div>
-    );
+      );
   }
 }
-const mapStateToProps = state => ({
-  banks: state.bank.banks,
-});
-const mapDispatchToProps = dispatch => ({
-  sendText: phone => dispatch(TwilioActions.sendText(phone)),
-  sendToken: (token, info) => dispatch(StripeActions.sendToken(token, info)),
-  sendDonation: amount => dispatch(DonationActions.sendDonation(amount)),
-});
+  const mapStateToProps = state => ({
+    banks: state.bank.banks,
+  });
+  const mapDispatchToProps = dispatch => ({
+    sendText: phone => dispatch(TwilioActions.sendText(phone)),
+    sendToken: (token, info) => dispatch(StripeActions.sendToken(token, info)),
+    sendDonation: amount => dispatch(DonationActions.sendDonation(amount)),
+  });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DonationBank);
+  export default connect(mapStateToProps, mapDispatchToProps)(DonationBank);
