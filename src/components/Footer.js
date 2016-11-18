@@ -1,12 +1,12 @@
 import React from 'react';
 
 const Footer = () => (
-  <div>
-    <footer className="container-fluid footer">
-      <div className="container">
+  <div className="footerContainer">
+    <footer className="container-fluid footer customFtrStyle">
+      <div className="container bsFtrContainer">
         <div className="col-md-4">
           <h6 className="footerTitle">More On Table Banking</h6>
-          <ul>
+          <ul className="footerUl">
             <li>
               <a href="http://www.un.org/africarenewal/magazine/august-2015/loans-women-smart-economics">UN on Table Banking</a>
             </li>
