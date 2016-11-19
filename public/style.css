@@ -315,6 +315,7 @@ align-self: center;
 .footerContainer {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 .footer.customFtrStyle {
   height: 280px;
