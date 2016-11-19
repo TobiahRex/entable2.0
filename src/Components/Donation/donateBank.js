@@ -87,8 +87,6 @@ class DonationBank extends React.Component {
     */
   }
 
-  showAmountModal = () => this.setState({ showModal: true });
-
   submit = (e) => {
     e.preventDefault();
     if (Number(this.state.amount) < 10) {
@@ -135,6 +133,8 @@ class DonationBank extends React.Component {
 
     return handler.close();
   }
+
+  showAmountModal = () => this.setState({ showModal: true });
 
   closeModal = () => this.setState({ showModal: false })
 

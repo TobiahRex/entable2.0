@@ -6,6 +6,8 @@ import TransactionHistory from '../Bank/TransactionHistory';
 import DonationButtons from '../Donation/DonationButtons';
 import TwilioActions from '../../Redux/TwilioRedux';
 
+import AmountModal from '../../Containers/AmountModal';
+
 class Donation extends React.Component {
   static propTypes = {
     sendText: PropTypes.func.isRequired,
@@ -21,14 +23,35 @@ class Donation extends React.Component {
       currency: 'USD',
       amount: 2000,
     };
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    console.log('nextState', nextState);
-    console.log('nextProps', nextProps);
+    this.styles = {
+      bankName: {
+        backgroundColor: '#2ecc71',
+        paddingTop: 10,
+        paddingRight: 40,
+        paddingBottom: 10,
+        paddingLeft: 40,
+        margin: 30,
+        color: '#fff',
+        width: 300,
+        alignSelf: 'center',
+        flexDirection: 'column',
+      },
+      bankDiv: {
+        display: 'flex',
+      },
+      bankImage: {
+        backgroundImage: 'url("/mbola-tanzania-feature.jpg")',
+        backgroundPosition: 'center',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#222',
+      },
+    };
   }
 
   onInputChange = (id, value) => this.setState({ [id]: value })
+
+  showAmountModal = () => this.setState({ showModal: true });
 
   sendText = (e) => {
     e.preventDefault();
@@ -65,47 +88,43 @@ class Donation extends React.Component {
       zipCode: true,
       amount: this.state.amount,
     });
-    event.preventDefault();
+    e.preventDefault();
 
     handler.close();
-    event.preventDefault();
+    e.preventDefault();
   }
 
+  submit = (e) => {
+    e.preventDefault();
+    if (Number(this.state.amount) < 10) {
+      alert('Please choose an amount to donate from the options listed, or select "Other Amount" to create a custom amount.');
+    } else {
+      this.sendGift(null, this.state.amount);
+    }
+  }
+
+  verifyOtherAmount = (amountString) => {
+    const amount = Number(amountString);
+    if (amount > 3000) {
+      alert('That amount is too large.  Please choose an amount less than $3000');
+    } else {
+      this.setState({ amount });
+    }
+  }
+
+  showAmountModal = () => this.setState({ showModal: true });
+
+  closeModal = () => this.setState({ showModal: false })
 
   render() {
     window.scrollTo(0, 0);
 
-    const styles = {
-      bankName: {
-        backgroundColor: '#2ecc71',
-        paddingTop: 10,
-        paddingRight: 40,
-        paddingBottom: 10,
-        paddingLeft: 40,
-        margin: 30,
-        color: '#fff',
-        width: 300,
-        alignSelf: 'center',
-        flexDirection: 'column',
-      },
-      bankDiv: {
-        display: 'flex',
-      },
-      bankImage: {
-        backgroundImage: 'url("/mbola-tanzania-feature.jpg")',
-        backgroundPosition: 'center',
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor: '#222',
-      },
-    };
-
     return (
       <div>
         <div className=" donationContainer">
-          <div className="bankImgBanner" style={styles.bankImage}>
-            <div style={styles.bankDiv} className="donationBankName">
-              <h2 style={styles.bankName}>Mbola Village Bank</h2>
+          <div className="bankImgBanner" style={this.styles.bankImage}>
+            <div style={this.styles.bankDiv} className="donationBankName">
+              <h2 style={this.styles.bankName}>Mbola Village Bank</h2>
               <h5>
                 96% of your donation goes directly to the owners of this bank.
                 <br />
@@ -117,18 +136,56 @@ class Donation extends React.Component {
               sendText={this.sendText}
             />
           </div>
-          
-          <DonationButtons sendGift={e => this.sendGift(e)} />
-
+          <div className="priceOptions">
+            <div className="giftBtnContainer">
+              <button
+                className="giftPrice"
+                onClick={() => this.setState({ amount: 10 })}
+              >$10</button>
+              <button
+                className="giftPrice"
+                onClick={() => this.setState({ amount: 20 })}
+              >$20</button>
+              <button
+                className="giftPrice"
+                onClick={() => this.setState({ amount: 50 })}
+              >$50</button>
+              <button
+                className="giftPrice"
+                onClick={() => this.setState({ amount: 100 })}
+              >$100</button>
+              <button
+                className="giftPrice otherPrice"
+                type="button"
+                onClick={this.showAmountModal}
+              >
+                Other Amount
+              </button>
+            </div>
+            <div>
+              <p className="priceText">$10.00 is the minimum online donation.  All donations are tax deductible.
+              </p>
+            </div>
+          </div>
+          <DonationButtons
+            sendGift={e => this.sendGift(e, this.state.amount)}
+            registerAsDonor={this.registerAsDonor}
+          />
           <div className="transactionHeaderDonation">
             <h3>Bank History & Notes to Sponsors</h3>
           </div>
           <TransactionHistory />
-
         </div>
         <div>
           <Footer />
         </div>
+        <AmountModal
+          showModal={this.state.showModal}
+          verifyOtherAmount={this.verifyOtherAmount}
+          submit={this.submit}
+          close={this.closeModal}
+          sendGift={this.sendGift}
+        />
       </div>
     );
   }
