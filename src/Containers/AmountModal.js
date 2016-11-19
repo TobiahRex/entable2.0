@@ -7,7 +7,7 @@ import {
   FormControl,
 } from 'react-bootstrap/lib/';
 
-const AmtModal = ({ showModal, verifyOtherAmount, submit, close, sendGift }) => (
+const AmtModal = ({ showModal, verifyOtherAmount, submit, close }) => (
   <Modal
     show={showModal}
     onHide={close}
