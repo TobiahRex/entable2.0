@@ -1,16 +1,25 @@
 import React, { PropTypes } from 'react';
-import { Breadcrumb as bsBreadcrumb } from 'react-bootstrap/lib/';
+import { Breadcrumb } from 'react-bootstrap/lib/';
 
-const Breadcrumb = ({ paths }) => {
+const bsBreadcrumb = ({ paths }) => {
+  const style = {
+    borderRadius: '0px',
+    backgroundColor: '#2ecc71',
+    padding: '8px 130px 8px 130px',
+  };
   const breadcrumbs = paths.map(path =>
-    <bsBreadcrumb.Item href={path.href}>{path.name}</bsBreadcrumb.Item>
+    <Breadcrumb.Item href={path.href} active={path.active}>{path.name}</Breadcrumb.Item>
   );
 
   return (
-    <bsBreadcrumb>{breadcrumbs}</bsBreadcrumb>
+    <div>
+      <Breadcrumb style={style}>
+        {breadcrumbs}
+      </Breadcrumb>
+    </div>
   );
 };
-Breadcrumb.propTypes = {
+bsBreadcrumb.propTypes = {
   paths: PropTypes.arrayOf(PropTypes.object),
 };
-export default Breadcrumb;
+export default bsBreadcrumb;
