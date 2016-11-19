@@ -1,5 +1,6 @@
 import React from 'react';
 import Breadcrumbs from '../Components/Breadcrumb';
+import Footer from '../Components/Footer';
 
 class Register extends React.Component {
   static propTypes = {
@@ -24,6 +25,9 @@ class Register extends React.Component {
       registerTitle: {
         padding: '0px 140px 0px 140px',
       },
+      inputContainers: {
+        padding: '50spx 140px 50px 140px',
+      },
     };
   }
 
@@ -40,93 +44,101 @@ class Register extends React.Component {
         <Breadcrumbs paths={this.breadCrumbs} />
         <h1 style={this.styles.registerTitle}>Register as a Donor</h1>
         <hr />
-        <label htmlFor="firstName">First Name</label>
-        <input
-          type="text"
-          id="firstName"
-          onChange={e =>
-            this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-        />
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          type="text"
-          id="lastName"
-          onChange={e =>
-            this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-        />
-        <label htmlFor="emailAddress">Email Address</label>
-        <input
-          type="text"
-          id="emailAddress"
-          onChange={e =>
-            this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-        />
-        <label htmlFor="dateOfBirth">Date of Birth</label>
-        <div>
-          <input
-            type="text"
-            id="dateOfBirth"
-            onChange={e =>
-              this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-          />
+        <div style={this.styles.inputContainers}>
+          <label htmlFor="firstName">First Name</label>
+          <div>
+            <input
+              type="text"
+              id="firstName"
+              onChange={e =>
+                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+            />
+          </div>
+          <label htmlFor="lastName">Last Name</label>
+          <div>
+            <input
+              type="text"
+              id="lastName"
+              onChange={e =>
+                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+            />
+          </div>
+          <label htmlFor="emailAddress">Email Address</label>
+          <div>
+            <input
+              type="text"
+              id="emailAddress"
+              onChange={e =>
+                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+            />
+          </div>
+          <label htmlFor="dateOfBirth">Date of Birth</label>
+          <div>
+            <input
+              type="text"
+              id="dateOfBirth"
+              onChange={e =>
+                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+            />
+          </div>
+          <label htmlFor="streetAddress">Street Address</label>
+          <div>
+            <input
+              type="text"
+              id="streetAddress"
+              onChange={e =>
+                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+            />
+          </div>
+          <label htmlFor="addressLine2">Address Line 2</label>
+          <div>
+            <input
+              type="text"
+              id="addressLine2"
+              onChange={e =>
+                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+            />
+          </div>
+          <label htmlFor="city">City</label>
+          <div>
+            <input
+              type="text"
+              id="city"
+              onChange={e =>
+                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+            />
+          </div>
+          <label htmlFor="stateProvince">State / Province</label>
+          <div>
+            <input
+              type="text"
+              id="stateProvince"
+              onChange={e =>
+                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+            />
+          </div>
+          <label htmlFor="postZipCode">Post / Zip Code</label>
+          <div>
+            <input
+              type="text"
+              id="postZipCode"
+              onChange={e =>
+                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+            />
+          </div>
+          <label htmlFor="country">Country</label>
+          <div>
+            <input
+              type="text"
+              id="country"
+              onChange={e =>
+                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+            />
+          </div>
         </div>
-        <label htmlFor="streetAddress">Street Address</label>
-        <div>
-          <input
-            type="text"
-            id="streetAddress"
-            onChange={e =>
-              this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-          />
-        </div>
-        <label htmlFor="addressLine2">Address Line 2</label>
-        <div>
-          <input
-            type="text"
-            id="addressLine2"
-            onChange={e =>
-              this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-          />
-        </div>
-        <label htmlFor="city">City</label>
-        <div>
-          <input
-            type="text"
-            id="city"
-            onChange={e =>
-              this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-          />
-        </div>
-        <label htmlFor="stateProvince">State / Province</label>
-        <div>
-          <input
-            type="text"
-            id="stateProvince"
-            onChange={e =>
-              this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-          />
-        </div>
-        <label htmlFor="postZipCode">Post / Zip Code</label>
-        <div>
-          <input
-            type="text"
-            id="postZipCode"
-            onChange={e =>
-              this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-          />
-        </div>
-        <label htmlFor="country">Country</label>
-        <div>
-          <input
-            type="text"
-            id="country"
-            onChange={e =>
-              this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-          />
-        </div>
+        <Footer />
       </div>
     );
   }
 }
-
 export default Register;
