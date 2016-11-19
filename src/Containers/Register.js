@@ -88,7 +88,42 @@ class Register extends React.Component {
               this.onInputChange(e.target.value, e.target.getAttribute('id'))}
           />
         </div>
-        bk
+        <label htmlFor="city">City</label>
+        <div>
+          <input
+            type="text"
+            id="city"
+            onChange={e =>
+              this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+          />
+        </div>
+        <label htmlFor="stateProvince">State / Province</label>
+        <div>
+          <input
+            type="text"
+            id="stateProvince"
+            onChange={e =>
+              this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+          />
+        </div>
+        <label htmlFor="postZipCode">Post / Zip Code</label>
+        <div>
+          <input
+            type="text"
+            id="postZipCode"
+            onChange={e =>
+              this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+          />
+        </div>
+        <label htmlFor="country">Country</label>
+        <div>
+          <input
+            type="text"
+            id="country"
+            onChange={e =>
+              this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+          />
+        </div>
       </div>
     );
   }
