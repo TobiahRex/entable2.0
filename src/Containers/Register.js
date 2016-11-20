@@ -61,6 +61,7 @@ class Register extends React.Component {
                 this.onInputChange(e.target.value, e.target.getAttribute('id'))}
             />
           </div>
+          <br />
           <div style={this.styles.userInfoInput}>
             <label htmlFor="lastName">Last Name</label>
             <input
@@ -71,6 +72,7 @@ class Register extends React.Component {
                 this.onInputChange(e.target.value, e.target.getAttribute('id'))}
             />
           </div>
+          <br />
           <div style={this.styles.userInfoInput}>
             <label htmlFor="emailAddress">Email Address</label>
             <input
@@ -81,6 +83,7 @@ class Register extends React.Component {
                 this.onInputChange(e.target.value, e.target.getAttribute('id'))}
             />
           </div>
+          <br />
           <div style={this.styles.userInfoInput}>
             <label htmlFor="dateOfBirth">Date of Birth</label>
             <input
@@ -91,6 +94,7 @@ class Register extends React.Component {
                 this.onInputChange(e.target.value, e.target.getAttribute('id'))}
             />
           </div>
+          <br />
           <div style={this.styles.userInfoInput}>
             <label htmlFor="streetAddress">Street Address</label>
             <input
@@ -101,6 +105,7 @@ class Register extends React.Component {
                 this.onInputChange(e.target.value, e.target.getAttribute('id'))}
             />
           </div>
+          <br />
           <div style={this.styles.userInfoInput}>
             <label htmlFor="addressLine2">Address Line 2</label>
             <input
@@ -111,6 +116,7 @@ class Register extends React.Component {
                 this.onInputChange(e.target.value, e.target.getAttribute('id'))}
             />
           </div>
+          <br />
           <div style={this.styles.userInfoInput}>
             <label htmlFor="city">City</label>
             <input
@@ -121,8 +127,9 @@ class Register extends React.Component {
                 this.onInputChange(e.target.value, e.target.getAttribute('id'))}
             />
           </div>
-          <label htmlFor="stateProvince">State / Province</label>
-          <div style={this.styles.userInfoInput}          >
+          <br />
+          <div style={this.styles.userInfoInput}>
+            <label htmlFor="stateProvince">State / Province</label>
             <input
               style={this.styles.userInfoInput}
               type="text"
@@ -131,6 +138,7 @@ class Register extends React.Component {
                 this.onInputChange(e.target.value, e.target.getAttribute('id'))}
             />
           </div>
+          <br />
           <div style={this.styles.userInfoInput}>
             <label htmlFor="postZipCode">Post / Zip Code</label>
             <input
@@ -141,8 +149,9 @@ class Register extends React.Component {
                 this.onInputChange(e.target.value, e.target.getAttribute('id'))}
             />
           </div>
+          <br />
           <div style={this.styles.userInfoInput}>
-          <label htmlFor="country">Country</label>
+            <label htmlFor="country">Country</label>
             <input
               style={this.styles.userInfoInput}
               type="text"
@@ -151,6 +160,7 @@ class Register extends React.Component {
                 this.onInputChange(e.target.value, e.target.getAttribute('id'))}
             />
           </div>
+          <br />
         </div>
         <Footer />
       </div>
