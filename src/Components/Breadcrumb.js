@@ -7,8 +7,13 @@ const bsBreadcrumb = ({ paths }) => {
     backgroundColor: '#2ecc71',
     padding: '8px 130px 8px 130px',
   };
-  const breadcrumbs = paths.map(path =>
-    <Breadcrumb.Item href={path.href} active={path.active}>{path.name}</Breadcrumb.Item>
+  const breadcrumbs = paths.map((path, i) =>
+    <Breadcrumb.Item
+      key={`breadcrumb${i}`}
+      href={path.href}
+      active={path.active}
+    >{path.name}
+    </Breadcrumb.Item>
   );
 
   return (
