@@ -24,6 +24,9 @@ const styles = {
   inputContainers: {
     padding: '25px 140px 50px 140px',
   },
+  additionalContainer: {
+    padding: '25px 140px 0px 140px',
+  },
   userInfoDiv: {
     width: '270px',
   },

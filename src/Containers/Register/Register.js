@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox } from 'react-bootstrap/lib/';
+import { Checkbox, DropdownButton, MenuItem } from 'react-bootstrap/lib/';
 import registerStyles from './registerStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
@@ -38,7 +38,7 @@ class Register extends React.Component {
     return (
       <div>
         <Breadcrumbs paths={this.breadCrumbs} />
-        <h1 style={this.styles.registerTitle}>Register as a Donor</h1>
+        <h1 style={this.styles.registerTitle}>Lets Get Started</h1>
         <hr />
         <div style={this.styles.centerText}>
           <span style={this.styles.required}>* <i>Required Information</i>
@@ -122,7 +122,7 @@ class Register extends React.Component {
           </div>
           <div className="registerGroup">
             <h4 style={this.styles.registerH4}>Additional Details</h4>
-            <div style={this.styles.inputContainers}>
+            <div style={this.styles.additionalContainer}>
               <div style={this.styles.userInfoInput}>
                 <label htmlFor="phoneNumber">Phone Number:
                   <span style={this.styles.required}> *</span></label>
@@ -134,6 +134,16 @@ class Register extends React.Component {
                   onChange={e =>
                     this.onInputChange(e.target.value, e.target.getAttribute('id'))}
                 />
+              </div>
+              <br />
+              <div style={this.styles.userInfoInput}>
+                <label htmlFor="role">Entable Role:
+                  <span style={this.styles.required}> *</span></label>
+                <br />
+                <DropdownButton title="Choose One" id="role">
+                  <MenuItem eventKey="1">Donor</MenuItem>
+                  <MenuItem eventKey="2">Bank Manager</MenuItem>
+                </DropdownButton>
               </div>
             </div>
             <br />
