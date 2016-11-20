@@ -50,117 +50,121 @@ class Register extends React.Component {
         <Breadcrumbs paths={this.breadCrumbs} />
         <h1 style={this.styles.registerTitle}>Register as a Donor</h1>
         <hr />
-        <div style={this.styles.inputContainers}>
-          <div style={this.styles.userInfoInput}>
-            <label htmlFor="firstName">First Name</label>
-            <input
-              style={this.styles.userInfoInput}e={this.styles.userInfoInput}
-              type="text"
-              id="firstName"
-              onChange={e =>
-                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-            />
+        <div className="registerFlexParent">
+          <div className="registerGroup">
+            <h4>Personal Details</h4>
+            <div style={this.styles.inputContainers}>
+              <div style={this.styles.userInfoInput}>
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  style={this.styles.userInfoInput}e={this.styles.userInfoInput}
+                  type="text"
+                  id="firstName"
+                  onChange={e =>
+                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+                />
+              </div>
+              <br />
+              <div style={this.styles.userInfoInput}>
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  style={this.styles.userInfoInput}
+                  type="text"
+                  id="lastName"
+                  onChange={e =>
+                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+                />
+              </div>
+              <br />
+              <div style={this.styles.userInfoInput}>
+                <label htmlFor="emailAddress">Email Address</label>
+                <input
+                  style={this.styles.userInfoInput}
+                  type="text"
+                  id="emailAddress"
+                  onChange={e =>
+                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+                />
+              </div>
+              <br />
+              <div style={this.styles.userInfoInput}>
+                <label htmlFor="postZipCode">Post / Zip Code</label>
+                <input
+                  style={this.styles.userInfoInput}
+                  type="text"
+                  id="postZipCode"
+                  onChange={e =>
+                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+                />
+              </div>
+              <br />
+              <div style={this.styles.userInfoInput}>
+                <label htmlFor="country">Country</label>
+                <input
+                  style={this.styles.userInfoInput}
+                  type="text"
+                  id="country"
+                  onChange={e =>
+                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+                />
+              </div>
+              <br />
+            </div>
           </div>
-          <br />
-          <div style={this.styles.userInfoInput}>
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              style={this.styles.userInfoInput}
-              type="text"
-              id="lastName"
-              onChange={e =>
-                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-            />
+          <div className="registerGroup">
+            <h4>Additional Details</h4>
+            <div style={this.styles.inputContainers}>
+              <div style={this.styles.userInfoInput}>
+                <label htmlFor="phoneNumber">Phone Number</label>
+                <input
+                  style={this.styles.userInfoInput}e={this.styles.userInfoInput}
+                  type="text"
+                  id="phoneNumber"
+                  onChange={e =>
+                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+                />
+              </div>
+            </div>
+            <br />
+            <h4>Login Details</h4>
+            <div style={this.styles.inputContainers}>
+              <div style={this.styles.userInfoInput}>
+                <label htmlFor="password">Password</label>
+                <input
+                  style={this.styles.userInfoInput}e={this.styles.userInfoInput}
+                  type="text"
+                  id="password"
+                  onChange={e =>
+                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+                />
+              </div>
+              <div style={this.styles.userInfoInput}>
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input
+                  style={this.styles.userInfoInput}e={this.styles.userInfoInput}
+                  type="text"
+                  id="confirmPassword"
+                  onChange={e =>
+                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+                />
+              </div>
+            </div>
           </div>
-          <br />
-          <div style={this.styles.userInfoInput}>
-            <label htmlFor="emailAddress">Email Address</label>
-            <input
-              style={this.styles.userInfoInput}
-              type="text"
-              id="emailAddress"
-              onChange={e =>
-                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-            />
+        </div>
+        <div className="registerPrivacy">
+          <h4>Privacy Statement</h4>
+          <div style={this.styles.inputContainers}>
+            <div style={this.styles.userInfoInput}>
+              <label htmlFor="privacyStatement">Please acknowledge that you accept our Privacy Statement by checking the following box.  The Privacy Statement can be read <a href="/privacy">here</a>.  The Privacy statement will always be available from our website located in the webpage footer. </label>
+              <input
+                style={this.styles.userInfoInput}e={this.styles.userInfoInput}
+                type="text"
+                id="privacyStatement"
+                onChange={e =>
+                  this.onInputChange(e.target.value, e.target.getAttribute('id'))}
+              />
+            </div>
           </div>
-          <br />
-          <div style={this.styles.userInfoInput}>
-            <label htmlFor="dateOfBirth">Date of Birth</label>
-            <input
-              style={this.styles.userInfoInput}
-              type="text"
-              id="dateOfBirth"
-              onChange={e =>
-                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-            />
-          </div>
-          <br />
-          <div style={this.styles.userInfoInput}>
-            <label htmlFor="streetAddress">Street Address</label>
-            <input
-              style={this.styles.userInfoInput}
-              type="text"
-              id="streetAddress"
-              onChange={e =>
-                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-            />
-          </div>
-          <br />
-          <div style={this.styles.userInfoInput}>
-            <label htmlFor="addressLine2">Address Line 2</label>
-            <input
-              style={this.styles.userInfoInput}
-              type="text"
-              id="addressLine2"
-              onChange={e =>
-                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-            />
-          </div>
-          <br />
-          <div style={this.styles.userInfoInput}>
-            <label htmlFor="city">City</label>
-            <input
-              style={this.styles.userInfoInput}
-              type="text"
-              id="city"
-              onChange={e =>
-                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-            />
-          </div>
-          <br />
-          <div style={this.styles.userInfoInput}>
-            <label htmlFor="stateProvince">State / Province</label>
-            <input
-              style={this.styles.userInfoInput}
-              type="text"
-              id="stateProvince"
-              onChange={e =>
-                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-            />
-          </div>
-          <br />
-          <div style={this.styles.userInfoInput}>
-            <label htmlFor="postZipCode">Post / Zip Code</label>
-            <input
-              style={this.styles.userInfoInput}
-              type="text"
-              id="postZipCode"
-              onChange={e =>
-                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-            />
-          </div>
-          <br />
-          <div style={this.styles.userInfoInput}>
-            <label htmlFor="country">Country</label>
-            <input
-              style={this.styles.userInfoInput}
-              type="text"
-              id="country"
-              onChange={e =>
-                this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-            />
-          </div>
-          <br />
         </div>
         <Footer />
       </div>
