@@ -9,7 +9,7 @@ const bsBreadcrumb = ({ paths }) => {
   };
   const breadcrumbs = paths.map((path, i) =>
     <Breadcrumb.Item
-      key={`breadcrumb${i}`}
+      key={`bc${i}`}
       href={path.href}
       active={path.active}
     >{path.name}

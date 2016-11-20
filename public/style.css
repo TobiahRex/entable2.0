@@ -591,7 +591,16 @@ align-self: center;
 .noBTcoins {
 
 }
-
+/* ---------- Register Container ---------- */
+.reg-form-control {
+  border-radius: 0;
+  border: none;
+  height: 30px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  text-align: left;
+  -webkit-appearance: none;
+  padding-left: 3px;
+}
 /* ---------- Amount Modal ---------- */
 .amountParent {
   display: flex;

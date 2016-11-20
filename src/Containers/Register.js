@@ -1,4 +1,5 @@
 import React from 'react';
+import { Checkbox } from 'react-bootstrap/lib/';
 import Breadcrumbs from '../Components/Breadcrumb';
 import Footer from '../Components/Footer';
 
@@ -11,6 +12,7 @@ class Register extends React.Component {
 
     this.state = {
       firstName: '',
+      agreed: false,
     };
     this.breadCrumbs = [{
       href: '/',
@@ -22,8 +24,27 @@ class Register extends React.Component {
       active: true,
     }];
     this.styles = {
+      registerFlexParent: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+      },
       registerTitle: {
         padding: '0px 140px 0px 140px',
+      },
+      registerH4: {
+        textAlign: 'center',
+      },
+      registerPrivacy: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+      registerPrivacyContainer: {
+        alignSelf: 'center',
+      },
+      registerPrivacyMsg: {
+        width: '80%',
+        margin: '0px 100px',
       },
       inputContainers: {
         padding: '25px 140px 50px 140px',
@@ -33,7 +54,10 @@ class Register extends React.Component {
       },
       userInfoInput: {
         width: '250px',
-      }
+      },
+      required: {
+        color: 'red',
+      },
     };
   }
 
@@ -50,14 +74,17 @@ class Register extends React.Component {
         <Breadcrumbs paths={this.breadCrumbs} />
         <h1 style={this.styles.registerTitle}>Register as a Donor</h1>
         <hr />
-        <div className="registerFlexParent">
-          <div className="registerGroup">
-            <h4>Personal Details</h4>
+        <div style={this.styles.registerFlexParent}>
+          <div>
+            <h4 style={this.styles.registerH4}>Personal Details</h4>
             <div style={this.styles.inputContainers}>
               <div style={this.styles.userInfoInput}>
-                <label htmlFor="firstName">First Name</label>
+                <label htmlFor="firstName">First Name:
+                  <span style={this.styles.required}> *</span>
+                </label>
                 <input
-                  style={this.styles.userInfoInput}e={this.styles.userInfoInput}
+                  style={this.styles.userInfoInput}
+                  className="reg-form-control"
                   type="text"
                   id="firstName"
                   onChange={e =>
@@ -66,9 +93,12 @@ class Register extends React.Component {
               </div>
               <br />
               <div style={this.styles.userInfoInput}>
-                <label htmlFor="lastName">Last Name</label>
+                <label htmlFor="lastName">Last Name:
+                  <span style={this.styles.required}> *</span>
+                </label>
                 <input
                   style={this.styles.userInfoInput}
+                  className="reg-form-control"
                   type="text"
                   id="lastName"
                   onChange={e =>
@@ -77,9 +107,12 @@ class Register extends React.Component {
               </div>
               <br />
               <div style={this.styles.userInfoInput}>
-                <label htmlFor="emailAddress">Email Address</label>
+                <label htmlFor="emailAddress">Email Address:
+                  <span style={this.styles.required}> *</span>
+                </label>
                 <input
                   style={this.styles.userInfoInput}
+                  className="reg-form-control"
                   type="text"
                   id="emailAddress"
                   onChange={e =>
@@ -88,9 +121,12 @@ class Register extends React.Component {
               </div>
               <br />
               <div style={this.styles.userInfoInput}>
-                <label htmlFor="postZipCode">Post / Zip Code</label>
+                <label htmlFor="postZipCode">Post / Zip Code:
+                  <span style={this.styles.required}> *</span>
+                </label>
                 <input
                   style={this.styles.userInfoInput}
+                  className="reg-form-control"
                   type="text"
                   id="postZipCode"
                   onChange={e =>
@@ -99,9 +135,12 @@ class Register extends React.Component {
               </div>
               <br />
               <div style={this.styles.userInfoInput}>
-                <label htmlFor="country">Country</label>
+                <label htmlFor="country">Country:
+                  <span style={this.styles.required}> *</span>
+                </label>
                 <input
                   style={this.styles.userInfoInput}
+                  className="reg-form-control"
                   type="text"
                   id="country"
                   onChange={e =>
@@ -112,12 +151,14 @@ class Register extends React.Component {
             </div>
           </div>
           <div className="registerGroup">
-            <h4>Additional Details</h4>
+            <h4 style={this.styles.registerH4}>Additional Details</h4>
             <div style={this.styles.inputContainers}>
               <div style={this.styles.userInfoInput}>
-                <label htmlFor="phoneNumber">Phone Number</label>
+                <label htmlFor="phoneNumber">Phone Number:
+                  <span style={this.styles.required}> *</span></label>
                 <input
-                  style={this.styles.userInfoInput}e={this.styles.userInfoInput}
+                  style={this.styles.userInfoInput}
+                  className="reg-form-control"
                   type="text"
                   id="phoneNumber"
                   onChange={e =>
@@ -126,22 +167,30 @@ class Register extends React.Component {
               </div>
             </div>
             <br />
-            <h4>Login Details</h4>
+            <h4 style={this.styles.registerH4}>Login Details</h4>
             <div style={this.styles.inputContainers}>
               <div style={this.styles.userInfoInput}>
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Password:
+                  <span style={this.styles.required}> * <i>At least 8 characters.</i></span>
+                </label>
                 <input
-                  style={this.styles.userInfoInput}e={this.styles.userInfoInput}
+                  style={this.styles.userInfoInput}
+                  className="reg-form-control"
                   type="text"
                   id="password"
                   onChange={e =>
                     this.onInputChange(e.target.value, e.target.getAttribute('id'))}
                 />
               </div>
+              <br />
               <div style={this.styles.userInfoInput}>
-                <label htmlFor="confirmPassword">Confirm Password</label>
+                <label htmlFor="confirmPassword">Confirm Password:
+                  <span style={this.styles.required}> *</span>
+                </label>
                 <input
-                  style={this.styles.userInfoInput}e={this.styles.userInfoInput}
+                  style={this.styles.userInfoInput}
+
+                  className="reg-form-control"
                   type="text"
                   id="confirmPassword"
                   onChange={e =>
@@ -151,18 +200,15 @@ class Register extends React.Component {
             </div>
           </div>
         </div>
-        <div className="registerPrivacy">
-          <h4>Privacy Statement</h4>
-          <div style={this.styles.inputContainers}>
-            <div style={this.styles.userInfoInput}>
+        <div style={this.styles.registerPrivacy}>
+          <h4 style={this.styles.registerH4}>Privacy Statement</h4>
+          <div style={{ ...this.styles.inputContainers, ...this.styles.registerPrivacyContainer }}>
+            <div style={this.styles.registerPrivacyMsg}>
               <label htmlFor="privacyStatement">Please acknowledge that you accept our Privacy Statement by checking the following box.  The Privacy Statement can be read <a href="/privacy">here</a>.  The Privacy statement will always be available from our website located in the webpage footer. </label>
-              <input
-                style={this.styles.userInfoInput}e={this.styles.userInfoInput}
-                type="text"
-                id="privacyStatement"
-                onChange={e =>
-                  this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-              />
+              <Checkbox checked={this.state.agreed} >
+                I agree to the Privacy Statement:
+                <span style={this.styles.required}> *</span>
+              </Checkbox>
             </div>
           </div>
         </div>
