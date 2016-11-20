@@ -2,19 +2,26 @@ import React, { PropTypes } from 'react';
 import { Breadcrumb } from 'react-bootstrap/lib/';
 
 const bsBreadcrumb = ({ paths }) => {
+  let bgColor = '#2ecc71';
+
+  const breadcrumbs = paths.map((path, i) => {
+    if (path.name === 'Bank Example') bgColor = '#222';
+
+    return (
+      <Breadcrumb.Item
+        key={`bc${i}`}
+        href={path.href}
+        active={path.active}
+      >{path.name}
+      </Breadcrumb.Item>);
+  });
+
   const style = {
     borderRadius: '0px',
-    backgroundColor: '#2ecc71',
+    backgroundColor: bgColor,
     padding: '8px 130px 8px 130px',
+    marginBottom: '0px',
   };
-  const breadcrumbs = paths.map((path, i) =>
-    <Breadcrumb.Item
-      key={`bc${i}`}
-      href={path.href}
-      active={path.active}
-    >{path.name}
-    </Breadcrumb.Item>
-  );
 
   return (
     <div>

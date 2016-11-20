@@ -23,6 +23,7 @@ class Donation extends React.Component {
       token: '',
       currency: 'USD',
       amount: 2000,
+      showModal: false,
     };
 
     this.breadCrumbs = [{
