@@ -57,6 +57,12 @@ class Register extends React.Component {
         if (match) return 'success';
         else if (this.state.email) return 'warning';
       } break;
+      case 'postZip': {
+        const length = this.state[id].length;
+        if (length > vSuccess) return 'success';
+        else if (length > vWarn) return 'warning';
+        else if (length > vError) return 'error';
+      }
       default: break;
     }
   }
@@ -100,8 +106,30 @@ class Register extends React.Component {
         value: this.state.postZip,
         onInputChange: this.onInputChange,
         validate: this.validate,
-        vSuccess: 5,
-        vWarn: 2,
+        vSuccess: 4,
+        vWarn: 1,
+        vError: 0,
+      },
+      country: {
+        id: 'country',
+        name: 'Country',
+        required: true,
+        value: this.state.country,
+        onInputChange: this.onInputChange,
+        validate: this.validate,
+        vSuccess: 2,
+        vWarn: 3,
+        vError: 1,
+      },
+      phone: {
+        id: 'phone',
+        name: 'Phone Number',
+        required: true,
+        value: this.state.phone,
+        onInputChange: this.onInputChange,
+        validate: this.validate,
+        vSuccess: 11,
+        vWarning: 10,
         vError: 1,
       },
     };
@@ -125,51 +153,15 @@ class Register extends React.Component {
               <Inputcard {...PROPS.email} />
               <br />
               <Inputcard {...PROPS.postZip} />
-              <div style={this.styles.userInfoInput}>
-                <label htmlFor="postZipCode">Post / Zip Code:
-                  <span style={this.styles.required}> *</span>
-                </label>
-                <input
-                  style={this.styles.userInfoInput}
-                  className="reg-form-control"
-                  type="text"
-                  id="postZipCode"
-                  onChange={e =>
-                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-                />
-              </div>
               <br />
-              <div style={this.styles.userInfoInput}>
-                <label htmlFor="country">Country:
-                  <span style={this.styles.required}> *</span>
-                </label>
-                <input
-                  style={this.styles.userInfoInput}
-                  className="reg-form-control"
-                  type="text"
-                  id="country"
-                  onChange={e =>
-                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-                />
-              </div>
+              <Inputcard {...PROPS.country} />
               <br />
             </div>
           </div>
           <div className="registerGroup">
             <h4 style={this.styles.registerH4}>Additional Details</h4>
             <div style={this.styles.additionalContainer}>
-              <div style={this.styles.userInfoInput}>
-                <label htmlFor="phoneNumber">Phone Number:
-                  <span style={this.styles.required}> *</span></label>
-                <input
-                  style={this.styles.userInfoInput}
-                  className="reg-form-control"
-                  type="text"
-                  id="phoneNumber"
-                  onChange={e =>
-                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-                />
-              </div>
+              <Inputcard {...PROPS.phone} />
               <br />
               <div style={this.styles.userInfoInput}>
                 <label htmlFor="role">Entable Role:
