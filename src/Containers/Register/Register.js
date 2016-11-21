@@ -4,6 +4,8 @@ import registerStyles from './registerStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
 import Inputcard from '../../Components/Register/InputCard';
+import Countries from '../../Services/CountryConstants';
+import States from '../../Services/StatesConstants';
 
 class Register extends React.Component {
   static propTypes = {
@@ -73,6 +75,18 @@ class Register extends React.Component {
     }
   }
 
+  renderCountries = () => {
+    console.log('Countries: ', Countries);
+    return Countries.map((country, i) => (
+      <MenuItem
+        eventKey={i + 1}
+        onClick={() => this.setState({ country })}
+      >
+        {country.name} - ({country.code})
+      </MenuItem>)
+    );
+  }
+
   render() {
     const PROPS = {
       firstName: {
@@ -138,6 +152,24 @@ class Register extends React.Component {
         vWarning: 10,
         vError: 1,
       },
+      password: {
+        id: 'password',
+        name: 'Password',
+        required: true,
+        value: this.state.password,
+        onInputChange: this.onInputChange,
+        validate: this.validate,
+        vSuccess: 7,
+        vWarning: 2,
+        vError: 1,
+      },
+      confirmPassword: {
+        id: 'confirmPassword',
+        name: 'Confirm Password',
+        required: true,
+        value: this.state.confirmPassword,
+        onInputChange: this.onInputChange,
+      },
     };
     return (
       <div style={this.styles.mainBgColor}>
@@ -160,7 +192,15 @@ class Register extends React.Component {
               <br />
               <Inputcard {...PROPS.postZip} />
               <br />
-              <Inputcard {...PROPS.country} />
+              <div>
+                <label htmlFor="country">Country:
+                  <span style={this.styles.required}> *</span>
+                </label>
+                <br />
+                <DropdownButton title="Choose Country" id="country">
+                  {this.renderCountries()}
+                </DropdownButton>
+              </div>
               <br />
             </div>
           </div>
@@ -171,45 +211,28 @@ class Register extends React.Component {
               <br />
               <div style={this.styles.userInfoInput}>
                 <label htmlFor="role">Entable Role:
-                  <span style={this.styles.required}> *</span></label>
+                  <span style={this.styles.required}> *</span>
+                </label>
                 <br />
-                <DropdownButton title="Choose One" id="role">
-                  <MenuItem eventKey="1" onClick={() => console.log('donor')}>Donor</MenuItem>
-                  <MenuItem eventKey="2" onClick={() => console.log('bank manager')}>Bank Manager</MenuItem>
+                <DropdownButton title="Choose Role" id="role">
+                  <MenuItem
+                    eventKey="1"
+                    onClick={() => this.setState({ role: 'Donor' })}
+                  >Donor</MenuItem>
+                  <MenuItem
+                    eventKey="1"
+                    onClick={() => this.setState({ role: 'Bank Manager' })}
+                  >Bank Manager</MenuItem>
                 </DropdownButton>
+                <br />
               </div>
             </div>
             <br />
             <h4 style={this.styles.registerH4}>Login Details</h4>
             <div style={this.styles.inputContainers}>
-              <div style={this.styles.userInfoInput}>
-                <label htmlFor="password">Password:
-                  <span style={this.styles.required}> * <i>At least 8 characters.</i></span>
-                </label>
-                <input
-                  style={this.styles.userInfoInput}
-                  className="reg-form-control"
-                  type="text"
-                  id="password"
-                  onChange={e =>
-                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-                />
-              </div>
+              <Inputcard {...PROPS.password} />
               <br />
-              <div style={this.styles.userInfoInput}>
-                <label htmlFor="confirmPassword">Confirm Password:
-                  <span style={this.styles.required}> *</span>
-                </label>
-                <input
-                  style={this.styles.userInfoInput}
-
-                  className="reg-form-control"
-                  type="text"
-                  id="confirmPassword"
-                  onChange={e =>
-                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-                />
-              </div>
+              <Inputcard {...PROPS.confirmPassword} />
             </div>
           </div>
         </div>
@@ -217,7 +240,8 @@ class Register extends React.Component {
           <h4 style={this.styles.registerH4}>Privacy Statement</h4>
           <div style={{ ...this.styles.inputContainers, ...this.styles.registerPrivacyContainer }}>
             <div style={this.styles.registerPrivacyMsg}>
-              <label htmlFor="privacyStatement">Please acknowledge that you accept our Privacy Statement by checking the following box.  The Privacy Statement can be read <a style={this.styles.privacyLink} href="/privacy">here</a>.  The Privacy statement will always be available from our website located in the webpage footer. </label>
+              <label htmlFor="privacyStatement">Please acknowledge that you accept our Privacy Statement by checking the following box.<br />The Privacy Statement can be read <a style={this.styles.privacyLink} href="/privacy">here</a>.<br />The Privacy statement will always be available from our website located in the webpage footer.
+              </label>
               <Checkbox checked={this.state.agreed} >
                 I agree to the Privacy Statement:
                 <span style={this.styles.required}> *</span>

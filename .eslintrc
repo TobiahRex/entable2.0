@@ -9,11 +9,13 @@
     "CoinbaseAccount": true,
     "StripeCheckout": true,
     "StripeAcct": true,
+    "country": true,
   },
   "rules": {
     "no-underscore-dangle": 0,
     "camelcase": 0,
     "react/no-unused-prop-types": [2, { skipShapeProps: true }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prefer-stateless-function": [2, { "ignorePureComponents": true }],
   }
 }
