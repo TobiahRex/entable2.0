@@ -88,10 +88,21 @@ class Register extends React.Component {
       email: {
         id: 'email',
         name: 'Email Address',
-        require: true,
+        required: true,
         value: this.state.email,
         onInputChange: this.onInputChange,
         validate: this.validate,
+      },
+      postZip: {
+        id: 'postZip',
+        name: 'Post / Zip Code',
+        required: true,
+        value: this.state.postZip,
+        onInputChange: this.onInputChange,
+        validate: this.validate,
+        vSuccess: 5,
+        vWarn: 2,
+        vError: 1,
       },
     };
     return (
@@ -113,6 +124,7 @@ class Register extends React.Component {
               <br />
               <Inputcard {...PROPS.email} />
               <br />
+              <Inputcard {...PROPS.postZip} />
               <div style={this.styles.userInfoInput}>
                 <label htmlFor="postZipCode">Post / Zip Code:
                   <span style={this.styles.required}> *</span>
