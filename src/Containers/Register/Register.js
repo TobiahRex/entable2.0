@@ -54,8 +54,8 @@ class Register extends React.Component {
       } break;
       case 'email': {
         const match = this.state.email.match(/.+@.+\..+/i);
-        if (match.length) return 'success';
-        else if (!match.length) return ('error');
+        if (match) return 'success';
+        else if (this.state.email) return 'warning';
       } break;
       default: break;
     }
@@ -85,6 +85,14 @@ class Register extends React.Component {
         vWarn: 1,
         vError: 2,
       },
+      email: {
+        id: 'email',
+        name: 'Email Address',
+        require: true,
+        value: this.state.email,
+        onInputChange: this.onInputChange,
+        validate: this.validate,
+      },
     };
     return (
       <div style={this.styles.mainBgColor}>
@@ -103,14 +111,7 @@ class Register extends React.Component {
               <br />
               <Inputcard {...PROPS.lastName} />
               <br />
-              <Inputcard
-                id={'email'}
-                name={'Email Address'}
-                required
-                value={this.state.email}
-                onInputChange={this.onInputChange}
-                validate={this.validate}
-              />
+              <Inputcard {...PROPS.email} />
               <br />
               <div style={this.styles.userInfoInput}>
                 <label htmlFor="postZipCode">Post / Zip Code:
