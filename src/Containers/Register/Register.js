@@ -232,7 +232,7 @@ class Register extends React.Component {
                   <span style={this.styles.required}> *</span>
                 </label>
                 <br />
-                <DropdownButton title={this.state.country || this.state.country.name} id="country">
+                <DropdownButton title={this.state.country.name} id="country">
                   {this.countries}
                 </DropdownButton>
               </div>
