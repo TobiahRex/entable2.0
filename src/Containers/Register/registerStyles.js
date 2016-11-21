@@ -1,4 +1,7 @@
 const styles = {
+  mainBgColor: {
+    backgroundColor: '#f3f3f3',
+  },
   registerFlexParent: {
     display: 'flex',
     flexDirection: 'row',

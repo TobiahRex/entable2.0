@@ -45,7 +45,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={this.styles.mainBgColor}>
         <Breadcrumbs paths={this.breadCrumbs} />
         <h1 style={this.styles.registerTitle}>Lets Get Started</h1>
         <hr />
