@@ -1,6 +1,6 @@
 const styles = {
   mainBgColor: {
-    backgroundColor: '#f3f3f3',
+    backgroundColor: '#f5f5f5',
   },
   registerFlexParent: {
     display: 'flex',
