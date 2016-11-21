@@ -74,10 +74,10 @@ class Register extends React.Component {
       case 'confirmPassword': {
         const cPassword = this.state.confirmPassword;
         const password = this.state.password;
-        if (password cPassword.length > 0) return 'warning';
+        if (cPassword.length > 0) return 'warning';
         else if (cPassword > 0 && cPassword !== password) return 'error';
-        else if (cPassword === password) freturn 'success';
-      }
+        else if (cPassword === password) return 'success';
+      } break;
       default: break;
     }
   }
