@@ -4,10 +4,11 @@ import styles from './registerStyles';
 
 class loginDetails extends React.PureComponent {
   static propTypes = {
-    password: PropTypes.objectOf(PropTypes.string),
-    confirmPassword: PropTypes.objectOf(PropTypes.string),
+    // password: PropTypes.objectOf(PropTypes.node),
+    // confirmPassword: PropTypes.objectOf(PropTypes.node),
   }
   render() {
+    console.log('this.props: ', this.props);
     return (
       <span>
         <h4 style={styles.registerH4}>Login Details</h4>

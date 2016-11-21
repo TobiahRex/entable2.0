@@ -5,6 +5,7 @@ import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
 import Inputcard from '../../Components/InputCard';
 import Countries from '../../Services/CountryConstants';
+import LoginDetails from './loginDetails.register';
 
 class Register extends React.Component {
   static breadCrumbs = [{
@@ -246,22 +247,34 @@ class Register extends React.Component {
               </div>
             </div>
             <br />
-            <h4 style={Register.styles.registerH4}>Login Details</h4>
-            <div style={Register.styles.inputContainers}>
+            <LoginDetails
+              password={{ ...Register.PROPS.password,
+                value: this.state.password,
+                onInputChange: this.onInputChange,
+                validate: this.validate,
+              }}
+              confirmPassword={{ ...Register.PROPS.confirmPassword,
+                value: this.state.confirmPassword,
+                onInputChange: this.onInputChange,
+                validate: this.validate,
+              }}
+            />
+            {/* <h4 style={Register.styles.registerH4}>Login Details</h4>
+              <div style={Register.styles.inputContainers}>
               <Inputcard
-                {...Register.PROPS.password}
-                value={this.state.password}
-                onInputChange={this.onInputChange}
-                validate={this.validate}
+              {...Register.PROPS.password}
+              value={this.state.password}
+              onInputChange={this.onInputChange}
+              validate={this.validate}
               />
               <br />
               <Inputcard
-                {...Register.PROPS.confirmPassword}
-                value={this.state.confirmPassword}
-                onInputChange={this.onInputChange}
-                validate={this.validate}
+              {...Register.PROPS.confirmPassword}
+              value={this.state.confirmPassword}
+              onInputChange={this.onInputChange}
+              validate={this.validate}
               />
-            </div>
+            </div> */}
           </div>
         </div>
         <div style={Register.styles.registerPrivacy}>
