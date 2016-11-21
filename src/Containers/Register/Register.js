@@ -251,8 +251,10 @@ class Register extends React.Component {
             <div style={this.styles.registerPrivacyMsg}>
               <label htmlFor="privacyStatement">Please acknowledge that you accept our Privacy Statement by checking the following box.<br />The Privacy Statement can be read <a style={this.styles.privacyLink} href="/privacy">here</a>.<br />The Privacy statement will always be available from our website located in the webpage footer.
               </label>
-              <Checkbox checked={this.state.agreed} >
-                I agree to the Privacy Statement:
+              <Checkbox
+                checked={this.state.agreed}
+                onClick={() => this.setState({ agreed: true })}
+              >I agree to the Privacy Statement:
                 <span style={this.styles.required}> *</span>
               </Checkbox>
             </div>
