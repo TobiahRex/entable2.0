@@ -141,8 +141,8 @@ class Register extends React.Component {
                   <span style={this.styles.required}> *</span></label>
                 <br />
                 <DropdownButton title="Choose One" id="role">
-                  <MenuItem eventKey="1">Donor</MenuItem>
-                  <MenuItem eventKey="2">Bank Manager</MenuItem>
+                  <MenuItem eventKey="1" onClick={() => console.log('donor')}>Donor</MenuItem>
+                  <MenuItem eventKey="2" onClick={() => console.log('bank manager')}>Bank Manager</MenuItem>
                 </DropdownButton>
               </div>
             </div>
