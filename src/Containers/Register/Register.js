@@ -47,6 +47,19 @@ class Register extends React.Component {
   }
 
   render() {
+    const PROPS = {
+      firstName: {
+        id: 'firstName',
+        name: 'First Name',
+        required: true,
+        value: this.state.firstName,
+        onInputChange: this.onInputChange,
+        validate: this.validate,
+        vSuccess: 1,
+        vWarn: 1,
+        vError: 2,
+      },
+    };
     return (
       <div style={this.styles.mainBgColor}>
         <Breadcrumbs paths={this.breadCrumbs} />
@@ -60,17 +73,7 @@ class Register extends React.Component {
           <div>
             <h4 style={this.styles.registerH4}>Personal Details</h4>
             <div style={this.styles.inputContainers}>
-              <Inputcard
-                id={'firstName'}
-                name={'First Name'}
-                required
-                value={this.state.firstName}
-                onInputChange={this.onInputChange}
-                validate={this.validate}
-                vSuccess={1}
-                vWarn={1}
-                vError={0}
-              />
+              <Inputcard {...PROPS.firstName} />
               <br />
               <Inputcard
                 id={'lastName'}
