@@ -14,6 +14,14 @@ class Register extends React.Component {
 
     this.state = {
       firstName: '',
+      lastName: '',
+      email: '',
+      postZip: '',
+      country: '',
+      phone: '',
+      role: '',
+      password: '',
+      confirmPassword: '',
       agreed: false,
     };
     this.breadCrumbs = [{
@@ -56,20 +64,14 @@ class Register extends React.Component {
                 value={this.state.firstName}
                 onInputChange={this.onInputChange}
               />
-              <div style={this.styles.userInfoInput}>
-                <label htmlFor="firstName">First Name:
-                  <span style={this.styles.required}> *</span>
-                </label>
-                <input
-                  style={this.styles.userInfoInput}
-                  className="reg-form-control"
-                  type="text"
-                  id="firstName"
-                  onChange={e =>
-                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-                />
-              </div>
               <br />
+              <Inputcard
+                id={'lastName'}
+                name={'Last Name'}
+                required
+                value={this.state.lastName}
+                onInputChange={this.onInputChange}
+              />
               <div style={this.styles.userInfoInput}>
                 <label htmlFor="lastName">Last Name:
                   <span style={this.styles.required}> *</span>
