@@ -4,7 +4,6 @@ import styles from '../../Containers/Register/registerStyles';
 class InputCard extends PureComponent {
   onInputChange = (value, id) => this.props.onInputChange(value, id);
   render() {
-    console.log('this.props: ', this.props);
     return (
       <div style={styles.userInfoInput}>
 
@@ -17,7 +16,7 @@ class InputCard extends PureComponent {
           style={styles.userInfoInput}
           className="reg-form-control"
           type="text"
-          value={this.props.value}
+          value={this.props.value || ''}
           onChange={e =>
             this.onInputChange(e.target.value, e.target.getAttribute('id'))}
         />

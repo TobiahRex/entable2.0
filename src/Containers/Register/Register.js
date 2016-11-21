@@ -72,33 +72,14 @@ class Register extends React.Component {
                 value={this.state.lastName}
                 onInputChange={this.onInputChange}
               />
-              <div style={this.styles.userInfoInput}>
-                <label htmlFor="lastName">Last Name:
-                  <span style={this.styles.required}> *</span>
-                </label>
-                <input
-                  style={this.styles.userInfoInput}
-                  className="reg-form-control"
-                  type="text"
-                  id="lastName"
-                  onChange={e =>
-                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-                />
-              </div>
               <br />
-              <div style={this.styles.userInfoInput}>
-                <label htmlFor="emailAddress">Email Address:
-                  <span style={this.styles.required}> *</span>
-                </label>
-                <input
-                  style={this.styles.userInfoInput}
-                  className="reg-form-control"
-                  type="text"
-                  id="emailAddress"
-                  onChange={e =>
-                    this.onInputChange(e.target.value, e.target.getAttribute('id'))}
-                />
-              </div>
+              <Inputcard
+                id={'email'}
+                name={'Email Address'}
+                required
+                value={this.state.email}
+                onInputChange={this.onInputChange}
+              />
               <br />
               <div style={this.styles.userInfoInput}>
                 <label htmlFor="postZipCode">Post / Zip Code:
