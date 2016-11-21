@@ -21,7 +21,7 @@ class InputCard extends PureComponent {
             id={this.props.id}
             style={styles.userInfoInput}
             className="reg-form-control"
-            type="text"
+            type={this.props.type}
             value={this.props.value || ''}
             onChange={e =>
               this.onInputChange(e.target.value, e.target.getAttribute('id'))}
@@ -34,6 +34,7 @@ class InputCard extends PureComponent {
 }
 InputCard.propTypes = {
   id: PropTypes.string,
+  type: PropTypes.string,
   name: PropTypes.string.isRequired,
   required: PropTypes.bool.isRequired,
   requiredMsg: PropTypes.string,

@@ -74,9 +74,9 @@ class Register extends React.Component {
       case 'confirmPassword': {
         const cPassword = this.state.confirmPassword;
         const password = this.state.password;
+        if (cPassword === password && password.length > 1) return 'success';
         if (cPassword.length > 0) return 'warning';
         else if (cPassword > 0 && cPassword !== password) return 'error';
-        else if (cPassword === password) return 'success';
       } break;
       default: break;
     }
@@ -99,6 +99,7 @@ class Register extends React.Component {
     const PROPS = {
       firstName: {
         id: 'firstName',
+        type: 'text',
         name: 'First Name',
         required: true,
         value: this.state.firstName,
@@ -110,6 +111,7 @@ class Register extends React.Component {
       },
       lastName: {
         id: 'lastName',
+        type: 'text',
         name: 'Last Name',
         required: true,
         value: this.state.lastName,
@@ -121,6 +123,7 @@ class Register extends React.Component {
       },
       email: {
         id: 'email',
+        type: 'email',
         name: 'Email Address',
         required: true,
         value: this.state.email,
@@ -129,6 +132,7 @@ class Register extends React.Component {
       },
       postZip: {
         id: 'postZip',
+        type: 'number',
         name: 'Post / Zip Code',
         required: true,
         value: this.state.postZip,
@@ -162,6 +166,7 @@ class Register extends React.Component {
       },
       password: {
         id: 'password',
+        type: 'password',
         name: 'Password',
         required: true,
         value: this.state.password,
@@ -173,6 +178,7 @@ class Register extends React.Component {
       },
       confirmPassword: {
         id: 'confirmPassword',
+        type: 'password',
         name: 'Confirm Password',
         required: true,
         value: this.state.confirmPassword,
