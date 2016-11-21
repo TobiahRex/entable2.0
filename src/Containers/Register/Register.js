@@ -43,13 +43,6 @@ class Register extends React.Component {
 
   onInputChange = (value, id) => this.setState({ [id]: value })
 
-  validate = (value) => {
-    if (value.length > 3) return 'success';
-    else if (value.lenth > 0 && value.length < 3) return 'warning';
-    else if (value.length < 3) return 'error';
-    return '';
-  }
-
   render() {
     return (
       <div style={this.styles.mainBgColor}>
@@ -70,6 +63,7 @@ class Register extends React.Component {
                 required
                 value={this.state.firstName}
                 onInputChange={this.onInputChange}
+                validate={this.validate}
               />
               <br />
               <Inputcard
@@ -78,6 +72,7 @@ class Register extends React.Component {
                 required
                 value={this.state.lastName}
                 onInputChange={this.onInputChange}
+                validate={this.validate}
               />
               <br />
               <Inputcard
@@ -86,6 +81,7 @@ class Register extends React.Component {
                 required
                 value={this.state.email}
                 onInputChange={this.onInputChange}
+                validate={this.validate}
               />
               <br />
               <div style={this.styles.userInfoInput}>
