@@ -109,7 +109,7 @@ class Register extends React.Component {
 
   onInputChange = (value, id) => this.setState({ [id]: value })
 
-  validate = (id, vSuccess, vWarn, vError) => {
+  validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
     switch (id) {
       case 'firstName': {
         const length = this.state[id].length;
@@ -161,7 +161,6 @@ class Register extends React.Component {
       } break;
       default: break;
     }
-    return '';
   }
 
   render() {
@@ -259,22 +258,6 @@ class Register extends React.Component {
                 validate: this.validate,
               }}
             />
-            {/* <h4 style={Register.styles.registerH4}>Login Details</h4>
-              <div style={Register.styles.inputContainers}>
-              <Inputcard
-              {...Register.PROPS.password}
-              value={this.state.password}
-              onInputChange={this.onInputChange}
-              validate={this.validate}
-              />
-              <br />
-              <Inputcard
-              {...Register.PROPS.confirmPassword}
-              value={this.state.confirmPassword}
-              onInputChange={this.onInputChange}
-              validate={this.validate}
-              />
-            </div> */}
           </div>
         </div>
         <div style={Register.styles.registerPrivacy}>
