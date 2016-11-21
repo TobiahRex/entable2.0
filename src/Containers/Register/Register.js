@@ -62,7 +62,13 @@ class Register extends React.Component {
         if (length > vSuccess) return 'success';
         else if (length > vWarn) return 'warning';
         else if (length > vError) return 'error';
-      }
+      } break;
+      case 'country': {
+        const length = this.state[id].length;
+        if (length > vSuccess) return 'success';
+        else if (length > vWarn) return 'warning';
+        else if (length > vError) return 'error';
+      } break;
       default: break;
     }
   }
