@@ -19,9 +19,9 @@ class Register extends React.Component {
       lastName: '',
       email: '',
       postZip: '',
-      country: '',
+      country: 'Choose Country',
       phone: '',
-      role: '',
+      role: 'Choose Role',
       password: '',
       confirmPassword: '',
       agreed: false,
@@ -71,6 +71,12 @@ class Register extends React.Component {
         else if (length > vWarn) return 'warning';
         else if (length > vError) return 'error';
       } break;
+      case 'phone': {
+        const length = this.state[id].length;
+        if (length > vSuccess) return 'success';
+        else if (length > vWarn) return 'warning';
+        else if (length > vError) return 'error';
+      } break;
       case 'confirmPassword': {
         const cPassword = this.state.confirmPassword;
         const password = this.state.password;
@@ -83,7 +89,6 @@ class Register extends React.Component {
   }
 
   renderCountries = () => {
-    console.log('Countries: ', Countries);
     return Countries.map((country, i) => (
       <MenuItem
         key={`country${i}`}
@@ -157,6 +162,7 @@ class Register extends React.Component {
         id: 'phone',
         name: 'Phone Number',
         required: true,
+        requiredMsg: ' 123-456-7890',
         value: this.state.phone,
         onInputChange: this.onInputChange,
         validate: this.validate,
@@ -169,6 +175,7 @@ class Register extends React.Component {
         type: 'password',
         name: 'Password',
         required: true,
+        requiredMsg: ' At least 8 characters',
         value: this.state.password,
         onInputChange: this.onInputChange,
         validate: this.validate,
@@ -212,7 +219,7 @@ class Register extends React.Component {
                   <span style={this.styles.required}> *</span>
                 </label>
                 <br />
-                <DropdownButton title="Choose Country" id="country">
+                <DropdownButton title={this.state.country} id="country">
                   {this.renderCountries()}
                 </DropdownButton>
               </div>
@@ -229,7 +236,7 @@ class Register extends React.Component {
                   <span style={this.styles.required}> *</span>
                 </label>
                 <br />
-                <DropdownButton title="Choose Role" id="role">
+                <DropdownButton title={this.state.role} id="role">
                   <MenuItem
                     eventKey="1"
                     onClick={() => this.setState({ role: 'Donor' })}
