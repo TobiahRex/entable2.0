@@ -39,11 +39,26 @@ class Register extends React.Component {
   onInputChange = (value, id) => this.setState({ [id]: value })
 
   validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
-    console.log(id, vSuccess, vWarn, vError);
-    const length = this.state[id].length;
-    if (length > vSuccess) return 'success';
-    else if (length > vWarn) return 'warning';
-    else if (length > vError) return 'error';
+    switch (id) {
+      case 'firstName': {
+        const length = this.state[id].length;
+        if (length > vSuccess) return 'success';
+        else if (length > vWarn) return 'warning';
+        else if (length > vError) return 'error';
+      } break;
+      case 'lastName': {
+        const length = this.state[id].length;
+        if (length > vSuccess) return 'success';
+        else if (length > vWarn) return 'warning';
+        else if (length > vError) return 'error';
+      } break;
+      case 'email': {
+        const match = this.state.email.match(/.+@.+\..+/i);
+        if (match.length) return 'success';
+        else if (!match.length) return ('error');
+      } break;
+      default: break;
+    }
   }
 
   render() {
@@ -53,6 +68,17 @@ class Register extends React.Component {
         name: 'First Name',
         required: true,
         value: this.state.firstName,
+        onInputChange: this.onInputChange,
+        validate: this.validate,
+        vSuccess: 1,
+        vWarn: 1,
+        vError: 2,
+      },
+      lastName: {
+        id: 'lastName',
+        name: 'Last Name',
+        required: true,
+        value: this.state.lastName,
         onInputChange: this.onInputChange,
         validate: this.validate,
         vSuccess: 1,
@@ -75,14 +101,7 @@ class Register extends React.Component {
             <div style={this.styles.inputContainers}>
               <Inputcard {...PROPS.firstName} />
               <br />
-              <Inputcard
-                id={'lastName'}
-                name={'Last Name'}
-                required
-                value={this.state.lastName}
-                onInputChange={this.onInputChange}
-                validate={this.validate}
-              />
+              <Inputcard {...PROPS.lastName} />
               <br />
               <Inputcard
                 id={'email'}
