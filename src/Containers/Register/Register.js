@@ -3,6 +3,7 @@ import { Checkbox, DropdownButton, MenuItem } from 'react-bootstrap/lib/';
 import registerStyles from './registerStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
+import Inputcard from '../../Components/Register/InputCard';
 
 class Register extends React.Component {
   static propTypes = {
