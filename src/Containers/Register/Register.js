@@ -71,6 +71,13 @@ class Register extends React.Component {
         else if (length > vWarn) return 'warning';
         else if (length > vError) return 'error';
       } break;
+      case 'confirmPassword': {
+        const cPassword = this.state.confirmPassword;
+        const password = this.state.password;
+        if (password cPassword.length > 0) return 'warning';
+        else if (cPassword > 0 && cPassword !== password) return 'error';
+        else if (cPassword === password) freturn 'success';
+      }
       default: break;
     }
   }
@@ -79,6 +86,7 @@ class Register extends React.Component {
     console.log('Countries: ', Countries);
     return Countries.map((country, i) => (
       <MenuItem
+        key={`country${i}`}
         eventKey={i + 1}
         onClick={() => this.setState({ country })}
       >
@@ -169,6 +177,7 @@ class Register extends React.Component {
         required: true,
         value: this.state.confirmPassword,
         onInputChange: this.onInputChange,
+        validate: this.validate,
       },
     };
     return (
