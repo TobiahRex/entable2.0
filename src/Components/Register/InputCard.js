@@ -3,13 +3,11 @@ import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap/lib/';
 import styles from '../../Containers/Register/registerStyles';
 
 class InputCard extends PureComponent {
-  onInputChange = (value, id) => this.props.onInputChange(value, id);
-  validateChange = () => {
-    const length = this.props.value.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
-    else if (length > 0) return 'error';
-  };
+  onInputChange = (value, id) => this.props.onInputChange(value, id)
+
+  validateChange = () =>
+  this.props.validate(this.props.id, this.props.vSuccess, this.props.vWarn, this.props.vError)
+
   render() {
     return (
       <div style={styles.userInfoInput}>
@@ -19,7 +17,6 @@ class InputCard extends PureComponent {
           <ControlLabel htmlFor={this.props.id}>{this.props.name}:
             {this.props.required ? <span style={styles.required}> *{this.props.requiredMsg}</span> : ''}
           </ControlLabel>
-
           <FormControl
             id={this.props.id}
             style={styles.userInfoInput}
@@ -43,6 +40,9 @@ InputCard.propTypes = {
   value: PropTypes.string,
   onInputChange: PropTypes.func.isRequired,
   validate: PropTypes.func.isRequired,
+  vSuccess: PropTypes.number,
+  vWarn: PropTypes.number,
+  vError: PropTypes.number,
 };
 
 export default InputCard;

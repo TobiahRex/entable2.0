@@ -36,12 +36,14 @@ class Register extends React.Component {
     this.styles = registerStyles;
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('nextState: ', nextState);
-    return true;
-  }
-
   onInputChange = (value, id) => this.setState({ [id]: value })
+
+  validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
+    const length = this.state[id].length;
+    if (length > vSuccess) return 'success';
+    else if (length > vWarn) return 'warning';
+    else if (length > vError) return 'error';
+  }
 
   render() {
     return (
