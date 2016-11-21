@@ -49,6 +49,13 @@ class Register extends React.Component {
           <div>
             <h4 style={this.styles.registerH4}>Personal Details</h4>
             <div style={this.styles.inputContainers}>
+              <Inputcard
+                id={'firstName'}
+                name={'First Name'}
+                required
+                value={this.state.firstName}
+                onInputChange={this.onInputChange}
+              />
               <div style={this.styles.userInfoInput}>
                 <label htmlFor="firstName">First Name:
                   <span style={this.styles.required}> *</span>
