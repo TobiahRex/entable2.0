@@ -19,7 +19,10 @@ class Register extends React.Component {
       lastName: '',
       email: '',
       postZip: '',
-      country: 'Choose Country',
+      country: {
+        name: 'Choose Country',
+        code: '',
+      },
       phone: '',
       role: 'Choose Role',
       password: '',
@@ -35,6 +38,15 @@ class Register extends React.Component {
       name: 'Register',
       active: true,
     }];
+    this.countries = Countries.map((country, i) => (
+      <MenuItem
+        key={`country${i}`}
+        eventKey={i + 1}
+        onClick={() => this.setState({ country })}
+      >
+        {country.name} - ({country.code})
+      </MenuItem>
+    ));
     this.styles = registerStyles;
   }
 
@@ -88,19 +100,20 @@ class Register extends React.Component {
     }
   }
 
-  renderCountries = () => {
-    return Countries.map((country, i) => (
-      <MenuItem
-        key={`country${i}`}
-        eventKey={i + 1}
-        onClick={() => this.setState({ country })}
-      >
-        {country.name} - ({country.code})
-      </MenuItem>)
-    );
-  }
+  // renderCountries = () => {
+  //   return Countries.map((country, i) => (
+  //     <MenuItem
+  //       key={`country${i}`}
+  //       eventKey={i + 1}
+  //       onClick={() => this.setState({ country })}
+  //     >
+  //       {country.name} - ({country.code})
+  //     </MenuItem>)
+  //   );
+  // }
 
   render() {
+    console.log('this.state.country: ', this.state.country);
     const PROPS = {
       firstName: {
         id: 'firstName',
@@ -219,8 +232,8 @@ class Register extends React.Component {
                   <span style={this.styles.required}> *</span>
                 </label>
                 <br />
-                <DropdownButton title={this.state.country} id="country">
-                  {this.renderCountries()}
+                <DropdownButton title={this.state.country || this.state.country.name} id="country">
+                  {this.countries}
                 </DropdownButton>
               </div>
               <br />
