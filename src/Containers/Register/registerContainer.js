@@ -78,17 +78,23 @@ class Register extends React.Component {
 
     let missingField = '';
     const missingFields = Object.keys(state).map((key) => {
-      console.log('!state[key]: ', !state[key], '\nkey: ', key);
-      if (!state[key] ||
-        (state.country === 'Choose Country') ||
-        (state.role === 'Choose Role') ||
-        state.agreed === false) {
+      if (!state[key]) {
         missingField = key.toUpperCase();
         return true;
-      } else {
-        return false;
+      } else if (state.country === 'Choose Country') {
+        missingField = key.toUpperCase();
+        return true;
+      } else if (state.role === 'Choose Role') {
+        missingField = key.toUpperCase();
+        return true;
+      } else if (state.agreed === false) {
+        missingField = key.toUpperCase();
+        return true;
       }
+      return false;
     });
+
+    console.log('missingFields: ', missingFields);
 
     if (missingFields.includes(true)) {
       console.warn('Error', missingField);
