@@ -1,6 +1,6 @@
 import { takeLatest } from 'redux-saga';
 import API from '../Services/API';
-import { firebaseAuth as firebase } from '../Services/Firebase/FirebaseConfig';
+import { firebaseAuth } from '../Services/Firebase/FirebaseConfig';
 
 import registerUserSaga from './AuthSaga/registerUser';
 import getPriceSaga from './BankSaga/getPrice';
@@ -14,6 +14,7 @@ import { TwilioTypes } from '../Redux/TwilioRedux';
 import { StripeTypes } from '../Redux/StripeRedux';
 
 const api = API.createAPI();
+const firebase = firebaseAuth;
 
 export default function* rootSaga() {
   yield [takeLatest(AuthTypes.REGISTER_USER, registerUserSaga, firebase),
