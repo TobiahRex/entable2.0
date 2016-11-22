@@ -13,7 +13,7 @@ class privacyStatement extends PureComponent {
         <h4 style={styles.registerH4}>Privacy Statement</h4>
         <div style={{ ...styles.inputContainers, ...styles.registerPrivacyContainer }}>
           <div style={styles.registerPrivacyMsg}>
-            <label htmlFor="privacyStatement">Please acknowledge that you accept our Privacy Statement by checking the following box.<br />The Privacy Statement can be read <a style={styles.privacyLink} href="/privacy">here</a>.<br />The Privacy statement will always be available from our website located in the webpage footer.
+            <label htmlFor="privacyStatement">Please acknowledge that you accept our Privacy Statement by checking the following box.<br />The Privacy Statement can be read <a style={styles.privacyLink} href="/privacy">here</a>.  The Privacy statement will always be available from our website located in the webpage footer.
             </label>
             <Checkbox
               checked={this.props.agreed}
