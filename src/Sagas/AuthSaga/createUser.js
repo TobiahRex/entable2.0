@@ -1,4 +1,5 @@
 import { call, put } from 'redux-saga/effects';
+import apiActions from '../../Redux/'
 
 
 export default function* registerUser(firebase, { info }) {
