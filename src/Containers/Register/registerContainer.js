@@ -275,12 +275,12 @@ class Register extends React.Component {
             </div>
             <br />
             <LoginDetails
-              password={{ ...Register.PROPS.password,
+              password={{
                 value: this.state.password,
                 onInputChange: this.onInputChange,
                 validate: this.validate,
               }}
-              confirmPassword={{ ...Register.PROPS.confirmPassword,
+              confirmPassword={{
                 value: this.state.confirmPassword,
                 onInputChange: this.onInputChange,
                 validate: this.validate,
