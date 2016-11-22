@@ -43,6 +43,10 @@ class Register extends React.Component {
       confirmPassword: '',
       agreed: false,
       hover: false,
+      error: {
+        code: '',
+        message: '',
+      },
     };
   }
 
@@ -72,7 +76,14 @@ class Register extends React.Component {
 
   register = () => {
     const state = Object.assign({}, this.state);
+    Object.keys(state).forEach((key) => {
+      if (!state[key]) {
+        console.log('missing field: ', key);
+        this.setState({ error: `Missing required field: "${key.toUpperCase()}"` });
+      }
+    });
     delete state.hover;
+    delete state.error;
     this.props.registerUser(state);
   }
 
