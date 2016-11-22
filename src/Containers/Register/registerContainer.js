@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import userActions from '../../Redux/UserRedux';
+import userActions from '../../Redux/AuthRedux';
 
 import registerStyles from './registerStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
