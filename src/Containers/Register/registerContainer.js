@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Checkbox, DropdownButton, MenuItem } from 'react-bootstrap/lib/';
+import { DropdownButton, MenuItem } from 'react-bootstrap/lib/';
 import userActions from '../../Redux/UserRedux';
 
 import registerStyles from './registerStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
 import Inputcard from '../../Components/InputCard';
-// import Countries from '../../Services/CountryConstants';
 import PersonalDetails from './personalDetails.register';
 import LoginDetails from './loginDetails.register';
+import PrivacyStatement from './privacyStatement.register';
 
 class Register extends React.Component {
   static breadCrumbs = [{
@@ -198,19 +198,10 @@ class Register extends React.Component {
           </div>
         </div>
         <div style={Register.styles.registerPrivacy}>
-          <h4 style={Register.styles.registerH4}>Privacy Statement</h4>
-          <div style={{ ...Register.styles.inputContainers, ...Register.styles.registerPrivacyContainer }}>
-            <div style={Register.styles.registerPrivacyMsg}>
-              <label htmlFor="privacyStatement">Please acknowledge that you accept our Privacy Statement by checking the following box.<br />The Privacy Statement can be read <a style={Register.styles.privacyLink} href="/privacy">here</a>.<br />The Privacy statement will always be available from our website located in the webpage footer.
-              </label>
-              <Checkbox
-                checked={this.state.agreed}
-                onClick={() => this.setState({ agreed: true })}
-              >I agree to the Privacy Statement:
-                <span style={Register.styles.required}> *</span>
-              </Checkbox>
-            </div>
-          </div>
+          <PrivacyStatement
+            onInputChange={this.onInputChange}
+            agreed={this.state.agreed}
+          />
         </div>
         <div style={Register.styles.registerBtnContainer}>
           <div>

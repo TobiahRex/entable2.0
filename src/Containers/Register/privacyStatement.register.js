@@ -13,7 +13,7 @@ class privacyStatement extends PureComponent {
             </label>
             <Checkbox
               checked={this.state.agreed}
-              onClick={() => this.setState({ agreed: true })}
+              onClick={() => this.props.onInputChange(true, 'agreed')}
             >I agree to the Privacy Statement:
               <span style={styles.required}> *</span>
             </Checkbox>
