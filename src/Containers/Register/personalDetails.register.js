@@ -54,12 +54,15 @@ class personalDetails extends PureComponent {
     super(props);
     this.countries = Countries.map((country, i) => (
       <MenuItem
-        id={country.name}
         key={`country${i}`}
         eventKey={i + 1}
-        onClick={e => this.onInputChange('country', e.target.getAttribute('id'))}
-      >
-        {country.name} - ({country.code})
+        onClick={() =>
+          this.props.onInputChange({
+            name: country.name,
+            code: country.code,
+          }, 'country')
+        }
+      >{country.name} - ({country.code})
       </MenuItem>));
   }
 
@@ -70,9 +73,8 @@ class personalDetails extends PureComponent {
         <div style={styles.inputContainers}>
           <Inputcard
             {...personalDetails.PROPS.firstName}
-            value={this.props.firstName}
             onInputChange={this.props.onInputChange}
-            validate={this.props.validate}
+            value={this.props.firstName}
           />
           <br />
           <Inputcard

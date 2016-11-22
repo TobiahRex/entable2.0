@@ -8,6 +8,7 @@ import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
 import Inputcard from '../../Components/InputCard';
 // import Countries from '../../Services/CountryConstants';
+import PersonalDetails from './personalDetails.register';
 import LoginDetails from './loginDetails.register';
 
 class Register extends React.Component {
@@ -150,7 +151,8 @@ class Register extends React.Component {
             firstName={this.state.firstName}
             lastName={this.state.lastname}
             email={this.state.email}
-            postZip={this.state.postZip}            country={this.state.country.name}
+            postZip={this.state.postZip}
+            country={this.state.country}
           />
           {/* <div>
             <h4 style={Register.styles.registerH4}>Personal Details</h4>
