@@ -154,49 +154,6 @@ class Register extends React.Component {
             postZip={this.state.postZip}
             country={this.state.country}
           />
-          {/* <div>
-            <h4 style={Register.styles.registerH4}>Personal Details</h4>
-            <div style={Register.styles.inputContainers}>
-            <Inputcard
-            {...Register.PROPS.firstName}
-            value={this.state.firstName}
-            onInputChange={this.onInputChange}
-            validate={this.validate}
-            />
-            <br />
-            <Inputcard
-            {...Register.PROPS.lastName}
-            value={this.state.lastName}
-            onInputChange={this.onInputChange}
-            validate={this.validate}
-            />
-            <br />
-            <Inputcard
-            {...Register.PROPS.email}
-            value={this.state.email}
-            onInputChange={this.onInputChange}
-            validate={this.validate}
-            />
-            <br />
-            <Inputcard
-            {...Register.PROPS.postZip}
-            value={this.state.postZip}
-            onInputChange={this.onInputChange}
-            validate={this.validate}
-            />
-            <br />
-            <div>
-            <label htmlFor="country">Country:
-            <span style={Register.styles.required}> *</span>
-            </label>
-            <br />
-            <DropdownButton title={this.state.country.name} id="country">
-            {this.countries}
-            </DropdownButton>
-            </div>
-            <br />
-            </div>
-          </div> */}
           <div className="registerGroup">
             <h4 style={Register.styles.registerH4}>Additional Details</h4>
             <div style={Register.styles.additionalContainer}>

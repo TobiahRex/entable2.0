@@ -39,14 +39,3 @@ class loginDetails extends React.PureComponent {
   }
 }
 export default loginDetails;
-// Object
-// id: "firstName"
-// name: "First Name"
-// onInputChange: (value, id)
-// required: true
-// type: "text"
-// vError: 2
-// vSuccess: 1
-// vWarn: 1
-// validate: (id, vSuccess, vWarn, vError)
-// value: ""
