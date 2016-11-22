@@ -1,8 +1,7 @@
 import { call, put } from 'redux-saga/effects';
-import apiActions from '../../Redux/'
+import authActions from '../../Redux/AuthRedux';
 
-
-export default function* registerUser(firebase, { info }) {
+export default function* registerUser(firebase, api, { info }) {
   const response = yield call(() =>
   firebase.createUserWithEmailAndPassword(info.email, info.password)
   .then(user => user)
@@ -10,7 +9,8 @@ export default function* registerUser(firebase, { info }) {
 
   if (response.uid) {
     const { refreshToken, uid } = response;
-    console.log(refreshToken, '\n', uid, '\n', info, '\n');
+    const newUserInfo = { info, ...refreshToken, ...uid };
+    yield [put(authActions.saveNewUser(newUserInfo))];
   } else {
     const { code, message } = response;
     /* Firebase Errors:
