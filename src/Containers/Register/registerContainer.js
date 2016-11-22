@@ -78,20 +78,26 @@ class Register extends React.Component {
     let emptyFields = true;
 
     Object.keys(state).forEach((key) => {
-      if (!state[key] || (state.country === 'Choose Country') || (state.role === 'Choose Role') || state.agreed === false) {
-        this.setState({ error: `Missing required field: "${key.toUpperCase()}"` });
-      } else if (this.state.error) {
-        this.setState({ error: '' });
-        emptyFields = false;
+      if (!state[key] ||
+        (state.country === 'Choose Country') ||
+        (state.role === 'Choose Role') ||
+        state.agreed === false) {
+        emptyFields = `Missing required field: "${key.toUpperCase()}"`;
       } else {
         emptyFields = false;
       }
     });
-    if (this.state.error || emptyFields) {
-      console.warn('Error', this.state.error || emptyFields);
+
+    if (emptyFields) {
+      console.warn('Error', emptyFields);
     } else {
       this.props.registerUser(state);
     }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log('previous agreed: ', this.state.agreed);
+    console.log('current agreed: ', nextState.agreed);
   }
 
   render() {
