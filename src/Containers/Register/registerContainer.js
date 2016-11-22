@@ -1,5 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Checkbox, DropdownButton, MenuItem } from 'react-bootstrap/lib/';
+import userActions from '../../Redux/UserRedux';
+
 import registerStyles from './registerStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
@@ -170,6 +173,12 @@ class Register extends React.Component {
     }
   }
 
+  register = () => {
+    const state = Object.assign({}, this.state);
+    delete state.hover;
+    this.props.registerUser(state);
+  }
+
   render() {
     let registerBtnHover = {};
     if (this.state.hover) {
@@ -300,6 +309,7 @@ class Register extends React.Component {
               style={{ ...Register.styles.registerBtn, ...registerBtnHover }}
               onMouseEnter={this.toggleHover}
               onMouseLeave={this.toggleHover}
+              onClick={this.register}
             >
             Register</button>
           </div>
@@ -309,4 +319,7 @@ class Register extends React.Component {
     );
   }
 }
-export default Register;
+const mapDispatchToProps = dispatch => ({
+  registerUser: details => dispatch(userActions.registerUser(details)),
+});
+export default connect(null, mapDispatchToProps)(Register);
