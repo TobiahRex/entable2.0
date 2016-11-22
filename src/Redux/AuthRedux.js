@@ -12,7 +12,7 @@ const { Types, Creators } = createActions({
   logoutUserSuccess: null,
 });
 
-export const UserTypes = Types;
+export const AuthTypes = Types;
 export default Creators;
 
 export const INITIAL_STATE = {
