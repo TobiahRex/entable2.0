@@ -1,6 +1,9 @@
 import { createActions, createReducer } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
+  registerUser: ['info'],
+  registerFail: ['error'],
+  registerSuccess: ['credentials'],
   loginUser: ['credentials'],
   loginUserFail: ['error'],
   loginUserSuccess: ['user'],
@@ -23,6 +26,29 @@ export const INITIAL_STATE = {
   error: null,
 };
 
+const registerSuccess = (state, { user }) => ({
+  uid: user.id,
+  username: user.username,
+  email: user.email,
+  lastLogin: user.lastLogin,
+  location: user.location,
+  registered: user.registered,
+  photoUrl: user.photoUrl,
+  setttings: user.settings,
+  error: null,
+});
+
+const registerFail = (state, { error }) => ({
+  uid: null,
+  username: null,
+  email: null,
+  lastLogin: null,
+  location: null,
+  registered: null,
+  photoUrl: null,
+  setttings: null,
+  error,
+});
 
 const loginSuccess = (state, { user }) => ({
   uid: user.id,
@@ -71,6 +97,8 @@ const logoutFail = (state, { error }) => ({
 });
 
 export const userReducer = createReducer(INITIAL_STATE, {
+  [Types.REGISTER_SUCCESS]: registerSuccess,
+  [Types.REGISTER_FAIL]: registerFail,
   [Types.LOGIN_SUCCESS]: loginSuccess,
   [Types.LOGIN_FAIL]: loginFail,
   [Types.LOGOUT_SUCCESS]: logoutSuccess,
