@@ -206,16 +206,19 @@ class Register extends React.Component {
             agreed={this.state.agreed}
           />
         </div>
-        <div style={Register.styles.registerBtnContainer}>
+        <RegisterButton
+          
+        />
+        {/* <div style={Register.styles.registerBtnContainer}>
           <div>
-            <button
-              style={{ ...Register.styles.registerBtn, ...registerBtnHover }}
-              onMouseEnter={this.toggleHover}
-              onMouseLeave={this.toggleHover}
-              onClick={this.register}
-            >Register</button>
+          <button
+          style={{ ...Register.styles.registerBtn, ...registerBtnHover }}
+          onMouseEnter={this.toggleHover}
+          onMouseLeave={this.toggleHover}
+          onClick={this.register}
+          >Register</button>
           </div>
-        </div>
+        </div> */}
         <Footer />
       </div>
     );
