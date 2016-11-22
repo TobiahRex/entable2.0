@@ -21,7 +21,8 @@ export default Creators;
 export const INITIAL_STATE = {
   uid: null,
   refreshToken: null,
-  username: null,
+  firstName: null,
+  lastName: null,
   email: null,
   lastLogin: null,
   location: null,
@@ -34,10 +35,11 @@ const createUserSuccess = (state, { info }) => ({
 
 })
 
-const saveNewUserSuccess = ({ activeUser }, { user }) => ({
+const saveNewUserSuccess = (state, { user }) => ({
   uid: user.id,
-  refreshToken: activeUser.refreshToken,
-  username: user.username,
+  refreshToken: state.user.refreshToken,
+  firstName: user.firstName,
+  lastName: user.lastName,
   email: user.email,
   lastLogin: user.lastLogin,
   location: user.location,
@@ -49,7 +51,7 @@ const saveNewUserSuccess = ({ activeUser }, { user }) => ({
 
 const saveNewUserFail = (state, { error }) => ({
   uid: null,
-  username: null,
+  firstName: null,
   email: null,
   lastLogin: null,
   location: null,
@@ -61,7 +63,8 @@ const saveNewUserFail = (state, { error }) => ({
 
 const loginSuccess = (state, { user }) => ({
   uid: user.id,
-  username: user.username,
+  firstName: user.firstName,
+  lastName: user.lastName,
   email: user.email,
   lastLogin: user.lastLogin,
   location: user.location,
@@ -73,7 +76,8 @@ const loginSuccess = (state, { user }) => ({
 
 const loginFail = (state, { error }) => ({
   uid: null,
-  username: null,
+  firstName: null,
+  lastName: null,
   email: null,
   lastLogin: null,
   location: null,
@@ -85,7 +89,7 @@ const loginFail = (state, { error }) => ({
 
 const logoutSuccess = () => ({
   uid: null,
-  username: null,
+  firstName: null,
   email: null,
   lastLogin: null,
   location: null,
@@ -96,7 +100,8 @@ const logoutSuccess = () => ({
 
 const logoutFail = (state, { error }) => ({
   uid: state.uid,
-  username: state.username,
+  firstName: state.firstName,
+  firstName: state.lastName,
   email: state.email,
   lastLogin: state.lastLogin,
   location: state.location,
