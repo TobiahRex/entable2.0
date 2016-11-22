@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { DropdownButton, MenuItem } from 'react-bootstrap/lib/';
 import userActions from '../../Redux/UserRedux';
@@ -12,6 +12,9 @@ import LoginDetails from './loginDetails.register';
 import PrivacyStatement from './privacyStatement.register';
 
 class Register extends React.Component {
+  static propTypes = {
+    registerUser: PropTypes.func.isRequired,
+  }
   static breadCrumbs = [{
     href: '/',
     name: 'Home',
