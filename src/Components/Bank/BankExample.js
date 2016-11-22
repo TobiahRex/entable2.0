@@ -22,7 +22,7 @@ class Donation extends React.Component {
       phone: '',
       token: '',
       currency: 'USD',
-      amount: 2000,
+      amount: 0,
       showModal: false,
     };
 
@@ -130,8 +130,6 @@ class Donation extends React.Component {
   closeModal = () => this.setState({ showModal: false })
 
   render() {
-    window.scrollTo(0, 0);
-
     return (
       <div>
         <Breadcrumbs paths={this.breadCrumbs} />

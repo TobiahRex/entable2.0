@@ -26,4 +26,5 @@ firebaseAuth.signInWithEmailAndPassword(email, password)
   throw Error('Sign In Error', err.message);
 });
 
-export const firebaseSignInFacebook = () => console.log('this is the facebook social login');
+export const firebaseSignInFacebook = () =>
+alert('this is the facebook social login');
