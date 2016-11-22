@@ -7,7 +7,7 @@ import registerStyles from './registerStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
 import Inputcard from '../../Components/InputCard';
-import Countries from '../../Services/CountryConstants';
+// import Countries from '../../Services/CountryConstants';
 import LoginDetails from './loginDetails.register';
 
 class Register extends React.Component {
@@ -22,39 +22,6 @@ class Register extends React.Component {
   }];
   static styles = registerStyles;
   static PROPS = {
-    firstName: {
-      id: 'firstName',
-      type: 'text',
-      name: 'First Name',
-      required: true,
-      vSuccess: 1,
-      vWarn: 1,
-      vError: 2,
-    },
-    lastName: {
-      id: 'lastName',
-      type: 'text',
-      name: 'Last Name',
-      required: true,
-      vSuccess: 1,
-      vWarn: 1,
-      vError: 2,
-    },
-    email: {
-      id: 'email',
-      type: 'email',
-      name: 'Email Address',
-      required: true,
-    },
-    postZip: {
-      id: 'postZip',
-      type: 'text',
-      name: 'Post / Zip Code',
-      required: true,
-      vSuccess: 4,
-      vWarn: 1,
-      vError: 0,
-    },
     phone: {
       id: 'phone',
       name: 'Phone Number',
@@ -84,15 +51,6 @@ class Register extends React.Component {
       agreed: false,
       hover: false,
     };
-    this.countries = Countries.map((country, i) => (
-      <MenuItem
-        key={`country${i}`}
-        eventKey={i + 1}
-        onClick={() => this.setState({ country })}
-      >
-        {country.name} - ({country.code})
-      </MenuItem>
-    ));
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -186,49 +144,57 @@ class Register extends React.Component {
           </span>
         </div>
         <div style={Register.styles.registerFlexParent}>
-          <div>
+          <PersonalDetails
+            onInputChange={this.onInputChange}
+            validate={this.validate}
+            firstName={this.state.firstName}
+            lastName={this.state.lastname}
+            email={this.state.email}
+            postZip={this.state.postZip}            country={this.state.country.name}
+          />
+          {/* <div>
             <h4 style={Register.styles.registerH4}>Personal Details</h4>
             <div style={Register.styles.inputContainers}>
-              <Inputcard
-                {...Register.PROPS.firstName}
-                value={this.state.firstName}
-                onInputChange={this.onInputChange}
-                validate={this.validate}
-              />
-              <br />
-              <Inputcard
-                {...Register.PROPS.lastName}
-                value={this.state.lastName}
-                onInputChange={this.onInputChange}
-                validate={this.validate}
-              />
-              <br />
-              <Inputcard
-                {...Register.PROPS.email}
-                value={this.state.email}
-                onInputChange={this.onInputChange}
-                validate={this.validate}
-              />
-              <br />
-              <Inputcard
-                {...Register.PROPS.postZip}
-                value={this.state.postZip}
-                onInputChange={this.onInputChange}
-                validate={this.validate}
-              />
-              <br />
-              <div>
-                <label htmlFor="country">Country:
-                  <span style={Register.styles.required}> *</span>
-                </label>
-                <br />
-                <DropdownButton title={this.state.country.name} id="country">
-                  {this.countries}
-                </DropdownButton>
-              </div>
-              <br />
+            <Inputcard
+            {...Register.PROPS.firstName}
+            value={this.state.firstName}
+            onInputChange={this.onInputChange}
+            validate={this.validate}
+            />
+            <br />
+            <Inputcard
+            {...Register.PROPS.lastName}
+            value={this.state.lastName}
+            onInputChange={this.onInputChange}
+            validate={this.validate}
+            />
+            <br />
+            <Inputcard
+            {...Register.PROPS.email}
+            value={this.state.email}
+            onInputChange={this.onInputChange}
+            validate={this.validate}
+            />
+            <br />
+            <Inputcard
+            {...Register.PROPS.postZip}
+            value={this.state.postZip}
+            onInputChange={this.onInputChange}
+            validate={this.validate}
+            />
+            <br />
+            <div>
+            <label htmlFor="country">Country:
+            <span style={Register.styles.required}> *</span>
+            </label>
+            <br />
+            <DropdownButton title={this.state.country.name} id="country">
+            {this.countries}
+            </DropdownButton>
             </div>
-          </div>
+            <br />
+            </div>
+          </div> */}
           <div className="registerGroup">
             <h4 style={Register.styles.registerH4}>Additional Details</h4>
             <div style={Register.styles.additionalContainer}>

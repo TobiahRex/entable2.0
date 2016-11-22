@@ -1,12 +1,19 @@
 import React, { PropTypes, PureComponent } from 'react';
+import { DropdownButton, MenuItem } from 'react-bootstrap/lib/';
+import Inputcard from '../../Components/InputCard';
+import styles from './registerStyles';
+
+import Countries from '../../Services/CountryConstants';
 
 class personalDetails extends PureComponent {
   static propTypes = {
-    firstName: PropTypes.objectOf(PropTypes.any.isRequired),
-    lastName: PropTypes.objectOf(PropTypes.any.isRequired),
-    email: PropTypes.objectOf(PropTypes.any.isRequired),
-    postZip: PropTypes.objectOf(PropTypes.any.isRequired),
-    phone: PropTypes.objectOf(PropTypes.any.isRequired),
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    email: PropTypes.string,
+    postZip: PropTypes.string,
+    country: PropTypes.string,
+    onInputChange: PropTypes.func.isRequired,
+    validate: PropTypes.func.isRequired,
   }
   static PROPS = {
     firstName: {
@@ -42,21 +49,65 @@ class personalDetails extends PureComponent {
       vWarn: 1,
       vError: 0,
     },
-    phone: {
-      id: 'phone',
-      name: 'Phone Number',
-      required: true,
-      requiredMsg: ' 123-456-7890',
-      vSuccess: 11,
-      vWarning: 10,
-      vError: 1,
-    },
   }
+  constructor(props) {
+    super(props);
+    this.countries = Countries.map((country, i) => (
+      <MenuItem
+        id={country.name}
+        key={`country${i}`}
+        eventKey={i + 1}
+        onClick={e => this.onInputChange('country', e.target.getAttribute('id'))}
+      >
+        {country.name} - ({country.code})
+      </MenuItem>));
+  }
+
   render() {
     return (
-      <span>
-        yo
-      </span>
+      <div>
+        <h4 style={styles.registerH4}>Personal Details</h4>
+        <div style={styles.inputContainers}>
+          <Inputcard
+            {...personalDetails.PROPS.firstName}
+            value={this.props.firstName}
+            onInputChange={this.props.onInputChange}
+            validate={this.props.validate}
+          />
+          <br />
+          <Inputcard
+            {...personalDetails.PROPS.lastName}
+            value={this.props.lastName}
+            onInputChange={this.props.onInputChange}
+            validate={this.props.validate}
+          />
+          <br />
+          <Inputcard
+            {...personalDetails.PROPS.email}
+            value={this.props.email}
+            onInputChange={this.props.onInputChange}
+            validate={this.props.validate}
+          />
+          <br />
+          <Inputcard
+            {...personalDetails.PROPS.postZip}
+            value={this.props.postZip}
+            onInputChange={this.props.onInputChange}
+            validate={this.props.validate}
+          />
+          <br />
+          <div>
+            <label htmlFor="country">Country:
+              <span style={styles.required}> *</span>
+            </label>
+            <br />
+            <DropdownButton title={this.props.country.name} id="country">
+              {this.countries}
+            </DropdownButton>
+          </div>
+          <br />
+        </div>
+      </div>
     );
   }
 }
