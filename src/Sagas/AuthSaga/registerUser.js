@@ -1,12 +1,11 @@
 import { call, put } from 'redux-saga/effects';
-import 
+
 
 export default function* registerUser(firebase, { info }) {
   const response = yield call(() =>
   firebase.createUserWithEmailAndPassword(info.email, info.password)
   .then(user => user)
-  .catch(err => err)
-);
+  .catch(err => err));
 
   if (response.uid) {
     const { refreshToken, uid } = response;
