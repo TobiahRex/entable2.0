@@ -43,10 +43,7 @@ class Register extends React.Component {
       confirmPassword: '',
       agreed: false,
       hover: false,
-      error: {
-        code: '',
-        message: '',
-      },
+      error: '',
     };
   }
 
@@ -76,15 +73,17 @@ class Register extends React.Component {
 
   register = () => {
     const state = Object.assign({}, this.state);
-    delete state.error;
+    let emptyFields = true;
     Object.keys(state).forEach((key) => {
       if (!state[key] || (state.country === 'Choose Country') || (state.role === 'Choose Role')) {
         console.log('missing field: ', key.toUpperCase());
         this.setState({ error: `Missing required field: "${key.toUpperCase()}"` });
+      } else {
+        emptyFields = false;
       }
     });
-    if (this.state.error) {
-      console.warn('you have an error show some sort of message');
+    if (this.state.error || emptyFields) {
+      console.warn('Error', this.state.error || state.error);
     } else {
       this.props.registerUser(state);
     }
