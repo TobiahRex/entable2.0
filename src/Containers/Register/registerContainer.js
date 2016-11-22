@@ -46,10 +46,6 @@ class Register extends React.Component {
     };
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    console.log('state: ', nextState);
-  }
-
   onInputChange = (value, id) => this.setState({ [id]: value })
 
   toggleHover = () => this.setState({ hover: !this.state.hover })
@@ -122,12 +118,10 @@ class Register extends React.Component {
             />
           </div>
         </div>
-        <div style={Register.styles.registerPrivacy}>
-          <PrivacyStatement
-            onInputChange={this.onInputChange}
-            agreed={this.state.agreed}
-          />
-        </div>
+        <PrivacyStatement
+          onInputChange={this.onInputChange}
+          agreed={this.state.agreed}
+        />
         <RegisterButton
           hover={this.state.hover}
           register={this.register}

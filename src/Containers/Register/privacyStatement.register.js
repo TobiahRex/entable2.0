@@ -9,7 +9,7 @@ class privacyStatement extends PureComponent {
   }
   render() {
     return (
-      <span>
+      <div style={styles.registerPrivacy}>
         <h4 style={styles.registerH4}>Privacy Statement</h4>
         <div style={{ ...styles.inputContainers, ...styles.registerPrivacyContainer }}>
           <div style={styles.registerPrivacyMsg}>
@@ -23,7 +23,7 @@ class privacyStatement extends PureComponent {
             </Checkbox>
           </div>
         </div>
-      </span>
+      </div>
     );
   }
 }
