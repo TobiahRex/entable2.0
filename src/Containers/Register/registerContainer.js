@@ -141,39 +141,15 @@ class Register extends React.Component {
             onInputChange={this.onInputChange}
             validate={this.validate}
             firstName={this.state.firstName}
-            lastName={this.state.lastname}
+            lastName={this.state.lastName}
             email={this.state.email}
             postZip={this.state.postZip}
             country={this.state.country}
           />
           <div className="registerGroup">
-            <h4 style={Register.styles.registerH4}>Additional Details</h4>
-            <div style={Register.styles.additionalContainer}>
-              <Inputcard
-                {...Register.PROPS.phone}
-                value={this.state.phone}
-                onInputChange={this.onInputChange}
-                validate={this.validate}
-              />
-              <br />
-              <div style={Register.styles.userInfoInput}>
-                <label htmlFor="role">Entable Role:
-                  <span style={Register.styles.required}> *</span>
-                </label>
-                <br />
-                <DropdownButton title={this.state.role} id="role">
-                  <MenuItem
-                    eventKey="1"
-                    onClick={() => this.setState({ role: 'Donor' })}
-                  >Donor</MenuItem>
-                  <MenuItem
-                    eventKey="1"
-                    onClick={() => this.setState({ role: 'Bank Manager' })}
-                  >Bank Manager</MenuItem>
-                </DropdownButton>
-                <br />
-              </div>
-            </div>
+            <AdditionalDetails
+
+            />
             <br />
             <LoginDetails
               password={{
@@ -200,16 +176,6 @@ class Register extends React.Component {
           register={this.register}
           toggleHover={this.toggleHover}
         />
-        {/* <div style={Register.styles.registerBtnContainer}>
-          <div>
-          <button
-          style={{ ...Register.styles.registerBtn, ...registerBtnHover }}
-          onMouseEnter={this.toggleHover}
-          onMouseLeave={this.toggleHover}
-          onClick={this.register}
-          >Register</button>
-          </div>
-        </div> */}
         <Footer />
       </div>
     );
