@@ -73,23 +73,25 @@ class Register extends React.Component {
 
   register = () => {
     const state = Object.assign({}, this.state);
+    delete state.error;
+    delete state.hover;
     let emptyFields = true;
     Object.keys(state).forEach((key) => {
-      if (!state[key] || (state.country === 'Choose Country') || (state.role === 'Choose Role')) {
-        console.log('missing field: ', key.toUpperCase());
+      if (!state[key] || (state.country === 'Choose Country') || (state.role === 'Choose Role') || state.agreed === false) {
         this.setState({ error: `Missing required field: "${key.toUpperCase()}"` });
       } else {
         emptyFields = false;
       }
     });
     if (this.state.error || emptyFields) {
-      console.warn('Error', this.state.error || state.error);
+      console.warn('Error', this.state.error || emptyFields);
     } else {
       this.props.registerUser(state);
     }
   }
 
   render() {
+    console.log('this.state.agreed', this.state.agreed);
     return (
       <div style={Register.styles.mainBgColor}>
         <Breadcrumbs paths={Register.breadCrumbs} />

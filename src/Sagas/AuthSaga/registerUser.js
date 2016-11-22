@@ -9,7 +9,7 @@ export default function* registerUser(firebase, { info }) {
 
   if (response.uid) {
     const { refreshToken, uid } = response;
-    console.log('providerData: ', );
+    console.log(refreshToken, '\n', uid, '\n', info, '\n');
   } else {
     const { code, message } = response;
     /* Firebase Errors:
