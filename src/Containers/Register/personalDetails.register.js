@@ -11,7 +11,7 @@ class personalDetails extends PureComponent {
     lastName: PropTypes.string,
     email: PropTypes.string,
     postZip: PropTypes.string,
-    country: PropTypes.string,
+    country: PropTypes.objectOf(PropTypes.string),
     onInputChange: PropTypes.func.isRequired,
     validate: PropTypes.func.isRequired,
   }
@@ -75,6 +75,7 @@ class personalDetails extends PureComponent {
             {...personalDetails.PROPS.firstName}
             onInputChange={this.props.onInputChange}
             value={this.props.firstName}
+            validate={this.props.validate}
           />
           <br />
           <Inputcard
