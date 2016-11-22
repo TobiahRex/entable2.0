@@ -25,10 +25,12 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         BASE_URL: JSON.stringify(process.env.BASE_URL),
-        authDomain: JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
-        databaseURL: JSON.stringify(process.env.FIREBASE_DATABASE_URL),
-        storageBucket: JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
-        msgSenderId: JSON.stringify(process.env.FIREBASE_MSG_SENDER_ID),
+        apiKeyFirebase:
+        JSON.stringify(process.env.FIREBASE_API_KEY),
+        authDomainFirebase: JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
+        databaseURLFirebase: JSON.stringify(process.env.FIREBASE_DATABASE_URL),
+        storageBucketFirebase: JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
+        msgSenderIdFirebase: JSON.stringify(process.env.FIREBASE_MSG_SENDER_ID),
       },
     }),
   ],
