@@ -76,9 +76,13 @@ class Register extends React.Component {
     delete state.error;
     delete state.hover;
     let emptyFields = true;
+
     Object.keys(state).forEach((key) => {
       if (!state[key] || (state.country === 'Choose Country') || (state.role === 'Choose Role') || state.agreed === false) {
         this.setState({ error: `Missing required field: "${key.toUpperCase()}"` });
+      } else if (this.state.error) {
+        this.setState({ error: '' });
+        emptyFields = false;
       } else {
         emptyFields = false;
       }
@@ -91,7 +95,6 @@ class Register extends React.Component {
   }
 
   render() {
-    console.log('this.state.agreed', this.state.agreed);
     return (
       <div style={Register.styles.mainBgColor}>
         <Breadcrumbs paths={Register.breadCrumbs} />
