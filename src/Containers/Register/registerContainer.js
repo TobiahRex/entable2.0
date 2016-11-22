@@ -64,22 +64,6 @@ class Register extends React.Component {
       vWarning: 10,
       vError: 1,
     },
-    password: {
-      id: 'password',
-      type: 'password',
-      name: 'Password',
-      required: true,
-      requiredMsg: ' At least 8 characters',
-      vSuccess: 7,
-      vWarning: 2,
-      vError: 1,
-    },
-    confirmPassword: {
-      id: 'confirmPassword',
-      type: 'password',
-      name: 'Confirm Password',
-      required: true,
-    },
   };
   constructor(props) {
     super(props);
