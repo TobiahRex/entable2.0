@@ -55,56 +55,22 @@ class Register extends React.Component {
   toggleHover = () => this.setState({ hover: !this.state.hover })
 
   validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
-    switch (id) {
-      case 'firstName': {
-        const length = this.state[id].length;
-        if (length > vSuccess) return 'success';
-        else if (length > vWarn) return 'warning';
-        else if (length > vError) return 'error';
-      } break;
-      case 'lastName': {
-        const length = this.state[id].length;
-        if (length > vSuccess) return 'success';
-        else if (length > vWarn) return 'warning';
-        else if (length > vError) return 'error';
-      } break;
-      case 'email': {
-        const match = this.state.email.match(/.+@.+\..+/i);
-        if (match) return 'success';
-        else if (this.state.email) return 'warning';
-      } break;
-      case 'postZip': {
-        const length = this.state[id].length;
-        if (length > vSuccess) return 'success';
-        else if (length > vWarn) return 'warning';
-        else if (length > vError) return 'error';
-      } break;
-      case 'country': {
-        const length = this.state[id].length;
-        if (length > vSuccess) return 'success';
-        else if (length > vWarn) return 'warning';
-        else if (length > vError) return 'error';
-      } break;
-      case 'phone': {
-        const length = this.state[id].length;
-        if (length > vSuccess) return 'success';
-        else if (length > vWarn) return 'warning';
-        else if (length > vError) return 'error';
-      } break;
-      case 'password': {
-        const length = this.state[id].length;
-        if (length > vSuccess) return 'success';
-        if (length > vWarn) return 'warning';
-        else if (length > vError) return 'error';
-      } break;
-      case 'confirmPassword': {
-        const cPassword = this.state.confirmPassword;
-        const password = this.state.password;
-        if (cPassword === password && password.length > 1) return 'success';
-        if (cPassword.length > 0) return 'warning';
-        else if (cPassword > 0 && cPassword !== password) return 'error';
-      } break;
-      default: break;
+    const inputs = ['firstName', 'lastName', 'postZip', 'country', 'phone', 'password'];
+    if (inputs.includes(id)) {
+      const length = this.state[id].length;
+      if (length > vSuccess) return 'success';
+      else if (length > vWarn) return 'warning';
+      else if (length > vError) return 'error';
+    } else if (id === 'email') {
+      const match = this.state.email.match(/.+@.+\..+/i);
+      if (match) return 'success';
+      else if (this.state.email) return 'warning';
+    } else if (id === 'confirmPassword') {
+      const cPassword = this.state.confirmPassword;
+      const password = this.state.password;
+      if (cPassword === password && password.length > 1) return 'success';
+      if (cPassword.length > 0) return 'warning';
+      else if (cPassword > 0 && cPassword !== password) return 'error';
     }
   }
 
