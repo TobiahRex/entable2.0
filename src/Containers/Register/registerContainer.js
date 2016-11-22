@@ -1,13 +1,12 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { DropdownButton, MenuItem } from 'react-bootstrap/lib/';
 import userActions from '../../Redux/UserRedux';
 
 import registerStyles from './registerStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
-import Inputcard from '../../Components/InputCard';
 import PersonalDetails from './personalDetails.register';
+import AdditionalDetails from './additionalDetails.register';
 import LoginDetails from './loginDetails.register';
 import PrivacyStatement from './privacyStatement.register';
 import RegisterButton from './registerButton.register';
@@ -26,17 +25,6 @@ class Register extends React.Component {
     active: true,
   }];
   static styles = registerStyles;
-  static PROPS = {
-    phone: {
-      id: 'phone',
-      name: 'Phone Number',
-      required: true,
-      requiredMsg: ' 123-456-7890',
-      vSuccess: 11,
-      vWarning: 10,
-      vError: 1,
-    },
-  };
   constructor(props) {
     super(props);
 
@@ -148,7 +136,10 @@ class Register extends React.Component {
           />
           <div className="registerGroup">
             <AdditionalDetails
-
+              phone={this.state.phone}
+              role={this.state.role}
+              onInputChange={this.onInputChange}
+              validate={this.validate}
             />
             <br />
             <LoginDetails

@@ -1,31 +1,54 @@
-import React, { PureComponent } from 'react';
+import React, { PropTypes, PureComponent } from 'react';
+import { DropdownButton, MenuItem } from 'react-bootstrap/lib/';
+import Inputcard from '../../Components/InputCard';
+import styles from './registerStyles';
 
 class additionalDetails extends PureComponent {
+  static propTypes = {
+    phone: PropTypes.string,
+    role: PropTypes.string,
+    validate: PropTypes.func.isRequired,
+    onInputChange: PropTypes.func.isRequired,
+  }
+  static PROPS = {
+    phone: {
+      id: 'phone',
+      name: 'Phone Number',
+      required: true,
+      requiredMsg: ' 123-456-7890',
+      vSuccess: 11,
+      vWarning: 10,
+      vError: 1,
+    },
+  };
+
+  onInputChange = (value, id) => this.props.onInputChange(value, id);
+
   render() {
     return (
       <span>
-        <h4 style={Register.styles.registerH4}>Additional Details</h4>
-        <div style={Register.styles.additionalContainer}>
+        <h4 style={styles.registerH4}>Additional Details</h4>
+        <div style={styles.additionalContainer}>
           <Inputcard
-            {...Register.PROPS.phone}
-            value={this.state.phone}
-            onInputChange={this.onInputChange}
-            validate={this.validate}
+            {...additionalDetails.PROPS.phone}
+            value={this.props.phone}
+            onInputChange={this.props.onInputChange}
+            validate={this.props.validate}
           />
           <br />
-          <div style={Register.styles.userInfoInput}>
+          <div style={styles.userInfoInput}>
             <label htmlFor="role">Entable Role:
-              <span style={Register.styles.required}> *</span>
+              <span style={styles.required}> *</span>
             </label>
             <br />
-            <DropdownButton title={this.state.role} id="role">
+            <DropdownButton title={this.props.role} id="role">
               <MenuItem
                 eventKey="1"
-                onClick={() => this.setState({ role: 'Donor' })}
+                onClick={() => this.onInputChange('Donor', 'role')}
               >Donor</MenuItem>
               <MenuItem
-                eventKey="1"
-                onClick={() => this.setState({ role: 'Bank Manager' })}
+                eventKey="2"
+                onClick={() => this.onInputChange('Bank Manager', 'role')}
               >Bank Manager</MenuItem>
             </DropdownButton>
             <br />
