@@ -75,22 +75,20 @@ class Register extends React.Component {
     const state = Object.assign({}, this.state);
     delete state.error;
     delete state.hover;
-
+    console.log('state: ', state);
     let missingField = '';
     const missingFields = Object.keys(state).map((key) => {
       if (!state[key]) {
         missingField = key.toUpperCase();
         return true;
-      } else if (state.country === 'Choose Country') {
-        missingField = key.toUpperCase();
-        return true;
-      } else if (state.role === 'Choose Role') {
+      } else if ((state.role === 'Choose Role') || (state.country.name === 'Choose Country')) {
         missingField = key.toUpperCase();
         return true;
       } else if (state.agreed === false) {
         missingField = key.toUpperCase();
         return true;
       }
+      console.log('fuckin nothing');
       return false;
     });
 
