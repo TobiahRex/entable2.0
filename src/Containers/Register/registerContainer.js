@@ -213,8 +213,7 @@ class Register extends React.Component {
               onMouseEnter={this.toggleHover}
               onMouseLeave={this.toggleHover}
               onClick={this.register}
-            >
-            Register</button>
+            >Register</button>
           </div>
         </div>
         <Footer />
