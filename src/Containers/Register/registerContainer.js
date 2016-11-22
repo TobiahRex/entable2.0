@@ -10,6 +10,7 @@ import Inputcard from '../../Components/InputCard';
 import PersonalDetails from './personalDetails.register';
 import LoginDetails from './loginDetails.register';
 import PrivacyStatement from './privacyStatement.register';
+import RegisterButton from './registerButton.register';
 
 class Register extends React.Component {
   static propTypes = {
@@ -126,18 +127,6 @@ class Register extends React.Component {
   }
 
   render() {
-    let registerBtnHover = {};
-    if (this.state.hover) {
-      registerBtnHover = {
-        backgroundColor: '#fff',
-        color: '#222',
-      };
-    } else {
-      registerBtnHover = {
-        backgroundColor: '#2ecc71',
-        color: '#fff',
-      };
-    }
     return (
       <div style={Register.styles.mainBgColor}>
         <Breadcrumbs paths={Register.breadCrumbs} />
@@ -207,7 +196,9 @@ class Register extends React.Component {
           />
         </div>
         <RegisterButton
-          
+          hover={this.state.hover}
+          register={this.register}
+          toggleHover={this.toggleHover}
         />
         {/* <div style={Register.styles.registerBtnContainer}>
           <div>
