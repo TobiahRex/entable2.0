@@ -1,5 +1,18 @@
 import { createActions, createReducer } from 'reduxsauce';
 
+const nullFields = {
+  uid: null,
+  firstName: null,
+  lastName: null,
+  email: null,
+  phone: null,
+  lastLogin: null,
+  location: null,
+  registered: null,
+  photoUrl: null,
+  setttings: null,
+}
+
 const { Types, Creators } = createActions({
   createUserFirebase: ['info'],
   createUserSuccess: ['info'],
@@ -24,6 +37,7 @@ export const INITIAL_STATE = {
   firstName: null,
   lastName: null,
   email: null,
+  phone: null,
   lastLogin: null,
   location: null,
   photoUrl: null,
@@ -41,6 +55,7 @@ const saveNewUserSuccess = (state, { user }) => ({
   firstName: user.firstName,
   lastName: user.lastName,
   email: user.email,
+  phone: user.phone,
   lastLogin: user.lastLogin,
   location: user.location,
   registered: user.registered,
@@ -49,17 +64,8 @@ const saveNewUserSuccess = (state, { user }) => ({
   error: null,
 });
 
-const saveNewUserFail = (state, { error }) => ({
-  uid: null,
-  firstName: null,
-  email: null,
-  lastLogin: null,
-  location: null,
-  registered: null,
-  photoUrl: null,
-  setttings: null,
-  error,
-});
+const saveNewUserFail = (state, { error }) =>
+({ ...nullFields, error });
 
 const loginSuccess = (state, { user }) => ({
   uid: user.id,
@@ -74,23 +80,15 @@ const loginSuccess = (state, { user }) => ({
   error: null,
 });
 
-const loginFail = (state, { error }) => ({
-  uid: null,
-  firstName: null,
-  lastName: null,
-  email: null,
-  lastLogin: null,
-  location: null,
-  registered: null,
-  photoUrl: null,
-  setttings: null,
-  error,
-});
+const loginFail = (state, { error }) =>
+({ ...nullFields, error });
 
 const logoutSuccess = () => ({
   uid: null,
   firstName: null,
+  lastName: null,
   email: null,
+  phone: null,
   lastLogin: null,
   location: null,
   photoUrl: null,
