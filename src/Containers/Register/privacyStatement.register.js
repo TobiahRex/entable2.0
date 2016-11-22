@@ -3,6 +3,10 @@ import { Checkbox } from 'react-bootstrap/lib/';
 import styles from './registerStyles';
 
 class privacyStatement extends PureComponent {
+  static propTypes = {
+    onInputChange: PropTypes.func.isRequired,
+    agreed: PropTypes.bool,
+  }
   render() {
     return (
       <span>
