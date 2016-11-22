@@ -95,6 +95,7 @@ class Register extends React.Component {
       password: '',
       confirmPassword: '',
       agreed: false,
+      hover: false,
     };
     this.countries = Countries.map((country, i) => (
       <MenuItem
@@ -112,6 +113,8 @@ class Register extends React.Component {
   }
 
   onInputChange = (value, id) => this.setState({ [id]: value })
+
+  toggleHover = () => this.setState({ hover: !this.state.hover })
 
   validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
     switch (id) {
@@ -168,6 +171,18 @@ class Register extends React.Component {
   }
 
   render() {
+    let registerBtnHover = {};
+    if (this.state.hover) {
+      registerBtnHover = {
+        backgroundColor: '#fff',
+        color: '#222',
+      };
+    } else {
+      registerBtnHover = {
+        backgroundColor: '#2ecc71',
+        color: '#fff',
+      };
+    }
     return (
       <div style={Register.styles.mainBgColor}>
         <Breadcrumbs paths={Register.breadCrumbs} />
@@ -277,6 +292,16 @@ class Register extends React.Component {
                 <span style={Register.styles.required}> *</span>
               </Checkbox>
             </div>
+          </div>
+        </div>
+        <div style={Register.styles.registerBtnContainer}>
+          <div>
+            <button
+              style={{ ...Register.styles.registerBtn, ...registerBtnHover }}
+              onMouseEnter={this.toggleHover}
+              onMouseLeave={this.toggleHover}
+            >
+            Register</button>
           </div>
         </div>
         <Footer />

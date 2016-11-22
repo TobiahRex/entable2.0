@@ -46,5 +46,18 @@ const styles = {
   centerText: {
     textAlign: 'center',
   },
+  registerBtnContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    paddingBottom: 70,
+  },
+  registerBtn: {
+    // backgroundColor: '#2ecc71',
+    padding: '10px 40px 10px 40px',
+    textTransform: 'uppercase',
+    // color: '#fff',
+    height: 50,
+    width: 300,
+  },
 };
 export default styles;
