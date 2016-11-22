@@ -75,7 +75,7 @@ class Register extends React.Component {
     const state = Object.assign({}, this.state);
     delete state.error;
     delete state.hover;
-    console.log('state: ', state);
+
     let missingField = '';
     const missingFields = Object.keys(state).map((key) => {
       if (!state[key]) {
@@ -88,14 +88,13 @@ class Register extends React.Component {
         missingField = key.toUpperCase();
         return true;
       }
-      console.log('fuckin nothing');
       return false;
     });
 
-    console.log('missingFields: ', missingFields);
-
     if (missingFields.includes(true)) {
       console.warn('Error', missingField);
+      this.setState({ error: 'Missing required field!' });
+      // TODO make this some MUI toast or some sort of alert indicator.
     } else {
       this.props.registerUser(state);
     }
@@ -158,6 +157,6 @@ class Register extends React.Component {
   }
 }
 const mapDispatchToProps = dispatch => ({
-  registerUser: details => dispatch(userActions.registerUser(details)),
+  registerUser: details => dispatch(userActions.createUserFirebase(details)),
 });
 export default connect(null, mapDispatchToProps)(Register);

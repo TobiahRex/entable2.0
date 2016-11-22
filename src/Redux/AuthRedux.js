@@ -1,9 +1,12 @@
 import { createActions, createReducer } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
-  registerUser: ['info'],
-  registerFail: ['error'],
-  registerSuccess: ['credentials'],
+  createUserFirebase: ['info'],
+  createUserSuccess: ['info'],
+  createUserFail: ['error'],
+  saveNewUser: ['info'],
+  saveNewUserFail: ['error'],
+  saveNewUserSuccess: ['credentials'],
   loginUser: ['credentials'],
   loginUserFail: ['error'],
   loginUserSuccess: ['user'],
@@ -17,6 +20,7 @@ export default Creators;
 
 export const INITIAL_STATE = {
   uid: null,
+  refreshToken: null,
   username: null,
   email: null,
   lastLogin: null,
@@ -26,8 +30,13 @@ export const INITIAL_STATE = {
   error: null,
 };
 
-const registerSuccess = (state, { user }) => ({
+const createUserSuccess = (state, { info }) => ({
+
+})
+
+const saveNewUserSuccess = ({ activeUser }, { user }) => ({
   uid: user.id,
+  refreshToken: activeUser.refreshToken,
   username: user.username,
   email: user.email,
   lastLogin: user.lastLogin,
@@ -38,7 +47,7 @@ const registerSuccess = (state, { user }) => ({
   error: null,
 });
 
-const registerFail = (state, { error }) => ({
+const saveNewUserFail = (state, { error }) => ({
   uid: null,
   username: null,
   email: null,
