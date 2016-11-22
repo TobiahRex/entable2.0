@@ -107,6 +107,10 @@ class Register extends React.Component {
     ));
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    console.log('state: ', nextState);
+  }
+
   onInputChange = (value, id) => this.setState({ [id]: value })
 
   validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
@@ -147,10 +151,10 @@ class Register extends React.Component {
         else if (length > vError) return 'error';
       } break;
       case 'password': {
-        const password = this.state.password;
-        if (password.length > vSuccess) return 'success';
-        if (password.length > vWarn) return 'warning';
-        else if (password > vError) return 'error';
+        const length = this.state[id].length;
+        if (length > vSuccess) return 'success';
+        if (length > vWarn) return 'warning';
+        else if (length > vError) return 'error';
       } break;
       case 'confirmPassword': {
         const cPassword = this.state.confirmPassword;

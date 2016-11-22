@@ -8,7 +8,6 @@ class loginDetails extends React.PureComponent {
     confirmPassword: PropTypes.objectOf(PropTypes.any.isRequired),
   }
   render() {
-    console.log('this.props: ', this.props);
     return (
       <span>
         <h4 style={styles.registerH4}>Login Details</h4>
