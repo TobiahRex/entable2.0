@@ -10,13 +10,15 @@ export default function* registerUser(firebase, api, { info }) {
   if (response.uid) {
     const { refreshToken, uid } = response;
     const newUserInfo = { info, ...refreshToken, ...uid };
-    yield [put(authActions.saveNewUser(newUserInfo))];
+    const dbResponse = yield call(() => api.saveNewUser(newUserInfo));
+    yield put(authActions.createUserSuccess(newUserInfo));
   } else {
     const { code, message } = response;
     /* Firebase Errors:
     1. auth/weak-password - the password supplied is too short.
     2. auth/already-in-use - the email used is already registered.
     */
-    console.log('error: ', code, 'message: ', message);
+    console.error('error: ', code, 'message: ', message);
+    yield put(authActions.createUserFail(message));
   }
 }
