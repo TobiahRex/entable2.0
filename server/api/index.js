@@ -1,5 +1,6 @@
 import express from 'express';
-import banks from './banks';
+import users from './user';
+import banks from './bank';
 import twilio from './twilio';
 import coinbase from './coinbase';
 // import stripe from './stripe';
@@ -8,6 +9,8 @@ import stripe from './stripe';
 
 const router = new express.Router();
 
+
+router.use('/users', )
 router.use('/banks', banks);
 router.use('/twilio', twilio);
 router.use('/coinbase', coinbase);
