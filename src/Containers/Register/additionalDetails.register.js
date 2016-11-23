@@ -15,9 +15,9 @@ class additionalDetails extends PureComponent {
       id: 'phone',
       name: 'Phone Number',
       required: true,
-      requiredMsg: ' 123-456-7890',
-      vSuccess: 11,
-      vWarning: 10,
+      requiredMsg: ' 1234567890',
+      vSuccess: 9,
+      vWarning: 8,
       vError: 1,
     },
   };

@@ -96,6 +96,7 @@ class Register extends React.Component {
       this.setState({ error: 'Missing required field!' });
       // TODO make this some MUI toast or some sort of alert indicator.
     } else {
+      state.phone = Number(state.phone);
       this.props.registerUser(state);
     }
   }
@@ -104,8 +105,9 @@ class Register extends React.Component {
     return (
       <div style={Register.styles.mainBgColor}>
         <Breadcrumbs paths={Register.breadCrumbs} />
-        <h1 style={Register.styles.registerTitle}>Lets Get Started</h1>
-        <hr />
+        <h1 style={Register.styles.registerTitle}>
+          Lets Get Started
+        </h1>
         <div style={Register.styles.centerText}>
           <span style={Register.styles.required}>* <i>Required Information</i>
           </span>

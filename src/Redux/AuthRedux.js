@@ -12,7 +12,7 @@ const nullFields = {
   registered: null,
   photoUrl: null,
   settings: null,
-}
+};
 
 const { Types, Creators } = createActions({
   createUserFirebase: ['info'],
