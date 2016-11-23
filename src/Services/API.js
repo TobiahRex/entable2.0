@@ -5,9 +5,10 @@ const createAPI = (baseURL = process.env.BASE_URL) => {
     baseURL,
     headers: { 'Cache-control': 'no-cache' },
   });
+  // --------------------------------------------------------
+  const saveNewUser = info => api.post('api/users/', info);
 
   // --------------------------------------------------------
-
   const getAllBanks = () =>
   api.get('api/banks/');
 
@@ -19,10 +20,15 @@ const createAPI = (baseURL = process.env.BASE_URL) => {
 
   const sendToken = (token, info) =>
   api.post('api/stripe/donation', { token, info });
+  // --------------------------------------------------------
 
   return {
+    // users
+    saveNewUser,
+    // info
     getExchangeRate,
     getAllBanks,
+    // feature actions
     sendText,
     sendToken,
   };
