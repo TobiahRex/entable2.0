@@ -2,6 +2,7 @@ import { createActions, createReducer } from 'reduxsauce';
 
 const nullFields = {
   uid: null,
+  refreshToken: null,
   firstName: null,
   lastName: null,
   email: null,
@@ -55,6 +56,7 @@ const userFail = (state, { error }) => ({ ...nullFields, error });
 const logoutSuccess = () => ({ ...INITIAL_STATE });
 const logoutFail = (state, { error }) => ({
   uid: state.uid,
+  refreshToken: state.refreshToken,
   firstName: state.firstName,
   lastName: state.lastName,
   email: state.email,
@@ -68,6 +70,7 @@ const logoutFail = (state, { error }) => ({
 
 const loginFail = (state, { error }) => ({
   uid: state.uid,
+  refreshToken: state.refreshToken,
   firstName: state.firstName,
   lastName: state.lastName,
   email: state.email,
