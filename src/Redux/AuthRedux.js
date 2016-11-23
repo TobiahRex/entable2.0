@@ -10,16 +10,16 @@ const nullFields = {
   location: null,
   registered: null,
   photoUrl: null,
-  setttings: null,
+  settings: null,
 }
 
 const { Types, Creators } = createActions({
   createUserFirebase: ['info'],
-  createUserSuccess: ['info'],
+  createUserSuccess: ['user'],
   createUserFail: ['error'],
   saveNewUser: ['info'],
   saveNewUserFail: ['error'],
-  saveNewUserSuccess: ['credentials'],
+  saveNewUserSuccess: ['user'],
   loginUser: ['credentials'],
   loginUserFail: ['error'],
   loginUserSuccess: ['user'],
@@ -32,24 +32,11 @@ export const AuthTypes = Types;
 export default Creators;
 
 export const INITIAL_STATE = {
-  uid: null,
-  refreshToken: null,
-  firstName: null,
-  lastName: null,
-  email: null,
-  phone: null,
-  lastLogin: null,
-  location: null,
-  photoUrl: null,
-  settings: null,
+  ...nullFields,
   error: null,
 };
 
-const createUserSuccess = (state, { info }) => ({
-
-})
-
-const saveNewUserSuccess = (state, { user }) => ({
+const userSuccess = (state, { user }) => ({
   uid: user.id,
   refreshToken: state.user.refreshToken,
   firstName: user.firstName,
@@ -60,47 +47,31 @@ const saveNewUserSuccess = (state, { user }) => ({
   location: user.location,
   registered: user.registered,
   photoUrl: user.photoUrl,
-  setttings: user.settings,
+  settings: user.settings,
   error: null,
 });
+const userFail = (state, { error }) => ({ ...nullFields, error });
 
-const saveNewUserFail = (state, { error }) =>
-({ ...nullFields, error });
-
-const loginSuccess = (state, { user }) => ({
-  uid: user.id,
-  firstName: user.firstName,
-  lastName: user.lastName,
-  email: user.email,
-  lastLogin: user.lastLogin,
-  location: user.location,
-  registered: user.registered,
-  photoUrl: user.photoUrl,
-  setttings: user.settings,
-  error: null,
-});
-
-const loginFail = (state, { error }) =>
-({ ...nullFields, error });
-
-const logoutSuccess = () => ({
-  uid: null,
-  firstName: null,
-  lastName: null,
-  email: null,
-  phone: null,
-  lastLogin: null,
-  location: null,
-  photoUrl: null,
-  settings: null,
-  error: null,
-});
-
+const logoutSuccess = () => ({ ...INITIAL_STATE });
 const logoutFail = (state, { error }) => ({
   uid: state.uid,
   firstName: state.firstName,
-  firstName: state.lastName,
+  lastName: state.lastName,
   email: state.email,
+  phone: state.phone,
+  lastLogin: state.lastLogin,
+  location: state.location,
+  photoUrl: state.photoUrl,
+  settings: state.settings,
+  error,
+});
+
+const loginFail = (state, { error }) => ({
+  uid: state.uid,
+  firstName: state.firstName,
+  lastName: state.lastName,
+  email: state.email,
+  phone: state.phone,
   lastLogin: state.lastLogin,
   location: state.location,
   photoUrl: state.photoUrl,
@@ -109,9 +80,11 @@ const logoutFail = (state, { error }) => ({
 });
 
 export const userReducer = createReducer(INITIAL_STATE, {
-  [Types.REGISTER_SUCCESS]: registerSuccess,
-  [Types.REGISTER_FAIL]: registerFail,
-  [Types.LOGIN_SUCCESS]: loginSuccess,
+  [Types.CREATE_USER_SUCCESS]: userSuccess,
+  [Types.CREATE_USER_FAIL]: userFail,
+  [Types.SAVE_NEW_USER_SUCCESS]: userSuccess,
+  [Types.SAVE_NEW_USER_FAIL]: userFail,
+  [Types.LOGIN_SUCCESS]: userSuccess,
   [Types.LOGIN_FAIL]: loginFail,
   [Types.LOGOUT_SUCCESS]: logoutSuccess,
   [Types.LOGOUT_FAIL]: logoutFail,
