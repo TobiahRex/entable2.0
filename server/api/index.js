@@ -10,7 +10,7 @@ import stripe from './stripe';
 const router = new express.Router();
 
 
-router.use('/users', )
+router.use('/users', users);
 router.use('/banks', banks);
 router.use('/twilio', twilio);
 router.use('/coinbase', coinbase);
