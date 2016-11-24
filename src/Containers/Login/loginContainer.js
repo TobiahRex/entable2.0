@@ -30,9 +30,9 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={Login.styles.mainBgColor}>
         <Breadcrumbs paths={Login.breadCrumbs} />
-        <h1>Login Page</h1>
+        <h1 style={Login.styles.loginTitle}>Login Page</h1>
       </div>
     );
   }

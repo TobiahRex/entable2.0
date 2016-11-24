@@ -7,7 +7,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  registerTitle: {
+  loginTitle: {
     padding: '0px 140px 30px 140px',
   },
   registerH4: {
