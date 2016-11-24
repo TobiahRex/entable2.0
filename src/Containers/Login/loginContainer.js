@@ -6,6 +6,7 @@ import loginStyles from './loginStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
 import LoginDetails from './loginDetails';
+// import LoginButton from './loginButton';
 
 class Login extends React.Component {
   static propTypes = {
@@ -65,11 +66,11 @@ class Login extends React.Component {
             password={this.state.password}
           />
         </div>
-        <LoginButton
+        {/* <LoginButton
           hover={this.state.hover}
           login={this.login}
           toggleHover={this.toggleHover}
-        />
+        /> */}
         <Footer />
       </div>
     );
