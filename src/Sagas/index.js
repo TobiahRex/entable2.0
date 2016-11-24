@@ -2,7 +2,7 @@ import { takeLatest } from 'redux-saga';
 import API from '../Services/API';
 import { firebaseAuth } from '../Services/Firebase/FirebaseConfig';
 
-import getActiveUserSaga from './AuthSaga/getActiveUser';
+import activeUserTrueSaga from './AuthSaga/activeUserTrue';
 import createUserSaga from './AuthSaga/createUser';
 import getPriceSaga from './BankSaga/getPrice';
 import getBanksSaga from './BankSaga/getBanks';
@@ -19,7 +19,7 @@ const firebase = firebaseAuth;
 
 export default function* rootSaga() {
   yield [
-    takeLatest(AuthTypes.GET_ACTIVE_USER, getActiveUserSaga, api),
+    takeLatest(AuthTypes.ACTIVE_USER_TRUE, activeUserTrueSaga, api),
     takeLatest(AuthTypes.CREATE_USER_FIREBASE, createUserSaga, firebase, api),
     takeLatest(BankTypes.GET_ALL_BANKS, getBanksSaga, api),
     takeLatest(BankTypes.GET_EXCHANGE_RATE, getPriceSaga, api),

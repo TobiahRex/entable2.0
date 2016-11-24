@@ -8,6 +8,8 @@ const createAPI = (baseURL = process.env.BASE_URL) => {
   // --------------------------------------------------------
   const saveNewUser = info => api.post('api/users', info);
 
+  const getUser = uid => api.get(`api/users/${uid}`);
+
   // --------------------------------------------------------
   const getAllBanks = () =>
   api.get('api/banks/');
@@ -24,6 +26,7 @@ const createAPI = (baseURL = process.env.BASE_URL) => {
 
   return {
     // users
+    getUser,
     saveNewUser,
     // info
     getExchangeRate,

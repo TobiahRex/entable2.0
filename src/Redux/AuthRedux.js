@@ -16,11 +16,10 @@ const nullFields = {
 };
 
 const { Types, Creators } = createActions({
-  getActiveUser: null,
+  activeUserTrue: ['user'],
+  activeUserFalse: null,
   getActiveUserSuccess: ['info'],
   getActiveUserFail: ['error'],
-  activeUserFalse: null,
-  activeUserTrue: null,
   createUserFirebase: ['info'],
   createUserSuccess: ['user'],
   createUserFail: ['error'],
@@ -94,7 +93,6 @@ const loginFail = (state, { error }) => ({
 });
 
 export const userReducer = createReducer(INITIAL_STATE, {
-  [Types.ACTIVE_USER_TRUE]: userSuccess,
   [Types.ACTIVE_USER_FALSE]: userFail,
   [Types.GET_ACTIVE_USER_SUCCESS]: userSuccess,
   [Types.GET_ACTIVE_USER_FAIL]: userFail,
