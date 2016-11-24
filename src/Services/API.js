@@ -6,11 +6,7 @@ const createAPI = (baseURL = process.env.BASE_URL) => {
     headers: { 'Cache-control': 'no-cache' },
   });
   // --------------------------------------------------------
-  const saveNewUser = ({ info }) => {
-    console.log('save new user info: \n', info);
-    console.log('phone type: ', typeof info.phone);
-    return api.post('api/users', info)
-  };
+  const saveNewUser = info => api.post('api/users', info);
 
   // --------------------------------------------------------
   const getAllBanks = () =>

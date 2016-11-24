@@ -6,13 +6,20 @@ export default function* registerUser(firebase, api, { info }) {
   firebase.createUserWithEmailAndPassword(info.email, info.password)
   .then(user => user)
   .catch(err => err));
-  console.log('firebase response object: \n', response);
+
   if (response.uid) {
     const { refreshToken, uid } = response;
-    const newUserInfo = { info, ...refreshToken, ...uid };
+    const newUserInfo = { ...info, refreshToken, uid };
+    console.log('newUserInfo: ', newUserInfo);
     const dbResponse = yield call(() => api.saveNewUser(newUserInfo));
     yield put(authActions.createUserSuccess(newUserInfo));
-    console.log('dbResponse: ',  dbResponse);
+
+    if (dbResponse.ok) {
+      console.log('yay it worked', dbResponse.data);
+    } else {
+      console.log('bummer it failed ', dbResponse.problem);
+    }
+
   } else {
     const { code, message } = response;
     /* Firebase Errors:

@@ -39,7 +39,7 @@ export const INITIAL_STATE = {
 
 const userSuccess = (state, { user }) => ({
   uid: user.id,
-  refreshToken: state.user.refreshToken,
+  refreshToken: user.refreshToken,
   firstName: user.firstName,
   lastName: user.lastName,
   email: user.email,
