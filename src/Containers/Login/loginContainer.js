@@ -74,7 +74,7 @@ class Login extends React.Component {
         </div>
         <LoginButton
           hover={this.state.hover}
-          login={this.loginUser}
+          login={this.login}
           toggleHover={this.toggleHover}
         />
         <Footer />
