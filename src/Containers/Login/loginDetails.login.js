@@ -4,10 +4,8 @@ import InputCard from '../../Components/InputCard';
 
 class loginDetails extends React.PureComponent {
   static propTypes = {
-    onInputChange: PropTypes.func.isRequired,
-    validate: PropTypes.func.isRequired,
-    username: PropTypes.string,
-    password: PropTypes.string,
+    username: PropTypes.objectOf(PropTypes.any.isRequired),
+    password: PropTypes.objectOf(PropTypes.any.isRequired),
   }
   static PROPS = {
     username: {
@@ -39,7 +37,11 @@ class loginDetails extends React.PureComponent {
             {...this.props.username}
             {...loginDetails.PROPS.username}
           />
-
+          <br />
+          <InputCard
+            {...this.props.password}
+            {...loginDetails.PROPS.password}
+          />
         </div>
       </span>
     );
