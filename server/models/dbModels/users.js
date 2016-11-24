@@ -1,3 +1,5 @@
+/* eslint no-use-before-define: 0 */
+
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
@@ -26,7 +28,7 @@ const userSchema = new mongoose.Schema({
 userSchema.statics.addNewUser = (userObj, cb) => {
   if (!userObj) return cb({ error: 'Missing user object' });
 
-  User.create(userObj)
+  return User.create(userObj)
   .then((dbUser) => {
     const dbUserRef = dbUser;
     delete dbUserRef.password;

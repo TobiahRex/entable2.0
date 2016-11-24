@@ -9,6 +9,7 @@
     "CoinbaseAccount": true,
     "StripeCheckout": true,
     "StripeAcct": true,
+    "User": true,
     "country": true,
   },
   "rules": {
