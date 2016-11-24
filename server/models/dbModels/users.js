@@ -24,6 +24,14 @@ const userSchema = new mongoose.Schema({
   settings: {},
 });
 
+userSchema.statics.findByFirebaseId = (firebaseId, cb) => {
+  if (!firebaseId) return cb({ error: 'Missing required firebase id' });
+
+  return User.find({ uid_firebase: firebaseId })
+  .then(dbUsers => cb(null, dbUsers[0]))
+  .catch(error => cb({ error }));
+};
+
 userSchema.statics.addNewUser = (userObj, cb) => {
   if (!userObj) return cb({ error: 'Missing user object' });
 
