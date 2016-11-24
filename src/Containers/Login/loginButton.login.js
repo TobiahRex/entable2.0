@@ -8,7 +8,7 @@ class loginButton extends React.PureComponent {
     login: PropTypes.func.isRequired,
   }
 
-  toggleHover = () => this.prpos.toggleHover();
+  toggleHover = () => this.props.toggleHover();
 
   login = () => this.props.login();
 
@@ -29,12 +29,15 @@ class loginButton extends React.PureComponent {
     return (
       <div style={styles.loginBtnContainer}>
         <div>
-          <button>
+          <button
             style={{ ...styles.loginBtn, ...loginBtnHover }}
-          </button>
+            onMouseEnter={this.toggleHover}
+            onMouseLeave={this.toggleHover}
+            onClick={this.login}
+          >Login</button>
         </div>
       </div>
-    )
+    );
   }
 }
 export default loginButton;
