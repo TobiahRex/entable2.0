@@ -54,7 +54,6 @@ class Login extends React.Component {
   toggleHover = () => this.setState({ hover: !this.state.hover })
 
   render() {
-    console.log('this.state.username: ', this.state.username);
     return (
       <div style={Login.styles.mainBgColor}>
         <Breadcrumbs paths={Login.breadCrumbs} />
