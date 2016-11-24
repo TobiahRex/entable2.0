@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
 import bankActions from './BankRedux';
 import apiActions from './ApiRedux';
+import authActions from './AuthRedux';
 
 export default (rootReducer, rootSaga) => {
   const middlewares = [];
@@ -23,5 +24,6 @@ export default (rootReducer, rootSaga) => {
 
   store.dispatch(bankActions.getAllBanks());
   store.dispatch(apiActions.fetching());
+  store.dispatch(authActions.getActiveUser());
   return store;
 };

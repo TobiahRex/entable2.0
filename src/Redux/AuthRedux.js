@@ -15,6 +15,9 @@ const nullFields = {
 };
 
 const { Types, Creators } = createActions({
+  getActiveUser: null,
+  getActiveUserFail: null,
+  getActiveUserSuccess: ['info'],
   createUserFirebase: ['info'],
   createUserSuccess: ['user'],
   createUserFail: ['error'],
@@ -85,6 +88,7 @@ const loginFail = (state, { error }) => ({
 });
 
 export const userReducer = createReducer(INITIAL_STATE, {
+
   [Types.CREATE_USER_SUCCESS]: userSuccess,
   [Types.CREATE_USER_FAIL]: userFail,
   [Types.SAVE_NEW_USER_SUCCESS]: userSuccess,
