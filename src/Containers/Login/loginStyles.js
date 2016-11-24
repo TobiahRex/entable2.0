@@ -48,12 +48,12 @@ const styles = {
   centerText: {
     textAlign: 'center',
   },
-  registerBtnContainer: {
+  loginBtnContainer: {
     display: 'flex',
     justifyContent: 'center',
     paddingBottom: 70,
   },
-  registerBtn: {
+  loginBtn: {
     // backgroundColor: '#2ecc71',
     padding: '10px 40px 10px 40px',
     textTransform: 'uppercase',
