@@ -8,6 +8,9 @@ class Navbar extends PureComponent {
     children: PropTypes.node.isRequired,
     logoutUser: PropTypes.func.isRequired,
   };
+  static styles = {
+    display: this.props.active ? 'hidden' : '',
+  }
   render() {
     return (
       <div>
@@ -54,12 +57,12 @@ class Navbar extends PureComponent {
                     Login
                   </Link>
                 </li>
-                <li className="mainNavLink">
+                <li style={this.styles.display} className="mainNavLink">
                   <button className="navbarButton" onClick={this.props.logoutUser}>
                     Log Out
                   </button>
                 </li>
-                <li className="mainNavLink">
+                <li style={this.styles.display} className="mainNavLink">
                   <Link to="/account">
                     My Account
                   </Link>
@@ -73,7 +76,10 @@ class Navbar extends PureComponent {
     );
   }
 }
+const mapStateToProps = state => ({
+  active: state.user.active,
+});
 const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(authActions.logoutUser()),
 });
-export default connect(null, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
