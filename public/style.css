@@ -574,6 +574,7 @@ align-self: center;
 }
 
 .priceText {
+  padding-top: 25px;
   font-size: 14px;
   color: #fff;
 }
