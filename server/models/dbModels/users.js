@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
-  uid: { type: String },
-  refreshToken: { type: String },
+  uid_firebase: { type: String },
   firstName: { type: String },
   lastName: { type: String },
   email: {

@@ -7,9 +7,9 @@ export default function* registerUser(firebase, api, { info }) {
   .then(user => user)
   .catch(err => err));
 
-  if (response.uid) {
-    const { refreshToken, uid } = response;
-    const newUserInfo = { ...info, refreshToken, uid };
+  if (response.uid_firebase) {
+    const { refreshToken, uid_firebase } = response;
+    const newUserInfo = { ...info, refreshToken, uid_firebase };
     console.log('newUserInfo: ', newUserInfo);
     const dbResponse = yield call(() => api.saveNewUser(newUserInfo));
     yield put(authActions.createUserSuccess(newUserInfo));

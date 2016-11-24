@@ -1,8 +1,7 @@
 import { createActions, createReducer } from 'reduxsauce';
 
 const nullFields = {
-  uid: null,
-  refreshToken: null,
+  uid_firebase: null,
   firstName: null,
   lastName: null,
   email: null,
@@ -38,8 +37,7 @@ export const INITIAL_STATE = {
 };
 
 const userSuccess = (state, { user }) => ({
-  uid: user.id,
-  refreshToken: user.refreshToken,
+  uid_firebase: user.id,
   firstName: user.firstName,
   lastName: user.lastName,
   email: user.email,
@@ -55,7 +53,7 @@ const userFail = (state, { error }) => ({ ...nullFields, error });
 
 const logoutSuccess = () => ({ ...INITIAL_STATE });
 const logoutFail = (state, { error }) => ({
-  uid: state.uid,
+  uid_firebase: state.uid_firebase,
   refreshToken: state.refreshToken,
   firstName: state.firstName,
   lastName: state.lastName,
@@ -69,7 +67,7 @@ const logoutFail = (state, { error }) => ({
 });
 
 const loginFail = (state, { error }) => ({
-  uid: state.uid,
+  uid_firebase: state.uid_firebase,
   refreshToken: state.refreshToken,
   firstName: state.firstName,
   lastName: state.lastName,
