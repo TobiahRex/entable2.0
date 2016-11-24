@@ -18,7 +18,7 @@ const nullFields = {
 const { Types, Creators } = createActions({
   activeUserTrue: ['user'],
   activeUserFalse: null,
-  getActiveUserSuccess: ['info'],
+  getActiveUserSuccess: ['user'],
   getActiveUserFail: ['error'],
   createUserFirebase: ['info'],
   createUserSuccess: ['user'],
