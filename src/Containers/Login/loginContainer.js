@@ -4,10 +4,12 @@ import authActions from '../../Redux/AuthRedux';
 
 import loginStyles from './loginStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
+import Footer from '../../Components/Footer';
+import LoginDetails from './loginDetails';
 
 class Login extends React.Component {
   static propTypes = {
-    login: PropTypes.func.isRequired,
+    loginUser: PropTypes.func.isRequired,
   }
   static breadCrumbs = [{
     href: '/',
@@ -37,6 +39,19 @@ class Login extends React.Component {
     else if (length > vError) return 'error';
   }
 
+  login = () => {
+    const { username, password } = this.state;
+
+    if (!username.length) {
+      return this.setState({ error: 'Missing username!' });
+    } else if (!password.length) {
+      return this.setState({ error: 'Missing password' });
+    }
+    return this.props.loginUser({ username, password });
+  }
+
+  toggleHover = () => this.setState({ hover: !this.state.hover })
+
   render() {
     return (
       <div style={Login.styles.mainBgColor}>
@@ -46,14 +61,21 @@ class Login extends React.Component {
           <LoginDetails
             onInputChange={this.onInputChange}
             validate={this.validate}
-
+            username={this.state.username}
+            password={this.state.password}
           />
         </div>
+        <LoginButton
+          hover={this.state.hover}
+          login={this.login}
+          toggleHover={this.toggleHover}
+        />
+        <Footer />
       </div>
     );
   }
 }
 const mapDispatchToProps = dispatch => ({
-  login: credentials => dispatch(authActions.loginUser(credentials)),
+  loginUser: credentials => dispatch(authActions.loginUser(credentials)),
 });
 export default connect(null, mapDispatchToProps)(Login);
