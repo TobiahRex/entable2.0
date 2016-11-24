@@ -1,4 +1,5 @@
 import { call, put } from 'redux-saga/effects';
+import apiActions from '../../Redux/ApiRedux';
 import authActions from '../../Redux/AuthRedux';
 
 export default function* registerUser(firebase, api, { info }) {
@@ -8,16 +9,17 @@ export default function* registerUser(firebase, api, { info }) {
   .catch(err => err));
 
   if (response.uid_firebase) {
-    const { refreshToken, uid_firebase } = response;
-    const newUserInfo = { ...info, refreshToken, uid_firebase };
-    console.log('newUserInfo: ', newUserInfo);
-    const dbResponse = yield call(() => api.saveNewUser(newUserInfo));
+    const { uid_firebase } = response;
+    const newUserInfo = { ...info, uid_firebase };
+    yield [put(authActions.saveNewUser(newUserInfo)), put()];
+    const dbResponse = yield call(() =>
+    api.saveNewUser(newUserInfo));
     yield put(authActions.createUserSuccess(newUserInfo));
 
     if (dbResponse.ok) {
-      console.log('yay it worked', dbResponse.data);
+      yield [put(authActions.saveNewUserSuccess(dbResponse.data))]
     } else {
-      console.log('bummer it failed ', dbResponse.problem);
+
     }
 
   } else {
