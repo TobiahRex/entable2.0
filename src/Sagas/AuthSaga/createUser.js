@@ -37,7 +37,6 @@ export default function* registerUser(firebase, api, { info }) {
     1. auth/weak-password - the password supplied is too short.
     2. auth/already-in-use - the email used is already registered.
     */
-    console.error('error: ', code, 'message: ', message);
-    yield put(authActions.createUserFail(message));
+    yield put(authActions.createUserFail({ code, message }));
   }
 }
