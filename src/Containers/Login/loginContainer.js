@@ -7,12 +7,22 @@ class Login extends React.Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
   }
+  static breadCrumbs = [{
+    href: '/',
+    name: 'Home',
+    active: false,
+  }, {
+    href: '/login',
+    name: 'Login',
+    active: true,
+  }];
   static styles = loginStyles;
   constructor(props) {
     super(props);
     this.state = {
       username: '',
       password: '',
+      error: '',
     };
   }
 
