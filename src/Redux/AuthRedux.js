@@ -38,7 +38,7 @@ export const INITIAL_STATE = {
 };
 
 const userSuccess = (state, { user }) => ({
-  _id: user._id
+  _id: user._id,
   uid_firebase: user.uid_firebase,
   firstName: user.firstName,
   lastName: user.lastName,
