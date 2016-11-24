@@ -3,8 +3,9 @@ import authActions from '../../Redux/AuthRedux';
 import apiActions from '../../Redux/ApiRedux';
 
 export default function* loginUser(firebaseAuth, api, { credentials }) {
+  console.log('yo');
   const fbResponse = yield call(() =>
-  firebaseAuth.signInWithEmailAndPassword(credentials.email, credentials.password)
+  firebaseAuth.signInWithEmailAndPassword(credentials.username, credentials.password)
   .then(user => ({
     ok: true,
     user,
