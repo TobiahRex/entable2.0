@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import authActions from '../Redux/AuthRedux';
 
 const Navbar = ({ children }) => (
   <div>
@@ -39,6 +41,11 @@ const Navbar = ({ children }) => (
                 Become a Donor
               </Link>
             </li>
+            <li className="mainNavLink">
+              <button onClick={this.props.logoutUser}>
+                Log Out
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -46,9 +53,10 @@ const Navbar = ({ children }) => (
     {children}
   </div>
 );
-
 Navbar.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default Navbar;
+const mapDispatchToProps = dispatch => ({
+  logoutUser: () => dispatch(authActions.logoutUser()),
+});
+export default connect(null, mapDispatchToProps)(Navbar);

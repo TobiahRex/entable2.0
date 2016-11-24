@@ -19,6 +19,7 @@ const firebase = firebaseAuth;
 
 export default function* rootSaga() {
   yield [
+    takeLatest(AuthTypes.LOGOUT_USER, firebase),
     takeLatest(AuthTypes.ACTIVE_USER_TRUE, activeUserTrueSaga, api),
     takeLatest(AuthTypes.CREATE_USER_FIREBASE, createUserSaga, firebase, api),
     takeLatest(BankTypes.GET_ALL_BANKS, getBanksSaga, api),
