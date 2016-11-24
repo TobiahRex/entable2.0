@@ -31,7 +31,7 @@ class Login extends React.Component {
     };
   }
 
-  onInputChange = (id, value) => this.setState({ [id]: value });
+  onInputChange = (value, id) => this.setState({ [id]: value });
 
   validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
     const length = this.state[id].length;
@@ -54,6 +54,7 @@ class Login extends React.Component {
   toggleHover = () => this.setState({ hover: !this.state.hover })
 
   render() {
+    console.log('this.state.username: ', this.state.username);
     return (
       <div style={Login.styles.mainBgColor}>
         <Breadcrumbs paths={Login.breadCrumbs} />
@@ -61,14 +62,14 @@ class Login extends React.Component {
         <div style={Login.styles.loginFlexParent}>
           <LoginDetails
             username={{
+              value: this.state.username,
               onInputChange: this.onInputChange,
               validate: this.validate,
-              username: this.state.username,
             }}
             password={{
+              value: this.state.password,
               onInputChange: this.onInputChange,
               validate: this.validate,
-              password: this.state.password,
             }}
           />
         </div>

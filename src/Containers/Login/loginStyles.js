@@ -10,7 +10,7 @@ const styles = {
     alignItems: 'center',
   },
   loginTitle: {
-    padding: '0px 140px 30px 140px',
+    padding: '0px 140px 0px 140px',
   },
   loginH4: {
     textAlign: 'center',
