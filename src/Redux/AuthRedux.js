@@ -100,8 +100,8 @@ export const userReducer = createReducer(INITIAL_STATE, {
   [Types.CREATE_USER_FAIL]: userFail,
   [Types.SAVE_NEW_USER_SUCCESS]: userSuccess,
   [Types.SAVE_NEW_USER_FAIL]: userFail,
-  [Types.LOGIN_SUCCESS]: userSuccess,
-  [Types.LOGIN_FAIL]: loginFail,
-  [Types.LOGOUT_SUCCESS]: logoutSuccess,
-  [Types.LOGOUT_FAIL]: logoutFail,
+  [Types.LOGIN_USER_SUCCESS]: userSuccess,
+  [Types.LOGIN_USER_FAIL]: loginFail,
+  [Types.LOGOUT_USER_SUCCESS]: logoutSuccess,
+  [Types.LOGOUT_USER_FAIL]: logoutFail,
 });
