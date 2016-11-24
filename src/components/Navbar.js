@@ -5,6 +5,7 @@ import authActions from '../Redux/AuthRedux';
 
 class Navbar extends PureComponent {
   static propTypes = {
+    active: PropTypes.bool.isRequired,
     children: PropTypes.node.isRequired,
     logoutUser: PropTypes.func.isRequired,
   };
