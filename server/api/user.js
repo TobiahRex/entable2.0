@@ -4,7 +4,8 @@ import User from '../models/dbModels/users';
 const router = new Router();
 
 router.route('/:id')
-.get((req, res) => User.find({ uid_firebase: req.params.id }, res.handle));
+.get((req, res) => User.findByFirebaseId(req.params.id, res.handle));
+
 
 router.route('/')
 .get((req, res) => User.find({}, res.handle))
