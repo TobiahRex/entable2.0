@@ -5,7 +5,8 @@ import Navbar from '../Components/Navbar';
 import Homepage from '../Containers/Home';
 import BankDetail from '../Components/Bank/BankDetail';
 import BankExample from '../Components/Bank/BankExample';
-import Register from '../Containers/Register/registerContainer';
+import LoginPage from '../Containers/Login/loginContainer';
+import RegisterPage from '../Containers/Register/registerContainer';
 import DonatePg from '../Containers/DonatePg';
 
 import donateBank from '../Components/Donation/donateBank';
@@ -17,9 +18,10 @@ export default (
   <Route path="/" component={Navbar}>
     <IndexRoute component={Homepage} />
     <Router path="bank/:id" component={BankDetail} />
-    <Router path="register" component={Register} />
-    <Router path="donate" component={DonatePg} />
     <Router path="example" component={BankExample} />
+    <Router path="login" component={LoginPage} />
+    <Router path="register" component={RegisterPage} />
+    <Router path="donate" component={DonatePg} />
     <Router path="sponsor" component={donateGen} />
     <Router path="donation/:id" component={donateBank} />
     <Router path="flex" component={flexBoxTest} />
