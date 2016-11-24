@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import userActions from '../../Redux/UserRedux';
+import authActions from '../../Redux/AuthRedux';
 import apiActions from '../../Redux/ApiRedux';
 
 export default function* loginUser(firebase, { credentials }) {
@@ -15,10 +15,10 @@ export default function* loginUser(firebase, { credentials }) {
   })));
   console.log('response: ', response);
   if (response.ok) {
-    yield [put(userActions.loginSuccess(response.data)),
+    yield [put(authActions.loginSuccess(response.data)),
     put(apiActions.apiSuccess())];
   } else {
-    yield [put(userActions.loginFail(response.problem)),
+    yield [put(authActions.loginFail(response.problem)),
       put(apiActions.apiFail(response.data))];
   }
 }
