@@ -3,10 +3,8 @@ import authActions from '../../Redux/AuthRedux';
 import apiActions from '../../Redux/ApiRedux';
 
 export default function* activeUserTrue(api, { user }) {
-  yield [
-    put(authActions.activeUserTrue()),
-    put(apiActions.fetching()),
-  ];
+  yield put(apiActions.fetching());
+
   const response = yield call(() => api.getUser(user.uid));
   if (response.ok) {
     yield [
