@@ -9,7 +9,10 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   phone: { type: Number },
-  lastLogin: { type: String },
+  lastLogin: {
+    type: Date,
+    default: Date.now,
+  },
   location: { type: String },
   registered: {
     type: Date,
@@ -19,6 +22,19 @@ const userSchema = new mongoose.Schema({
   photoUrl: { type: String },
   settings: {},
 });
+
+userSchema.statics.addNewUser = (userObj, cb) => {
+  if (!userObj) return cb({ error: 'Missing user object' });
+
+  User.create(userObj)
+  .then((dbUser) => {
+    const dbUserRef = dbUser;
+    delete dbUserRef.password;
+    delete dbUserRef.email;
+    return cb(null, dbUser);
+  })
+  .catch(error => cb({ error }));
+};
 
 const User = mongoose.model('User', userSchema);
 export default User;
