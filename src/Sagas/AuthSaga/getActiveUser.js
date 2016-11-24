@@ -1,11 +1,11 @@
 import { call, put } from 'redux-saga/effects';
 import authActions from '../../Redux/AuthRedux';
 import apiActions from '../../Redux/ApiRedux';
+import activeUser from '../../Services/Firebase/FirebaseCurrentUser';
 
 export default function* getActiveUser(firebase, api) {
-  const { currentUser } = firebase;
 
-  if (currentUser) {
+  if (firebase.currentUser) {
     yield [
       put(authActions.activeUserTrue()),
       put(apiActions.fetching()),
