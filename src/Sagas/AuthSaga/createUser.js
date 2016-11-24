@@ -9,9 +9,9 @@ export default function* registerUser(firebase, api, { info }) {
   .catch(err => err));
 
   // if firebase successfully creates a new user...
-  if (response.uid_firebase) {
-    const { uid_firebase } = response;
-    const newUserInfo = { ...info, uid_firebase };
+  if (response.uid) {
+    const { uid } = response;
+    const newUserInfo = { ...info, uid_firebase: uid };
 
     /* dispatch the following actions...
     1. success action for firebase creating new user

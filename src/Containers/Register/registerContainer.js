@@ -92,7 +92,6 @@ class Register extends React.Component {
     });
 
     if (missingFields.includes(true)) {
-      console.warn('Error', missingField);
       this.setState({ error: 'Missing required field!' });
       // TODO make this some MUI toast or some sort of alert indicator.
     } else {
