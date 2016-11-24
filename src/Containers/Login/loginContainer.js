@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import authActions from '../../Redux/AuthRedux';
+import loginStyles from './loginStyles';
 
 class Login extends React.Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
   }
-
+  static styles = loginStyles;
   constructor(props) {
     super(props);
     this.state = {
