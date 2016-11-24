@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import authActions from '../../Redux/AuthRedux';
+
 import loginStyles from './loginStyles';
+import Breadcrumbs from '../../Components/Breadcrumb';
 
 class Login extends React.Component {
   static propTypes = {
@@ -29,6 +31,7 @@ class Login extends React.Component {
   render() {
     return (
       <div>
+        <Breadcrumbs paths={Login.breadCrumbs} />
         <h1>Login Page</h1>
       </div>
     );
