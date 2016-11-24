@@ -4,6 +4,7 @@ import { firebaseAuth } from '../Services/Firebase/FirebaseConfig';
 
 import activeUserTrueSaga from './AuthSaga/activeUserTrue';
 import createUserSaga from './AuthSaga/createUser';
+import logoutUserSaga from './AuthSaga/logoutUser';
 import getPriceSaga from './BankSaga/getPrice';
 import getBanksSaga from './BankSaga/getBanks';
 import sendTextSaga from './TwilioSaga/sendText';
@@ -19,7 +20,7 @@ const firebase = firebaseAuth;
 
 export default function* rootSaga() {
   yield [
-    takeLatest(AuthTypes.LOGOUT_USER, firebase),
+    takeLatest(AuthTypes.LOGOUT_USER, logoutUserSaga, firebase),
     takeLatest(AuthTypes.ACTIVE_USER_TRUE, activeUserTrueSaga, api),
     takeLatest(AuthTypes.CREATE_USER_FIREBASE, createUserSaga, firebase, api),
     takeLatest(BankTypes.GET_ALL_BANKS, getBanksSaga, api),

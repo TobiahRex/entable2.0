@@ -48,9 +48,9 @@ class Navbar extends PureComponent {
                   </Link>
                 </li>
                 <li className="mainNavLink">
-                  <a href="" onClick={this.props.logoutUser}>
+                  <button onClick={this.props.logoutUser}>
                     Log Out
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
