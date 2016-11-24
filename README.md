@@ -27,4 +27,4 @@ Latest Release: October 23rd, 2016.
     - Accolades: 2nd place.
 
   * MVP 2:
-    - Projected release, Mid November 2016 by Tobiah, Holly, Josh, Donovan, Ziya, and Richard.
+    - Projected release, December 9th 2016 by Tobiah, Holly, Josh, Donovan, Ziya, and Richard.
