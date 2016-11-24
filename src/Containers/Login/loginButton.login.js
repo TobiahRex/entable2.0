@@ -21,7 +21,7 @@ class loginButton extends React.PureComponent {
       };
     } else {
       loginBtnHover = {
-        backgroundColor: '#2eec71',
+        backgroundColor: '#2ecc71',
         color: '#fff',
       };
     }
