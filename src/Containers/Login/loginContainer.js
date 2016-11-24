@@ -5,7 +5,7 @@ import authActions from '../../Redux/AuthRedux';
 import loginStyles from './loginStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
-import LoginDetails from './loginDetails';
+import LoginDetails from './loginDetails.login';
 // import LoginButton from './loginButton';
 
 class Login extends React.Component {

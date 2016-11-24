@@ -10,7 +10,7 @@ const styles = {
   loginTitle: {
     padding: '0px 140px 30px 140px',
   },
-  registerH4: {
+  loginH4: {
     textAlign: 'center',
   },
   registerPrivacy: {
