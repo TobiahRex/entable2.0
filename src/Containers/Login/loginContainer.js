@@ -58,12 +58,18 @@ class Login extends React.Component {
       <div style={Login.styles.mainBgColor}>
         <Breadcrumbs paths={Login.breadCrumbs} />
         <h1 style={Login.styles.loginTitle}>Welcome Back!</h1>
-        <div>
+        <div style={Login.styles.loginFlexParent}>
           <LoginDetails
-            onInputChange={this.onInputChange}
-            validate={this.validate}
-            username={this.state.username}
-            password={this.state.password}
+            username={{
+              onInputChange: this.onInputChange,
+              validate: this.validate,
+              username: this.state.username,
+            }}
+            password={{
+              onInputChange: this.onInputChange,
+              validate: this.validate,
+              password: this.state.password,
+            }}
           />
         </div>
         {/* <LoginButton

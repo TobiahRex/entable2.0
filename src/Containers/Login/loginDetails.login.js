@@ -31,8 +31,8 @@ class loginDetails extends React.PureComponent {
   render() {
     return (
       <span>
-        <h4 style={styles.loginH4}>Login Details</h4>
-        <div style={styles.inputContainers}>
+        <h4 style={styles.loginH4}>Login</h4>
+        <div style={styles.loginContainer}>
           <InputCard
             {...this.props.username}
             {...loginDetails.PROPS.username}

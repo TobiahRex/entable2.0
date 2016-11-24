@@ -2,10 +2,12 @@ const styles = {
   mainBgColor: {
     backgroundColor: '#f5f5f5',
   },
-  registerFlexParent: {
+  loginFlexParent: {
+    minHeight: 400,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   loginTitle: {
     padding: '0px 140px 30px 140px',
@@ -24,8 +26,8 @@ const styles = {
     width: '80%',
     margin: '0px 100px',
   },
-  inputContainers: {
-    padding: '25px 140px 50px 140px',
+  loginContainer: {
+    padding: '35px 140px 50px 140px',
   },
   additionalContainer: {
     padding: '25px 140px 0px 140px',
