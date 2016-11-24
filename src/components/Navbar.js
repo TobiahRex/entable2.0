@@ -40,7 +40,9 @@ class Navbar extends PureComponent {
             >
               <ul className="nav navbar-nav navbar-right">
                 <li className="mainNavLink">
-                  <Link to="/example">Bank Example</Link>
+                  <Link to="/example">
+                    Bank Example
+                  </Link>
                 </li>
                 <li className="mainNavLink">
                   <Link to="/register">
@@ -48,9 +50,19 @@ class Navbar extends PureComponent {
                   </Link>
                 </li>
                 <li className="mainNavLink">
-                  <button onClick={this.props.logoutUser}>
+                  <Link to="/login">
+                    Login
+                  </Link>
+                </li>
+                <li className="mainNavLink">
+                  <button className="navbarButton" onClick={this.props.logoutUser}>
                     Log Out
                   </button>
+                </li>
+                <li className="mainNavLink">
+                  <Link to="/account">
+                    My Account
+                  </Link>
                 </li>
               </ul>
             </div>

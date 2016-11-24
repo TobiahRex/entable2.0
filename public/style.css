@@ -28,6 +28,22 @@ a:hover {
   text-shadow: none;
 }
 
+button.navbarButton {
+  /*text-decoration: none;*/
+  background-color: transparent;
+  color: #9d9d9d;
+  padding: 15px;
+  line-height: 20px;
+}
+
+button.navbarButton:hover {
+  text-decoration: none;
+  background-color: transparent;
+  color: #fff;
+  transition: .5s;
+  text-shadow: none;
+}
+
 li {
   list-style-type: none;
   font-size: 16px;
