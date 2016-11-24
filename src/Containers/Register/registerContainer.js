@@ -76,16 +76,12 @@ class Register extends React.Component {
     delete state.error;
     delete state.hover;
 
-    let missingField = '';
     const missingFields = Object.keys(state).map((key) => {
       if (!state[key]) {
-        missingField = key.toUpperCase();
         return true;
       } else if ((state.role === 'Choose Role') || (state.country.name === 'Choose Country')) {
-        missingField = key.toUpperCase();
         return true;
       } else if (state.agreed === false) {
-        missingField = key.toUpperCase();
         return true;
       }
       return false;

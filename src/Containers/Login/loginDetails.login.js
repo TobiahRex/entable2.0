@@ -9,6 +9,27 @@ class loginDetails extends React.PureComponent {
     username: PropTypes.string,
     password: PropTypes.string,
   }
+  static PROPS = {
+    username: {
+      id: 'username',
+      type: 'email',
+      name: 'Username / Email',
+      required: true,
+      vSuccess: 3,
+      vWarn: 0,
+      vError: 1,
+    },
+    password: {
+      id: 'password',
+      type: 'password',
+      name: 'Password',
+      required: true,
+      requiredMsg: ' At least 8 characters',
+      vSuccess: 7,
+      vWarning: 2,
+      vError: 1,
+    },
+  }
   render() {
     return (
       <span>
