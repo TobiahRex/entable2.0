@@ -11,6 +11,7 @@ export default function* registerUser(firebase, api, { info }) {
   // if firebase successfully creates a new user...
   if (response.uid) {
     const { uid } = response;
+    delete info.password;
     const newUserInfo = { ...info, uid_firebase: uid };
 
     /* dispatch the following actions...

@@ -1,5 +1,4 @@
 /* eslint no-use-before-define: 0 */
-
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
