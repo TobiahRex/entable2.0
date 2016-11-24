@@ -9,10 +9,13 @@ class Navbar extends PureComponent {
     children: PropTypes.node.isRequired,
     logoutUser: PropTypes.func.isRequired,
   };
-  static styles = {
-    display: this.props.active ? 'hidden' : '',
-  }
   render() {
+    const styles = {
+      hide: {
+        display: 'none',
+      },
+      show: {},
+    };
     return (
       <div>
         <nav className="navbar navbar-inverse navbar-default">
@@ -48,22 +51,34 @@ class Navbar extends PureComponent {
                     Bank Example
                   </Link>
                 </li>
-                <li className="mainNavLink">
+                <li
+                  style={this.props.active ? styles.hide : styles.show}
+                  className="mainNavLink"
+                >
                   <Link to="/register">
                     Become a Donor
                   </Link>
                 </li>
-                <li className="mainNavLink">
+                <li
+                  style={this.props.active ? styles.hide : styles.show}
+                  className="mainNavLink"
+                >
                   <Link to="/login">
                     Login
                   </Link>
                 </li>
-                <li style={this.styles.display} className="mainNavLink">
+                <li
+                  style={this.props.active ? styles.show : styles.hide}
+                  className="mainNavLink"
+                >
                   <button className="navbarButton" onClick={this.props.logoutUser}>
                     Log Out
                   </button>
                 </li>
-                <li style={this.styles.display} className="mainNavLink">
+                <li
+                  style={this.props.active ? styles.show : styles.hide}
+                  className="mainNavLink"
+                >
                   <Link to="/account">
                     My Account
                   </Link>
