@@ -28,11 +28,27 @@ class Login extends React.Component {
     };
   }
 
+  onInputChange = (id, value) => this.setState({ [id]: value });
+
+  validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
+    const length = this.state[id].length;
+    if (length > vSuccess) return 'success';
+    else if (length > vWarn) return 'warning';
+    else if (length > vError) return 'error';
+  }
+
   render() {
     return (
       <div style={Login.styles.mainBgColor}>
         <Breadcrumbs paths={Login.breadCrumbs} />
-        <h1 style={Login.styles.loginTitle}>Login Page</h1>
+        <h1 style={Login.styles.loginTitle}>Welcome Back!</h1>
+        <div>
+          <LoginDetails
+            onInputChange={this.onInputChange}
+            validate={this.validate}
+
+          />
+        </div>
       </div>
     );
   }
