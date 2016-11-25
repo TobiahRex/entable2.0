@@ -16,11 +16,13 @@ class loginButton extends React.PureComponent {
     let loginBtnHover = {};
     if (this.props.hover) {
       loginBtnHover = {
+        transition: '0.5s',
         backgroundColor: '#fff',
         color: '#222',
       };
     } else {
       loginBtnHover = {
+        transition: '0.5s',
         backgroundColor: '#2ecc71',
         color: '#fff',
       };

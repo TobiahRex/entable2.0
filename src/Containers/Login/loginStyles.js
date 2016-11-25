@@ -3,7 +3,7 @@ const styles = {
     backgroundColor: '#f5f5f5',
   },
   loginFlexParent: {
-    minHeight: 350,
+    minHeight: 300,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
