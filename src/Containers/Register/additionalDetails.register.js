@@ -44,11 +44,11 @@ class additionalDetails extends PureComponent {
             <DropdownButton title={this.props.role} id="role">
               <MenuItem
                 eventKey="1"
-                onClick={() => this.onInputChange('Donor', 'role')}
+                onClick={() => this.onInputChange('donor', 'role')}
               >Donor</MenuItem>
               <MenuItem
                 eventKey="2"
-                onClick={() => this.onInputChange('Bank Manager', 'role')}
+                onClick={() => this.onInputChange('manager', 'role')}
               >Bank Manager</MenuItem>
             </DropdownButton>
             <br />
