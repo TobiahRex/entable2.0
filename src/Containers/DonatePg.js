@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 class DonationPg extends React.Component {
+  static propTypes = {
+    name: PropTypes.shape({
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+    }),
+  }
   constructor(props) {
     super(props);
 
@@ -36,13 +42,15 @@ class DonationPg extends React.Component {
   render() {
     return (
       <div>
-        This is the Donation page.
+        <h1>Hello {this.props.name.firstname}</h1>
       </div>
     );
   }
 }
-// const mapStateToProps = (state) => ({
-//
-// })
-
-export default connect(null, null)(DonationPg);
+const mapStateToProps = state => ({
+  name: {
+    firstName: state.user.firstName,
+    lastName: state.user.lastname,
+  },
+});
+export default connect(mapStateToProps, null)(DonationPg);
