@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import authActions from '../../Redux/AuthRedux';
 
 import loginStyles from './loginStyles';
@@ -29,6 +30,12 @@ class Login extends React.Component {
       password: '',
       error: '',
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.active === true) {
+      browerHistory.push('/account');
+    }
   }
 
   onInputChange = (value, id) => this.setState({ [id]: value });
@@ -82,7 +89,10 @@ class Login extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  active: state.user.active,
+});
 const mapDispatchToProps = dispatch => ({
   loginUser: credentials => dispatch(authActions.loginUser(credentials)),
 });
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
