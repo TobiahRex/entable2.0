@@ -6,7 +6,7 @@ function getCurrentUser() {
       const currentUser = firebase.auth().currentUser;
       if (currentUser) resolve(currentUser);
       reject('There is no active user');
-    }, 1000);
+    }, 2000);
   });
 }
 
