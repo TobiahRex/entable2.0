@@ -6,6 +6,7 @@ import authActions from '../Redux/AuthRedux';
 class Navbar extends PureComponent {
   static propTypes = {
     active: PropTypes.bool.isRequired,
+    role: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
     logoutUser: PropTypes.func.isRequired,
   };
@@ -94,6 +95,7 @@ class Navbar extends PureComponent {
 }
 const mapStateToProps = state => ({
   active: state.user.active,
+  role: state.user.role,
 });
 const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(authActions.logoutUser()),
