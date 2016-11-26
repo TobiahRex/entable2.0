@@ -4,7 +4,7 @@ const nullFields = {
   active: false,
   _id: null,
   uid_firebase: null,
-  role: null,
+  role: 'donor',
   firstName: null,
   lastName: null,
   email: null,

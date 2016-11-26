@@ -4,12 +4,25 @@ import { Link } from 'react-router';
 import authActions from '../Redux/AuthRedux';
 
 class Navbar extends PureComponent {
+  static defaultProps = {
+    active: false,
+    role: 'donor',
+  }
   static propTypes = {
     active: PropTypes.bool.isRequired,
     role: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
     logoutUser: PropTypes.func.isRequired,
   };
+  static styles = {
+    becomeDonor: {
+      backgroundColor: '#2ecc71',
+      marginTop: 5,
+      padding: 10,
+      borderRadius: 5,
+      color: '#444',
+    },
+  }
   render() {
     const styles = {
       hide: {
@@ -56,7 +69,7 @@ class Navbar extends PureComponent {
                   style={this.props.active ? styles.hide : styles.show}
                   className="mainNavLink"
                 >
-                  <Link to="/register">
+                  <Link style={Navbar.styles.becomeDonor} to="/register">
                     Become a Donor
                   </Link>
                 </li>
