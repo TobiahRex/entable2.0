@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import donorStyles from './donorStyles.js';
+import donorStyles from './donorStyles';
+import Breadcrumbs from 
 import Footer from '../../Components/Footer';
 
 class DonationPg extends React.Component {
@@ -8,6 +9,16 @@ class DonationPg extends React.Component {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }
+  static breadCrumbs = [{
+    href: '/',
+    name: 'Home',
+    active: false,
+  },
+  {
+    href: '/donor_account',
+    name: 'Profile',
+    active: true,
+  }]
   static styles = donorStyles;
   constructor(props) {
     super(props);
@@ -43,6 +54,7 @@ class DonationPg extends React.Component {
   render() {
     return (
       <div style={DonationPg.styles.mainBgColor}>
+        <Breadcrumb path={Register.breadCrumbs} />
         <h1>Hello {this.props.firstName}, welcome back!</h1>
         <br />
         <h3>{'Here\'s'} {'what\'s'} happened since {'you\'ve'} been away.</h3>
