@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Footer from '../Components/Footer';
 
 class DonationPg extends React.Component {
   static propTypes = {
-    name: PropTypes.shape({
-      firstName: PropTypes.string.isRequired,
-      lastName: PropTypes.string.isRequired,
-    }),
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
   }
   constructor(props) {
     super(props);
@@ -42,17 +41,16 @@ class DonationPg extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello {this.props.name.firstName}, welcome back!</h1>
+        <h1>Hello {this.props.firstName}, welcome back!</h1>
         <br />
-        <h2>{'Here\'s'} {'what\'s'} happened since {'you\'ve'} been away.</h2>
+        <h3>{'Here\'s'} {'what\'s'} happened since {'you\'ve'} been away.</h3>
+        <Footer />
       </div>
     );
   }
 }
 const mapStateToProps = state => ({
-  name: {
-    firstName: state.user.firstName,
-    lastName: state.user.lastname,
-  },
+  firstName: state.user.firstName,
+  lastName: state.user.lastname,
 });
 export default connect(mapStateToProps, null)(DonationPg);
