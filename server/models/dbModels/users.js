@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
   uid_firebase: { type: String },
+  role: { type: String, enum: ['donor', 'manager'] },
   firstName: { type: String },
   lastName: { type: String },
   email: {
