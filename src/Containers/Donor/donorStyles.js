@@ -1,5 +1,7 @@
 const styles = {
-  backgroundColor: '#f5f5f5',
+  mainBgColor: {
+    backgroundColor: '#f5f5f5',
+  },
   donorFlexParent: {
     display: 'flex',
     flexDirection: 'row',
