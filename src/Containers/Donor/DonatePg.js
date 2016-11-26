@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import donorStyles from './donorStyles.js';
 import Footer from '../../Components/Footer';
 
 class DonationPg extends React.Component {
@@ -7,6 +8,7 @@ class DonationPg extends React.Component {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }
+  static styles = donorStyles;
   constructor(props) {
     super(props);
 
@@ -40,7 +42,7 @@ class DonationPg extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={DonationPg.styles.mainBgColor}>
         <h1>Hello {this.props.firstName}, welcome back!</h1>
         <br />
         <h3>{'Here\'s'} {'what\'s'} happened since {'you\'ve'} been away.</h3>
@@ -51,6 +53,6 @@ class DonationPg extends React.Component {
 }
 const mapStateToProps = state => ({
   firstName: state.user.firstName,
-  lastName: state.user.lastname,
+  lastName: state.user.lastName,
 });
 export default connect(mapStateToProps, null)(DonationPg);
