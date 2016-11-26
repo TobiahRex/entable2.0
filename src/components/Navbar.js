@@ -16,11 +16,9 @@ class Navbar extends PureComponent {
   };
   static styles = {
     becomeDonor: {
-      backgroundColor: '#2ecc71',
       marginTop: 5,
       padding: 10,
       borderRadius: 5,
-      color: '#444',
     },
   }
   render() {
@@ -60,17 +58,19 @@ class Navbar extends PureComponent {
               id="bs-example-navbar-collapse-1"
             >
               <ul className="nav navbar-nav navbar-right">
-                <li className="mainNavLink">
-                  <Link to="/example">
-                    Bank Example
-                  </Link>
-                </li>
                 <li
                   style={this.props.active ? styles.hide : styles.show}
                   className="mainNavLink"
                 >
-                  <Link style={Navbar.styles.becomeDonor} to="/register">
+                  <Link className="highlight1" style={Navbar.styles.becomeDonor} to="/register">
                     Become a Donor
+                  </Link>
+                </li>
+                <li
+                  className="mainNavLink"
+                >
+                  <Link to="/example">
+                    Bank Example
                   </Link>
                 </li>
                 <li
