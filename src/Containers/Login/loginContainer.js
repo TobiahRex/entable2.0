@@ -34,7 +34,7 @@ class Login extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.active === true) {
-      browerHistory.push('/account');
+      browserHistory.push('/donor_account');
     }
   }
 
