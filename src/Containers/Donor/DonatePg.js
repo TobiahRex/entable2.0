@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import donorStyles from './donorStyles';
-import Breadcrumbs from 
+import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
 
 class DonationPg extends React.Component {
@@ -54,7 +54,7 @@ class DonationPg extends React.Component {
   render() {
     return (
       <div style={DonationPg.styles.mainBgColor}>
-        <Breadcrumb path={Register.breadCrumbs} />
+        <Breadcrumbs path={DonationPg.breadCrumbs} />
         <h1>Hello {this.props.firstName}, welcome back!</h1>
         <br />
         <h3>{'Here\'s'} {'what\'s'} happened since {'you\'ve'} been away.</h3>
