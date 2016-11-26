@@ -11,6 +11,8 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: [
     'webpack-hot-middleware/client?reload=true',
+    './public/style.css',
+    './public/style.scss',
     './src/index.js',
   ],
   output: {
