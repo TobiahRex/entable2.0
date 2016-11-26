@@ -79,7 +79,7 @@ class Navbar extends PureComponent {
                   style={this.props.active ? styles.show : styles.hide}
                   className="mainNavLink"
                 >
-                  <Link to="/account">
+                  <Link to={`/${this.props.role}_account`}>
                     My Account
                   </Link>
                 </li>
