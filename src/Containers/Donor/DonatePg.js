@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Footer from '../Components/Footer';
+import Footer from '../../Components/Footer';
 
 class DonationPg extends React.Component {
   static propTypes = {
