@@ -57,9 +57,9 @@ class DonationPg extends React.Component {
       <div style={DonationPg.styles.mainBgColor}>
         <Breadcrumbs paths={DonationPg.breadCrumbs} />
         <div style={DonationPg.styles.donorTitle}>
-          <h1>Hey {this.props.firstName},</h1>
+          <h2>Hey {this.props.firstName},</h2>
           <br />
-          <h4 style={DonationPg.styles.donorH3}>{'Here\'s'} {'what\'s'} happened in the banks that {'you\'ve'} donated to since {'you\'ve'} been away.</h4>
+          <h4 style={DonationPg.styles.donorH4}>{'Here\'s'} {'what\'s'} happened in the banks that {'you\'ve'} donated to since {'you\'ve'} been away.</h4>
           <br />
           <div>
             <Carousel>
@@ -124,6 +124,12 @@ class DonationPg extends React.Component {
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
+          </div>
+          <div style={DonationPg.styles.donationsTitle}>
+            <h4 style={DonationPg.styles.donorH4}>
+              {'Here\'s'} our latest incoming donations
+              & outgoing benefits.
+            </h4>
           </div>
         </div>
         <Footer />

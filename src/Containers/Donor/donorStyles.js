@@ -8,11 +8,15 @@ const styles = {
   donorH3: {
     textAlign: 'center',
   },
+  donorH4: {
+    textAlign: 'center',
+  },
   h3Carousel: {
     margin: 0,
     backgroundColor: '#2ecc71',
     textAlign: 'center',
     padding: 10,
+    textShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
   },
   imgCarousel: {
     padding: 25,
@@ -29,6 +33,9 @@ const styles = {
     padding: 5,
     color: '#f5f5f5',
     margin: 0,
+  },
+  donationsTitle: {
+    paddingTop: 50,
   },
   donorFlexParent: {
     display: 'flex',
