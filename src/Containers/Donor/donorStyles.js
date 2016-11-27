@@ -18,9 +18,13 @@ const styles = {
     backgroundColor: '#2ecc71',
     padding: 5,
   },
+  carouselH3: {
+    margin: 0,
+  },
   pCarousel: {
     padding: 5,
     color: '#f5f5f5',
+    margin: 0,
   },
   donorFlexParent: {
     display: 'flex',

@@ -68,7 +68,7 @@ class DonationPg extends React.Component {
                 <img width={900} height={500} alt="900x500" src="./girl-469157.jpg" />
                 <Carousel.Caption>
                   <div style={DonationPg.styles.capContainCarousel}>
-                    <h3>Nulla Wambosi</h3>
+                    <h3 style={DonationPg.styles.carouselH3}>Nulla Wambosi</h3>
                     <p style={DonationPg.styles.pCarousel}>
                       Nulla purchased fresh meat and produce for her family with 3500 MPESA on October 21nd, 2016.
                     </p>
@@ -82,7 +82,7 @@ class DonationPg extends React.Component {
                 <img width={900} height={500} alt="900x500" src="./girl-444688.jpg" />
                 <Carousel.Caption>
                   <div style={DonationPg.styles.capContainCarousel}>
-                    <h3>
+                    <h3 style={DonationPg.styles.carouselH3}>
                       Datyiva Moore
                     </h3>
                     <p style={DonationPg.styles.pCarousel}>
@@ -96,11 +96,11 @@ class DonationPg extends React.Component {
                 <img width={900} height={500} alt="900x500" src="./mother-434355.jpg" />
                 <Carousel.Caption>
                   <div style={DonationPg.styles.capContainCarousel}>
-                    <h3 style={DonationPg.styles.titleCarousel}>
+                    <h3 style={DonationPg.styles.carouselH3}>
                       Isaac Butumbo
                     </h3>
                     <p style={DonationPg.styles.pCarousel}>
-                      Isaac was born on November 18th, 2016.  His mother Ivy, pictured here was able to pay the doctors with 20000 MPESA received from our Bank.
+                      Isaac was born on November 18th, 2016.  His mother Ivy, pictured here was able to pay the doctors with 20,000 MPESA received from our Bank.
                     </p>
                   </div>
                 </Carousel.Caption>
