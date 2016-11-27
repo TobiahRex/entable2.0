@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Carousel } from 'react-bootstrap/lib';
+import Griddle from 'griddle-react';
 import donorStyles from './donorStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
@@ -53,6 +54,35 @@ class DonationPg extends React.Component {
   }
 
   render() {
+    const fakeData = [
+      {
+        'id': 0,
+        'name': 'Mayer Leonard',
+        'city': 'Kapowsin',
+        'state': 'Hawaii',
+        'country': 'United Kingdom',
+        'company': 'Ovolo',
+        'favoriteNumber': 7,
+      },
+      {
+        'id': 0,
+        'name': 'Mayer Leonard',
+        'city': 'Kapowsin',
+        'state': 'Hawaii',
+        'country': 'United Kingdom',
+        'company': 'Ovolo',
+        'favoriteNumber': 7,
+      },
+      {
+        'id': 0,
+        'name': 'Mayer Leonard',
+        'city': 'Kapowsin',
+        'state': 'Hawaii',
+        'country': 'United Kingdom',
+        'company': 'Ovolo',
+        'favoriteNumber': 7,
+      },
+    ];
     return (
       <div style={DonationPg.styles.mainBgColor}>
         <Breadcrumbs paths={DonationPg.breadCrumbs} />
@@ -130,6 +160,13 @@ class DonationPg extends React.Component {
               {'Here\'s'} our latest incoming donations
               & outgoing benefits.
             </h4>
+            <br />
+            <Griddle
+              results={fakeData}
+              showFilter
+              showSettings
+              columns={["name", "city", "country", "amount", "received", "donated"]}
+            />
           </div>
         </div>
         <Footer />
