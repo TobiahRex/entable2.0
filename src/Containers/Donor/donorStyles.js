@@ -8,6 +8,15 @@ const styles = {
   donorH3: {
     textAlign: 'center',
   },
+  h3Carousel: {
+    margin: 0,
+    backgroundColor: '#2ecc71',
+    textAlign: 'center',
+    padding: 10,
+  },
+  pCarousel: {
+    color: '#f5f5f5',
+  },
   donorFlexParent: {
     display: 'flex',
     flexDirection: 'row',

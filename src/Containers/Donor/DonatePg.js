@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Carousel } from 'react-bootstrap/lib';
 import donorStyles from './donorStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
@@ -59,6 +60,19 @@ class DonationPg extends React.Component {
           <h1>Hey {this.props.firstName},</h1>
           <br />
           <h4 style={DonationPg.styles.donorH3}>{'Here\'s'} {'what\'s'} happened since {'you\'ve'} been away.</h4>
+
+          <div>
+            <Carousel>
+              <Carousel.Item>
+                <h3 style={DonationPg.styles.h3Carousel}>Bank of Tanzania</h3>
+                <img width={900} height={500} alt="900x500" src="./girl-469157.jpg" />
+                <Carousel.Caption>
+                  <h3>First slide label</h3>
+                  <p style={DonationPg.styles.pCarousel}>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            </Carousel>
+          </div>
         </div>
         <Footer />
       </div>
