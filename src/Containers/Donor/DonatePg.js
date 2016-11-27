@@ -59,10 +59,26 @@ class DonationPg extends React.Component {
         <div style={DonationPg.styles.donorTitle}>
           <h1>Hey {this.props.firstName},</h1>
           <br />
-          <h4 style={DonationPg.styles.donorH3}>{'Here\'s'} {'what\'s'} happened since {'you\'ve'} been away.</h4>
-
+          <h4 style={DonationPg.styles.donorH3}>{'Here\'s'} {'what\'s'} happened in the banks that {'you\'ve'} donated to since {'you\'ve'} been away.</h4>
+          <br />
           <div>
             <Carousel>
+              <Carousel.Item>
+                <h3 style={DonationPg.styles.h3Carousel}>Bank of Tanzania</h3>
+                <img width={900} height={500} alt="900x500" src="./girl-469157.jpg" />
+                <Carousel.Caption>
+                  <h3>Nulla Wambosi</h3>
+                  <p style={DonationPg.styles.pCarousel}>Nulla purchased fresh meat and produce for her family with 3500 MPESA on October 21nd, 2016.</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <h3 style={DonationPg.styles.h3Carousel}>Bank of Tanzania</h3>
+                <img width={900} height={500} alt="900x500" src="./girl-444688.jpg" />
+                <Carousel.Caption>
+                  <h3>Datyiva Moore</h3>
+                  <p style={DonationPg.styles.pCarousel}>Datyiva bought her son books for school with 1500 MPESA on November 16th, 2016 </p>
+                </Carousel.Caption>
+              </Carousel.Item>
               <Carousel.Item>
                 <h3 style={DonationPg.styles.h3Carousel}>Bank of Tanzania</h3>
                 <img width={900} height={500} alt="900x500" src="./girl-469157.jpg" />
