@@ -14,6 +14,10 @@ const styles = {
     textAlign: 'center',
     padding: 10,
   },
+  imgCarousel: {
+    padding: 25,
+    backgroundColor: '#222',
+  },
   capContainCarousel: {
     backgroundColor: '#2ecc71',
     padding: 5,

@@ -65,7 +65,13 @@ class DonationPg extends React.Component {
             <Carousel>
               <Carousel.Item>
                 <h3 style={DonationPg.styles.h3Carousel}>Bank of Tanzania</h3>
-                <img width={900} height={500} alt="900x500" src="./girl-469157.jpg" />
+                <img
+                  style={DonationPg.styles.imgCarousel}
+                  width={900}
+                  height={500}
+                  alt="900x500"
+                  src="./girl-469157.jpg"
+                />
                 <Carousel.Caption>
                   <div style={DonationPg.styles.capContainCarousel}>
                     <h3 style={DonationPg.styles.carouselH3}>Nulla Wambosi</h3>
@@ -79,7 +85,13 @@ class DonationPg extends React.Component {
                 <h3 style={DonationPg.styles.h3Carousel}>
                   Bank of Tanzania
                 </h3>
-                <img width={900} height={500} alt="900x500" src="./girl-444688.jpg" />
+                <img
+                  style={DonationPg.styles.imgCarousel}
+                  width={900}
+                  height={500}
+                  alt="900x500"
+                  src="./girl-444688.jpg"
+                />
                 <Carousel.Caption>
                   <div style={DonationPg.styles.capContainCarousel}>
                     <h3 style={DonationPg.styles.carouselH3}>
@@ -93,7 +105,13 @@ class DonationPg extends React.Component {
               </Carousel.Item>
               <Carousel.Item>
                 <h3 style={DonationPg.styles.h3Carousel}>Bank of Tanzania</h3>
-                <img width={900} height={500} alt="900x500" src="./mother-434355.jpg" />
+                <img
+                  style={DonationPg.styles.imgCarousel}
+                  width={900}
+                  height={500}
+                  alt="900x500"
+                  src="./mother-434355.jpg"
+                />
                 <Carousel.Caption>
                   <div style={DonationPg.styles.capContainCarousel}>
                     <h3 style={DonationPg.styles.carouselH3}>
