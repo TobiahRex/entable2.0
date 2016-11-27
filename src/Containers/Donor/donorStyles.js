@@ -14,13 +14,12 @@ const styles = {
     textAlign: 'center',
     padding: 10,
   },
-  titleCarousel: {
+  capContainCarousel: {
     backgroundColor: '#2ecc71',
     padding: 5,
   },
   pCarousel: {
     padding: 5,
-    backgroundColor: '#2ecc71',
     color: '#f5f5f5',
   },
   donorFlexParent: {
