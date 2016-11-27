@@ -7,7 +7,7 @@ import BankDetail from '../Components/Bank/BankDetail';
 import BankExample from '../Components/Bank/BankExample';
 import LoginPage from '../Containers/Login/loginContainer';
 import RegisterPage from '../Containers/Register/registerContainer';
-import DonorPage from '../Containers/DonatePg';
+import DonorPage from '../Containers/Donor/DonatePg';
 
 import donateBank from '../Components/Donation/donateBank';
 import donateGen from '../Components/Donation/donateGen';
