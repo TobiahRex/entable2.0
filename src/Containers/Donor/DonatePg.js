@@ -55,9 +55,11 @@ class DonationPg extends React.Component {
     return (
       <div style={DonationPg.styles.mainBgColor}>
         <Breadcrumbs paths={DonationPg.breadCrumbs} />
-        <h1>Hello {this.props.firstName}, welcome back!</h1>
-        <br />
-        <h3>{'Here\'s'} {'what\'s'} happened since {'you\'ve'} been away.</h3>
+        <div style={DonationPg.styles.donorTitle}>
+          <h1>Hey {this.props.firstName},</h1>
+          <br />
+          <h4 style={DonationPg.styles.donorH3}>{'Here\'s'} {'what\'s'} happened since {'you\'ve'} been away.</h4>
+        </div>
         <Footer />
       </div>
     );
