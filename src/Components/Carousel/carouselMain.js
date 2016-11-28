@@ -14,8 +14,8 @@ class CarouselMain extends React.PureComponent {
           style={styles.image}
           src={trans.image}
           alt="900x500"
-          width={900}
-          height={500}
+          // width={900}
+          // height={500}
         />
         <Carousel.Caption>
           <div style={styles.captionContainer}>
