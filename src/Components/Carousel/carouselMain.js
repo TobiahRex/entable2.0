@@ -11,11 +11,9 @@ class CarouselMain extends React.PureComponent {
       <Carousel.Item key={`carousel-${trans._id}`}>
         <h3 style={styles.h3}>{trans.bank}</h3>
         <img
+          role="presentation"
           style={styles.image}
           src={trans.image}
-          alt="900x500"
-          // width={900}
-          // height={500}
         />
         <Carousel.Caption>
           <div style={styles.captionContainer}>
