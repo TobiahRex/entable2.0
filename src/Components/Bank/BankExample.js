@@ -133,7 +133,7 @@ class Donation extends React.Component {
     return (
       <div>
         <Breadcrumbs paths={this.breadCrumbs} />
-        <div className=" donationContainer">
+        <div className="donationContainer">
           <div className="bankImgBanner" style={this.styles.bankImage}>
             <div style={this.styles.bankDiv} className="donationBankName">
               <h2 style={this.styles.bankName}>Mbola Village Bank</h2>

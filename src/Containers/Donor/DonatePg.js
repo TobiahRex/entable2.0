@@ -5,6 +5,15 @@ import Griddle from 'griddle-react';
 import donorStyles from './donorStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
+import MainCarousel from '../../Components/Carousel/carouselMain';
+
+/* TODO
+  1. Need to move Carousel components into their own component.
+  2. Need to dynamically provide Carousel components with all transaction data from the bank that the donor has contributed to.
+  3. Need to finish rendering the with that information.
+  IDEA: Perhaps think about categorizing the data into - NEWS information, and TRANSACTION information.
+*/
+
 
 class DonationPg extends React.Component {
   static propTypes = {
@@ -18,7 +27,7 @@ class DonationPg extends React.Component {
   },
   {
     href: '/donor_account',
-    name: 'Profile',
+    name: 'My Account',
     active: true,
   }]
   static styles = donorStyles;
@@ -54,33 +63,69 @@ class DonationPg extends React.Component {
   }
 
   render() {
-    const fakeData = [
+    const carouselData = [
       {
-        'id': 0,
-        'name': 'Mayer Leonard',
-        'city': 'Kapowsin',
-        'state': 'Hawaii',
-        'country': 'United Kingdom',
-        'company': 'Ovolo',
-        'favoriteNumber': 7,
+        _id: 1234,
+        image: './girl-469157.jpg',
+        bank: 'Bank of Tanzania',
+        name: 'Nulla Wambosi',
+        description: 'Nulla purchased fresh meat and produce for her family with 3500 MPESA on October 21nd, 2016.',
       },
       {
-        'id': 0,
-        'name': 'Mayer Leonard',
-        'city': 'Kapowsin',
-        'state': 'Hawaii',
-        'country': 'United Kingdom',
-        'company': 'Ovolo',
-        'favoriteNumber': 7,
+        _id: 4567,
+        image: './girl-444688.jpg',
+        bank: 'Bank of Tanzania',
+        name: 'Datyiva Moore',
+        description: 'Datyiva bought her son books for school with 1500 MPESA on November 16th, 2016.',
       },
       {
-        'id': 0,
-        'name': 'Mayer Leonard',
-        'city': 'Kapowsin',
-        'state': 'Hawaii',
-        'country': 'United Kingdom',
-        'company': 'Ovolo',
-        'favoriteNumber': 7,
+        _id: 8901,
+        image: './mother-434355.jpg',
+        bank: 'Bank of Tanzania',
+        name: 'Isaac Butumbo',
+        description: 'Isaac was born on November 18th, 2016.  His mother Ivy, pictured here was able to pay the doctors with 20,000 MPESA received from our Bank.',
+      },
+    ];
+    const tableData = [
+      {
+        _id: 1234,
+        bank: 'Bank of Tanzania',
+        name: 'Clark Kent',
+        role: 'Donor',
+        donated: '$200',
+        withdrew: '',
+      },
+      {
+        _id: 1234,
+        bank: 'Bank of Tanzania',
+        name: 'Nulla Wambosi',
+        role: 'Citizen',
+        donated: '',
+        withdrew: '1500 MPESA',
+      },
+      {
+        _id: 4567,
+        bank: 'Bank of Tanzania',
+        name: 'Datyiva Moore',
+        role: 'Citizen',
+        donated: '',
+        withdrew: '2500 MPESA',
+      },
+      {
+        _id: 4567,
+        bank: 'Bank of Tanzania',
+        name: 'Bruce Wayne',
+        role: 'Donor',
+        donated: '$100,000',
+        withdrew: '2500 MPESA',
+      },
+      {
+        _id: 8901,
+        bank: 'Bank of Tanzania',
+        name: 'Isaac Butumbo',
+        role: 'Citizen',
+        amount: '',
+        withdrew: '25,000 MPESA',
       },
     ];
     return (
@@ -89,83 +134,22 @@ class DonationPg extends React.Component {
         <div style={DonationPg.styles.donorTitle}>
           <h2>Hey {this.props.firstName},</h2>
           <br />
-          <h4 style={DonationPg.styles.donorH4}>{'Here\'s'} {'what\'s'} happened in the banks that {'you\'ve'} donated to since {'you\'ve'} been away.</h4>
+          <h5 style={DonationPg.styles.donorH4}>{'Here\'s'} {'what\'s'} happened in the banks that {'you\'ve'} donated to since {'you\'ve'} been away.</h5>
           <br />
-          <div>
-            <Carousel>
-              <Carousel.Item>
-                <h3 style={DonationPg.styles.h3Carousel}>Bank of Tanzania</h3>
-                <img
-                  style={DonationPg.styles.imgCarousel}
-                  width={900}
-                  height={500}
-                  alt="900x500"
-                  src="./girl-469157.jpg"
-                />
-                <Carousel.Caption>
-                  <div style={DonationPg.styles.capContainCarousel}>
-                    <h3 style={DonationPg.styles.carouselH3}>Nulla Wambosi</h3>
-                    <p style={DonationPg.styles.pCarousel}>
-                      Nulla purchased fresh meat and produce for her family with 3500 MPESA on October 21nd, 2016.
-                    </p>
-                  </div>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <h3 style={DonationPg.styles.h3Carousel}>
-                  Bank of Tanzania
-                </h3>
-                <img
-                  style={DonationPg.styles.imgCarousel}
-                  width={900}
-                  height={500}
-                  alt="900x500"
-                  src="./girl-444688.jpg"
-                />
-                <Carousel.Caption>
-                  <div style={DonationPg.styles.capContainCarousel}>
-                    <h3 style={DonationPg.styles.carouselH3}>
-                      Datyiva Moore
-                    </h3>
-                    <p style={DonationPg.styles.pCarousel}>
-                      Datyiva bought her son books for school with 1500 MPESA on November 16th, 2016.
-                    </p>
-                  </div>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <h3 style={DonationPg.styles.h3Carousel}>Bank of Tanzania</h3>
-                <img
-                  style={DonationPg.styles.imgCarousel}
-                  width={900}
-                  height={500}
-                  alt="900x500"
-                  src="./mother-434355.jpg"
-                />
-                <Carousel.Caption>
-                  <div style={DonationPg.styles.capContainCarousel}>
-                    <h3 style={DonationPg.styles.carouselH3}>
-                      Isaac Butumbo
-                    </h3>
-                    <p style={DonationPg.styles.pCarousel}>
-                      Isaac was born on November 18th, 2016.  His mother Ivy, pictured here was able to pay the doctors with 20,000 MPESA received from our Bank.
-                    </p>
-                  </div>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel>
-          </div>
+          <MainCarousel transactions={carouselData} />
           <div style={DonationPg.styles.donationsTitle}>
-            <h4 style={DonationPg.styles.donorH4}>
+            <h5 style={DonationPg.styles.donorH4}>
               {'Here\'s'} our latest incoming donations
               & outgoing benefits.
-            </h4>
+            </h5>
             <br />
             <Griddle
-              results={fakeData}
-              showFilter
+              // tableClassName="table"
+              style={DonationPg.styles.griddleDiv}
+              results={tableData}
+              // showFilter
               showSettings
-              columns={["name", "city", "country", "amount", "received", "donated"]}
+              columns={["bank", "name", "role", "amount", "donated", "withdrew"]}
             />
           </div>
         </div>
