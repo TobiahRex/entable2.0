@@ -30,8 +30,6 @@ class CarouselMain extends React.PureComponent {
   }
 
   render() {
-    const transactions = this.renderCarousel();
-    console.log('transactions: ', transactions);
     return (
       <div>
         <Carousel>
