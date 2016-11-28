@@ -18,7 +18,7 @@ const BankDisplay = ({ bank }) => (
     </div>
     <AddFundsButton _id={bank._id} />
     <BankActivity transactions={bank.transactions} />
-    <TransactionHistory history={bank.history || ''} />
+    <TransactionHistory transactions={bank.transactions} history={bank.history || ''} />
 
   </div>
 );
