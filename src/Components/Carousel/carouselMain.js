@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Carousel from 'react-bootstrap/lib';
+import { Carousel } from 'react-bootstrap/lib';
 import styles from './carouselStyles';
 
 class CarouselMain extends React.PureComponent {
@@ -7,20 +7,20 @@ class CarouselMain extends React.PureComponent {
     transactions: PropTypes.arrayOf(PropTypes.object),
   }
   renderCarousel = () => {
-    this.props.transactions.map((trans, i) => (
-      <Carousel.Item key={`carousel-${i}`}>
-        <h3 style={styles.h3Carousel}>{trans.bank}</h3>
+    return this.props.transactions.map(trans => (
+      <Carousel.Item key={`carousel-${trans._id}`}>
+        <h3 style={styles.h3}>{trans.bank}</h3>
         <img
-          style={styles.imgCarousel}
+          style={styles.image}
           src={trans.image}
           alt="900x500"
           width={900}
           height={500}
         />
         <Carousel.Caption>
-          <div style={styles.capContainCarousel}>
-            <h3 style={styles.carouselH3}>{trans.name}</h3>
-            <p style={styles.pCarousel}>
+          <div style={styles.captionContainer}>
+            <h3 style={styles.captionH3}>{trans.name}</h3>
+            <p style={styles.captionDesc}>
               {trans.description}
             </p>
           </div>
@@ -30,10 +30,14 @@ class CarouselMain extends React.PureComponent {
   }
 
   render() {
+    const transactions = this.renderCarousel();
+    console.log('transactions: ', transactions);
     return (
-      <span>
-        {this.renderCarousel()}
-      </span>
+      <div>
+        <Carousel>
+          {this.renderCarousel()}
+        </Carousel>
+      </div>
     );
   }
 }
