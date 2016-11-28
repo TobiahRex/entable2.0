@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/lib';
 import styles from './carouselStyles';
 
 class CarouselMain extends React.PureComponent {
+
   render() {
     return (
       <Carousel>
@@ -28,3 +29,4 @@ class CarouselMain extends React.PureComponent {
     );
   }
 }
+export default CarouselMain;
