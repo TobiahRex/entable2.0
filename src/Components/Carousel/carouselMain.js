@@ -3,6 +3,21 @@ import Carousel from 'react-bootstrap/lib';
 import styles from './carouselStyles';
 
 class CarouselMain extends React.PureComponent {
+  renderItem = () => {
+    this.props.transactions.map((trans, i) => {
+      <Carousel.Item
+      >
+        <h3 style={styles.h3Carousel}>{trans.bank}</h3>
+        <img
+          style={styles.imgCarousel}
+          src={trans.image}
+          alt="900x500"
+          width={900}
+          height={500}
+        />
+      </Carousel.Item>
+    });
+  }
 
   render() {
     return (
