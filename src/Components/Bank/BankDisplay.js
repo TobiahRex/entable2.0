@@ -4,7 +4,7 @@ import BankImage from './BankSplashImg';
 import BankDescription from './BankDescription';
 import AddFundsButton from '../AddFundsButton';
 import BankActivity from './BankActivity';
-import TransactionHistory from './TransactionHistory';
+import BankManagerNotes from './BankManagerNotes';
 
 const BankDisplay = ({ bank }) => (
   <div className="container-fluid">
@@ -18,8 +18,7 @@ const BankDisplay = ({ bank }) => (
     </div>
     <AddFundsButton _id={bank._id} />
     <BankActivity transactions={bank.transactions} />
-    <TransactionHistory transactions={bank.transactions} history={bank.history || ''} />
-
+    <BankManagerNotes notes={bank.transactions} />
   </div>
 );
 

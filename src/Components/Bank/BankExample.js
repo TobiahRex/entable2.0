@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Footer from '../Footer';
 import TextForm from '../Donation/TextAddressForm';
-import TransactionHistory from '../Bank/TransactionHistory';
+import BankManagerNotes from '../Bank/BankManagerNotes';
 import DonationButtons from '../Donation/DonationButtons';
 import TwilioActions from '../../Redux/TwilioRedux';
 import Breadcrumbs from '../Breadcrumb';
@@ -15,6 +15,11 @@ class Donation extends React.Component {
   }
   constructor() {
     super();
+    this.exampleNotes = [
+      {
+
+      },
+    ]
     this.state = {
       bank: {},
       email: '',
@@ -186,7 +191,7 @@ class Donation extends React.Component {
           <div className="transactionHeaderDonation">
             <h3>Bank History & Notes to Sponsors</h3>
           </div>
-          <TransactionHistory />
+          <BankManagerNotes note={this.exampleNotes} />
         </div>
         <div>
           <Footer />
@@ -202,7 +207,6 @@ class Donation extends React.Component {
     );
   }
 }
-
 const mapDispatchToProps = dispatch => ({
   sendText: phone => dispatch(TwilioActions.sendText(phone)),
 });
