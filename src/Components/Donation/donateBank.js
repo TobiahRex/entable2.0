@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import moment from 'moment';
 import Footer from '../Footer';
 import TextForm from './TextAddressForm';
-import TransactionHistory from '../Bank/TransactionHistory';
+import BankManagerNotes from '../Bank/BankManagerNotes';
 import DonationButtons from './DonationButtons';
 import TwilioActions from '../../Redux/TwilioRedux';
 import StripeActions from '../../Redux/StripeRedux';
@@ -141,6 +141,7 @@ class DonationBank extends React.Component {
   render() {
     window.scrollTo(0, 0);
     // const fakeTimeStampDelete = moment().format('lll');
+    const { notes } = this.state.bank.notes || { notes: '' };
     this.styles.bankImage.backgroundImage = `url("/${this.state.bank.description.images[0]}")`;
     const bankName = this.state.bank.description.name;
 
@@ -199,7 +200,7 @@ class DonationBank extends React.Component {
           <div className="transactionHeaderDonation">
             <h3>Bank History & Notes to Sponsors</h3>
           </div>
-          <TransactionHistory />
+          <BankManagerNotes notes={notes} />
         </div>
         <div>
           <Footer />
