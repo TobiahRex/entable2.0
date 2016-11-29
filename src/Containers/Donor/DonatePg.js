@@ -90,7 +90,7 @@ class DonationPg extends React.Component {
     const tableData = [
       {
         _id: 1234,
-        Date: moment().formate('lll'),
+        Date: moment().format('lll'),
         Bank: 'Bank of Tanzania',
         Name: 'Clark Kent',
         Role: 'Donor',
@@ -99,7 +99,7 @@ class DonationPg extends React.Component {
       },
       {
         _id: 1234,
-        Date: moment().formate('lll'),
+        Date: moment().format('lll'),
         Bank: 'Bank of Tanzania',
         Name: 'Nulla Wambosi',
         Role: 'Member',
@@ -108,7 +108,7 @@ class DonationPg extends React.Component {
       },
       {
         _id: 4567,
-        Date: moment().formate('lll'),
+        Date: moment().format('lll'),
         Bank: 'Bank of Tanzania',
         Name: 'Datyiva Moore',
         Role: 'Member',
@@ -117,7 +117,7 @@ class DonationPg extends React.Component {
       },
       {
         _id: 4567,
-        Date: moment().formate('lll'),
+        Date: moment().format('lll'),
         Bank: 'Bank of Tanzania',
         Name: 'Bruce Wayne',
         Role: 'Donor',
@@ -126,7 +126,7 @@ class DonationPg extends React.Component {
       },
       {
         _id: 8901,
-        Date: moment().formate('lll'),
+        Date: moment().format('lll'),
         Bank: 'Bank of Tanzania',
         Name: 'Isaac Butumbo',
         Role: 'Member',
