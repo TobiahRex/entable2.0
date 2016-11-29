@@ -1,4 +1,5 @@
 import React, { PropTypes, PureComponent } from 'react';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import authActions from '../Redux/AuthRedux';
@@ -112,6 +113,9 @@ const mapStateToProps = state => ({
   role: state.user.role,
 });
 const mapDispatchToProps = dispatch => ({
-  logoutUser: () => dispatch(authActions.logoutUser()),
+  logoutUser: () => {
+    dispatch(authActions.logoutUser());
+    browserHistory.push('/');
+  },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
