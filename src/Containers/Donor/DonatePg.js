@@ -135,20 +135,25 @@ class DonationPg extends React.Component {
       },
     ];
     return (
-      <div style={DonationPg.styles.mainBgColor}>
-        <Breadcrumbs paths={DonationPg.breadCrumbs} />
-        <div style={DonationPg.styles.donorTitle}>
-          <h2>Hey {this.props.firstName},</h2>
-          <br />
-          <h5 style={DonationPg.styles.donorH4}>{'Here\'s'} {'what\'s'} happened in the banks that {'you\'ve'} donated to since {'you\'ve'} been away.</h5>
-          <br />
-          <MainCarousel transactions={carouselData} />
-          <div style={DonationPg.styles.donationsTitle}>
-            <h5 style={DonationPg.styles.donorH4}>
-              {'Here\'s'} our latest incoming donations
-              & outgoing loans.
-            </h5>
+      <div>
+        <div style={DonationPg.styles.mainBgColor}>
+          <Breadcrumbs paths={DonationPg.breadCrumbs} />
+          <div style={DonationPg.styles.donorTitle}>
+            <h2>Hi {this.props.firstName},</h2>
             <br />
+            <h4 style={DonationPg.styles.donorH4}>{'Here\'s'} {'what\'s'} been happening at the banks that {'you\'ve'} donated to while {'you\'ve'} been away.</h4>
+            <br />
+          </div>
+          <div style={DonationPg.styles.carouselContainer}>
+            <MainCarousel transactions={carouselData} />
+          </div>
+        </div>
+        <div style={DonationPg.styles.donationsTitle}>
+          <h4 style={DonationPg.styles.infoH4}>
+            {'Here\'s'} our latest incoming donations
+            & outgoing loans.
+          </h4>
+          <div style={DonationPg.styles.griddleContainer}>
             <Griddle
               // tableClassName="table"
               style={DonationPg.styles.griddleDiv}

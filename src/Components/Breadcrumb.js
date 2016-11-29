@@ -5,7 +5,11 @@ const bsBreadcrumb = ({ paths }) => {
   let bgColor = '#2ecc71';
 
   const breadcrumbs = paths.map((path, i) => {
-    if (path.name === 'Bank Example') bgColor = '#222';
+    if (path.name === 'Bank Example') {
+      bgColor = '#222';
+    } else if (path.name === 'My Account') {
+      bgColor = '#222';
+    }
 
     return (
       <Breadcrumb.Item
