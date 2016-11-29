@@ -11,7 +11,8 @@
     "open:dist": "babel-node tools/distServer.js",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
-    "prebuild": "npm run clean-dist",
+    "prebuild": "npm-run-all clean-dist build:html",
+    "build:html": "babel-node tools/buildHtml.js",
     "build": "babel-node tools/build.js && npm run open:dist"
   },
   "keywords": [],
