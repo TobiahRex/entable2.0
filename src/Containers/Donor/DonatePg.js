@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Carousel } from 'react-bootstrap/lib';
+import moment from 'moment';
 import Griddle from 'griddle-react';
 import donorStyles from './donorStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
@@ -89,43 +90,48 @@ class DonationPg extends React.Component {
     const tableData = [
       {
         _id: 1234,
-        bank: 'Bank of Tanzania',
-        name: 'Clark Kent',
-        role: 'Donor',
-        donated: '$200',
-        withdrew: '',
+        Date: moment().formate('lll'),
+        Bank: 'Bank of Tanzania',
+        Name: 'Clark Kent',
+        Role: 'Donor',
+        Donated: '$200',
+        Withdrew: '',
       },
       {
         _id: 1234,
-        bank: 'Bank of Tanzania',
-        name: 'Nulla Wambosi',
-        role: 'Citizen',
-        donated: '',
-        withdrew: '1500 MPESA',
+        Date: moment().formate('lll'),
+        Bank: 'Bank of Tanzania',
+        Name: 'Nulla Wambosi',
+        Role: 'Member',
+        Donated: '',
+        Withdrew: '1500 MPESA',
       },
       {
         _id: 4567,
-        bank: 'Bank of Tanzania',
-        name: 'Datyiva Moore',
-        role: 'Citizen',
-        donated: '',
-        withdrew: '2500 MPESA',
+        Date: moment().formate('lll'),
+        Bank: 'Bank of Tanzania',
+        Name: 'Datyiva Moore',
+        Role: 'Member',
+        Donated: '',
+        Withdrew: '2500 MPESA',
       },
       {
         _id: 4567,
-        bank: 'Bank of Tanzania',
-        name: 'Bruce Wayne',
-        role: 'Donor',
-        donated: '$100,000',
-        withdrew: '2500 MPESA',
+        Date: moment().formate('lll'),
+        Bank: 'Bank of Tanzania',
+        Name: 'Bruce Wayne',
+        Role: 'Donor',
+        Donated: '$100,000',
+        Withdrew: '2500 MPESA',
       },
       {
         _id: 8901,
-        bank: 'Bank of Tanzania',
-        name: 'Isaac Butumbo',
-        role: 'Citizen',
-        amount: '',
-        withdrew: '25,000 MPESA',
+        Date: moment().formate('lll'),
+        Bank: 'Bank of Tanzania',
+        Name: 'Isaac Butumbo',
+        Role: 'Member',
+        Donated: '',
+        Withdrew: '25,000 MPESA',
       },
     ];
     return (
@@ -149,7 +155,7 @@ class DonationPg extends React.Component {
               results={tableData}
               // showFilter
               showSettings
-              columns={["bank", "name", "role", "amount", "donated", "withdrew"]}
+              columns={['Bank', 'Date', 'Name', 'Role', 'Donated', 'Withdrew']}
             />
           </div>
         </div>
