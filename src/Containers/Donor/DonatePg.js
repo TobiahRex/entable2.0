@@ -95,7 +95,7 @@ class DonationPg extends React.Component {
         Name: 'Clark Kent',
         Role: 'Donor',
         Donated: '$200',
-        Withdrew: '',
+        Borrowed: '',
       },
       {
         _id: 1234,
@@ -104,7 +104,7 @@ class DonationPg extends React.Component {
         Name: 'Nulla Wambosi',
         Role: 'Member',
         Donated: '',
-        Withdrew: '1500 MPESA',
+        Borrowed: '1,500 m-pesa',
       },
       {
         _id: 4567,
@@ -113,7 +113,7 @@ class DonationPg extends React.Component {
         Name: 'Datyiva Moore',
         Role: 'Member',
         Donated: '',
-        Withdrew: '2500 MPESA',
+        Borrowed: '2,500 m-pesa',
       },
       {
         _id: 4567,
@@ -122,7 +122,7 @@ class DonationPg extends React.Component {
         Name: 'Bruce Wayne',
         Role: 'Donor',
         Donated: '$100,000',
-        Withdrew: '2500 MPESA',
+        Borrowed: '2,500 m-pesa',
       },
       {
         _id: 8901,
@@ -131,7 +131,7 @@ class DonationPg extends React.Component {
         Name: 'Isaac Butumbo',
         Role: 'Member',
         Donated: '',
-        Withdrew: '25,000 MPESA',
+        Borrowed: '25,000 m-pesa',
       },
     ];
     return (
@@ -146,7 +146,7 @@ class DonationPg extends React.Component {
           <div style={DonationPg.styles.donationsTitle}>
             <h5 style={DonationPg.styles.donorH4}>
               {'Here\'s'} our latest incoming donations
-              & outgoing benefits.
+              & outgoing loans.
             </h5>
             <br />
             <Griddle
@@ -155,7 +155,7 @@ class DonationPg extends React.Component {
               results={tableData}
               // showFilter
               showSettings
-              columns={['Bank', 'Date', 'Name', 'Role', 'Donated', 'Withdrew']}
+              columns={['Bank', 'Date', 'Name', 'Role', 'Donated', 'Borrowed']}
             />
           </div>
         </div>
