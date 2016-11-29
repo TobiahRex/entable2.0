@@ -36,8 +36,8 @@ module.exports = {
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin('style.css'),
-    new ExtractTextPlugin('styles.scss'),
+    new ExtractTextPlugin('./public/style.css'),
+    new ExtractTextPlugin('./public/styles.scss'),
   ],
   module: {
     loaders: [
@@ -45,13 +45,18 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        query: {
-          presets: ['react', 'es2015', 'stage-2'],
-        },
       },
       {
-        test: /[sc]ss$/,
-        loaders: ['style', 'css', 'sass', 'postcss-loader'],
+        test: /s[ac]ss$/,
+        loaders: ExtractTextPlugin.extract(['css', 'sass', 'scss']),
+      },
+      {
+        test: /css$/,
+        loaders: ExtractTextPlugin.extract('css'),
+      },
+      {
+        loader: 'url-loader?limit=10000',
+        test: /\.(png|jpg|jpeg|gif|woff)$/,
       },
     ],
   },
