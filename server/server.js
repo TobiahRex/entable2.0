@@ -55,7 +55,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/api', api);
-app.get('*', (req, res) => res.sendFile(path.resolve('public/index.html')));
+app.get('*', (req, res) => res.sendFile(path.resolve('src/index.html')));
 
 
 server.listen(PORT, err =>

@@ -2,14 +2,14 @@ const webpack = require('webpack');
 const path = require('path');
 require('dotenv').config({ silent: true });
 
-const PORT = process.env.PORT || 3000;
-const URL = process.env.DEPLOY_URL || '';
-process.env.BASE_URL = URL || `http://localhost:${PORT}/`;
+const PORT = process.env.PORT || 3000;  //eslint-disable-line
+const BASE_URL = process.env.BASE_URL || process.env.DEPLOY_URL;
 
 module.exports = {
   debug: true,
   devtool: 'inline-source-map',
   entry: [
+    'eventsource-polyfill',
     'webpack-hot-middleware/client?reload=true',
     './public/style.css',
     './public/style.scss',
@@ -23,10 +23,10 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(), // Optimizes the order that our files are bundles in for optimal minification.
     new webpack.DefinePlugin({
       'process.env': {
-        BASE_URL: JSON.stringify(process.env.BASE_URL),
+        BASE_URL: JSON.stringify(BASE_URL),
         apiKeyFirebase:
         JSON.stringify(process.env.FIREBASE_API_KEY),
         authDomainFirebase: JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
