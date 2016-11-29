@@ -5,7 +5,8 @@
   "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-watch server/server.js"
+    "start": "babel-watch server/server.js",
+    "build": "NODE_ENV=production webpack"
   },
   "keywords": [],
   "author": "",
