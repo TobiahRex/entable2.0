@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import Footer from '../Footer';
 import TextForm from '../Donation/TextAddressForm';
 import BankManagerNotes from '../Bank/BankManagerNotes';
@@ -17,9 +18,27 @@ class Donation extends React.Component {
     super();
     this.exampleNotes = [
       {
-
+        _id: 123,
+        date: moment().format('lll'),
+        name: 'Betty Hascal',
+        role: 'Bank Manager',
+        description: 'Sarah bought school books for her son with 1500 MPESA withdrawal.',
       },
-    ]
+      {
+        _id: 234,
+        date: moment().format('lll'),
+        name: 'Betty Hascal',
+        role: 'Bank Manager',
+        description: 'Rachael paid for his sons hospital bills with 25,000 MPESA.',
+      },
+      {
+        _id: 345,
+        date: moment().format('lll'),
+        name: 'Betty Hascal',
+        role: 'Bank Manager',
+        description: 'Bernice bought food for her family with 3,000 MPESA after not eating for 2 weeks.',
+      },
+    ];
     this.state = {
       bank: {},
       email: '',

@@ -18,11 +18,11 @@ class BankManagerNotes extends PureComponent {
     </div>
   ))
   render() {
-    console.log('this.props: ', this.props);
+    const notes = this.props.notes ? this.renderNotes : 'No Notes to render';
     return (
       <span>
         <div className="bankNotesContainer text-center">
-          {this.renderNotes()}
+          {notes}
         </div>
       </span>
     );

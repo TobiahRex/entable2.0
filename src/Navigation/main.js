@@ -9,8 +9,8 @@ import LoginPage from '../Containers/Login/loginContainer';
 import RegisterPage from '../Containers/Register/registerContainer';
 import DonorPage from '../Containers/Donor/DonatePg';
 
-import donateBank from '../Components/Donation/donateBank';
-import donateGen from '../Components/Donation/donateGen';
+import GuestDonation from '../Components/Donation/GuestDonation';
+import GeneralDonation from '../Components/Donation/GeneralDonation';
 import flexBoxTest from '../Components/flexBoxTest';
 
 
@@ -23,8 +23,8 @@ export default (
     <Router path="register" component={RegisterPage} />
     <Router path="donor_account" component={DonorPage} />
     {/* <Router path="manager_account" component={ManagerPage} /> */}
-    <Router path="sponsor" component={donateGen} />
-    <Router path="donation/:id" component={donateBank} />
+    <Router path="sponsor" component={GeneralDonation} />
+    <Router path="donation/:id" component={GuestDonation} />
     <Router path="flex" component={flexBoxTest} />
   </Route>
 );

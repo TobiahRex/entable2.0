@@ -5,7 +5,7 @@ const Footer = () => (
     <footer className="container-fluid footer customFtrStyle">
       <div className="container bsFtrContainer">
         <div className="col-md-4">
-          <h6 className="footerTitle">More On Table Banking</h6>
+          <h6 className="footerTitle">News On Table Banking</h6>
           <ul className="footerUl">
             <li>
               <a href="http://www.un.org/africarenewal/magazine/august-2015/loans-women-smart-economics">UN on Table Banking</a>

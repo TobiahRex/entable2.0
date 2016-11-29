@@ -6,6 +6,10 @@ import AddFundsButton from '../AddFundsButton';
 import BankActivity from './BankActivity';
 import BankManagerNotes from './BankManagerNotes';
 
+/* TODO
+  Need to fix Bank Activity and BankManager Notes below
+*/
+
 const BankDisplay = ({ bank }) => (
   <div className="container-fluid">
     <div className="row">
@@ -17,8 +21,8 @@ const BankDisplay = ({ bank }) => (
       />
     </div>
     <AddFundsButton _id={bank._id} />
-    <BankActivity transactions={bank.transactions} />
-    <BankManagerNotes notes={bank.transactions} />
+    {/* <BankActivity transactions={bank.transactions} /> */}
+    {/* <BankManagerNotes notes={bank.transactions} /> */}
   </div>
 );
 
