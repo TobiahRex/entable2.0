@@ -21,6 +21,7 @@ class Navbar extends PureComponent {
       borderRadius: 5,
     },
   }
+
   render() {
     const styles = {
       hide: {

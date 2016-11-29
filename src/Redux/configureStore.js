@@ -4,7 +4,9 @@ import createLogger from 'redux-logger';
 import bankActions from './BankRedux';
 import apiActions from './ApiRedux';
 import authActions from './AuthRedux';
-import checkActiveUser from '../Services/Firebase/FirebaseCurrentUser';
+// import checkActiveUser from '../Services/Firebase/FirebaseCurrentUser';
+import getCurrentUser from '../Services/Firebase/FirebaseCurrentUser';
+import { firebaseAuth } from '../Services/Firebase/FirebaseConfig';
 
 export default (rootReducer, rootSaga) => {
   const middlewares = [];
@@ -26,9 +28,12 @@ export default (rootReducer, rootSaga) => {
   store.dispatch(bankActions.getAllBanks());
   store.dispatch(apiActions.fetching());
 
-  checkActiveUser()
-  .then(user => store.dispatch(authActions.activeUserTrue(user)))
-  .catch(() => store.dispatch(authActions.activeUserFalse()));
+  firebaseAuth.onAuthStateChanged((user) => {
+    if (user) {
+      return store.dispatch(authActions.activeUserTrue(user));
+    }
+    return store.dispatch(authActions.activeUserFalse());
+  });
 
   return store;
 };

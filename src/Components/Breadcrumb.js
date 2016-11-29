@@ -8,7 +8,7 @@ const bsBreadcrumb = ({ paths }) => {
     if (path.name === 'Bank Example') {
       bgColor = '#222';
     } else if (path.name === 'My Account') {
-      bgColor = '#222';
+      // bgColor = '#222';
     }
 
     return (
