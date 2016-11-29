@@ -1,7 +1,9 @@
-const webpack = require('webpack');
-const path = require('path');
-require('dotenv').config({ silent: true });
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import webpack from 'webpack';
+import path from 'path';
+import dotenv from 'dotenv';
 
+dotenv.config({ silent: true });
 const PORT = process.env.PORT || 3000; //eslint-disable-line
 const BASE_URL = process.env.BASE_URL || process.env.DEPLOY_URL;
 
@@ -19,9 +21,10 @@ module.exports = {
     filename: 'bundle.js',
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(), // Optimizes the order that our files are bundles in for optimal minification.
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
+        NODE_ENV: JSON.stringify('production'),
         BASE_URL: JSON.stringify(BASE_URL),
         apiKeyFirebase:
         JSON.stringify(process.env.FIREBASE_API_KEY),
@@ -33,6 +36,8 @@ module.exports = {
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
+    new ExtractTextPlugin('style.css'),
+    new ExtractTextPlugin('styles.scss'),
   ],
   module: {
     loaders: [
