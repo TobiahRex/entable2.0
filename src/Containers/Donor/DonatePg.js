@@ -7,6 +7,7 @@ import donorStyles from './donorStyles';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
 import MainCarousel from '../../Components/Carousel/carouselMain';
+import DonationButtons from '../../Components/Donation/DonationButtons';
 
 /* TODO
   1. Need to move Carousel components into their own component.
@@ -156,13 +157,14 @@ class DonationPg extends React.Component {
           <div style={DonationPg.styles.griddleContainer}>
             <Griddle
               // tableClassName="table"
-              style={DonationPg.styles.griddleDiv}
+              // style={DonationPg.styles.griddleDiv}
               results={tableData}
               // showFilter
               showSettings
               columns={['Bank', 'Date', 'Name', 'Role', 'Donated', 'Borrowed']}
             />
           </div>
+          <DonationButtons />
         </div>
         <Footer />
       </div>
