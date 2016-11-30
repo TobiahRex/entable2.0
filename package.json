@@ -4,7 +4,9 @@
   "description": "Enabling women with Table Banking",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm-run-all --parallel open:src",
+    "start": "if test \"$NODE_ENV\" = \"production\" ; then npm run start-prod; else npm run start-dev; fi ",
+    "start-prod": "npm run open:dist",
+    "start-dev": "npm run open:src",
     "open:src": "babel-watch server/server.js",
     "open:dist": "babel-node tools/distServer.js",
     "copy-images": "copyfiles -u 1 './tools/assets/images/**' ./dist/",
