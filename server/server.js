@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static('tools'));
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
   publicPath: webpackConfig.output.publicPath,

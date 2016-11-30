@@ -77,7 +77,7 @@ class Donation extends React.Component {
         display: 'flex',
       },
       bankImage: {
-        backgroundImage: 'url("/mbola-tanzania-feature.jpg")',
+        backgroundImage: 'url("/assets/images/mbola-tanzania-feature.jpg")',
         backgroundPosition: 'center',
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
@@ -112,7 +112,7 @@ class Donation extends React.Component {
     */
     const handler = StripeCheckout.configure({
       key: 'pk_test_iF4PzIrhBrCmphaxI5HQWSnZ',
-      image: '/favicon.ico',
+      image: '/assets/favicon.ico',
       locale: 'auto',
       token: (token) => {
         console.log('thanks for the donation', token);

@@ -11,7 +11,7 @@ module.exports = {
   entry: [
     'eventsource-polyfill',
     'webpack-hot-middleware/client?reload=true',
-    './public/style.scss',
+    './tools/assets/style.scss',
     './src/index.js',
   ],
   output: {

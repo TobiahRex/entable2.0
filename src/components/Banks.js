@@ -9,7 +9,7 @@ const Banks = ({ banks }) => {
         name={bank.description.name}
         key={bank._id}
         bankId={bank._id}
-        image={`/${bank.description.images[0]}`}
+        image={`/assets/images/${bank.description.images[0]}`}
         desc1={bank.description.desc1}
       />)
     );

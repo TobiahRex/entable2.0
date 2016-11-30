@@ -8,7 +8,7 @@ const Header = () => (
         <div className="col-xs-12">
           <div className="jm-header-text">
             <img
-              src="/entable_logo_final_dark.png"
+              src="/assets/images/entable_logo_final_dark.png"
               className="mainLogo"
               role="presentation"
               width="250px"

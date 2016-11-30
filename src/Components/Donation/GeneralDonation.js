@@ -20,7 +20,7 @@ export default class Donation extends Component {
 
   render() {
     const mainBankImage = {
-      backgroundImage: 'url(enable-women-to-be-the-boss.jpg)',
+      backgroundImage: 'url(/assets/images/enable-women-to-be-the-boss.jpg)',
     };
 
     const fakeTimeStampDelete = moment().format('lll');

@@ -1,3 +1,16 @@
+.highlight1 {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 70% {
+    box-shadow: 0px 0px 0px 0px rgb(46, 204, 113);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 50px rgba(139, 195, 74, 0);
+  }
+}
+
 .navbar {
   border-radius: 0;
   margin-bottom: 0;
@@ -92,7 +105,7 @@ highlight green - #27ae60
 
 .jm-main-header  {
   width:100%;
-  background-image:url("/enable-women-to-be-the-boss.jpg");
+  background-image:url("./images/enable-women-to-be-the-boss.jpg");
   background-size:cover;
   text-align: center;
   color: white;
@@ -234,7 +247,7 @@ highlight green - #27ae60
   background-color: #2ecc71;
   min-height: 400px;
 /*  width:100%;*/
-  background-image:url("/blur.jpg");
+  background-image:url("./images/blur.jpg");
   background-size:cover;
   text-align: center;
   display: flex;

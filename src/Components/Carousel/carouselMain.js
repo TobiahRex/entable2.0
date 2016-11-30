@@ -13,7 +13,7 @@ class CarouselMain extends React.PureComponent {
         <img
           role="presentation"
           style={styles.image}
-          src={trans.image}
+          src={`${trans.image}`}
         />
         <Carousel.Caption>
           <div style={styles.captionContainer}>

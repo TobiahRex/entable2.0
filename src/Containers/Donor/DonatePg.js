@@ -68,21 +68,21 @@ class DonationPg extends React.Component {
     const carouselData = [
       {
         _id: 1234,
-        image: './girl-469157.jpg',
+        image: '/assets/images/girl-469157.jpg',
         bank: 'Bank of Tanzania',
         name: 'Nulla Wambosi',
         description: 'Nulla purchased fresh meat and produce for her family with 3500 MPESA on October 21nd, 2016.',
       },
       {
         _id: 4567,
-        image: './girl-444688.jpg',
+        image: '/assets/images/girl-444688.jpg',
         bank: 'Bank of Tanzania',
         name: 'Datyiva Moore',
         description: 'Datyiva bought her son books for school with 1500 MPESA on November 16th, 2016.',
       },
       {
         _id: 8901,
-        image: './mother-434355.jpg',
+        image: '/assets/images/mother-434355.jpg',
         bank: 'Bank of Tanzania',
         name: 'Isaac Butumbo',
         description: 'Isaac was born on November 18th, 2016.  His mother Ivy, pictured here was able to pay the doctors with 20,000 MPESA received from our Bank.',

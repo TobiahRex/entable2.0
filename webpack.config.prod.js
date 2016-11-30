@@ -11,7 +11,7 @@ module.exports = {
   debug: true,
   devtool: 'source-map',
   entry: [
-    './public/style.scss',
+    './tools/assets/style.scss',
     './src/index.js',
   ],
   output: {
@@ -49,7 +49,7 @@ module.exports = {
         loaders: ['style', 'css', 'sass'],
       },
       {
-        test: /\.(jpe?g|png|giff|svg)$/i,
+        test: /\.(jpe?g|png|giff|svg|ico)$/i,
         loaders: [
           'file?hash=sha512&digest=hex&name=[hash].[ext]',
           'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
