@@ -1,10 +1,9 @@
 {
   "name": "entable",
   "version": "1.0.0",
-  "description": "",
+  "description": "Enabling women with Table Banking",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prestart": "npm run remove-dist",
     "start": "npm-run-all --parallel open:src",
     "open:src": "babel-watch server/server.js",
     "open:dist": "babel-node tools/distServer.js",
@@ -13,7 +12,7 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "prebuild": "npm-run-all clean-dist build:html copy-images",
     "build:html": "babel-node tools/buildHtml.js",
-    "build": "babel-node tools/build.js && npm run open:dist"
+    "build": "babel-node tools/build.js && npm run open:dist",
   },
   "keywords": [],
   "author": "",
