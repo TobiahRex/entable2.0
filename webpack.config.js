@@ -1,9 +1,19 @@
-const webpack = require('webpack');
-const path = require('path');
-require('dotenv').config({ silent: true });
+import webpack from 'webpack';
+import path from 'path';
+import dotenv from 'dotenv';
 
-const PORT = process.env.PORT || 3000;  //eslint-disable-line
-const BASE_URL = process.env.BASE_URL || process.env.DEPLOY_URL;
+dotenv.config({ silent: true });
+
+const processENV = {
+  NODE_ENV: JSON.stringify('development'),
+  PORT: JSON.stringify(process.env.PORT),
+  BASE_URL: JSON.stringify(process.env.BASE_URL),
+  apiKeyFirebase: JSON.stringify(process.env.FIREBASE_API_KEY),
+  authDomainFirebase: JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
+  databaseURLFirebase: JSON.stringify(process.env.FIREBASE_DATABASE_URL),
+  storageBucketFirebase: JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
+  msgSenderIdFirebase: JSON.stringify(process.env.FIREBASE_MSG_SENDER_ID),
+};
 
 module.exports = {
   debug: true,
@@ -23,17 +33,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        BASE_URL: JSON.stringify(BASE_URL),
-        apiKeyFirebase:
-        JSON.stringify(process.env.FIREBASE_API_KEY),
-        authDomainFirebase: JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
-        databaseURLFirebase: JSON.stringify(process.env.FIREBASE_DATABASE_URL),
-        storageBucketFirebase: JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
-        msgSenderIdFirebase: JSON.stringify(process.env.FIREBASE_MSG_SENDER_ID),
-      },
-    }),
+    new webpack.DefinePlugin({ 'process.env': processENV }),
   ],
   module: {
     loaders: [

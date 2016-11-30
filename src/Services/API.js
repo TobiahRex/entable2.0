@@ -1,6 +1,13 @@
 import { create } from 'apisauce';
 
-const createAPI = (baseURL = process.env.BASE_URL) => {
+let baseURL;
+if (process.env.NODE_ENV === 'production') {
+  baseURL = `http://localhost:${process.env.PORT}`;
+} else {
+  baseURL = process.env.BASE_URL;
+}
+console.info('baseURL: ', baseURL);
+const createAPI = () => {
   const api = create({
     baseURL,
     headers: { 'Cache-control': 'no-cache' },
