@@ -36,8 +36,8 @@ module.exports = {
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin('./public/style.css'),
-    new ExtractTextPlugin('./public/styles.scss'),
+    new ExtractTextPlugin('./style.css'),
+    new ExtractTextPlugin('./style.scss'),
   ],
   module: {
     loaders: [
@@ -48,15 +48,15 @@ module.exports = {
       },
       {
         test: /s[ac]ss$/,
-        loaders: ExtractTextPlugin.extract(['css', 'sass', 'scss']),
+        loader: ExtractTextPlugin.extract(['sass', 'scss']),
       },
       {
         test: /css$/,
-        loaders: ExtractTextPlugin.extract('css'),
+        loader: ExtractTextPlugin.extract('css'),
       },
       {
-        loader: 'url-loader?limit=10000',
         test: /\.(png|jpg|jpeg|gif|woff)$/,
+        loader: 'url-loader?limit=10000',
       },
     ],
   },

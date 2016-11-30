@@ -11,7 +11,6 @@ module.exports = {
   entry: [
     'eventsource-polyfill',
     'webpack-hot-middleware/client?reload=true',
-    './public/style.css',
     './public/style.scss',
     './src/index.js',
   ],
@@ -47,8 +46,15 @@ module.exports = {
         },
       },
       {
-        test: /[sc]ss$/,
-        loaders: ['style', 'css', 'sass', 'postcss-loader'],
+        test: /.s[ac]ss$/,
+        loaders: ['style', 'css', 'sass'],
+      },
+      {
+        test: /\.(jpe?g|png|giff|svg)$/i,
+        loaders: [
+          'file?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+        ],
       },
     ],
   },
