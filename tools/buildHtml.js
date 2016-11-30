@@ -15,7 +15,7 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
 
   /* since a separate spreadsheet is only utilized for the production build,
   need to dynamically add this here. */
-  // $('head').append('<link rel="stylesheet" href="style.scss">');
+  $('head').append('<link rel="stylesheet" href="style.css">');
 
   return fs.writeFile('dist/index.html', $.html(), 'utf8', (error) => {
     if (error) {

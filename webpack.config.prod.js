@@ -1,4 +1,4 @@
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+
 import webpack from 'webpack';
 import path from 'path';
 import dotenv from 'dotenv';
@@ -35,7 +35,6 @@ module.exports = {
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin('style.scss'),
   ],
   module: {
     loaders: [
@@ -45,8 +44,8 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /.s[ac]ss$/,
-        loader: ExtractTextPlugin.extract(['css', 'sass']),
+        test: /\.s[ac]ss$/,
+        loaders: ['style', 'css', 'sass', 'postcss-loader'],
       },
       {
         test: /\.(jpe?g|png|giff|svg|ico)$/i,
