@@ -2,7 +2,6 @@
   "name": "entable",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prestart": "npm run remove-dist",
@@ -15,7 +14,6 @@
     "prebuild": "npm-run-all clean-dist build:html copy-images",
     "build:html": "babel-node tools/buildHtml.js",
     "build": "babel-node tools/build.js && npm run open:dist",
-    "postinstall": "npm run open:dist"
   },
   "keywords": [],
   "author": "",
