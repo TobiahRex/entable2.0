@@ -11,7 +11,6 @@ module.exports = {
   debug: true,
   devtool: 'source-map',
   entry: [
-    './public/style.css',
     './public/style.scss',
     './src/index.js',
   ],
@@ -36,7 +35,6 @@ module.exports = {
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin('./style.css'),
     new ExtractTextPlugin('./style.scss'),
   ],
   module: {
@@ -47,16 +45,15 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /s[ac]ss$/,
-        loader: ExtractTextPlugin.extract(['sass', 'scss']),
+        test: /.s[ac]ss$/,
+        loaders: ['style', 'css', 'sass'],
       },
       {
-        test: /css$/,
-        loader: ExtractTextPlugin.extract('css'),
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif|woff)$/,
-        loader: 'url-loader?limit=10000',
+        test: /\.(jpe?g|png|giff|svg)$/i,
+        loaders: [
+          'file?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+        ],
       },
     ],
   },
