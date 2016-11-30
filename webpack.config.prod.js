@@ -35,7 +35,7 @@ module.exports = {
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin('./style.scss'),
+    new ExtractTextPlugin('style.scss'),
   ],
   module: {
     loaders: [
@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         test: /.s[ac]ss$/,
-        loaders: ['style', 'css', 'sass'],
+        loader: ExtractTextPlugin.extract(['css', 'sass']),
       },
       {
         test: /\.(jpe?g|png|giff|svg|ico)$/i,
