@@ -22,7 +22,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(), // Optimizes the order that our files are bundles in for optimal minification.
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         BASE_URL: JSON.stringify(BASE_URL),
