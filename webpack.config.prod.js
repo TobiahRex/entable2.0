@@ -42,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/,
-        loaders: ['style', 'sass', 'css'],
+        loaders: ['style', 'css', 'sass', 'postcss-loader'],
       },
       {
         test: /\.(jpe?g|png|giff|svg|ico)$/i,
