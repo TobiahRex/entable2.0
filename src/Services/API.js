@@ -18,7 +18,7 @@ const createAPI = () => {
 
   const getUser = uid => api.get(`api/users/${uid}`);
   // --------------------------------------------------------
-  const findBankManager = managerId => api.get(`api/banks/manager/${managerId}`);
+  const findBankManager = managerId => api.get(`api/banks?manager_id=${managerId}`);
 
 
   // --------------------------------------------------------
