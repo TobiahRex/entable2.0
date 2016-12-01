@@ -74,7 +74,9 @@ class ManagerPage extends React.Component {
         <div id="hiddenDropDown">
           <div id="dropDownInputContainer">
             <div>
-              <label htmlFor="bankName">Bank Name</label>
+              <label htmlFor="bankName">
+                Bank Name
+              </label>
               <input
                 id="bankName"
                 type="text"
@@ -82,7 +84,9 @@ class ManagerPage extends React.Component {
               />
             </div>
             <div>
-              <label htmlFor="transDate">Date</label>
+              <label htmlFor="transDate">
+                Date
+              </label>
               <input
                 id="transDate"
                 type="text"
@@ -91,13 +95,54 @@ class ManagerPage extends React.Component {
               />
             </div>
             <div>
-              <label htmlFor="transMember">Member Name</label>
+              <label htmlFor="member">
+                Member Name
+              </label>
               <input
-                id="transMember"
+                id="member"
                 type="text"
                 value={this.state.transMember}
                 onChange={e =>
-                  this.setState({ transMember: e.target.value })
+                  this.setState({ member: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label htmlFor="transDesc">
+                Transaction Description
+              </label>
+              <input
+                id="transDesc"
+                type="text"
+                value={this.state.description}
+                onChange={e =>
+                  this.setState({ description: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label htmlFor="transAmount">
+                Transaction Amount
+              </label>
+              <input
+                id="transAmount"
+                type="text"
+                value={this.state.amount}
+                onChange={e =>
+                  this.setState({ amount: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label htmlFor="transPhoto">
+                Transaction Photo
+              </label>
+              <input
+                id="transPhoto"
+                type="text"
+                value={this.state.photoUrl}
+                onChange={e =>
+                  this.setState({ photoUrl: e.target.value })
                 }
               />
             </div>
