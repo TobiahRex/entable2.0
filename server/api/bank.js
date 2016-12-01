@@ -21,7 +21,7 @@ Bank.findByIdAndRemove(req.params.id, res.handle));
 
 router.route('/manager')
 .get((req, res) =>
-Bank.findBankByManagerId({ chair: req.query.manager_id }, res.handle));
+Bank.findBankByManagerId(req.query.manager_id, res.handle));
 // ----------------------------------------------------------------------------
 
 router.route('/:bank_id/manager/:manager_id')
