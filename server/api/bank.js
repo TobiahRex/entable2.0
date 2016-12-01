@@ -19,8 +19,9 @@ Bank.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true }, res.han
 .delete((req, res) =>
 Bank.findByIdAndRemove(req.params.id, res.handle));
 
-router.route('manager/:id')
-.get((req, res) => Bank.find(req.params.id, res.handle));
+router.route('/:id/manager/:manager_id')
+.get((req, res) => Bank.find(req.params.id, res.handle))
+.put((req, res) => Bank.assignManagerAsChair(req.params.id, req.params.manager_id, res.handle));
 
 // ----------------------------------------------------------------------------
 
