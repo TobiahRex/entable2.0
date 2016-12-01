@@ -8,6 +8,7 @@ import managerPgStyles from './managerPgStyles';
 
 class ManagerPage extends React.Component {
   static propTypes = {
+    banks: PropTypes.arrayOf(PropTypes.object),
     name: PropTypes.objectOf(PropTypes.string),
     addNewTransaction: PropTypes.func.isRequired,
   }
@@ -31,21 +32,30 @@ class ManagerPage extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.filterBanks(this.props.routeParams.id, this.props.banks);
+  }
+
   render() {
     return (
-      <div>
+      <div style={ManagerPage.styles.mainBgColor}>
         <Breadcrumbs paths={ManagerPage.breadcrumbs} />
+
+        <div>
+          {this.state.bankName}
+        </div>
         This is the Manager Page
         <Footer />
       </div>
     );
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = ({ user, bank }) => ({
   name: {
-    firstName: state.user.firstName,
-    lastname: state.user.lastName,
+    firstName: user.firstName,
+    lastname: user.lastName,
   },
+  banks: bank.banks,
 });
 const mapDispatchToProps = dispatch => ({
   addNewTransaction: info => dispatch(managerActions.newTransaction(info)),
