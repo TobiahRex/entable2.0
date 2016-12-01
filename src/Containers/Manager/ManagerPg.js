@@ -37,11 +37,31 @@ class ManagerPage extends React.Component {
 
   render() {
     window.scrollTo(0, 0);
+    const bankName = this.props.bank.description.name;
+    const currentBal = this.props.bank.finance.balance.current;
+    const startingBal = this.props.bank.finance.balance.starting;
+    const growthBal = String((currentBal / startingBal) * 100) + ' %'
     return (
       <div style={ManagerPage.styles.mainBgColor}>
         <Breadcrumbs paths={ManagerPage.breadcrumbs} />
         <div>
-          {this.props.bank.description.name}
+          <h2>
+            Bank Name - {this.props.bank.description.name}
+          </h2>
+        </div>
+        <div id="welcomeBalances">
+          <div>
+            <h4>Current Balance</h4>
+            <div>{this.props.bank.finance.balance.current}</div>
+          </div>
+          <div>
+            <h4>Starting Balance</h4>
+            <div>{this.props.bank.finance.balance.starting}</div>
+          </div>
+          <div>
+            <h4>Growth</h4>
+            <div>{this.props.bank.finance.balance.current / }</div>
+          </div>
         </div>
         This is the Manager Page
         <Footer />
