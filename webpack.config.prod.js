@@ -3,10 +3,10 @@ import path from 'path';
 import dotenv from 'dotenv';
 
 dotenv.config({ silent: true });
-console.info('process.env.PORT: ', process.env.PORT);
+
 const processENV = {
   NODE_ENV: JSON.stringify('production'),
-  PORT: JSON.stringify(process.env.PORT),
+  DEPLOY_URL: JSON.stringify(process.env.DEPLOY_URL),
   BASE_URL: JSON.stringify(process.env.BASE_URL),
   apiKeyFirebase: JSON.stringify(process.env.FIREBASE_API_KEY),
   authDomainFirebase: JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),

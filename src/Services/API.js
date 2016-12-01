@@ -2,7 +2,7 @@ import { create } from 'apisauce';
 
 let baseURL;
 if (process.env.NODE_ENV === 'production') {
-  baseURL = `http://localhost:${process.env.PORT || 3000}`;
+  baseURL = `${process.env.DEPLOY_URL}`;
 } else {
   baseURL = process.env.BASE_URL;
 }
