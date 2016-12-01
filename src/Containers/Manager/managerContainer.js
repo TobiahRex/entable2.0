@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import managerActions from '../../Redux/ManagerRedux';
+import ManageBank from './manageBankContainer';
+import CreateBank from './createBankContainer';
 
 class ManagerContainer extends React.Component {
   static propTypes = {
@@ -23,10 +25,16 @@ class ManagerContainer extends React.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, { manager }) {
+    if (this.state.manager !== manager) return true;
+    return false;
+  }
+
   render() {
+    const { manager } = this.state;
     return (
       <div id="managerContainer">
-        This is the manager Container.
+        { manager ? <ManageBank /> : <CreateBank /> }
       </div>
     );
   }
