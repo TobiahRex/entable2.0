@@ -17,6 +17,9 @@ const createAPI = () => {
   const saveNewUser = info => api.post('api/users', info);
 
   const getUser = uid => api.get(`api/users/${uid}`);
+  // --------------------------------------------------------
+  const findBankManager = managerId => api.get(`api/banks/manager/${managerId}`);
+
 
   // --------------------------------------------------------
   const getAllBanks = () =>
@@ -36,6 +39,8 @@ const createAPI = () => {
     // users
     getUser,
     saveNewUser,
+    // banksManager
+    findBankManager,
     // info
     getExchangeRate,
     getAllBanks,
