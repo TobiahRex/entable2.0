@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import moment from 'moment';
 import managerActions from '../../Redux/ManagerRedux';
 
+import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
 import managerPgStyles from './managerPgStyles';
 
@@ -11,6 +12,15 @@ class ManagerPage extends React.Component {
     addNewTransaction: PropTypes.func.isRequired,
   }
   static styles = managerPgStyles;
+  static breadcrumbs = [{
+    href: '/',
+    name: 'Home',
+    active: false,
+  }, {
+    href: '/manager_account',
+    name: 'My Account',
+    active: true,
+  }]
   constructor(props) {
     super(props);
     this.state = {
@@ -24,6 +34,7 @@ class ManagerPage extends React.Component {
   render() {
     return (
       <div>
+        <Breadcrumbs paths={ManagerPage.breadcrumbs} />
         This is the Manager Page
         <Footer />
       </div>
