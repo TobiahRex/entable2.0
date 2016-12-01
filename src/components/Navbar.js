@@ -1,7 +1,6 @@
 import React, { PropTypes, PureComponent } from 'react';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import authActions from '../Redux/AuthRedux';
 
 class Navbar extends PureComponent {
@@ -12,6 +11,7 @@ class Navbar extends PureComponent {
   static propTypes = {
     active: PropTypes.bool.isRequired,
     role: PropTypes.string.isRequired,
+    _id: PropTypes.stirng.isRequired,
     children: PropTypes.node.isRequired,
     logoutUser: PropTypes.func.isRequired,
   };
@@ -95,7 +95,7 @@ class Navbar extends PureComponent {
                   style={this.props.active ? styles.show : styles.hide}
                   className="mainNavLink"
                 >
-                  <Link to={`/${this.props.role}_account`}>
+                  <Link to={`/${this.props.role}/${this.props._id}`}>
                     My Account
                   </Link>
                 </li>
@@ -108,9 +108,10 @@ class Navbar extends PureComponent {
     );
   }
 }
-const mapStateToProps = state => ({
-  active: state.user.active,
-  role: state.user.role,
+const mapStateToProps = ({ user }) => ({
+  active: user.active,
+  role: user.role,
+  _id: user._id,
 });
 const mapDispatchToProps = dispatch => ({
   logoutUser: () => {
