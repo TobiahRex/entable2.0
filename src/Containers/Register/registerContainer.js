@@ -52,7 +52,7 @@ class Register extends React.Component {
       if (nextProps.userRole === 'donor') {
         browserHistory.push('/donor_account');
       } else if (nextProps.userRole === 'manager') {
-        browserHistory.push('/manager_account');
+        browserHistory.push(`/manager/${nextProps.userId}`);
       }
       return false;
     }
@@ -168,6 +168,7 @@ class Register extends React.Component {
 const mapStateToProps = state => ({
   active: state.user.active,
   userRole: state.user.role,
+  userId: state.user._id,
 });
 const mapDispatchToProps = dispatch => ({
   registerUser: details => dispatch(userActions.createUserFirebase(details)),

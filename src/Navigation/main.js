@@ -8,7 +8,7 @@ import BankExample from '../Components/Bank/BankExample';
 import LoginPage from '../Containers/Login/loginContainer';
 import RegisterPage from '../Containers/Register/registerContainer';
 import DonorPage from '../Containers/Donor/DonatePg';
-import ManagerPage from '../Containers/Manager/ManagerPg';
+import ManagerPage from '../Containers/Manager/managerContainer';
 
 import GuestDonation from '../Components/Donation/GuestDonation';
 import GeneralDonation from '../Components/Donation/GeneralDonation';
@@ -23,7 +23,7 @@ export default (
     <Router path="login" component={LoginPage} />
     <Router path="register" component={RegisterPage} />
     <Router path="donor_account" component={DonorPage} />
-    <Router path="manager_account" component={ManagerPage} />
+    <Router path="manager/:id" component={ManagerPage} />
     <Router path="sponsor" component={GeneralDonation} />
     <Router path="donation/:id" component={GuestDonation} />
     <Router path="flex" component={flexBoxTest} />
