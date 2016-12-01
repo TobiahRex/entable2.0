@@ -12,6 +12,7 @@ class ManagerContainer extends React.Component {
     super(props);
     this.state = {
       manager: null,
+      bank: null,
     };
   }
 
@@ -19,14 +20,17 @@ class ManagerContainer extends React.Component {
     this.props.findBankManager();
   }
 
-  componentWillReceiveProps({ manager }) {
+  componentWillReceiveProps({ manager, bank }) {
     if (this.state.manager !== manager) {
       this.setState({ manager });
+    } else if (this.state.bank !== bank) {
+      this.setState({ bank });
     }
   }
 
-  shouldComponentUpdate(nextProps, { manager }) {
+  shouldComponentUpdate({ bank }, { manager }) {
     if (this.state.manager !== manager) return true;
+    else if (this.state.bank !== bank) return true;
     return false;
   }
 
