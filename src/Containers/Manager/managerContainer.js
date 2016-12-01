@@ -49,6 +49,6 @@ const mapStateToProps = ({ manager }) => ({
   manager_active: manager.manager_active,
 });
 const mapDispatchToProps = (dispatch, { routeParams }) => ({
-  findBankManger: () => dispatch(managerActions.findBankManager(routeParams.id)),
+  findBankManager: () => dispatch(managerActions.findBankManager(routeParams.id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ManagerContainer);

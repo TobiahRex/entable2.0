@@ -7,11 +7,12 @@ class Navbar extends PureComponent {
   static defaultProps = {
     active: false,
     role: 'donor',
+    _id: null,
   }
   static propTypes = {
     active: PropTypes.bool.isRequired,
     role: PropTypes.string.isRequired,
-    _id: PropTypes.stirng.isRequired,
+    _id: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
     logoutUser: PropTypes.func.isRequired,
   };
