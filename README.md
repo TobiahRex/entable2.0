@@ -7,7 +7,8 @@
 ## DESCRIPTION:
 Manages table banking for women in developing countries.
 
-Deployed on Heroku [here](https://dry-retreat-51470.herokuapp.com/).
+<!-- Deployed on Heroku [here](https://dry-retreat-51470.herokuapp.com/). -->
+Deployed on Heroku [here](https://entable.herokuapp.com/)
 
 Latest Release: October 23rd, 2016.
 
@@ -27,4 +28,4 @@ Latest Release: October 23rd, 2016.
     - Accolades: 2nd place.
 
   * MVP 2:
-    - Projected release, December 9th 2016 by Tobiah, Holly, Josh, Donovan, Ziya, and Richard.
+    - Projected release, December 7th 2016 by Tobiah, Holly, Josh, Donovan, Ziya, and Richard.

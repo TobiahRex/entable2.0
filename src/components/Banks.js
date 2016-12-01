@@ -21,14 +21,11 @@ const Banks = ({ banks }) => {
     <div className="banksContainer">
       <div className="bankCallToAction">
         <h4>Entable is an SMS (Twilio) powered table banking platform
-          that pairs under - served women
-        - without access to financial services -  to sponsors seeking complete transparency and direct impact.</h4>
+        that pairs under-served women, without access to financial services, to donors seeking complete transparency and direct impact.</h4>
       </div>
       <div className="row bankRows">
         <div className="container">
-
           {bankList}
-
         </div>
       </div>
     </div>

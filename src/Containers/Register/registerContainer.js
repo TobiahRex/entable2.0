@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import userActions from '../../Redux/AuthRedux';
 
 import registerStyles from './registerStyles';
@@ -27,7 +28,6 @@ class Register extends React.Component {
   static styles = registerStyles;
   constructor(props) {
     super(props);
-
     this.state = {
       firstName: '',
       lastName: '',
@@ -45,6 +45,18 @@ class Register extends React.Component {
       hover: false,
       error: '',
     };
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.active === true) {
+      if (nextProps.userRole === 'donor') {
+        browserHistory.push('/donor_account');
+      } else if (nextProps.userRole === 'manager') {
+        browserHistory.push('/manager_account');
+      }
+      return false;
+    }
+    return true;
   }
 
   onInputChange = (value, id) => this.setState({ [id]: value })
