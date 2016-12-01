@@ -9,6 +9,7 @@ router.route('/')
 .get((req, res) => Bank.find({}, res.handle))
 .post((req, res) => Bank.create(req.body, res.handle));
 // ----------------------------------------------------------------------------
+
 router.route('/:id')
 .get((req, res) =>
 Bank.findById(req.params.id, res.handle))
@@ -16,10 +17,18 @@ Bank.findById(req.params.id, res.handle))
 Bank.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true }, res.handle))
 .delete((req, res) =>
 Bank.findByIdAndRemove(req.params.id, res.handle));
+// ----------------------------------------------------------------------------
 
-router.route('/:id/manager/:manager_id')
-.get((req, res) => Bank.find(req.params.id, res.handle))
-.put((req, res) => Bank.assignManagerAsChair(req.params.id, req.params.manager_id, res.handle));
+router.route('/manager')
+.get((req, res) =>
+Bank.findBankByManagerId({ chair: req.query.manager_id }, res.handle));
+// ----------------------------------------------------------------------------
+
+router.route('/:bank_id/manager/:manager_id')
+.get((req, res) =>
+Bank.find(req.params.bank_id, res.handle))
+.put((req, res) =>
+Bank.assignManagerAsChair(req.params.bank_id, req.params.manager_id, res.handle));
 
 // ----------------------------------------------------------------------------
 

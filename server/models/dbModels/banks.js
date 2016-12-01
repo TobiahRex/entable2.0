@@ -73,6 +73,14 @@ const bankSchema = new mongoose.Schema({
     },
   },
 });
+bankSchema.statics.findBankByManagerId = (managerId, cb) => {
+  if (!managerId) return cb({ error: 'Did not provide manager id.' });
+
+  return Bank.find({ chair: managerId })
+  .then(dbBankArray => cb(null, dbBankArray[0]))
+  .catch(error => cb({ problem: 'Could not find a bank with that manager id.', error }));
+};
+
 bankSchema.statics.assignManagerAsChair = (id, managerId, cb) => {
   if (!id || !managerId) return cb({ error: 'Did not provide required id\'s' });
 
