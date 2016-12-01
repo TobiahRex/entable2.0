@@ -40,30 +40,49 @@ class ManagerPage extends React.Component {
     const bankName = this.props.bank.description.name;
     const currentBal = this.props.bank.finance.balance.current;
     const startingBal = this.props.bank.finance.balance.starting;
-    const growthBal = String((currentBal / startingBal) * 100) + ' %'
+    const growthBal = `${String((currentBal / startingBal) * 100)} %`;
+    const currentDate = moment().format('lll');
     return (
       <div style={ManagerPage.styles.mainBgColor}>
         <Breadcrumbs paths={ManagerPage.breadcrumbs} />
-        <div>
+        <div id="bankName">
           <h2>
-            Bank Name - {this.props.bank.description.name}
+            Bank Name - {bankName}
           </h2>
         </div>
         <div id="welcomeBalances">
           <div>
             <h4>Current Balance</h4>
-            <div>{this.props.bank.finance.balance.current}</div>
+            <div>{currentBal}</div>
           </div>
           <div>
             <h4>Starting Balance</h4>
-            <div>{this.props.bank.finance.balance.starting}</div>
+            <div>{startingBal}</div>
           </div>
           <div>
             <h4>Growth</h4>
-            <div>{this.props.bank.finance.balance.current / }</div>
+            <div>{growthBal}</div>
           </div>
         </div>
-        This is the Manager Page
+        <div id="addTransContainer">
+          <div>
+            <button onClick={() => console.log('click')}>
+              Add New Transaction
+            </button>
+          </div>
+        </div>
+        <div id="hiddenDropDown">
+          <div id="dropDownInputContainer">
+            <div>
+              <label htmlFor="bankName">Bank Name</label>
+              <input id="bankName" type="text" disabled value={bankName} />
+            </div>
+            <div>
+              <label htmlFor="bankName">Date</label>
+              <input id="bankName" type="text" disabled value={currentDate} />
+            </div>
+          </div>
+        </div>
         <Footer />
       </div>
     );
