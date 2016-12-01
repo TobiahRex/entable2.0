@@ -7,6 +7,7 @@ if (process.env.NODE_ENV === 'production') {
   baseURL = process.env.BASE_URL;
 }
 console.info('baseURL: ', baseURL);
+
 const createAPI = () => {
   const api = create({
     baseURL,

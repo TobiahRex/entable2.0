@@ -3,7 +3,7 @@ import path from 'path';
 import dotenv from 'dotenv';
 
 dotenv.config({ silent: true });
-
+console.info('process.env.PORT: ', process.env.PORT);
 const processENV = {
   NODE_ENV: JSON.stringify('production'),
   PORT: JSON.stringify(process.env.PORT),
