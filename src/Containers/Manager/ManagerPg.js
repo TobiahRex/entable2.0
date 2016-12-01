@@ -75,11 +75,31 @@ class ManagerPage extends React.Component {
           <div id="dropDownInputContainer">
             <div>
               <label htmlFor="bankName">Bank Name</label>
-              <input id="bankName" type="text" disabled value={bankName} />
+              <input
+                id="bankName"
+                type="text"
+                disabled value={bankName}
+              />
             </div>
             <div>
-              <label htmlFor="bankName">Date</label>
-              <input id="bankName" type="text" disabled value={currentDate} />
+              <label htmlFor="transDate">Date</label>
+              <input
+                id="transDate"
+                type="text"
+                disabled
+                value={currentDate}
+              />
+            </div>
+            <div>
+              <label htmlFor="transMember">Member Name</label>
+              <input
+                id="transMember"
+                type="text"
+                value={this.state.transMember}
+                onChange={e =>
+                  this.setState({ transMember: e.target.value })
+                }
+              />
             </div>
           </div>
         </div>
