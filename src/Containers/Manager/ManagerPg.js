@@ -7,6 +7,10 @@ import Breadcrumbs from '../../Components/Breadcrumb';
 import Footer from '../../Components/Footer';
 import managerPgStyles from './managerPgStyles';
 
+/* NOTE
+  Right now there is no dynamic way in which a newly registered Bank manager is put in control of a particular bank, or is able to CREATE a bank.  Need to put some thought into this.  For now, I will assign a Bank Manager or "chair" to a preset Bank from Postman.
+*/
+
 class ManagerPage extends React.Component {
   static propTypes = {
     banks: PropTypes.arrayOf(PropTypes.object),
@@ -48,7 +52,6 @@ class ManagerPage extends React.Component {
     return (
       <div style={ManagerPage.styles.mainBgColor}>
         <Breadcrumbs paths={ManagerPage.breadcrumbs} />
-
         <div>
           {this.state.bankName}
         </div>
