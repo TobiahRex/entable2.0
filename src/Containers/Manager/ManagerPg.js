@@ -168,6 +168,14 @@ class ManagerPage extends React.Component {
             </div>
           </div>
         </div>
+        <div id="bankHistoryTitle">
+          <h4>
+            Bank History & Notes for Donors
+          </h4>
+        </div>
+        <div id="bankHistoryContainer">
+          {this.renderHistory()}
+        </div>
         <Footer />
       </div>
     );
