@@ -1,0 +1,196 @@
+[
+  {
+    "_id":"581c2e9a28f2810bffe03c8f",
+    "__v":0,
+    "finance": {
+      "transactions": {
+        "transfers":[],
+        "payins":[],
+        "withdrawals":[],
+        "donations":[],
+        "api_ids": {
+          "bitpesa":"<empty>",
+          "coinbase":"<empty>"
+        }
+      },
+      "addresses": {
+        "bitcoin":"<empty>"
+      },
+      "balance": {
+        "current":870,
+        "starting":425},
+        "currency": {
+          "tracking":"USD",
+          "locale":"NGN"
+        }
+      },
+      "description": {
+        "images":["dertu-kenya-feature.jpg",
+          "http://millenniumvillages.org/wp-content/uploads/2013/02/dertu-kenya-feature.jpg"],
+          "desc3":"The bank hopes to reduce poverty and develop education in the area.",
+          "desc2":"The village is characterized by high poverty levels and for years there has been a high level of dependency on food aid.",
+          "desc1":"The village of Dertu is located in northeastern Kenya, approximately 140km from the border with Somalia.",
+          "country":"Kenya",
+          "name":"Dertu Village Bank"
+        },
+        "people": {
+          "members":[],
+          "donors":[],
+          "chair":"<empty>"
+        },
+        "contact": {
+          "primary": {
+            "text":"<empty>",
+            "phone": {
+              "twilio":true,
+              "number":"<empty>"
+            }
+          }
+        }
+      },
+      {
+        "_id":"581c2f3828f2810bffe03c90",
+        "__v":0,
+        "finance": {
+          "transactions": {
+            "transfers":[],
+            "payins":[],
+            "withdrawals":[],
+            "donations":[],
+            "api_ids": {
+              "bitpesa":"<empty>",
+              "coinbase":"<empty>"
+            }
+          },
+          "addresses": {
+            "bitcoin":"<empty>"
+          },
+          "balance": {
+            "current":550,
+            "starting":100},
+            "currency": {
+              "tracking":"USD",
+              "locale":"NGN"
+            }
+          },
+          "description": {
+            "images":["bonsaaso-ghana-feature.jpg",
+              "http://millenniumvillages.org/wp-content/uploads/2013/02/bonsaaso-ghana-feature.jpg"],
+              "desc3":"The bank has been set up to focus initially on vital local infrastructure.",
+              "desc2":"Getting goods in and out of the isolated communities can be arduous due to travel on uneven dirt roads that wre carbed by gold mining and lumber companies for many years.",
+              "desc1":"Bonsaaso is located in the Amansie-West District of the Ashanti Regiion of Ghana.",
+              "country":"Ghana",
+              "name":"Bank of Bonsaaso"
+            },
+            "people": {
+              "members":[],
+              "donors":[],
+              "chair":"<empty>"
+            },
+            "contact": {
+              "primary": {
+                "text":"<empty>",
+                "phone": {
+                  "twilio":true,
+                  "number":"<empty>"
+                }
+              }
+            }
+            {
+              "_id":"581c2fbb28f2810bffe03c91",
+              "__v":0,
+              "finance": {
+                "transactions": {
+                  "transfers":[],
+                  "payins":[],
+                  "withdrawals":[],
+                  "donations":[],
+                  "api_ids": {
+                    "bitpesa":"<empty>",
+                    "coinbase":"<empty>"
+                  }
+                },
+                "addresses": {
+                  "bitcoin":"<empty>"
+                },
+                "balance": {
+                  "current":1350,
+                  "starting":600},
+                  "currency": {
+                    "tracking":"USD",
+                    "locale":"NGN"
+                  }
+                },
+                "description": {
+                  "images":["mbola-tanzania-feature.jpg",
+                    "http://millenniumvillages.org/wp-content/uploads/2013/02/mbola-tanzania-feature.jpg"],
+                    "desc3":"Mbola Village Bank would like to work on restoring the local environment and moving to a more sustainable economy.",
+                    "desc2":"Mbola faces a high rate of environmental degradation resulting from poor crop management practicies, declining agricultural production and destruction of the Miombo woodlands for fuel wood used in the tobacco industry.",
+                    "desc1":"The Mbola cluster is located in the Uyui district in mid-western Tanzania.",
+                    "country":"Tanzania",
+                    "name":"Mbola Village Bank"
+                  },
+                  "people": {
+                    "members":[],
+                    "donors":[],
+                    "chair":"<empty>"
+                  },
+                  "contact": {
+                    "primary": {
+                      "text":"<empty>",
+                      "phone": {
+                        "twilio":true,
+                        "number":"<empty>"
+                      }
+                    }
+                  }
+                  {
+                    "_id":"581c303028f2810bffe03c92",
+                    "__v":0,
+                    "finance": {
+                      "transactions": {
+                        "transfers":[],
+                        "payins":[],
+                        "withdrawals":[],
+                        "donations":[],
+                        "api_ids": {
+                          "bitpesa":"<empty>",
+                          "coinbase":"<empty>"
+                        }
+                      },
+                      "addresses": {
+                        "bitcoin":"<empty>"
+                      },
+                      "balance": {
+                        "current":960,
+                        "starting":175},
+                        "currency": {
+                          "tracking":"USD",
+                          "locale":"NGN"
+                        }
+                      },
+                      "description": {
+                        "images":["ruhiira-uganda-feature.jpg",
+                          "http://millenniumvillages.org/wp-content/uploads/2013/02/ruhiira-uganda-feature.jpg"],
+                          "desc3":"we want to provide housing and reliable medical resources to the local community.",
+                          "desc2":"High population density and continued growth rates have contributed to land shortages and deradation.  The area is also well known for having the highest tuberculosis prevalence in southwestern Uganda.",
+                          "desc1":"The Ruhiira cluster lies in southwestern Uganda and is 40km from the nearest city, Mbarara.",
+                          "country":"Uganda",
+                          "name":"Ruhiira Bank"
+                        },
+                        "people": {
+                          "members":[],
+                          "donors":[],
+                          "chair":"<empty>"
+                        },
+                        "contact": {
+                          "primary": {
+                            "text":"<empty>",
+                            "phone": {
+                              "twilio":true,
+                              "number":"<empty>"
+                            }
+                          }
+                        }
+                      }
+                    ]
