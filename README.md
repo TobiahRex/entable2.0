@@ -22,6 +22,14 @@ Latest Release: October 23rd, 2016.
   5. [Richard Mands](https://github.com/thejapanexperience)
   6. [Tobiah Rex](https://github.com/TobiahRex)
 
+## Setup:
+  - `npm i` to install dependencies
+  - `npm start` for development server
+  - `npm run build` for production server
+
+  NOTE: I Highly recommend running `npm update --save` to update package json before running `npm start` or `npm run build`.
+
+
 ## RELEASE UPDATES:
   * MVP 1:
     - Original release at Lady Problems Hackathon 2016, by Holly, Josh, Donovan, Ziya, and Richard.
