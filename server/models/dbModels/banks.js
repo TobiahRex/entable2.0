@@ -1,3 +1,5 @@
+/* eslint no-use-before-define: 0 */
+/* eslint-env es6*/
 const mongoose = require('mongoose');
 
 const bankSchema = new mongoose.Schema({
@@ -71,9 +73,6 @@ const bankSchema = new mongoose.Schema({
     },
   },
 });
-
-const Bank = mongoose.model('Bank', bankSchema);
-
 bankSchema.statics.assignManagerAsChair = (id, managerId, cb) => {
   if (!id || !managerId) return cb({ error: 'Did not provide required id\'s' });
 
@@ -82,6 +81,7 @@ bankSchema.statics.assignManagerAsChair = (id, managerId, cb) => {
   .catch(error => cb({ problem: 'Could not assign bank manager.', error }));
 };
 
+const Bank = mongoose.model('Bank', bankSchema);
 export default Bank;
 
 /*  Dummy Data

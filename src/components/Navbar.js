@@ -12,7 +12,7 @@ class Navbar extends PureComponent {
   static propTypes = {
     active: PropTypes.bool.isRequired,
     role: PropTypes.string.isRequired,
-    _id: PropTypes.string.isRequired,
+    _id: PropTypes.string,
     children: PropTypes.node.isRequired,
     logoutUser: PropTypes.func.isRequired,
   };
