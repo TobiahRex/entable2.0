@@ -32,6 +32,7 @@ class ManagerPage extends React.Component {
       balance: '',
       paidIn: '',
       date: moment().format('lll'),
+      ddActive: false,
     };
   }
 
@@ -42,6 +43,7 @@ class ManagerPage extends React.Component {
     const startingBal = this.props.bank.finance.balance.starting;
     const growthBal = `${String((currentBal / startingBal) * 100)} %`;
     const currentDate = moment().format('lll');
+    const ddButtonTitle = this.state.ddActive ? 'Cancel' : 'Add New Transaction';
     return (
       <div style={ManagerPage.styles.mainBgColor}>
         <Breadcrumbs paths={ManagerPage.breadcrumbs} />
@@ -67,7 +69,7 @@ class ManagerPage extends React.Component {
         <div id="addTransContainer">
           <div>
             <button onClick={() => console.log('click')}>
-              Add New Transaction
+              {ddButtonTitle}
             </button>
           </div>
         </div>
@@ -145,6 +147,24 @@ class ManagerPage extends React.Component {
                   this.setState({ photoUrl: e.target.value })
                 }
               />
+            </div>
+            <div>
+              <label htmlFor="transLegal">
+                Legal Agreement
+              </label>
+              <input
+                id="transLegal"
+                type="checkbox"
+                value={this.state.agreement}
+                onChange={e =>
+                  this.setState({ agreement: e.target.value })
+                }
+              />
+            </div>
+            <div id="submitTransaction">
+              <button onClick={() => console.log('submit transaction')}>
+                Submit
+              </button>
             </div>
           </div>
         </div>
