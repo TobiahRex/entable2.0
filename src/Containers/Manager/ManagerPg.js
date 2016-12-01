@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import managerActions from '../../Redux/ManagerRedux';
 
@@ -9,8 +10,8 @@ import managerPgStyles from './managerPgStyles';
 class ManagerPage extends React.Component {
   static propTypes = {
     banks: PropTypes.arrayOf(PropTypes.object),
-    name: PropTypes.objectOf(PropTypes.string),
     addNewTransaction: PropTypes.func.isRequired,
+    routeParams: PropTypes.objectOf(PropTypes.string),
   }
   static styles = managerPgStyles;
   static breadcrumbs = [{
@@ -25,7 +26,7 @@ class ManagerPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bankName: '',
+      bank: null,
       balance: '',
       paidIn: '',
       date: moment().format('lll'),
@@ -36,7 +37,14 @@ class ManagerPage extends React.Component {
     this.filterBanks(this.props.routeParams.id, this.props.banks);
   }
 
+  filterBanks = (id, banks) => {
+    let bank = {};
+    bank = banks.filter(bankObj => bankObj.people.chair === id);
+    this.setState({ bank: bank[0] });
+  }
+
   render() {
+    window.scrollTo(0, 0);
     return (
       <div style={ManagerPage.styles.mainBgColor}>
         <Breadcrumbs paths={ManagerPage.breadcrumbs} />
