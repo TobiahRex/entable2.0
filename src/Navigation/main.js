@@ -22,7 +22,7 @@ export default (
     <Router path="example" component={BankExample} />
     <Router path="login" component={LoginPage} />
     <Router path="register" component={RegisterPage} />
-    <Router path="donor_account" component={DonorPage} />
+    <Router path="donor/:id" component={DonorPage} />
     <Router path="manager/:id" component={ManagerPage} />
     <Router path="sponsor" component={GeneralDonation} />
     <Router path="donation/:id" component={GuestDonation} />
