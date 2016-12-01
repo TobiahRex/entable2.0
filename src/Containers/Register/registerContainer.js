@@ -165,7 +165,11 @@ class Register extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  active: state.user.active,
+  userRole: state.user.role,
+});
 const mapDispatchToProps = dispatch => ({
   registerUser: details => dispatch(userActions.createUserFirebase(details)),
 });
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
