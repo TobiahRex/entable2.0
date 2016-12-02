@@ -29,6 +29,7 @@ class ManagerPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      description: '',
       balance: '',
       paidIn: '',
       date: moment().format('lll'),
@@ -36,12 +37,14 @@ class ManagerPage extends React.Component {
     };
   }
 
+  renderHistory = () => null
+
   render() {
     window.scrollTo(0, 0);
     const bankName = this.props.bank.description.name;
     const currentBal = this.props.bank.finance.balance.current;
     const startingBal = this.props.bank.finance.balance.starting;
-    const growthBal = `${String((currentBal / startingBal) * 100)} %`;
+    const growthBal = `${String(((currentBal / startingBal) * 100).toFixed(2))} %`;
     const currentDate = moment().format('lll');
     const ddButtonTitle = this.state.ddActive ? 'Cancel' : 'Add New Transaction';
     return (
@@ -116,7 +119,7 @@ class ManagerPage extends React.Component {
               <input
                 id="transDesc"
                 type="text"
-                value={this.state.description}
+                value={bankName}
                 onChange={e =>
                   this.setState({ description: e.target.value })
                 }
@@ -181,19 +184,14 @@ class ManagerPage extends React.Component {
     );
   }
 }
-const filterBanks = (banks, id) => {
-  let bank = {};
-  bank = banks.filter(bankObj => bankObj.people.chair === id);
-  return bank[0];
-};
-
-const mapStateToProps = ({ user, bank }, props) => ({
+const mapStateToProps = ({ user, manager }) => ({
   name: {
     firstName: user.firstName,
     lastname: user.lastName,
   },
-  bank: filterBanks(bank.banks, props.routeParams.id),
+  bank: manager.bank,
 });
+
 const mapDispatchToProps = dispatch => ({
   addNewTransaction: info => dispatch(managerActions.newTransaction(info)),
 });

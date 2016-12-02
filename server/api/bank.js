@@ -11,10 +11,8 @@ router.route('/')
 // ----------------------------------------------------------------------------
 
 router.route('/manager')
-.get((req, res) => {
-  console.log('req.query', req.query, '\nreq.query.manager_id: ', req.query.manager_id);
-  return Bank.findBankByManagerId(req.query.manager_id, res.handle);
-})
+.get((req, res) =>
+Bank.findBankByManagerId(req.query.manager_id, res.handle));
 
 // ----------------------------------------------------------------------------
 router.route('/:id')
