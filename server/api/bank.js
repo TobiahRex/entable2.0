@@ -10,6 +10,13 @@ router.route('/')
 .post((req, res) => Bank.create(req.body, res.handle));
 // ----------------------------------------------------------------------------
 
+router.route('/manager')
+.get((req, res) => {
+  console.log('req.query', req.query, '\nreq.query.manager_id: ', req.query.manager_id);
+  return Bank.findBankByManagerId(req.query.manager_id, res.handle);
+})
+
+// ----------------------------------------------------------------------------
 router.route('/:id')
 .get((req, res) =>
 Bank.findById(req.params.id, res.handle))
@@ -17,11 +24,6 @@ Bank.findById(req.params.id, res.handle))
 Bank.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true }, res.handle))
 .delete((req, res) =>
 Bank.findByIdAndRemove(req.params.id, res.handle));
-// ----------------------------------------------------------------------------
-
-router.route('/manager')
-.get((req, res) =>
-Bank.findBankByManagerId(req.query.manager_id, res.handle));
 // ----------------------------------------------------------------------------
 
 router.route('/:bank_id/manager/:manager_id')

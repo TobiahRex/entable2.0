@@ -13,7 +13,7 @@ export default function* (api, { managerId }) {
   } else {
     yield [
       put(apiActions.apiFail()),
-      put(managerActions.findBankManagerFail(response.problem)),
+      put(managerActions.findBankManagerFail(response.data.message)),
     ];
   }
 }

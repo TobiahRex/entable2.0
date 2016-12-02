@@ -17,9 +17,9 @@ export const INITIAL_STATE = {
 
 
 const success = (state, { bank }) => ({
-  _id: bank[0]._id,
+  _id: bank._id,
   manager_active: true,
-  bank: bank[0],
+  bank,
   error: null,
 });
 
