@@ -14,6 +14,7 @@ import api from './api/index';
 
 // CONSTANTS
 const PORT = process.env.PORT || 3000;
+const MONGO = process.env.MONGODB_URI || 'mongodb://localhost/entable';
 const app = express();
 const compiler = webpack(webpackConfig);
 const server = http.Server(app); //eslint-disable-line
@@ -40,18 +41,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   const resRef = res;
   resRef.socketEmitter = socketEmitter;
-  next();
-});
-app.use((req, res, next) => {
-  const resRef = res;
   resRef.handle = (err, data) =>
     resRef.status(err ? 400 : 200).send(err || data);
-  next();
-});
-app.use((req, res, next) => {
-  const resRef = res;
   resRef.twiml = (err, twiml) =>
-  res.status(err ? 400 : 200).set('Content-Type', 'text/xml').send(err || twiml);
+    res.status(err ? 400 : 200).set('Content-Type', 'text/xml').send(err || twiml);
   next();
 });
 app.use('/api', api);
@@ -61,6 +54,5 @@ app.get('*', (req, res) => res.sendFile(path.resolve('src/index.html')));
 server.listen(PORT, err =>
   process.stdout.write(err || `==> 📡  Server @ ${PORT}
 `));
-const MONGO = process.env.MONGODB_URI || 'mongodb://localhost/entable';
 mongoose.connect(MONGO, err => process.stdout.write(err || `==> 📜  MONGO @ ${MONGO}
 `));
