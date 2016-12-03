@@ -8,8 +8,8 @@ import DonationButtons from './DonationButtons';
 import TwilioActions from '../../Redux/TwilioRedux';
 import StripeActions from '../../Redux/StripeRedux';
 import DonationActions from '../../Redux/DonationRedux';
-
 import AmountModal from '../../Containers/AmountModal';
+import guestDonationStyles from './guestDonationStyles';
 
 class GuestDonation extends React.Component {
   static propTypes = {
@@ -19,6 +19,7 @@ class GuestDonation extends React.Component {
     sendToken: PropTypes.func.isRequired,
     sendDonation: PropTypes.func.isRequired,
   }
+  static styles = guestDonationStyles
   constructor() {
     super();
     this.state = {
@@ -31,29 +32,6 @@ class GuestDonation extends React.Component {
       amount: 0,
       otherAmount: '0.00',
       showModal: false,
-    };
-    this.styles = {
-      bankName: {
-        backgroundColor: '#2ecc71',
-        paddingTop: 10,
-        paddingRight: 40,
-        paddingBottom: 10,
-        paddingLeft: 40,
-        margin: 30,
-        color: '#fff',
-        width: 300,
-        alignSelf: 'center',
-        flexDirection: 'column',
-      },
-      bankDiv: {
-        display: 'flex',
-      },
-      bankImage: {
-        backgroundPosition: 'center',
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor: '#222',
-      },
     };
   }
 
@@ -137,6 +115,10 @@ class GuestDonation extends React.Component {
   showAmountModal = () => this.setState({ showModal: true });
 
   closeModal = () => this.setState({ showModal: false })
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log('nextState: ', nextState);
+  }
 
   render() {
     window.scrollTo(0, 0);
