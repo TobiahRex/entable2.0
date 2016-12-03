@@ -47,18 +47,6 @@ class Register extends React.Component {
     };
   }
 
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.active === true) {
-      if (nextProps.userRole === 'donor') {
-        browserHistory.push(`/donor/${nextProps.userId}`);
-      } else if (nextProps.userRole === 'manager') {
-        browserHistory.push(`/manager/${nextProps.userId}`);
-      }
-      return false;
-    }
-    return true;
-  }
-
   onInputChange = (value, id) => this.setState({ [id]: value })
 
   toggleHover = () => this.setState({ hover: !this.state.hover })
