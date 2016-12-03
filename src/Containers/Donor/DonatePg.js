@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Carousel } from 'react-bootstrap/lib';
 import moment from 'moment';
 import Griddle from 'griddle-react';
 import donorStyles from './donorStyles';

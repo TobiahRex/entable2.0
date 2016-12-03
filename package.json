@@ -45,6 +45,7 @@
     "file-loader": "^0.9.0",
     "firebase": "^3.6.1",
     "flux": "^3.0.0",
+    "griddle-react": "^0.7.0",
     "image-webpack-loader": "^3.0.0",
     "imports-loader": "^0.6.5",
     "jquery": "^3.1.1",
