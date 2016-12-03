@@ -6,19 +6,18 @@ import fs from 'fs';
 import cheerio from 'cheerio';
 import colors from 'colors';  // eslint-disable-line
 
-fs.readFile('src/index.html', 'utf8', (err, markup) => {
-  if (err) {
-    return process.stdout.write(`error: ${err}`);
-  }
+fs.readFile('src/index.html', (err, markup) => {
+  process.stdout.write('\n');
+  if (err) return process.stdout.write(`❌  fs.readFile ERROR: ${err}`);
+
   const $ = cheerio.load(markup);
 
-  /* since a separate style sheet is only utilized for the production build,
-  need to dynamically add this here. */
-  $('head').append('<link rel="stylesheet" href="style.css">');
+  $('head').append('<link rel="stylesheet" href="style.css" />');
 
   fs.writeFile('dist/index.html', $.html(), 'utf8', (error) => {
-    if (error) return process.stdout.write(error);
-    return process.stdout.write('index.html written to /dist'.green);
+    process.stdout.write('\n');
+    if (error) return process.stdout.write(`❌  fs.readFile ERROR: ${error}`.red.bold);
+    return process.stdout.write('\n ✅  index.html written to "/dist"'.green.bold);
   });
   return 1;
 });
