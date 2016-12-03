@@ -11,7 +11,7 @@ import DonationActions from '../../Redux/DonationRedux';
 
 import AmountModal from '../../Containers/AmountModal';
 
-class DonationBank extends React.Component {
+class GuestDonation extends React.Component {
   static propTypes = {
     banks: PropTypes.arrayOf(PropTypes.object),
     routeParams: PropTypes.objectOf(PropTypes.string),
@@ -141,7 +141,7 @@ class DonationBank extends React.Component {
   render() {
     window.scrollTo(0, 0);
     // const fakeTimeStampDelete = moment().format('lll');
-    const { notes } = this.state.bank.notes || { notes: '' };
+    const { notes } = this.state.bank || { notes: [] };
     this.styles.bankImage.backgroundImage = `url("/${this.state.bank.description.images[0]}")`;
     const bankName = this.state.bank.description.name;
 
@@ -216,13 +216,13 @@ class DonationBank extends React.Component {
       );
   }
 }
-  const mapStateToProps = state => ({
-    banks: state.bank.banks,
-  });
-  const mapDispatchToProps = dispatch => ({
-    sendText: phone => dispatch(TwilioActions.sendText(phone)),
-    sendToken: (token, info) => dispatch(StripeActions.sendToken(token, info)),
-    sendDonation: amount => dispatch(DonationActions.sendDonation(amount)),
-  });
+const mapStateToProps = state => ({
+  banks: state.bank.banks,
+});
+const mapDispatchToProps = dispatch => ({
+  sendText: phone => dispatch(TwilioActions.sendText(phone)),
+  sendToken: (token, info) => dispatch(StripeActions.sendToken(token, info)),
+  sendDonation: amount => dispatch(DonationActions.sendDonation(amount)),
+});
 
-  export default connect(mapStateToProps, mapDispatchToProps)(DonationBank);
+export default connect(mapStateToProps, mapDispatchToProps)(GuestDonation);
