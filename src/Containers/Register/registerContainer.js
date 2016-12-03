@@ -50,7 +50,7 @@ class Register extends React.Component {
   shouldComponentUpdate(nextProps) {
     if (nextProps.active === true) {
       if (nextProps.userRole === 'donor') {
-        browserHistory.push('/donor_account');
+        browserHistory.push(`/donor/${nextProps.userId}`);
       } else if (nextProps.userRole === 'manager') {
         browserHistory.push(`/manager/${nextProps.userId}`);
       }
