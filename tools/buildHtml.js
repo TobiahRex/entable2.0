@@ -8,19 +8,17 @@ import colors from 'colors';  // eslint-disable-line
 
 fs.readFile('src/index.html', 'utf8', (err, markup) => {
   if (err) {
-    return process.stdout.write('ERROR: ', err);
+    return process.stdout.write(`error: ${err}`);
   }
-
   const $ = cheerio.load(markup);
 
-  /* since a separate spreadsheet is only utilized for the production build,
+  /* since a separate style sheet is only utilized for the production build,
   need to dynamically add this here. */
   $('head').append('<link rel="stylesheet" href="style.css">');
 
-  return fs.writeFile('dist/index.html', $.html(), 'utf8', (error) => {
-    if (error) {
-      return process.stdout.write(error);
-    }
+  fs.writeFile('dist/index.html', $.html(), 'utf8', (error) => {
+    if (error) return process.stdout.write(error);
     return process.stdout.write('index.html written to /dist'.green);
   });
+  return 1;
 });
