@@ -1,7 +1,7 @@
 {
   "name": "entable",
   "version": "1.0.0",
-  "description": "Enabling women with Table Banking",
+  "description": "Enabling Women via Table Banking Donations",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "if test \"$NODE_ENV\" = \"production\" ; then npm run start-prod; else npm run start-dev; fi ",
