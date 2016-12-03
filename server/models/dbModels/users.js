@@ -33,7 +33,10 @@ userSchema.statics.findByFirebaseId = (firebaseId, cb) => {
   if (!firebaseId) return cb({ error: 'Missing required firebase id' });
 
   return User.find({ uid_firebase: firebaseId })
-  .then(dbUsers => cb(null, dbUsers[0]))
+  .then((dbUsers) => {
+    if (dbUsers.length) return cb(null, dbUsers[0]);
+    return cb({ error: 'There are no db Users registered with that uid.' });
+  })
   .catch(error => cb({ error }));
 };
 

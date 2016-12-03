@@ -6,6 +6,7 @@ export default function* activeUserTrue(api, { user }) {
   yield put(apiActions.fetching());
 
   const response = yield call(() => api.getUser(user.uid));
+  console.log('response: ', response);
   if (response.ok) {
     yield [
       put(authActions.getActiveUserSuccess(response.data)),

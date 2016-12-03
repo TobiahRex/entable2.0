@@ -17,7 +17,7 @@
     "build": "babel-node tools/build.js && npm run open:dist"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tobiah Rex",
   "license": "ISC",
   "dependencies": {
     "apisauce": "^0.5.0",
