@@ -112,7 +112,7 @@ class Donation extends React.Component {
     */
     const handler = StripeCheckout.configure({
       key: 'pk_test_iF4PzIrhBrCmphaxI5HQWSnZ',
-      image: '/assets/favicon.ico',
+      image: '/assets/images/favicon.ico',
       locale: 'auto',
       token: (token) => {
         console.log('thanks for the donation', token);
