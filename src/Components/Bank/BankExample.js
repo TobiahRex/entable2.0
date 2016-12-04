@@ -107,28 +107,21 @@ class Donation extends React.Component {
 
   sendGift = (e, amount) => {
     if (e) e.preventDefault();
-    /*
-    1) Initiate Stripe Checkout process.
-    */
+
     const handler = StripeCheckout.configure({
       key: 'pk_test_iF4PzIrhBrCmphaxI5HQWSnZ',
       image: '/assets/images/favicon.ico',
       locale: 'auto',
-      token: (token) => {
-        console.log('thanks for the donation', token);
-      },
+      token: token => alert('thanks for the donation', token),
     });
 
     handler.open({
       name: 'Entable',
       description: 'Send Donation as a Gift',
       zipCode: true,
-      amount: this.state.amount,
+      amount: Number(`${amount}00`),
     });
-    e.preventDefault();
-
     handler.close();
-    e.preventDefault();
   }
 
   submit = () => {
