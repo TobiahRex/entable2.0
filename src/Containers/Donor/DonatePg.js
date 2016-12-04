@@ -164,7 +164,7 @@ class DonationPg extends React.Component {
             />
           </div>
           <DonationButtons />
-          <RedonateButtons />
+          {/* <RedonateButtons /> */}
         </div>
         <Footer />
       </div>
