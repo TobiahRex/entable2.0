@@ -8,6 +8,7 @@ import Footer from '../../Components/Footer';
 import MainCarousel from '../../Components/Carousel/carouselMain';
 import DonationButtons from '../../Components/Donation/DonationButtons';
 import RedonateButtons from '../../Components/Donation/ReDonateButtons';
+
 /* TODO
   1. Need to move Carousel components into their own component.
   2. Need to dynamically provide Carousel components with all transaction data from the bank that the donor has contributed to.
@@ -162,7 +163,7 @@ class DonationPg extends React.Component {
               columns={['Bank', 'Date', 'Name', 'Role', 'Donated', 'Borrowed']}
             />
           </div>
-          {/* <DonationButtons /> */}
+          <DonationButtons />
           <RedonateButtons />
         </div>
         <Footer />
@@ -170,8 +171,8 @@ class DonationPg extends React.Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  firstName: state.user.firstName,
-  lastName: state.user.lastName,
+const mapStateToProps = ({ user }) => ({
+  firstName: user.firstName,
+  lastName: user.lastName,
 });
 export default connect(mapStateToProps, null)(DonationPg);
