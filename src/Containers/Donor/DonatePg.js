@@ -19,7 +19,6 @@ import DonationButtons from '../../Components/Donation/DonationButtons';
 class DonationPg extends React.Component {
   static propTypes = {
     firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
   }
   static breadCrumbs = [{
     href: '/',
@@ -27,7 +26,7 @@ class DonationPg extends React.Component {
     active: false,
   },
   {
-    href: '/donor_account',
+    href: null,
     name: 'My Account',
     active: true,
   }]

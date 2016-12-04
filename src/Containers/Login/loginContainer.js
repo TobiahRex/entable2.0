@@ -32,12 +32,6 @@ class Login extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.active === true) {
-      browserHistory.push('/donor_account');
-    }
-  }
-
   onInputChange = (value, id) => this.setState({ [id]: value });
 
   validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
