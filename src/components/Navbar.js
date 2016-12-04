@@ -1,6 +1,7 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { browserHistory, Link } from 'react-router';
 import { connect } from 'react-redux';
+import { MuiThemeProvider } from 'material-ui/styles';
 import authActions from '../Redux/AuthRedux';
 
 class Navbar extends PureComponent {

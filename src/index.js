@@ -14,7 +14,7 @@ render(
   <Provider store={store}>
     <Router
       history={browserHistory}
-      onUpdate={() => console.log('path: ', window.location.pathname)} routes={routes}
+      onUpdate={() => console.info('path: ', window.location.pathname)} routes={routes}
     />
   </Provider>,
   document.getElementById('root')
