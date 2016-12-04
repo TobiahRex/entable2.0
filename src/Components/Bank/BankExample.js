@@ -122,6 +122,7 @@ class Donation extends React.Component {
       amount: Number(`${amount}00`),
     });
     handler.close();
+    this.setState({ showModal: false });
   }
 
   submit = () => {
