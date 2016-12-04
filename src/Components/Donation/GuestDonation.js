@@ -19,7 +19,6 @@ class GuestDonation extends React.Component {
     sendToken: PropTypes.func.isRequired,
     sendDonation: PropTypes.func.isRequired,
   }
-  static styles = guestDonationStyles
   constructor() {
     super();
     this.state = {
@@ -33,6 +32,7 @@ class GuestDonation extends React.Component {
       otherAmount: '0.00',
       showModal: false,
     };
+    this.styles = guestDonationStyles;
   }
 
   componentWillMount() {
@@ -116,23 +116,21 @@ class GuestDonation extends React.Component {
 
   closeModal = () => this.setState({ showModal: false })
 
-  componentWillUpdate(nextProps, nextState) {
-    console.log('nextState: ', nextState);
-  }
-
   render() {
     window.scrollTo(0, 0);
-    // const fakeTimeStampDelete = moment().format('lll');
+
     const { notes } = this.state.bank || { notes: [] };
-    this.styles.bankImage.backgroundImage = `url("/${this.state.bank.description.images[0]}")`;
-    const bankName = this.state.bank.description.name;
+    const { name } = this.state.bank ? this.state.bank.description : '';
+    if (this.state.bank) {
+      this.styles.bankImage.backgroundImage = `url("/assets/images/${this.state.bank.description.images[0]}")`;
+    }
 
     return (
       <div>
         <div className=" donationContainer">
           <div className="bankImgBanner" style={this.styles.bankImage}>
             <div style={this.styles.bankDiv} className="donationBankName">
-              <h2 style={this.styles.bankName}>{bankName}</h2>
+              <h2 style={this.styles.bankName}>{name}</h2>
               <h5>
                 96% of your donation goes directly to the owners of this bank.
                 <br />

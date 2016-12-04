@@ -19,5 +19,6 @@ export default {
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     backgroundColor: '#222',
+    backgroundImage: '',
   },
 };
