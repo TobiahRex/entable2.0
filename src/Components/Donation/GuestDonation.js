@@ -87,9 +87,8 @@ class GuestDonation extends React.Component {
   sendGift = (e, amount) => {
     if (e) e.preventDefault();
 
-    if (amount === '0') {
-      return alert('Please choose a donation amount.');
-    }
+    if (amount === '0') return alert('Please choose a donation amount.');
+
     const handler = StripeCheckout.configure({
       key: 'pk_test_iF4PzIrhBrCmphaxI5HQWSnZ',
       image: '/assets/favicon.ico',
@@ -109,8 +108,9 @@ class GuestDonation extends React.Component {
       zipCode: true,
       amount: Number(`${amount}00`),
     });
-
-    return handler.close();
+    handler.close();
+    this.setState({ showModal: false });
+    return 1;
   }
 
   showAmountModal = () => this.setState({ showModal: true });
