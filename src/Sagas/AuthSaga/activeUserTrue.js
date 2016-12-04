@@ -9,11 +9,6 @@ export default function* activeUserTrue(api, { user }) {
   const response = yield call(() => api.getUser(user.uid));
 
   if (response.ok) {
-    if (response.data.role === 'donor') {
-      browserHistory.push(`/donor/${response.data._id}`);
-    } else if (response.role === 'manager') {
-      browserHistory.push(`/manager/${response.data._id}`);
-    }
     yield [
       put(authActions.getActiveUserSuccess(response.data)),
       put(apiActions.apiSuccess()),

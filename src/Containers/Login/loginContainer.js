@@ -32,6 +32,11 @@ class Login extends React.Component {
     };
   }
 
+  componentWillReceiveProps({ active, _id }) {
+    if (active) return browserHistory.push(`/donor/${_id}`);
+    return 1;
+  }
+
   onInputChange = (value, id) => this.setState({ [id]: value });
 
   validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
@@ -83,8 +88,9 @@ class Login extends React.Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  active: state.user.active,
+const mapStateToProps = ({ user }) => ({
+  active: user.active,
+  _id: user._id,
 });
 const mapDispatchToProps = dispatch => ({
   loginUser: credentials => dispatch(authActions.loginUser(credentials)),
