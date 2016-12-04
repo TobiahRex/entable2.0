@@ -57,7 +57,6 @@ export default class Donation extends Component {
                   className="form-control"
                   id="exampleInputPassword3"
                   placeholder="200"
-                  ref="amount"
                 />
               </div>
               <button type="submit" className="btn btn-default btn-block btnFormBottom">Send Payment</button>

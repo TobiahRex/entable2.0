@@ -66,6 +66,7 @@ class GuestDonation extends React.Component {
   }
 
   submit = (e) => {
+    console.log('e: ', e);
     e.preventDefault();
     if (Number(this.state.amount) < 10) {
       alert('Please choose an amount to donate from the options listed, or select "Other Amount" to create a custom amount.');
@@ -188,7 +189,7 @@ class GuestDonation extends React.Component {
         <AmountModal
           showModal={this.state.showModal}
           verifyOtherAmount={this.verifyOtherAmount}
-          submit={this.submit}
+          submit={e => this.submit(e)}
           close={this.closeModal}
           sendGift={this.sendGift}
         />

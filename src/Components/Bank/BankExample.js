@@ -105,8 +105,8 @@ class Donation extends React.Component {
     */
   }
 
-  sendGift = (e) => {
-    e.preventDefault();
+  sendGift = (e, amount) => {
+    if (e) e.preventDefault();
     /*
     1) Initiate Stripe Checkout process.
     */
@@ -131,8 +131,8 @@ class Donation extends React.Component {
     e.preventDefault();
   }
 
-  submit = (e) => {
-    e.preventDefault();
+  submit = () => {
+    // if (e) e.preventDefault();
     if (Number(this.state.amount) < 10) {
       alert('Please choose an amount to donate from the options listed, or select "Other Amount" to create a custom amount.');
     } else {
