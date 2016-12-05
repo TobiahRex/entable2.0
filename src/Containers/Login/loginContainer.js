@@ -9,6 +9,7 @@ import Footer from '../../Components/Footer';
 import LoginDetails from './loginDetails.login';
 import LoginButton from './loginButton.login';
 
+
 class Login extends React.Component {
   static propTypes = {
     loginUser: PropTypes.func.isRequired,
@@ -34,6 +35,7 @@ class Login extends React.Component {
 
   componentWillReceiveProps({ active, _id }) {
     if (active) return browserHistory.push(`/donor/${_id}`);
+
     return 1;
   }
 
