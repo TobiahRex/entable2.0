@@ -16,6 +16,11 @@ import RedonateButtons from '../../Components/Donation/ReDonateButtons';
   IDEA: Perhaps think about categorizing the data into - NEWS information, and TRANSACTION information.
 */
 
+const ReactToastr = require('react-toastr');
+
+const ToastFactory = React.createFactory(ReactToastr.ToastMessage.animation);
+const { ToastContainer } = ReactToastr;
+
 
 class DonationPg extends React.Component {
   static propTypes = {
@@ -64,6 +69,7 @@ class DonationPg extends React.Component {
   }
 
   render() {
+    window.scrollTo(0, 0);
     const carouselData = [
       {
         _id: 1234,
@@ -167,6 +173,13 @@ class DonationPg extends React.Component {
           {/* <RedonateButtons /> */}
         </div>
         <Footer />
+        <div>
+          <ToastContainer
+            ref="container"
+            toastMessageFactory={ToastFactory}
+            className="toast-top-right"
+          />
+        </div>
       </div>
     );
   }

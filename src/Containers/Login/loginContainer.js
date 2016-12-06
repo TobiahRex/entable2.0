@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import { ToastContainer, ToastMessage } from 'react-toastr'
 import authActions from '../../Redux/AuthRedux';
 
 import loginStyles from './loginStyles';
@@ -10,7 +9,7 @@ import Footer from '../../Components/Footer';
 import LoginDetails from './loginDetails.login';
 import LoginButton from './loginButton.login';
 
-const ToastFactory = React.createFactory(ToastMessage.animation);
+const ReactToastr = require('react-toastr');
 
 class Login extends React.Component {
   static propTypes = {
@@ -40,7 +39,7 @@ class Login extends React.Component {
 
   componentWillReceiveProps({ active, _id }) {
     if (active) {
-      this.toasts.mainToast.success('You\'v successfully logged in.', 'Welcome!', { timeout: 3000, extendedTimeOut: 10000 });
+      this.refs.container.success('YO');
       return browserHistory.push(`/donor/${_id}`);
     }
     return 1;
@@ -93,11 +92,6 @@ class Login extends React.Component {
           toggleHover={this.toggleHover}
         />
         <Footer />
-        <ToastContainer
-          ref={tc => (this.toasts.mainToast = tc)}
-          toastMessageFatory={ToastFactory}
-          className="toast-top-right"
-        />
       </div>
     );
   }
