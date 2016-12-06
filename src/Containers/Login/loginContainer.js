@@ -9,6 +9,11 @@ import Footer from '../../Components/Footer';
 import LoginDetails from './loginDetails.login';
 import LoginButton from './loginButton.login';
 
+const ReactToast = require('react-toastr');
+const toastFactory = React.Factory(ReactToastr.ToastMessage.animation);
+const { ToastContainer } = ReactToast;
+
+
 class Login extends React.Component {
   static propTypes = {
     loginUser: PropTypes.func.isRequired,

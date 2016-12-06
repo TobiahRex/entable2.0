@@ -25,7 +25,7 @@ const { ToastContainer } = ReactToastr;
 class DonationPg extends React.Component {
   static propTypes = {
     active: PropTypes.bool.isRequired,
-    firstName: PropTypes.string.isRequired,
+    firstName: PropTypes.string,
   }
   static breadCrumbs = [{
     href: '/',
