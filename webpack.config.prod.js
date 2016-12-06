@@ -19,6 +19,8 @@ module.exports = {
   debug: true,
   devtool: 'source-map',
   entry: [
+    './tools/assets/animate.351.css',
+    './tools/assets/toastr.213.css',
     './tools/assets/style.scss',
     './src/index.js',
   ],

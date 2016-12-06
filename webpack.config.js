@@ -21,6 +21,8 @@ module.exports = {
   entry: [
     'eventsource-polyfill',
     'webpack-hot-middleware/client?reload=true',
+    './tools/assets/animate.351.scss',
+    './tools/assets/toastr.213.scss',
     './tools/assets/style.scss',
     './src/index.js',
   ],
