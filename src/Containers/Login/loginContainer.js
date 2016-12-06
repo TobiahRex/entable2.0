@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import { CircularProgress } from 'material-ui';
 import authActions from '../../Redux/AuthRedux';
 
 import loginStyles from './loginStyles';
@@ -69,6 +70,7 @@ class Login extends React.Component {
   toggleHover = () => this.setState({ hover: !this.state.hover })
 
   render() {
+    const progress = true;
     return (
       <div style={Login.styles.mainBgColor}>
         <Breadcrumbs paths={Login.breadCrumbs} />
@@ -92,6 +94,7 @@ class Login extends React.Component {
           login={this.login}
           toggleHover={this.toggleHover}
         />
+        {progress ? <CircularProgress /> : ''}
         <Footer />
         <ToastContainer
           ref={loginFail => (this.toasts.loginFail = loginFail)}
