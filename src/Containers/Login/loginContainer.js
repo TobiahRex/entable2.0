@@ -9,10 +9,6 @@ import Footer from '../../Components/Footer';
 import LoginDetails from './loginDetails.login';
 import LoginButton from './loginButton.login';
 
-const ReactToastr = require('react-toastr');
-const ToastFactory = React.createFactory(ReactToastr.ToastMessage.animation);
-const { ToastContainer } = ReactToastr;
-
 class Login extends React.Component {
   static propTypes = {
     loginUser: PropTypes.func.isRequired,
@@ -34,14 +30,10 @@ class Login extends React.Component {
       password: '',
       error: '',
     };
-    this.toasts = {
-      mainToast: null,
-    };
   }
 
   componentWillReceiveProps({ active, _id }) {
     if (active) {
-      this.refs.container.success('YO');
       return browserHistory.push(`/donor/${_id}`);
     }
     return 1;
@@ -94,11 +86,6 @@ class Login extends React.Component {
           toggleHover={this.toggleHover}
         />
         <Footer />
-        <ToastContainer
-          ref="container"
-          toastMessageFactory={ToastFactory}
-          className="toast-top-right"
-        />
       </div>
     );
   }

@@ -50,8 +50,8 @@ class DonationPg extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('Donation Page - nextProps: ', nextProps);
+  componentWillReceiveProps({ active }) {
+    if (active) return this.refs.container.success('YO')
   }
 
   componetWillUpdate(nextProps, nextState) {
@@ -185,6 +185,7 @@ class DonationPg extends React.Component {
   }
 }
 const mapStateToProps = ({ user }) => ({
+  active: user.active,
   firstName: user.firstName,
   lastName: user.lastName,
 });
