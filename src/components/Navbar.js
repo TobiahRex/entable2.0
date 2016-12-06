@@ -1,10 +1,15 @@
-import React, { PropTypes, PureComponent } from 'react';
+import React, { PropTypes } from 'react';
 import { browserHistory, Link } from 'react-router';
 import { connect } from 'react-redux';
 import { MuiThemeProvider } from 'material-ui/styles';
 import authActions from '../Redux/AuthRedux';
 
-class Navbar extends PureComponent {
+const ReactToast = require('react-toastr');
+
+const ToastFactory = React.createFactory(ReactToast.ToastMessage.animation);
+const { ToastContainer } = ReactToast;
+
+class Navbar extends React.Component {
   static defaultProps = {
     active: false,
     role: 'donor',
@@ -23,6 +28,27 @@ class Navbar extends PureComponent {
       padding: 10,
       borderRadius: 5,
     },
+  }
+  constructor(props) {
+    super(props);
+
+    this.toasts = {
+      logoutToast: null,
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const {
+      active,
+      // role,
+      // _id,
+      // api_count,
+      // api_fetching,
+      // api_error,
+      error_msg } = nextProps;
+
+    if (this.props.active && !active) return this.toasts.logoutSuccess.info('You\'re logged out.', 'Signed Out');
+    return 1;
   }
 
   render() {
@@ -106,6 +132,13 @@ class Navbar extends PureComponent {
           </div>
         </nav>
         {this.props.children}
+        <div>
+          <ToastContainer
+            ref={logoutToast => (this.toasts.logoutToast = logoutToast)}
+            toastMessageFactory={ToastFactory}
+            className="toastr-top-right"
+          />
+        </div>
       </div>
     );
   }
