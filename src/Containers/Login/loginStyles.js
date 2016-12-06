@@ -40,5 +40,9 @@ const styles = {
     height: 50,
     width: 300,
   },
+  actionContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
 };
 export default styles;

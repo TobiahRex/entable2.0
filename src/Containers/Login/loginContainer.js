@@ -41,9 +41,8 @@ class Login extends React.Component {
     };
   }
 
-  componentWillReceiveProps({ active, _id, api_error, error_msg }) {
+  componentWillReceiveProps({ active, _id }) {
     if (active) return browserHistory.push(`/donor/${_id}`);
-    else if (error) return this.toasts.loginFail.error('Error: ', error.message);
     return 1;
   }
 
@@ -89,12 +88,14 @@ class Login extends React.Component {
             }}
           />
         </div>
-        <LoginButton
-          hover={this.state.hover}
-          login={this.login}
-          toggleHover={this.toggleHover}
-        />
-        {progress ? <CircularProgress /> : ''}
+        <div style={Login.styles.actionContainer}>
+          <LoginButton
+            hover={this.state.hover}
+            login={this.login}
+            toggleHover={this.toggleHover}
+          />
+          {progress ? <CircularProgress /> : ''}
+        </div>
         <Footer />
         <ToastContainer
           ref={loginFail => (this.toasts.loginFail = loginFail)}

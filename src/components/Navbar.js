@@ -71,97 +71,99 @@ class Navbar extends React.Component {
       show: {},
     };
     return (
-      <div>
-        <nav className="navbar navbar-inverse navbar-default" style={Navbar.styles.navbarContainer}>
-          <div className="container">
-            <div className="navbar-header">
-              <button
-                type="button"
-                className="navbar-toggle collapsed"
-                data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false"
-              >
-                <span className="sr-only" />
-                <span className="icon-bar" />
-                <span className="icon-bar" />
-                <span className="icon-bar" />
-              </button>
-              <a className="navbar-brand" href="/">
-                <img
-                  src="/assets/images/entable_logo_final_white.png"
-                  height="20px"
-                  role="presentation"
-                />
-              </a>
-            </div>
-            <div
-              className="collapse navbar-collapse"
-              id="bs-example-navbar-collapse-1"
-            >
-              <ul className="nav navbar-nav navbar-right">
-                <li
-                  style={this.props.active ? styles.hide : styles.show}
-                  className="mainNavLink"
-                >
-                  <Link className="highlight1" style={Navbar.styles.becomeDonor} to="/register">
-                    Become a Donor
-                  </Link>
-                </li>
-                <li
-                  className="mainNavLink"
-                >
-                  <Link to="/example">
-                    Bank Example
-                  </Link>
-                </li>
-                <li
-                  style={this.props.active ? styles.hide : styles.show}
-                  className="mainNavLink"
-                >
-                  <Link to="/login">
-                    Login
-                  </Link>
-                </li>
-                <li
-                  style={this.props.active ? styles.show : styles.hide}
-                  className="mainNavLink"
-                >
-                  <button className="navbarButton" onClick={this.props.logoutUser}>
-                    Log Out
-                  </button>
-                </li>
-                <li
-                  style={this.props.active ? styles.show : styles.hide}
-                  className="mainNavLink"
-                >
-                  <Link to={`/${this.props.role}/${this.props._id}`}>
-                    My Account
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        {this.props.children}
+      <MuiThemeProvider>
         <div>
-          <ToastContainer
-            ref={logoutToast => (this.toasts.logoutToast = logoutToast)}
-            toastMessageFactory={ToastFactory}
-            className="toast-top-right"
-          />
-          <ToastContainer
-            ref={loginFail => (this.toasts.loginFail = loginFail)}
-            toastMessageFactory={ToastFactory}
-            className="toast-top-right"
-          />
-          <ToastContainer
-            ref={loginSuccess => (this.toasts.loginSuccess = loginSuccess)}
-            toastMessageFactory={ToastFactory}
-            className="toast-top-right"
-          />
+          <nav className="navbar navbar-inverse navbar-default" style={Navbar.styles.navbarContainer}>
+            <div className="container">
+              <div className="navbar-header">
+                <button
+                  type="button"
+                  className="navbar-toggle collapsed"
+                  data-toggle="collapse"
+                  data-target="#bs-example-navbar-collapse-1"
+                  aria-expanded="false"
+                >
+                  <span className="sr-only" />
+                  <span className="icon-bar" />
+                  <span className="icon-bar" />
+                  <span className="icon-bar" />
+                </button>
+                <a className="navbar-brand" href="/">
+                  <img
+                    src="/assets/images/entable_logo_final_white.png"
+                    height="20px"
+                    role="presentation"
+                  />
+                </a>
+              </div>
+              <div
+                className="collapse navbar-collapse"
+                id="bs-example-navbar-collapse-1"
+              >
+                <ul className="nav navbar-nav navbar-right">
+                  <li
+                    style={this.props.active ? styles.hide : styles.show}
+                    className="mainNavLink"
+                  >
+                    <Link className="highlight1" style={Navbar.styles.becomeDonor} to="/register">
+                      Become a Donor
+                    </Link>
+                  </li>
+                  <li
+                    className="mainNavLink"
+                  >
+                    <Link to="/example">
+                      Bank Example
+                    </Link>
+                  </li>
+                  <li
+                    style={this.props.active ? styles.hide : styles.show}
+                    className="mainNavLink"
+                  >
+                    <Link to="/login">
+                      Login
+                    </Link>
+                  </li>
+                  <li
+                    style={this.props.active ? styles.show : styles.hide}
+                    className="mainNavLink"
+                  >
+                    <button className="navbarButton" onClick={this.props.logoutUser}>
+                      Log Out
+                    </button>
+                  </li>
+                  <li
+                    style={this.props.active ? styles.show : styles.hide}
+                    className="mainNavLink"
+                  >
+                    <Link to={`/${this.props.role}/${this.props._id}`}>
+                      My Account
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          {this.props.children}
+          <div>
+            <ToastContainer
+              ref={logoutToast => (this.toasts.logoutToast = logoutToast)}
+              toastMessageFactory={ToastFactory}
+              className="toast-top-right"
+            />
+            <ToastContainer
+              ref={loginFail => (this.toasts.loginFail = loginFail)}
+              toastMessageFactory={ToastFactory}
+              className="toast-top-right"
+            />
+            <ToastContainer
+              ref={loginSuccess => (this.toasts.loginSuccess = loginSuccess)}
+              toastMessageFactory={ToastFactory}
+              className="toast-top-right"
+            />
+          </div>
         </div>
-      </div>
+      </MuiThemeProvider>
     );
   }
 }
