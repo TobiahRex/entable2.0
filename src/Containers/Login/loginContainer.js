@@ -40,9 +40,9 @@ class Login extends React.Component {
     };
   }
 
-  componentWillReceiveProps({ active, _id, error }) {
+  componentWillReceiveProps({ active, _id, api_error, error_msg }) {
     if (active) return browserHistory.push(`/donor/${_id}`);
-    else if (error) return this.toasts.loginFail.error('That password is incorrect');
+    else if (api_error) return this.toasts.loginFail.error('Error: ', error_msg);
     return 1;
   }
 
@@ -102,9 +102,13 @@ class Login extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user, api }) => ({
   active: user.active,
   _id: user._id,
+  api_count: api.count,
+  api_fetching: api.fetching,
+  api_error: api.error,
+  error_msg: user.error,
 });
 const mapDispatchToProps = dispatch => ({
   loginUser: credentials => dispatch(authActions.loginUser(credentials)),

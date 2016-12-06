@@ -79,20 +79,8 @@ const logoutFail = (state, { error }) => ({
   error,
 });
 
-const loginFail = (state, { error }) => ({
-  active: state.user.active,
-  _id: state.user._id,
-  uid_firebase: state.user.uid_firebase,
-  role: state.user.role,
-  refreshToken: state.user.refreshToken,
-  firstName: state.user.firstName,
-  lastName: state.user.lastName,
-  email: state.user.email,
-  phone: state.user.phone,
-  lastLogin: state.user.lastLogin,
-  location: state.user.location,
-  photoUrl: state.user.photoUrl,
-  settings: state.user.settings,
+const loginFail = ({ user }, { error }) => ({
+  ...nullFields,
   error,
 });
 
