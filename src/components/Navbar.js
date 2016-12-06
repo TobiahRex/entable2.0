@@ -53,8 +53,11 @@ class Navbar extends React.Component {
 
     if (this.props.active && !active) {
       return this.toasts.logoutToast.warning('You\'ve successfully logged out.  See you soon 😁', 'Logged Out ');
-    } else if (user_error) return this.toasts.loginFail.error(user_error, 'ERROR 😳 ');
-    else if (active && !this.props.active) return this.toasts.loginSuccess.success('You\ve successfully logged in.', `Hi ${firstName}`);
+    } else if (user_error) {
+      return this.toasts.loginFail.error(user_error, 'ERROR 😳 ');
+    } else if (!this.props.active && active) {
+      return this.toasts.loginSuccess.success('You\ve successfully logged in.', `Hi ${firstName}`);
+    }
     return 1;
   }
 
