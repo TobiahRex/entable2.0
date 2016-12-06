@@ -10,6 +10,8 @@ import LoginDetails from './loginDetails.login';
 import LoginButton from './loginButton.login';
 
 const ReactToastr = require('react-toastr');
+const ToastFactory = React.createFactory(ReactToastr.ToastMessage.animation);
+const { ToastContainer } = ReactToastr;
 
 class Login extends React.Component {
   static propTypes = {
@@ -92,6 +94,11 @@ class Login extends React.Component {
           toggleHover={this.toggleHover}
         />
         <Footer />
+        <ToastContainer
+          ref="container"
+          toastMessageFactory={ToastFactory}
+          className="toast-top-right"
+        />
       </div>
     );
   }
