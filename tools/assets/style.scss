@@ -614,6 +614,10 @@ align-self: center;
   text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
 }
 
+div > svg > circle {
+  stroke: #2ecc71 !important;
+}
+
 .noBtnCoinsContainer {
 
 }

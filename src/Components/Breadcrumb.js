@@ -23,7 +23,7 @@ const bsBreadcrumb = ({ paths }) => {
   const style = {
     borderRadius: '0px',
     backgroundColor: bgColor,
-    padding: '8px 130px 8px 130px',
+    padding: '70px 130px 20px 130px',
     marginBottom: '0px',
   };
 

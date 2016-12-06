@@ -17,6 +17,7 @@ const { ToastContainer } = ReactToast;
 
 class Login extends React.Component {
   static propTypes = {
+    api_count: PropTypes.number.isRequired,
     loginUser: PropTypes.func.isRequired,
   }
   static breadCrumbs = [{
@@ -69,7 +70,6 @@ class Login extends React.Component {
   toggleHover = () => this.setState({ hover: !this.state.hover })
 
   render() {
-    const progress = true;
     return (
       <div style={Login.styles.mainBgColor}>
         <Breadcrumbs paths={Login.breadCrumbs} />
@@ -94,7 +94,10 @@ class Login extends React.Component {
             login={this.login}
             toggleHover={this.toggleHover}
           />
-          {progress ? <CircularProgress /> : ''}
+          {this.props.api_count ?
+            <CircularProgress
+              style={{ stroke: '#2ecc71 !important' }}
+            /> : ''}
         </div>
         <Footer />
         <ToastContainer

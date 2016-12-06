@@ -30,7 +30,7 @@ const styles = {
   loginBtnContainer: {
     display: 'flex',
     justifyContent: 'center',
-    paddingBottom: 70,
+    paddingBottom: 10,
   },
   loginBtn: {
     // backgroundColor: '#2ecc71',
@@ -43,6 +43,8 @@ const styles = {
   actionContainer: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    paddingBottom: 70,
   },
 };
 export default styles;
