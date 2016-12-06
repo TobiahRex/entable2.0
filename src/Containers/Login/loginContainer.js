@@ -42,7 +42,7 @@ class Login extends React.Component {
 
   componentWillReceiveProps({ active, _id, api_error, error_msg }) {
     if (active) return browserHistory.push(`/donor/${_id}`);
-    else if (api_error) return this.toasts.loginFail.error('Error: ', error_msg);
+    else if (api_error) return this.toasts.loginFail.error(error_msg, 'ERROR: ');
     return 1;
   }
 

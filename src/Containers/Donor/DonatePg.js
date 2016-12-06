@@ -55,9 +55,8 @@ class DonationPg extends React.Component {
   }
 
   componentDidMount() {
-    console.warn('are you even here??', this.props);
     if (this.props.active) {
-      this.toast.loginSuccess.success('YO');
+      this.toast.loginSuccess.success(`You've successfully logged in ${this.props.firstName}`, 'Welcome Back, ');
     }
   }
 

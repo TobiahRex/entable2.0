@@ -20,23 +20,23 @@ export const INITIAL_STATE = {
 };
 
 // ------- Response Actions ------- //
-const success = state => ({
+const success = ({ count }) => ({
   fetching: false,
-  count: state.fetching - 1,
+  count: count - 1,
   error: false,
   success: true,
 });
 
-const fail = state => ({
+const fail = ({ count }) => ({
   fetching: false,
-  count: state.fetching - 1,
+  count: count - 1,
   success: false,
   error: true,
 });
 
-const fetching = state => ({
+const fetching = ({ count }) => ({
   fetching: true,
-  count: state.fetching + 1,
+  count: count + 1,
   error: false,
 });
 

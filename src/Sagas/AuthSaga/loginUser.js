@@ -3,6 +3,8 @@ import authActions from '../../Redux/AuthRedux';
 import apiActions from '../../Redux/ApiRedux';
 
 export default function* loginUser(firebaseAuth, api, { credentials }) {
+  yield put(apiActions.fetching());
+
   const fbResponse = yield call(() =>
   firebaseAuth.signInWithEmailAndPassword(credentials.username, credentials.password)
   .then(user => ({
@@ -13,7 +15,7 @@ export default function* loginUser(firebaseAuth, api, { credentials }) {
     ok: false,
     problem: error,
   })));
-
+  console.warn('fbResponse: ', fbResponse);
   if (fbResponse.ok) {
     yield put(apiActions.fetching());
 
@@ -31,7 +33,7 @@ export default function* loginUser(firebaseAuth, api, { credentials }) {
       ];
     }
   } else {
-    yield [put(authActions.loginUserFail(fbResponse.problem)),
+    yield [put(authActions.loginUserFail(fbResponse.problem.message)),
       put(apiActions.apiFail())];
   }
 }
