@@ -23,6 +23,9 @@ class Navbar extends React.Component {
     logoutUser: PropTypes.func.isRequired,
   };
   static styles = {
+    navbarContainer: {
+      position: 'fixed',
+    },
     becomeDonor: {
       marginTop: 5,
       padding: 10,
@@ -61,7 +64,7 @@ class Navbar extends React.Component {
       show: {},
     };
     return (
-      <div>
+      <div style={Navbar.styles.navbarContainer}>
         <nav className="navbar navbar-inverse navbar-default">
           <div className="container">
             <div className="navbar-header">
