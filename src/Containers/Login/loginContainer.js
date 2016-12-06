@@ -95,9 +95,7 @@ class Login extends React.Component {
             toggleHover={this.toggleHover}
           />
           {this.props.api_count ?
-            <CircularProgress
-              style={{ stroke: '#2ecc71 !important' }}
-            /> : ''}
+            <CircularProgress /> : ''}
         </div>
         <Footer />
         <ToastContainer
