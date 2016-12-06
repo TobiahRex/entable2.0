@@ -24,6 +24,7 @@ const { ToastContainer } = ReactToastr;
 
 class DonationPg extends React.Component {
   static propTypes = {
+    active: PropTypes.bool.isRequired,
     firstName: PropTypes.string.isRequired,
   }
   static breadCrumbs = [{
@@ -50,8 +51,12 @@ class DonationPg extends React.Component {
     };
   }
 
-  componentWillReceiveProps({ active }) {
-    if (active) return this.refs.container.success('YO')
+  shouldComponentUpdate(nextProps, { active }) {
+    if (!this.props.active && active) {
+      this.refs.container.success('YO');
+      return true;
+    }
+    return false;
   }
 
   componetWillUpdate(nextProps, nextState) {
