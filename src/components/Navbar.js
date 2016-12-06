@@ -37,6 +37,8 @@ class Navbar extends React.Component {
 
     this.toasts = {
       logoutToast: null,
+      loginFail: null,
+      loginSuccess: null,
     };
   }
 
@@ -56,7 +58,7 @@ class Navbar extends React.Component {
     } else if (user_error) {
       return this.toasts.loginFail.error(user_error, 'ERROR 😳 ');
     } else if (!this.props.active && active) {
-      return this.toasts.loginSuccess.success('You\ve successfully logged in.', `Hi ${firstName}`);
+      return this.toasts.loginSuccess.success('You are successfully logged in.', `Hi ${firstName}`);
     }
     return 1;
   }
@@ -154,7 +156,7 @@ class Navbar extends React.Component {
             className="toast-top-right"
           />
           <ToastContainer
-            ref={loginSuccess => (this.toast.loginSuccess = loginSuccess)}
+            ref={loginSuccess => (this.toasts.loginSuccess = loginSuccess)}
             toastMessageFactory={ToastFactory}
             className="toast-top-right"
           />

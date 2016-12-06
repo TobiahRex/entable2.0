@@ -40,8 +40,9 @@ class Login extends React.Component {
     };
   }
 
-  componentWillReceiveProps({ active, _id }) {
+  componentWillReceiveProps({ active, _id, api_error, error_msg }) {
     if (active) return browserHistory.push(`/donor/${_id}`);
+    else if (error) return this.toasts.loginFail.error('Error: ', error.message);
     return 1;
   }
 
@@ -92,6 +93,11 @@ class Login extends React.Component {
           toggleHover={this.toggleHover}
         />
         <Footer />
+        <ToastContainer
+          ref={loginFail => (this.toasts.loginFail = loginFail)}
+          toastMessageFactory={ToastFactory}
+          className="toast-top-right"
+        />
       </div>
     );
   }
@@ -101,6 +107,8 @@ const mapStateToProps = ({ user, api }) => ({
   _id: user._id,
   api_count: api.count,
   api_fetching: api.fetching,
+  api_error: api.error,
+  error_msg: user.error,
 });
 const mapDispatchToProps = dispatch => ({
   loginUser: credentials => dispatch(authActions.loginUser(credentials)),
