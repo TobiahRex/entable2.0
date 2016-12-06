@@ -27,7 +27,7 @@ export default class Donation extends Component {
     const bankName = "Women's Bank of Anlos";
     return (
       <div>
-        <div className=" donationContainer">
+        <div className="donationContainer">
           <div className="bankImgBanner" style={mainBankImage}>
             <div className="donationBankName">
               <h2>{bankName}</h2>
