@@ -40,9 +40,9 @@ class Login extends React.Component {
     };
   }
 
-  componentWillReceiveProps({ active, _id, api_error, error_msg }) {
+  componentWillReceiveProps({ active, _id, login_error }) {
     if (active) return browserHistory.push(`/donor/${_id}`);
-    else if (api_error) return this.toasts.loginFail.error(error_msg, 'ERROR: ');
+    else if (login_error) return this.toasts.loginFail.error(login_error, 'ERROR: ');
     return 1;
   }
 
@@ -107,8 +107,7 @@ const mapStateToProps = ({ user, api }) => ({
   _id: user._id,
   api_count: api.count,
   api_fetching: api.fetching,
-  api_error: api.error,
-  error_msg: user.error,
+  login_error: user.error,
 });
 const mapDispatchToProps = dispatch => ({
   loginUser: credentials => dispatch(authActions.loginUser(credentials)),

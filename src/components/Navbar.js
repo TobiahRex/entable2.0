@@ -47,7 +47,9 @@ class Navbar extends React.Component {
       // api_error,
       error_msg } = nextProps;
 
-    if (this.props.active && !active) return this.toasts.logoutSuccess.info('You\'re logged out.', 'Signed Out');
+    if (this.props.active && !active) {
+      return this.toasts.logoutToast.warning('You\'ve successfully logged out.  Seeya later.', 'Logged Out ');
+    }
     return 1;
   }
 
@@ -136,7 +138,7 @@ class Navbar extends React.Component {
           <ToastContainer
             ref={logoutToast => (this.toasts.logoutToast = logoutToast)}
             toastMessageFactory={ToastFactory}
-            className="toastr-top-right"
+            className="toast-top-right"
           />
         </div>
       </div>
@@ -150,7 +152,7 @@ const mapStateToProps = ({ user, api }) => ({
   api_count: api.count,
   api_fetching: api.fetching,
   api_error: api.error,
-  error_msg: user.error,
+  user_error: user.error,
 });
 const mapDispatchToProps = dispatch => ({
   logoutUser: () => {

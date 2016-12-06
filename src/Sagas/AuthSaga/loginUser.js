@@ -3,7 +3,6 @@ import authActions from '../../Redux/AuthRedux';
 import apiActions from '../../Redux/ApiRedux';
 
 export default function* loginUser(firebaseAuth, api, { credentials }) {
-  yield put(apiActions.fetching());
 
   const fbResponse = yield call(() =>
   firebaseAuth.signInWithEmailAndPassword(credentials.username, credentials.password)
@@ -13,7 +12,7 @@ export default function* loginUser(firebaseAuth, api, { credentials }) {
   }))
   .catch(() => ({
     ok: false,
-    problem: 'User or Password Incorrect.  Please Try Again.',
+    problem: 'Username or Password Incorrect.  Please Try Again.',
   })));
 
   if (fbResponse.ok) {
@@ -33,7 +32,6 @@ export default function* loginUser(firebaseAuth, api, { credentials }) {
       ];
     }
   } else {
-    yield [put(authActions.loginUserFail(fbResponse.problem.message)),
-      put(apiActions.apiFail())];
+    yield put(authActions.loginUserFail(fbResponse.problem));
   }
 }
