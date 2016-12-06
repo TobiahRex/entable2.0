@@ -42,6 +42,7 @@ class Navbar extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const {
+      firstName,
       active,
       // role,
       // _id,
@@ -53,6 +54,7 @@ class Navbar extends React.Component {
     if (this.props.active && !active) {
       return this.toasts.logoutToast.warning('You\'ve successfully logged out.  See you soon 😁', 'Logged Out ');
     } else if (user_error) return this.toasts.loginFail.error(user_error, 'ERROR 😳 ');
+    else if (active && !this.props.active) return this.toasts.loginSuccess.success('You\ve successfully logged in.', `Hi ${firstName}`);
     return 1;
   }
 
@@ -149,7 +151,7 @@ class Navbar extends React.Component {
             className="toast-top-right"
           />
           <ToastContainer
-            ref={ts => (this.toast.loginSuccess = ts)}
+            ref={loginSuccess => (this.toast.loginSuccess = loginSuccess)}
             toastMessageFactory={ToastFactory}
             className="toast-top-right"
           />
@@ -162,6 +164,7 @@ const mapStateToProps = ({ user, api }) => ({
   active: user.active,
   role: user.role,
   _id: user._id,
+  firstName: user.firstName,
   api_count: api.count,
   api_fetching: api.fetching,
   api_error: api.error,
