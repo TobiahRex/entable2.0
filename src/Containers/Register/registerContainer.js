@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import { CircularProgress } from 'material-ui';
 import userActions from '../../Redux/AuthRedux';
 
 import registerStyles from './registerStyles';
@@ -143,11 +143,14 @@ class Register extends React.Component {
           onInputChange={this.onInputChange}
           agreed={this.state.agreed}
         />
-        <RegisterButton
-          hover={this.state.hover}
-          register={this.register}
-          toggleHover={this.toggleHover}
-        />
+        <div>
+          <RegisterButton
+            hover={this.state.hover}
+            register={this.register}
+            toggleHover={this.toggleHover}
+          />
+          <CircularProgress />
+        </div>
         <Footer />
       </div>
     );
