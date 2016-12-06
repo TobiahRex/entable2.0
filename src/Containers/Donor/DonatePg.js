@@ -49,14 +49,16 @@ class DonationPg extends React.Component {
       },
       acceptTerms: false,
     };
+    this.toast = {
+      loginSuccess: null,
+    };
   }
 
-  shouldComponentUpdate(nextProps, { active }) {
-    if (!this.props.active && active) {
-      this.refs.container.success('YO');
-      return true;
+  componentDidMount() {
+    console.warn('are you even here??', this.props);
+    if (this.props.active) {
+      this.toast.loginSuccess.success('YO');
     }
-    return false;
   }
 
   componetWillUpdate(nextProps, nextState) {
@@ -174,13 +176,13 @@ class DonationPg extends React.Component {
               columns={['Bank', 'Date', 'Name', 'Role', 'Donated', 'Borrowed']}
             />
           </div>
-          <DonationButtons />
+          {/* <DonationButtons /> */}
           {/* <RedonateButtons /> */}
         </div>
         <Footer />
         <div>
           <ToastContainer
-            ref="container"
+            ref={ts => (this.toast.loginSuccess = ts)}
             toastMessageFactory={ToastFactory}
             className="toast-top-right"
           />
