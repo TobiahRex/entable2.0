@@ -48,11 +48,11 @@ class Navbar extends React.Component {
       // api_count,
       // api_fetching,
       // api_error,
-      error_msg } = nextProps;
+      user_error } = nextProps;
 
     if (this.props.active && !active) {
-      return this.toasts.logoutToast.warning('You\'ve successfully logged out.  Seeya later.', 'Logged Out ');
-    }
+      return this.toasts.logoutToast.warning('You\'ve successfully logged out.  See you soon 😁', 'Logged Out ');
+    } else if (user_error) return this.toasts.loginFail.error(user_error, 'ERROR 😳 ');
     return 1;
   }
 
@@ -64,8 +64,8 @@ class Navbar extends React.Component {
       show: {},
     };
     return (
-      <div style={Navbar.styles.navbarContainer}>
-        <nav className="navbar navbar-inverse navbar-default">
+      <div>
+        <nav className="navbar navbar-inverse navbar-default" style={Navbar.styles.navbarContainer}>
           <div className="container">
             <div className="navbar-header">
               <button
@@ -140,6 +140,11 @@ class Navbar extends React.Component {
         <div>
           <ToastContainer
             ref={logoutToast => (this.toasts.logoutToast = logoutToast)}
+            toastMessageFactory={ToastFactory}
+            className="toast-top-right"
+          />
+          <ToastContainer
+            ref={loginFail => (this.toasts.loginFail = loginFail)}
             toastMessageFactory={ToastFactory}
             className="toast-top-right"
           />
