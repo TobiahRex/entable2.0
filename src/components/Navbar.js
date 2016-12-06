@@ -148,6 +148,11 @@ class Navbar extends React.Component {
             toastMessageFactory={ToastFactory}
             className="toast-top-right"
           />
+          <ToastContainer
+            ref={ts => (this.toast.loginSuccess = ts)}
+            toastMessageFactory={ToastFactory}
+            className="toast-top-right"
+          />
         </div>
       </div>
     );

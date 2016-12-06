@@ -49,15 +49,6 @@ class DonationPg extends React.Component {
       },
       acceptTerms: false,
     };
-    this.toast = {
-      loginSuccess: null,
-    };
-  }
-
-  componentDidMount() {
-    if (this.props.active) {
-      this.toast.loginSuccess.success(`You've successfully logged in ${this.props.firstName}`, 'Welcome Back, ');
-    }
   }
 
   componetWillUpdate(nextProps, nextState) {
@@ -179,13 +170,6 @@ class DonationPg extends React.Component {
           {/* <RedonateButtons /> */}
         </div>
         <Footer />
-        <div>
-          <ToastContainer
-            ref={ts => (this.toast.loginSuccess = ts)}
-            toastMessageFactory={ToastFactory}
-            className="toast-top-right"
-          />
-        </div>
       </div>
     );
   }
