@@ -62,24 +62,25 @@ const userSuccess = (state, { user }) => ({
 const userFail = (state, { error }) => ({ ...nullFields, error });
 
 const logoutSuccess = () => ({ ...INITIAL_STATE });
-const logoutFail = (state, { error }) => ({
-  active: state.user.active,
-  _id: state.user._id,
-  uid_firebase: state.user.uid_firebase,
-  role: state.user.role,
-  refreshToken: state.user.refreshToken,
-  firstName: state.user.firstName,
-  lastName: state.user.lastName,
-  email: state.user.email,
-  phone: state.user.phone,
-  lastLogin: state.user.lastLogin,
-  location: state.user.location,
-  photoUrl: state.user.photoUrl,
-  settings: state.user.settings,
+
+const logoutFail = ({ user }, { error }) => ({
+  active: user.active,
+  _id: user._id,
+  uid_firebase: user.uid_firebase,
+  role: user.role,
+  refreshToken: user.refreshToken,
+  firstName: user.firstName,
+  lastName: user.lastName,
+  email: user.email,
+  phone: user.phone,
+  lastLogin: user.lastLogin,
+  location: user.location,
+  photoUrl: user.photoUrl,
+  settings: user.settings,
   error,
 });
 
-const loginFail = ({ user }, { error }) => ({
+const loginFail = (state, { error }) => ({
   ...nullFields,
   error,
 });
