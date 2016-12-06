@@ -31,10 +31,7 @@ export default class Donation extends Component {
           <div className="bankImgBanner" style={mainBankImage}>
             <div className="donationBankName">
               <h2>{bankName}</h2>
-              <h5>
-                96% of your donation goes directly to the owners of this bank.
-                <br />
-                4% covers USD to Bitcoin to Mpesa transactions fees of third party money handlers.
+              <h5> 96% of your donation goes directly to the owners of this bank. <br /> 4% covers USD to Bitcoin to Mpesa transactions fees of third party money handlers.
               </h5>
             </div>
             <form className="infoForm" onSubmit={this._onSubmit}>
