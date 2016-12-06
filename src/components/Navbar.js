@@ -110,10 +110,14 @@ class Navbar extends PureComponent {
     );
   }
 }
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user, api }) => ({
   active: user.active,
   role: user.role,
   _id: user._id,
+  api_count: api.count,
+  api_fetching: api.fetching,
+  api_error: api.error,
+  error_msg: user.error,
 });
 const mapDispatchToProps = dispatch => ({
   logoutUser: () => {

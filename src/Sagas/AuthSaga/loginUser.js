@@ -11,11 +11,11 @@ export default function* loginUser(firebaseAuth, api, { credentials }) {
     ok: true,
     user,
   }))
-  .catch(error => ({
+  .catch(() => ({
     ok: false,
-    problem: error,
+    problem: 'User or Password Incorrect.  Please Try Again.',
   })));
-  console.warn('fbResponse: ', fbResponse);
+
   if (fbResponse.ok) {
     yield put(apiActions.fetching());
 
