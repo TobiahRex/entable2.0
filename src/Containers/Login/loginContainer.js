@@ -10,9 +10,9 @@ import LoginDetails from './loginDetails.login';
 import LoginButton from './loginButton.login';
 
 const ReactToast = require('react-toastr');
-const toastFactory = React.Factory(ReactToastr.ToastMessage.animation);
-const { ToastContainer } = ReactToast;
 
+const ToastFactory = React.createFactory(ReactToast.ToastMessage.animation);
+const { ToastContainer } = ReactToast;
 
 class Login extends React.Component {
   static propTypes = {
@@ -35,12 +35,14 @@ class Login extends React.Component {
       password: '',
       error: '',
     };
+    this.toasts = {
+      loginFail: null,
+    };
   }
 
-  componentWillReceiveProps({ active, _id }) {
-    if (active) {
-      return browserHistory.push(`/donor/${_id}`);
-    }
+  componentWillReceiveProps({ active, _id, error }) {
+    if (active) return browserHistory.push(`/donor/${_id}`);
+    else if (error) return this.toasts.loginFail.error('That password is incorrect');
     return 1;
   }
 
@@ -91,6 +93,11 @@ class Login extends React.Component {
           toggleHover={this.toggleHover}
         />
         <Footer />
+        <ToastContainer
+          ref={loginFail => (this.toasts.loginFail = loginFail)}
+          toastMessageFactory={ToastFactory}
+          className="toast-top-right"
+        />
       </div>
     );
   }
