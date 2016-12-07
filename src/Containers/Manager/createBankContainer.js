@@ -40,6 +40,7 @@ class CreateBank extends React.Component {
         name: 'Choose Country',
         code: null,
       },
+      bankCity: '',
     };
 
     this.countries = Countries.map((country, i) => (
@@ -112,15 +113,15 @@ class CreateBank extends React.Component {
               <Collapse in={this.state.dropDownOpen}>
                 <div>
                   <well>
-                    <Inputcard
-                      {...CreateBank.PROPS.bankName}
-                      onInputChange={this.onInputChange}
-                      value={this.state.bankName}
-                      validate={this.validate}
-                    />
                     <div style={CreateBank.styles.createBankForm}>
+                      <Inputcard
+                        {...CreateBank.PROPS.bankName}
+                        onInputChange={this.onInputChange}
+                        value={this.state.bankName}
+                        validate={this.validate}
+                      />
+                      <br />
                       <div>
-
                         <label htmlFor="country">Country:
                           <span style={CreateBank.styles.required}> *</span>
                         </label>
@@ -131,7 +132,13 @@ class CreateBank extends React.Component {
                         >{this.countries}
                         </DropdownButton>
                       </div>
-
+                      <br />
+                      <Inputcard
+                        {...CreateBank.PROPS.bankCity}
+                        onInputChange={this.onInputChange}
+                        value={this.state.bankCity}
+                        validate={this.validate}
+                      />
                       <div style={CreateBank.styles.bankCityInput}>
                         <label htmlFor="bankCity">City</label>
                         <input type="text" id="bankCity" />
