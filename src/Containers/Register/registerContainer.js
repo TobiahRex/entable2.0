@@ -50,7 +50,7 @@ class Register extends React.Component {
   }
 
   componentWillReceiveProps({ active, userRole, userId }) {
-    if (active && !this.props.active) return browserHistory.push(`/${userRole}/${userId}`);
+    if (active && userRole && userId) return browserHistory.push(`/${userRole}/${userId}`);
     return 1;
   }
 

@@ -43,7 +43,10 @@ class Login extends React.Component {
   }
 
   componentWillReceiveProps({ active, userRole, userId }) {
-    if (active) return browserHistory.push(`/${userRole}/${userId}`);
+    if (active && userRole && userId) {
+      browserHistory.push(`/${userRole}/${userId}`);
+      return 1;
+    }
     return 1;
   }
 
