@@ -38,8 +38,8 @@ class CreateBank extends React.Component {
     const currentDate = moment().format('lll');
     return (
       <div>
-        <div style={CreateBank.styles.mainBgColor}>
-          <Breadcrumbs paths={CreateBank.breadcrumbs} />
+        <Breadcrumbs paths={CreateBank.breadcrumbs} />
+        <div style={CreateBank.styles.mainContainer}>
           <h2>Create Bank</h2>
           <div id="bankName">
             <h2>
