@@ -37,6 +37,15 @@ class CreateBank extends React.Component {
       vWarn: 1,
       vError: 2,
     },
+    phone: {
+      id: 'phone',
+      name: 'Phone Number',
+      required: true,
+      requiredMsg: ' 1234567890',
+      vSuccess: 9,
+      vWarning: 8,
+      vError: 1,
+    },
   }
   constructor(props) {
     super(props);
@@ -129,7 +138,6 @@ class CreateBank extends React.Component {
                         value={this.state.bankName}
                         validate={this.validate}
                       />
-                      <br />
                       <div>
                         <label htmlFor="country">Country:
                           <span style={CreateBank.styles.required}> *</span>
@@ -148,10 +156,12 @@ class CreateBank extends React.Component {
                         value={this.state.bankCity}
                         validate={this.validate}
                       />
-                      <div style={CreateBank.styles.bankCityInput}>
-                        <label htmlFor="bankCity">City</label>
-                        <input type="text" id="bankCity" />
-                      </div>
+                      <Inputcard
+                        {...CreateBank.PROPS.phone}
+                        onInputChange={this.onInputChange}
+                        value={this.state.phone}
+                        validate={this.validate}
+                      />
                       <div style={CreateBank.styles.bankPhoneInput}>
                         <label htmlFor="bankPhone">Phone</label>
                         <input type="text" id="bankPhone" />
