@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Collapse } from 'react-bootstrap/lib';
+import { Collapse, DropdownButton } from 'react-bootstrap/lib';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import createBankPgStyles from './createBankPgStyles';
 import Inputcard from '../../Components/InputCard';
@@ -32,9 +32,13 @@ class CreateBank extends React.Component {
     super(props);
 
     this.state = {
-      bankName: '',
       date: moment().format('lll'),
       dropDownOpen: false,
+      bankName: '',
+      country: {
+        name: 'Choose Country',
+        code: null,
+      },
     };
   }
 
@@ -43,6 +47,26 @@ class CreateBank extends React.Component {
 
   toggleDropdown = () =>
   this.setState(({ dropDownOpen }) => ({ dropDownOpen: !dropDownOpen }));
+
+  validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
+    const inputs = ['firstName', 'lastName', 'postZip', 'country', 'phone', 'password'];
+    if (inputs.includes(id)) {
+      const length = this.state[id].length;
+      if (length > vSuccess) return 'success';
+      else if (length > vWarn) return 'warning';
+      else if (length > vError) return 'error';
+    } else if (id === 'email') {
+      const match = this.state.email.match(/.+@.+\..+/i);
+      if (match) return 'success';
+      else if (this.state.email) return 'warning';
+    } else if (id === 'confirmPassword') {
+      const cPassword = this.state.confirmPassword;
+      const password = this.state.password;
+      if (cPassword === password && password.length > 1) return 'success';
+      if (cPassword.length > 0) return 'warning';
+      else if (cPassword > 0 && cPassword !== password) return 'error';
+    }
+  }
 
   render() {
     const bankName = '<BankName>';
@@ -77,16 +101,22 @@ class CreateBank extends React.Component {
                     <Inputcard
                       {...CreateBank.PROPS.bankName}
                       onInputChange={this.onInputChange}
+                      value={this.state.bankName}
+                      validate={this.validate}
+                    />
+                    <Inputcard
+                      {...CreateBank.PROPS.bankCountry}
+                      onInputChange={this.onInputChange}
+                      value={this.state.bankCountry}
+                      validate={this.validate}
                     />
                     <div style={CreateBank.styles.createBankForm}>
-                      <div style={CreateBank.styles.bankNameInput}>
-                        <label htmlFor="bankName">Bank Name</label>
-                        <input type="text" id="bankName" />
-                      </div>
-                      <div style={CreateBank.styles.bankCountryInput}>
-                        <label htmlFor="bankCountry">Country</label>
-                        <input type="text" id="bankCountry" />
-                      </div>
+                      <DropdownButton
+                        title={this.state.country.name}
+                      >
+
+                      </DropdownButton>
+
                       <div style={CreateBank.styles.bankCityInput}>
                         <label htmlFor="bankCity">City</label>
                         <input type="text" id="bankCity" />

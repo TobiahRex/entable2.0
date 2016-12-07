@@ -1,5 +1,5 @@
 const styles = {
-  mainBgColor: {
+  mgrContainer: {
     backgroundColor: '#f5f5f5',
   },
 };
