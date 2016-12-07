@@ -3,6 +3,7 @@ import moment from 'moment';
 import { Collapse } from 'react-bootstrap/lib';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import createBankPgStyles from './createBankPgStyles';
+import Inputcard from '../../Components/InputCard';
 
 class CreateBank extends React.Component {
   static styles = createBankPgStyles
@@ -27,6 +28,9 @@ class CreateBank extends React.Component {
 
   toggleDropdown = () =>
     this.setState(({ dropDownOpen }) => ({ dropDownOpen: !dropDownOpen }));
+
+  onInputChange = (id, value) =>
+  this.setState({ [id]: value });
 
   render() {
     const bankName = '<BankName>';
@@ -58,6 +62,10 @@ class CreateBank extends React.Component {
               <Collapse in={this.state.dropDownOpen}>
                 <div>
                   <well>
+                    <Inputcard
+                      {...CreateBank.PROPS.bankName}
+                      onInputChange={this.props.onInputChange}
+                    />
                     <div style={CreateBank.styles.createBankForm}>
                       <div style={CreateBank.styles.bankNameInput}>
                         <label htmlFor="bankName">Bank Name</label>
