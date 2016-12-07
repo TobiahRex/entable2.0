@@ -42,8 +42,8 @@ class Login extends React.Component {
     };
   }
 
-  componentWillReceiveProps({ active, _id }) {
-    if (active) return browserHistory.push(`/donor/${_id}`);
+  componentWillReceiveProps({ active, userRole, userId }) {
+    if (active) return browserHistory.push(`/${userRole}/${userId}`);
     return 1;
   }
 
@@ -109,7 +109,8 @@ class Login extends React.Component {
 }
 const mapStateToProps = ({ user, api }) => ({
   active: user.active,
-  _id: user._id,
+  userId: user._id,
+  userRole: user.role,
   api_count: api.count,
   api_fetching: api.fetching,
   api_error: api.error,

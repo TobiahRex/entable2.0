@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { CircularProgress } from 'material-ui';
 import userActions from '../../Redux/AuthRedux';
 
@@ -15,6 +16,7 @@ import RegisterButton from './registerButton.register';
 class Register extends React.Component {
   static propTypes = {
     registerUser: PropTypes.func.isRequired,
+    active: PropTypes.bool.isRequired,
   }
   static breadCrumbs = [{
     href: '/',
@@ -45,6 +47,11 @@ class Register extends React.Component {
       hover: false,
       error: '',
     };
+  }
+
+  componentWillReceiveProps({ active, userRole, userId }) {
+    if (active && !this.props.active) return browserHistory.push(`/${userRole}/${userId}`);
+    return 1;
   }
 
   onInputChange = (value, id) => this.setState({ [id]: value })
