@@ -28,6 +28,15 @@ class CreateBank extends React.Component {
       vError: 2,
       placeholder: 'Butombo Village Bank',
     },
+    bankCity: {
+      id: 'bankCity',
+      type: 'text',
+      name: 'City',
+      required: true,
+      vSuccess: 3,
+      vWarn: 1,
+      vError: 2,
+    },
   }
   constructor(props) {
     super(props);
