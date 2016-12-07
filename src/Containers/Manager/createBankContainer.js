@@ -11,6 +11,15 @@ class CreateBank extends React.Component {
 
   }
   static styles = createBankPgStyles
+  static breadcrumbs = [{
+    href: '/',
+    name: 'Home',
+    active: false,
+  }, {
+    href: '',
+    name: 'Manager Account',
+    active: true,
+  }];
   constructor(props) {
     super(props);
 

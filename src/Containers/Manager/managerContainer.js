@@ -18,7 +18,7 @@ class ManagerContainer extends React.Component {
       bank: null,
     };
   }
-
+  
   componentWillMount() {
     this.props.findBankManager();
   }
