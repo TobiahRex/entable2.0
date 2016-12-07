@@ -51,7 +51,7 @@ class CreateBank extends React.Component {
               <button
                 onClick={this.toggleDropdown}
               >
-                {this.state.dropDownOpen ? 'Create Bank' : 'Cancel'}
+                {this.state.dropDownOpen ? 'Cancel' : 'Create Bank'}
               </button>
               <Collapse in={this.state.dropDownOpen}>
                 <div>
@@ -73,43 +73,43 @@ class CreateBank extends React.Component {
                         <label htmlFor="bankPhone">Phone</label>
                         <input type="text" id="bankPhone" />
                       </div>
+                      <div>
+                        <label htmlFor="transPhoto">
+                          Bank Photo(s)
+                        </label>
+                        <input
+                          id="transPhoto"
+                          type="text"
+                          value={this.state.photoUrl}
+                          onChange={e =>
+                            this.setState({ photoUrl: e.target.value })
+                          }
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="transLegal">
+                          Legal Agreement
+                        </label>
+                        <input
+                          id="transLegal"
+                          type="checkbox"
+                          value={this.state.agreement}
+                          onChange={e =>
+                            this.setState({ agreement: e.target.value })
+                          }
+                        />
+                      </div>
+                      <div id="submitTransaction">
+                        <button onClick={() => console.log('submit transaction')}>
+                          Submit
+                        </button>
+                      </div>
                     </div>
                   </well>
                 </div>
               </Collapse>
             </div>
 
-          </div>
-          <div>
-            <label htmlFor="transPhoto">
-              Transaction Photo
-            </label>
-            <input
-              id="transPhoto"
-              type="text"
-              value={this.state.photoUrl}
-              onChange={e =>
-                this.setState({ photoUrl: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label htmlFor="transLegal">
-              Legal Agreement
-            </label>
-            <input
-              id="transLegal"
-              type="checkbox"
-              value={this.state.agreement}
-              onChange={e =>
-                this.setState({ agreement: e.target.value })
-              }
-            />
-          </div>
-          <div id="submitTransaction">
-            <button onClick={() => console.log('submit transaction')}>
-              Submit
-            </button>
           </div>
         </div>
       </div>
