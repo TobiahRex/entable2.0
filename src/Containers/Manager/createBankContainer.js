@@ -50,25 +50,33 @@ class CreateBank extends React.Component {
             <div id="createBankContainer">
               <button
                 onClick={this.toggleDropdown}
-              >{this.state.dropDownOpen ? 'Create Bank' : 'Cancel'}</button>
-            </div>
-            <div style={CreateBank.styles.createBankForm}>
-              <div style={CreateBank.styles.bankNameInput}>
-                <label htmlFor="bankName">Bank Name</label>
-                <input type="text" id="bankName" />
-              </div>
-              <div style={CreateBank.styles.bankCountryInput}>
-                <label htmlFor="bankCountry">Country</label>
-                <input type="text" id="bankCountry" />
-              </div>
-              <div style={CreateBank.styles.bankCityInput}>
-                <label htmlFor="bankCity">City</label>
-                <input type="text" id="bankCity" />
-              </div>
-              <div style={CreateBank.styles.bankPhoneInput}>
-                <label htmlFor="bankPhone">Phone</label>
-                <input type="text" id="bankPhone" />
-              </div>
+              >
+                {this.state.dropDownOpen ? 'Create Bank' : 'Cancel'}
+              </button>
+              <Collapse in={this.state.dropDownOpen}>
+                <div>
+                  <well>
+                    <div style={CreateBank.styles.createBankForm}>
+                      <div style={CreateBank.styles.bankNameInput}>
+                        <label htmlFor="bankName">Bank Name</label>
+                        <input type="text" id="bankName" />
+                      </div>
+                      <div style={CreateBank.styles.bankCountryInput}>
+                        <label htmlFor="bankCountry">Country</label>
+                        <input type="text" id="bankCountry" />
+                      </div>
+                      <div style={CreateBank.styles.bankCityInput}>
+                        <label htmlFor="bankCity">City</label>
+                        <input type="text" id="bankCity" />
+                      </div>
+                      <div style={CreateBank.styles.bankPhoneInput}>
+                        <label htmlFor="bankPhone">Phone</label>
+                        <input type="text" id="bankPhone" />
+                      </div>
+                    </div>
+                  </well>
+                </div>
+              </Collapse>
             </div>
 
           </div>

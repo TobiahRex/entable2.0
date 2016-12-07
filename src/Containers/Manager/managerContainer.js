@@ -43,7 +43,7 @@ class ManagerContainer extends React.Component {
       <div
         style={ManagerContainer.styles.mgrContainer}
         id="managerContainer"
-      > { manager ? <ManageBank /> : <CreateBank testProps='this is a test prop' /> }
+      > { manager ? <ManageBank /> : <CreateBank /> }
         <Footer />
       </div>
     );
