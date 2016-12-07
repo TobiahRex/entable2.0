@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import managerActions from '../../Redux/ManagerRedux';
 import ManageBank from './manageBankContainer';
 import CreateBank from './createBankContainer';
+import managerContainerStyles from './managerPgStyles';
 
 class ManagerContainer extends React.Component {
   static propTypes = {
     findBankManager: PropTypes.func.isRequired,
   }
+  static styles = managerContainerStyles;
   constructor(props) {
     super(props);
     this.state = {
@@ -37,8 +39,10 @@ class ManagerContainer extends React.Component {
   render() {
     const { manager } = this.state;
     return (
-      <div id="managerContainer">
-        { manager ? <ManageBank /> : <CreateBank /> }
+      <div
+        style={ManagerContainer.styles.mgrContainer}
+        id="managerContainer"
+      > { manager ? <ManageBank /> : <CreateBank /> }
       </div>
     );
   }
