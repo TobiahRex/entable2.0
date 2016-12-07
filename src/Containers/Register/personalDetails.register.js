@@ -104,8 +104,10 @@ class personalDetails extends PureComponent {
               <span style={styles.required}> *</span>
             </label>
             <br />
-            <DropdownButton title={this.props.country.name} id="country">
-              {this.countries}
+            <DropdownButton
+              title={this.props.country.name}
+              id="country"
+            >{this.countries}
             </DropdownButton>
           </div>
           <br />

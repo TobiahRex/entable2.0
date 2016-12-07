@@ -4,6 +4,7 @@ import { Collapse, DropdownButton } from 'react-bootstrap/lib';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import createBankPgStyles from './createBankPgStyles';
 import Inputcard from '../../Components/InputCard';
+import Countries from '../../Services/CountryConstants';
 
 class CreateBank extends React.Component {
   static styles = createBankPgStyles
@@ -39,6 +40,18 @@ class CreateBank extends React.Component {
         name: 'Choose Country',
         code: null,
       },
+      this.countries = Countries.map((country, i) => (
+        <MenuItem
+          key={`country${i}`}
+          eventKey={i + 1}
+          onClick={() =>
+            this.props.onInputChange({
+              name: country.name,
+              code: country.code,
+            }, 'country')
+          }
+        >{country.name} - ({country.code})
+        </MenuItem>));
     };
   }
 
@@ -84,7 +97,7 @@ class CreateBank extends React.Component {
             <h4>Thanks for Becoming a Bank Manager</h4>
             <p>{'Let\'s'} get started by creating a Virtual Bank on Entable.</p>
             <p>This virtual bank is where you will manage and record the distribution of Donations to Bank members in your area, as well track and document their return payments to the Bank.</p>
-            <p>Bank managers track the distribution of the donated funds "out, and the re-payments "in".  Future and Past donors will be relying on the Bank Managers to provide transparent and reliable transaction information.</p>
+            <p>Bank managers track the distribution of the donated funds "out, and the re-payments "in". Future and Past donors will be relying on the Bank Managers to provide transparent and reliable transaction information.</p>
             <br />
             <p>Click the {'"Create Bank"'} button below to get started.</p>
           </div>
@@ -113,8 +126,9 @@ class CreateBank extends React.Component {
                     <div style={CreateBank.styles.createBankForm}>
                       <DropdownButton
                         title={this.state.country.name}
+                        
                       >
-
+                        {this.countries}
                       </DropdownButton>
 
                       <div style={CreateBank.styles.bankCityInput}>
