@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import managerActions from '../../Redux/ManagerRedux';
 import ManageBank from './manageBankContainer';
 import CreateBank from './createBankContainer';
+import Footer from '../../Components/Footer';
 import managerContainerStyles from './managerPgStyles';
 
 class ManagerContainer extends React.Component {
@@ -43,6 +44,7 @@ class ManagerContainer extends React.Component {
         style={ManagerContainer.styles.mgrContainer}
         id="managerContainer"
       > { manager ? <ManageBank /> : <CreateBank /> }
+        <Footer />
       </div>
     );
   }
