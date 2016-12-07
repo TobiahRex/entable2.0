@@ -67,7 +67,8 @@ class Login extends React.Component {
     } else if (!password.length) {
       return this.setState({ error: 'Missing password' });
     }
-    return this.props.loginUser({ username, password });
+    this.props.loginUser({ username, password });
+    return 1;
   }
 
   toggleHover = () => this.setState({ hover: !this.state.hover })

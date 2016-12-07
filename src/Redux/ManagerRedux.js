@@ -16,12 +16,23 @@ export const INITIAL_STATE = {
 };
 
 
-const success = (state, { bank }) => ({
-  _id: bank._id,
-  manager_active: true,
-  bank,
-  error: null,
-});
+const success = (state, { bank }) => {
+  if (bank) {
+    return ({
+      _id: bank._id,
+      manager_active: true,
+      bank,
+      error: null,
+    });
+  }
+  return ({
+    _id: null,
+    manager_active: true,
+    bank: null,
+    error: null,
+  });
+};
+
 
 const fail = (state, { error }) => ({
   _id: null,
