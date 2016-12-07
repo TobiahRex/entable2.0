@@ -18,7 +18,7 @@ class ManagerContainer extends React.Component {
       bank: null,
     };
   }
-  
+
   componentWillMount() {
     this.props.findBankManager();
   }
@@ -43,7 +43,7 @@ class ManagerContainer extends React.Component {
       <div
         style={ManagerContainer.styles.mgrContainer}
         id="managerContainer"
-      > { manager ? <ManageBank /> : <CreateBank /> }
+      > { manager ? <ManageBank /> : <CreateBank testProps='this is a test prop' /> }
         <Footer />
       </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { Collapse } from 'react-bootstrap/lib';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import createBankPgStyles from './createBankPgStyles';
 
@@ -20,7 +21,15 @@ class CreateBank extends React.Component {
     this.state = {
       bankName: '',
       date: moment().format('lll'),
+      dropDownOpen: false,
     };
+  }
+
+  toggleDropdown = () => {
+    this.setState((prevState, prevProps) => {
+      console.log('preState: ', prevState, 'prevProps: ', prevProps);
+      return ({ dropDownOpen: false });
+    });
   }
 
   render() {
@@ -30,6 +39,7 @@ class CreateBank extends React.Component {
     const growthBal = '<Growth Balance>';
     const ddButtonTitle = '<dd Button Bal>';
     const currentDate = moment().format('lll');
+    console.log('dropDownOpen: ', this.state.dropDownOpen);
     return (
       <div>
         <Breadcrumbs paths={CreateBank.breadcrumbs} />
@@ -42,7 +52,9 @@ class CreateBank extends React.Component {
           </div>
           <div id="welcomeBalances">
             <div id="createBankContainer">
-              <button>Create Bank</button>
+              <button
+                onClick={this.toggleDropdown}
+              >{this.state.dropDownOpen ? 'Create Bank' : 'Cancel'}</button>
             </div>
             <div style={CreateBank.styles.createBankForm}>
               <div style={CreateBank.styles.bankNameInput}>
