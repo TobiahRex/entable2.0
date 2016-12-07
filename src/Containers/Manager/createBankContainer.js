@@ -2,6 +2,8 @@ import React from 'react';
 import moment from 'moment';
 
 import Breadcrumbs from '../../Components/Breadcrumb';
+import Footer from '../../Components/Footer';
+
 import createBankPgStyles from './createBankPgStyles';
 
 class CreateBank extends React.Component {
@@ -19,11 +21,17 @@ class CreateBank extends React.Component {
   }
 
   render() {
+    const bankName = '<BankName>';
+    const currentBal = '<Current Balance>';
+    const startingBal = '<Starting Balance>';
+    const growthBal = '<Growth Balance>';
+    const ddButtonTitle = '<dd Button Bal>';
+    const currentDate = moment().format('lll');
     return (
       <div>
         <h2>Create Bank</h2>
-        <div style={ManagerPage.styles.mainBgColor}>
-          <Breadcrumbs paths={ManagerPage.breadcrumbs} />
+        <div style={CreateBank.styles.mainBgColor}>
+          <Breadcrumbs paths={CreateBank.breadcrumbs} />
           <div id="bankName">
             <h2>
               Bank Name - {bankName}
@@ -151,7 +159,7 @@ class CreateBank extends React.Component {
             </h4>
           </div>
           <div id="bankHistoryContainer">
-            {this.renderHistory()}
+            {'this.renderHistory()'}
           </div>
           <Footer />
         </div>
