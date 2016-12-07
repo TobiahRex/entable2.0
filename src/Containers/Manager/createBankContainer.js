@@ -25,12 +25,8 @@ class CreateBank extends React.Component {
     };
   }
 
-  toggleDropdown = () => {
-    this.setState((prevState, prevProps) => {
-      console.log('preState: ', prevState, 'prevProps: ', prevProps);
-      return ({ dropDownOpen: false });
-    });
-  }
+  toggleDropdown = () =>
+    this.setState(({ dropDownOpen }) => ({ dropDownOpen: !dropDownOpen }));
 
   render() {
     const bankName = '<BankName>';
