@@ -38,9 +38,9 @@ class CreateBank extends React.Component {
     const currentDate = moment().format('lll');
     return (
       <div>
-        <h2>Create Bank</h2>
         <div style={CreateBank.styles.mainBgColor}>
           <Breadcrumbs paths={CreateBank.breadcrumbs} />
+          <h2>Create Bank</h2>
           <div id="bankName">
             <h2>
               Bank Name - {bankName}
@@ -170,7 +170,6 @@ class CreateBank extends React.Component {
           <div id="bankHistoryContainer">
             {'this.renderHistory()'}
           </div>
-          <Footer />
         </div>
       </div>
     );
