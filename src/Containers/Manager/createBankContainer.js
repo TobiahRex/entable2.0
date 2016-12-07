@@ -45,9 +45,24 @@ class CreateBank extends React.Component {
               <button>Create Bank</button>
             </div>
             <div style={CreateBank.styles.createBankForm}>
-
+              <div style={CreateBank.styles.bankNameInput}>
+                <label htmlFor="bankName">Bank Name</label>
+                <input type="text" id="bankName" />
+              </div>
+              <div style={CreateBank.styles.bankCountryInput}>
+                <label htmlFor="bankCountry">Country</label>
+                <input type="text" id="bankCountry" />
+              </div>
+              <div style={CreateBank.styles.bankCityInput}>
+                <label htmlFor="bankCity">Bank City</label>
+                <input type="text" id="bankCity" />
+              </div>
+              <div style={CreateBank.styles.bankPhoneInput}>
+                <label htmlFor="bankPhone">Bank Phone</label>
+                <input type="text" id="bankPhone" />
+              </div>
             </div>
-            
+
           </div>
           <div id="addTransContainer">
             <div>
