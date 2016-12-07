@@ -16,6 +16,18 @@ class CreateBank extends React.Component {
     name: 'Manager Account',
     active: true,
   }];
+  static PROPS = {
+    bankName: {
+      id: 'bankName',
+      type: 'text',
+      name: 'Bank Name',
+      required: true,
+      vSuccess: 1,
+      vWarn: 1,
+      vError: 2,
+      placeholder: 'Butombo Village Bank',
+    },
+  }
   constructor(props) {
     super(props);
 
@@ -26,11 +38,11 @@ class CreateBank extends React.Component {
     };
   }
 
-  toggleDropdown = () =>
-    this.setState(({ dropDownOpen }) => ({ dropDownOpen: !dropDownOpen }));
-
   onInputChange = (id, value) =>
   this.setState({ [id]: value });
+
+  toggleDropdown = () =>
+  this.setState(({ dropDownOpen }) => ({ dropDownOpen: !dropDownOpen }));
 
   render() {
     const bankName = '<BankName>';
@@ -64,7 +76,7 @@ class CreateBank extends React.Component {
                   <well>
                     <Inputcard
                       {...CreateBank.PROPS.bankName}
-                      onInputChange={this.props.onInputChange}
+                      onInputChange={this.onInputChange}
                     />
                     <div style={CreateBank.styles.createBankForm}>
                       <div style={CreateBank.styles.bankNameInput}>
