@@ -37,8 +37,8 @@ class CreateBank extends React.Component {
           <div id="ctaWelcomeMessage">
             <h4>Thanks for Becoming a Bank Manager</h4>
             <p>{'Let\'s'} get started by creating a Virtual Bank on Entable is where you will manage and record the distribution of Donations to Bank members in your area as well as their return payments to the Bank.</p>
-            <br/>
-            <p>Click the "Create Bank" button below to get started.</p>
+            <br />
+            <p>Click the {'"Create Bank"'} button below to get started.</p>
           </div>
           <div id="welcomeBalances">
             <div id="createBankContainer">
