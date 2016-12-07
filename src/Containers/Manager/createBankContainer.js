@@ -50,13 +50,13 @@ class CreateBank extends React.Component {
           this.onInputChange({
             name: country.name,
             code: country.code,
-          }, 'country')
+          }, 'bankCountry')
         }
       >{country.name} - ({country.code})
       </MenuItem>));
   }
 
-  onInputChange = (id, value) =>
+  onInputChange = (value, id) =>
   this.setState({ [id]: value });
 
   toggleDropdown = () =>
