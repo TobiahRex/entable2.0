@@ -1,15 +1,9 @@
 import React from 'react';
 import moment from 'moment';
-
 import Breadcrumbs from '../../Components/Breadcrumb';
-import Footer from '../../Components/Footer';
-
 import createBankPgStyles from './createBankPgStyles';
 
 class CreateBank extends React.Component {
-  static propTypes = {
-
-  }
   static styles = createBankPgStyles
   static breadcrumbs = [{
     href: '/',
@@ -40,11 +34,8 @@ class CreateBank extends React.Component {
       <div>
         <Breadcrumbs paths={CreateBank.breadcrumbs} />
         <div style={CreateBank.styles.mainContainer}>
-          <h2>Create Bank</h2>
-          <div id="bankName">
-            <h2>
-              Bank Name - {bankName}
-            </h2>
+          <div id="ctaWelcomeMessage">
+            <h4>Thanks for Becoming a Bank Manager</h4>
           </div>
           <div id="welcomeBalances">
             <div>
