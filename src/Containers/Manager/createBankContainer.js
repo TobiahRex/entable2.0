@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Collapse, DropdownButton } from 'react-bootstrap/lib';
+import { Collapse, DropdownButton, MenuItem } from 'react-bootstrap/lib';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import createBankPgStyles from './createBankPgStyles';
 import Inputcard from '../../Components/InputCard';
@@ -36,23 +36,24 @@ class CreateBank extends React.Component {
       date: moment().format('lll'),
       dropDownOpen: false,
       bankName: '',
-      country: {
+      bankCountry: {
         name: 'Choose Country',
         code: null,
-      },
-      this.countries = Countries.map((country, i) => (
-        <MenuItem
-          key={`country${i}`}
-          eventKey={i + 1}
-          onClick={() =>
-            this.props.onInputChange({
-              name: country.name,
-              code: country.code,
-            }, 'country')
-          }
-        >{country.name} - ({country.code})
-        </MenuItem>));
-    };
+      }
+    }
+
+    this.countries = Countries.map((country, i) => (
+    <MenuItem
+      key={`country${i}`}
+      eventKey={i + 1}
+      onClick={() =>
+        this.props.onInputChange({
+          name: country.name,
+          code: country.code,
+        }, 'country')
+      }
+    >{country.name} - ({country.code})
+    </MenuItem>));
   }
 
   onInputChange = (id, value) =>
@@ -117,19 +118,20 @@ class CreateBank extends React.Component {
                       value={this.state.bankName}
                       validate={this.validate}
                     />
-                    <Inputcard
-                      {...CreateBank.PROPS.bankCountry}
-                      onInputChange={this.onInputChange}
-                      value={this.state.bankCountry}
-                      validate={this.validate}
-                    />
                     <div style={CreateBank.styles.createBankForm}>
-                      <DropdownButton
-                        title={this.state.country.name}
-                        
-                      >
-                        {this.countries}
-                      </DropdownButton>
+                      <div>
+
+                        <label htmlFor="country">Country:
+                          <span style={CreateBank.styles.required}> *</span>
+                        </label>
+                        <br />
+                        <DropdownButton
+                          title={this.state.bankCountry.name}
+                          id="bankCountry"
+                        >
+                          {this.countries}
+                        </DropdownButton>
+                      </div>
 
                       <div style={CreateBank.styles.bankCityInput}>
                         <label htmlFor="bankCity">City</label>
