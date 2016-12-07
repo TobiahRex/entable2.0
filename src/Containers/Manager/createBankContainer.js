@@ -39,21 +39,21 @@ class CreateBank extends React.Component {
       bankCountry: {
         name: 'Choose Country',
         code: null,
-      }
-    }
+      },
+    };
 
     this.countries = Countries.map((country, i) => (
-    <MenuItem
-      key={`country${i}`}
-      eventKey={i + 1}
-      onClick={() =>
-        this.props.onInputChange({
-          name: country.name,
-          code: country.code,
-        }, 'country')
-      }
-    >{country.name} - ({country.code})
-    </MenuItem>));
+      <MenuItem
+        key={`country${i}`}
+        eventKey={i + 1}
+        onClick={() =>
+          this.onInputChange({
+            name: country.name,
+            code: country.code,
+          }, 'country')
+        }
+      >{country.name} - ({country.code})
+      </MenuItem>));
   }
 
   onInputChange = (id, value) =>
@@ -128,8 +128,7 @@ class CreateBank extends React.Component {
                         <DropdownButton
                           title={this.state.bankCountry.name}
                           id="bankCountry"
-                        >
-                          {this.countries}
+                        >{this.countries}
                         </DropdownButton>
                       </div>
 
