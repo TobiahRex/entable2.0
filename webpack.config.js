@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
 import dotenv from 'dotenv';
+import autoprefixer from 'autoprefixer';
 
 dotenv.config({ silent: true });
 
@@ -36,6 +37,9 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({ 'process.env': processENV }),
+    new webpack.LoaderOptionsPlugin({
+      options: { postcss: [autoprefixer({ browsers: ['last 2 version'] })] },
+    }),
   ],
   module: {
     loaders: [
