@@ -2,13 +2,16 @@ import React, { PropTypes, PureComponent } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap/lib/';
 import registerStyles from '../Containers/Register/registerStyles';
 import createBankStyles from '../Containers/Manager/createBankPgStyles';
+import loginStyles from '../Containers/Login/loginStyles';
 
 let styles;
-
+const pathName = window.location.pathname.split('/')[1];
 if (window.location.pathName === 'register') {
   styles = registerStyles;
-} else if (window.location.pathname.split('/')[1] === 'manager') {
+} else if (pathName === 'manager') {
   styles = createBankStyles;
+} else if (pathName === 'login') {
+  styles = loginStyles;
 }
 console.log('styles: ', styles);
 

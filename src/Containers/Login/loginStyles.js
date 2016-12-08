@@ -2,6 +2,9 @@ const styles = {
   mainBgColor: {
     backgroundColor: '#f5f5f5',
   },
+  userInfoInput: {
+    width: 250,
+  },
   loginFlexParent: {
     minHeight: 300,
     display: 'flex',
