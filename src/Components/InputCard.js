@@ -4,17 +4,6 @@ import registerStyles from '../Containers/Register/registerStyles';
 import createBankStyles from '../Containers/Manager/createBankPgStyles';
 import loginStyles from '../Containers/Login/loginStyles';
 
-let styles;
-const pathName = window.location.pathname.split('/')[1];
-if (window.location.pathName === 'register') {
-  styles = registerStyles;
-} else if (pathName === 'manager') {
-  styles = createBankStyles;
-} else if (pathName === 'login') {
-  styles = loginStyles;
-}
-console.log('styles: ', styles);
-
 class InputCard extends PureComponent {
   onInputChange = (value, id) => this.props.onInputChange(value, id)
 
@@ -22,6 +11,18 @@ class InputCard extends PureComponent {
   this.props.validate(this.props.id, this.props.vSuccess, this.props.vWarn, this.props.vError)
 
   render() {
+    let styles;
+    const pathName = window.location.pathname.split('/')[1];
+    console.log('pathName: ', pathName);
+    if (pathName === 'register') {
+      styles = registerStyles;
+    } else if (pathName === 'manager') {
+      styles = createBankStyles;
+    } else if (pathName === 'login') {
+      styles = loginStyles;
+    }
+    console.log('styles: ', styles);
+
     return (
       <div style={styles.userInfoInput}>
         <FormGroup
