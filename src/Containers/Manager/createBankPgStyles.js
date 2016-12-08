@@ -14,6 +14,9 @@ export default {
     alignItems: 'center',
   },
   createBnkBtnContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     padding: '10px 40px 10px 40px',
     textTransform: 'uppercase',
     height: 50,
