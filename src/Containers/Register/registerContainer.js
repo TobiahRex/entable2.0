@@ -17,6 +17,7 @@ class Register extends React.Component {
   static propTypes = {
     registerUser: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
+    api_count: PropTypes.number,
   }
   static breadCrumbs = [{
     href: '/',
@@ -156,15 +157,16 @@ class Register extends React.Component {
             register={this.register}
             toggleHover={this.toggleHover}
           />
-          <CircularProgress />
+          {this.props.api_count ? <CircularProgress /> : ''}
         </div>
         <Footer />
       </div>
     );
   }
 }
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user, api }) => ({
   active: user.active,
+  api_count: api.count,
   userRole: user.role,
   userId: user._id,
 });
