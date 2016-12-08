@@ -59,6 +59,7 @@ class CreateBank extends React.Component {
         code: null,
       },
       bankCity: '',
+      phone: '',
     };
 
     this.countries = Countries.map((country, i) => (
@@ -82,7 +83,7 @@ class CreateBank extends React.Component {
   this.setState(({ dropDownOpen }) => ({ dropDownOpen: !dropDownOpen }));
 
   validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
-    const inputs = ['firstName', 'lastName', 'postZip', 'country', 'phone', 'password'];
+    const inputs = ['bankName', 'bankCity', 'bankCountry', 'phone'];
     if (inputs.includes(id)) {
       const length = this.state[id].length;
       if (length > vSuccess) return 'success';

@@ -37,10 +37,6 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({ 'process.env': processENV }),
-    new webpack.LoaderOptionPlugin({
-      test: /\.scss$/i,
-      options: { postcss: [autoprefixer({ browsers: ['last 2 version'] })] },
-    }),
   ],
   module: {
     loaders: [
@@ -54,7 +50,7 @@ module.exports = {
       },
       {
         test: /.s[ac]ss$/,
-        loaders: ['style', 'css', 'sass', 'postcss-loader'],
+        loaders: ['style', 'css', 'sass'],
       },
       {
         test: /\.(jpe?g|png|giff|svg)$/i,
