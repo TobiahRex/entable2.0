@@ -71,7 +71,8 @@ class CreateBank extends React.Component {
       phone: '',
       photoUrl: '',
       agreement: false,
-      hover: false,
+      createBankHover: false,
+      submitNewHover: false,
     };
 
     this.countries = Countries.map((country, i) => (
@@ -103,7 +104,7 @@ class CreateBank extends React.Component {
     }
   }
 
-  toggleHover = () => this.setState(({ hover: !this.state.hover }));
+  toggleHover = id => this.setState(({ id: !this.state[id] }));
 
   render() {
     const bankName = '<BankName>';
@@ -113,14 +114,14 @@ class CreateBank extends React.Component {
     const ddButtonTitle = '<dd Button Bal>';
     const currentDate = moment().format('lll');
 
-    let registerBtnHover = {};
+    let btnHover = {};
     if (this.state.hover) {
-      registerBtnHover = {
+      btnHover = {
         backgroundColor: '#fff',
         color: '#222',
       };
     } else {
-      registerBtnHover = {
+      btnHover = {
         backgroundColor: '#2ecc71',
         color: '#fff',
       };
@@ -141,9 +142,10 @@ class CreateBank extends React.Component {
           <div id="welcomeBalances">
             <div id="createBankContainer">
               <button
-                onMouseEnter={this.toggleHover}
-                onMouseLeave={this.toggleHover}
-                style={{ ...CreateBank.styles.createBnkBtnContainer, ...registerBtnHover }}
+                id="createBnkHover"
+                onMouseEnter={e => this.toggleHover(e.target.getAtrribute('id'))}
+                onMouseLeave={e => this.toggleHover(e.target.getAttribute('id'))}
+                style={{ ...CreateBank.styles.createBnkBtnContainer, ...btnHover }}
                 onClick={this.toggleDropdown}
               >
                 {this.state.dropDownOpen ? 'Cancel' : 'Create Bank'}
@@ -201,7 +203,12 @@ class CreateBank extends React.Component {
                       />
                     </div>
                     <div id="submitTransaction">
-                      <button onClick={() => console.log('this.state: \n', this.state)}>
+                      <button
+                        style={{ ...CreateBank.styles.submitBtnContainer, ...btnHover }}
+                        onMouseEnter={e => this.toggleHover(e.target.getAttribute('id'))}
+                        onMouseLeave={e => this.toggleHover(e.target.getAttribute('id'))}
+                        onClick={() => console.log('this.state: \n', this.state)}
+                      >
                         Submit
                       </button>
                     </div>
