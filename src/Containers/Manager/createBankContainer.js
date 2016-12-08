@@ -71,6 +71,7 @@ class CreateBank extends React.Component {
       phone: '',
       photoUrl: '',
       agreement: false,
+      hover: false,
     };
 
     this.countries = Countries.map((country, i) => (
@@ -102,6 +103,9 @@ class CreateBank extends React.Component {
       else if (length > vError) return 'error';
     }
   }
+
+  toggleHover = () => this.setState(({ hover }) =>
+  this.setState({ hover: !hover }))
 
   render() {
     const bankName = '<BankName>';
