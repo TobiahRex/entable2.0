@@ -114,7 +114,20 @@ class CreateBank extends React.Component {
     const growthBal = '<Growth Balance>';
     const ddButtonTitle = '<dd Button Bal>';
     const currentDate = moment().format('lll');
-    console.log('dropDownOpen: ', this.state.dropDownOpen);
+
+    let registerBtnHover = {};
+    if (this.props.hover) {
+      registerBtnHover = {
+        backgroundColor: '#fff',
+        color: '#222',
+      };
+    } else {
+      registerBtnHover = {
+        backgroundColor: '#2ecc71',
+        color: '#fff',
+      };
+    }
+
     return (
       <div>
         <Breadcrumbs paths={CreateBank.breadcrumbs} />
@@ -130,7 +143,9 @@ class CreateBank extends React.Component {
           <div id="welcomeBalances">
             <div id="createBankContainer">
               <button
-                style={CreateBank.styles.createBnkBtnContainer}
+                onMouseEnter={this.toggleHover}
+                onMouseLeave={this.toggleHover}
+                style={{ ...CreateBank.styles.createBnkBtnContainer, ...registerBtnHover }}
                 onClick={this.toggleDropdown}
               >
                 {this.state.dropDownOpen ? 'Cancel' : 'Create Bank'}
