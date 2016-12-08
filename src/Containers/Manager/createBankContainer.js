@@ -164,7 +164,7 @@ class CreateBank extends React.Component {
                 {this.state.dropDownOpen ? 'Cancel' : 'Create Bank'}
               </button>
               <Collapse in={this.state.dropDownOpen}>
-                <div>
+                <div style={CreateBank.styles.wellContainer}>
                   <well>
                     <div style={CreateBank.styles.createBankForm}>
                       <Inputcard
@@ -174,7 +174,8 @@ class CreateBank extends React.Component {
                         validate={this.validate}
                       />
                       <div>
-                        <label htmlFor="country">Country:
+                        <label htmlFor="country">
+                          Country:
                           <span style={CreateBank.styles.required}> *</span>
                         </label>
                         <br />
@@ -206,7 +207,8 @@ class CreateBank extends React.Component {
                     </div>
                     <div>
                       <label htmlFor="transLegal">
-                        Legal Agreement
+                        Legal Agreement:
+                        <span style={CreateBank.styles.required}> *</span>
                       </label>
                       <input
                         id="transLegal"
