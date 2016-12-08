@@ -114,14 +114,15 @@ class CreateBank extends React.Component {
     const ddButtonTitle = '<dd Button Bal>';
     const currentDate = moment().format('lll');
 
-    let btnHover = {};
-    if (this.state.hover) {
-      btnHover = {
+    let createBnkHoverStyle = {};
+    let submitBnkBtnHoverStyle = {};
+    if (this.state.createBnkHover) {
+      createBnkHoverStyle = {
         backgroundColor: '#fff',
         color: '#222',
       };
     } else {
-      btnHover = {
+      submitBnkBtnHoverStyle = {
         backgroundColor: '#2ecc71',
         color: '#fff',
       };
@@ -145,7 +146,7 @@ class CreateBank extends React.Component {
                 id="createBnkHover"
                 onMouseEnter={e => this.toggleHover(e.target.getAtrribute('id'))}
                 onMouseLeave={e => this.toggleHover(e.target.getAttribute('id'))}
-                style={{ ...CreateBank.styles.createBnkBtnContainer, ...btnHover }}
+                style={{ ...CreateBank.styles.createBnkBtnContainer, ...createBnkHoverStyle }}
                 onClick={this.toggleDropdown}
               >
                 {this.state.dropDownOpen ? 'Cancel' : 'Create Bank'}
@@ -204,7 +205,8 @@ class CreateBank extends React.Component {
                     </div>
                     <div id="submitTransaction">
                       <button
-                        style={{ ...CreateBank.styles.submitBtnContainer, ...btnHover }}
+                        style={{ ...CreateBank.styles.submitBtnContainer,
+                        ...submitBnkBtnHoverStyle }}
                         onMouseEnter={e => this.toggleHover(e.target.getAttribute('id'))}
                         onMouseLeave={e => this.toggleHover(e.target.getAttribute('id'))}
                         onClick={() => console.log('this.state: \n', this.state)}
