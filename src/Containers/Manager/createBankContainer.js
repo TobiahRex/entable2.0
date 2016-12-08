@@ -71,8 +71,8 @@ class CreateBank extends React.Component {
       phone: '',
       photoUrl: '',
       agreement: false,
-      createBankHover: false,
-      submitNewHover: false,
+      createBnkHover: false,
+      submitBnkHover: false,
     };
 
     this.countries = Countries.map((country, i) => (
@@ -115,14 +115,25 @@ class CreateBank extends React.Component {
     const currentDate = moment().format('lll');
 
     let createBnkHoverStyle = {};
-    let submitBnkBtnHoverStyle = {};
+    let submitBnkHoverStyle = {};
     if (this.state.createBnkHover) {
       createBnkHoverStyle = {
         backgroundColor: '#fff',
         color: '#222',
       };
     } else {
-      submitBnkBtnHoverStyle = {
+      createBnkHoverStyle = {
+        backgroundColor: '#2ecc71',
+        color: '#fff',
+      };
+    }
+    if (this.state.submitBnkHover) {
+      submitBnkHoverStyle = {
+        backgroundColor: '#fff',
+        color: '#222',
+      };
+    } else {
+      submitBnkHoverStyle = {
         backgroundColor: '#2ecc71',
         color: '#fff',
       };
@@ -144,7 +155,7 @@ class CreateBank extends React.Component {
             <div id="createBankContainer">
               <button
                 id="createBnkHover"
-                onMouseEnter={e => this.toggleHover(e.target.getAtrribute('id'))}
+                onMouseEnter={e => this.toggleHover(e.target.getAttribute('id'))}
                 onMouseLeave={e => this.toggleHover(e.target.getAttribute('id'))}
                 style={{ ...CreateBank.styles.createBnkBtnContainer, ...createBnkHoverStyle }}
                 onClick={this.toggleDropdown}
@@ -206,7 +217,7 @@ class CreateBank extends React.Component {
                     <div id="submitTransaction">
                       <button
                         style={{ ...CreateBank.styles.submitBtnContainer,
-                        ...submitBnkBtnHoverStyle }}
+                        ...submitBnkHoverStyle }}
                         onMouseEnter={e => this.toggleHover(e.target.getAttribute('id'))}
                         onMouseLeave={e => this.toggleHover(e.target.getAttribute('id'))}
                         onClick={() => console.log('this.state: \n', this.state)}
