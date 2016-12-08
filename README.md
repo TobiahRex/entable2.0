@@ -36,4 +36,4 @@ Latest Release: October 23rd, 2016.
     - Accolades: 2nd place.
 
   * MVP 2:
-    - Projected release, December 7th 2016 by Tobiah.
+    - Projected release, December 31st 2016 by Tobiah.
