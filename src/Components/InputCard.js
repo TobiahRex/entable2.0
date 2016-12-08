@@ -7,9 +7,10 @@ let styles;
 
 if (window.location.pathName === 'register') {
   styles = registerStyles;
-} else if (window.location.pathName.split('/')[0] === 'manager') {
+} else if (window.location.pathname.split('/')[1] === 'manager') {
   styles = createBankStyles;
 }
+console.log('styles: ', styles);
 
 class InputCard extends PureComponent {
   onInputChange = (value, id) => this.props.onInputChange(value, id)
