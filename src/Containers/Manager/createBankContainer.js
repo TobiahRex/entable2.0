@@ -70,6 +70,7 @@ class CreateBank extends React.Component {
       bankCity: '',
       phone: '',
       photoUrl: '',
+      agreement: false,
     };
 
     this.countries = Countries.map((country, i) => (
@@ -100,22 +101,6 @@ class CreateBank extends React.Component {
       else if (length > vWarn) return 'warning';
       else if (length > vError) return 'error';
     }
-    // if (inputs.includes(id)) {
-    //   const length = this.state[id].length;
-    //   if (length > vSuccess) return 'success';
-    //   else if (length > vWarn) return 'warning';
-    //   else if (length > vError) return 'error';
-    // } else if (id === 'email') {
-    //   const match = this.state.email.match(/.+@.+\..+/i);
-    //   if (match) return 'success';
-    //   else if (this.state.email) return 'warning';
-    // } else if (id === 'confirmPassword') {
-    //   const cPassword = this.state.confirmPassword;
-    //   const password = this.state.password;
-    //   if (cPassword === password && password.length > 1) return 'success';
-    //   if (cPassword.length > 0) return 'warning';
-    //   else if (cPassword > 0 && cPassword !== password) return 'error';
-    // }
   }
 
   render() {
@@ -185,17 +170,6 @@ class CreateBank extends React.Component {
                         value={this.state.photoUrl}
                         validate={this.validate}
                       />
-                      {/* <label htmlFor="transPhoto">
-                        Bank Photo(s)
-                        </label>
-                        <input
-                        id="transPhoto"
-                        type="text"
-                        value={this.state.photoUrl}
-                        onChange={e =>
-                        this.setState({ photoUrl: e.target.value })
-                        }
-                      /> */}
                     </div>
                     <div>
                       <label htmlFor="transLegal">
@@ -209,7 +183,7 @@ class CreateBank extends React.Component {
                       />
                     </div>
                     <div id="submitTransaction">
-                      <button onClick={() => console.log('submit transaction')}>
+                      <button onClick={() => console.log('this.state: \n', this.state)}>
                         Submit
                       </button>
                     </div>

@@ -8,4 +8,12 @@ export default {
   required: {
     color: 'red',
   },
+  submitBtnContainer: {
+    // backgroundColor: '#2ecc71',
+    padding: '10px 40px 10px 40px',
+    textTransform: 'uppercase',
+    // color: '#fff',
+    height: 50,
+    width: 300,
+  },
 };
