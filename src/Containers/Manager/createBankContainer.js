@@ -217,7 +217,7 @@ class CreateBank extends React.Component {
                         onChange={e => this.setState({ agreement: e.target.value })}
                       />
                     </div>
-                    <div id="submitTransaction">
+                    <div style={CreateBank.styles.submitBtnContainer}>
                       <button
                         id="submitBnkHover"
                         style={{ ...CreateBank.styles.submitBtnContainer,

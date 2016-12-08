@@ -15,17 +15,18 @@ export default {
   },
   createBnkBtnContainer: {
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
     padding: '10px 40px 10px 40px',
     textTransform: 'uppercase',
     height: 50,
     width: 300,
   },
   submitBtnContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
     padding: '10px 40px 10px 40px',
     textTransform: 'uppercase',
-    height: 50,
-    width: 300,
   },
 };
