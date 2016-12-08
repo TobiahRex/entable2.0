@@ -1,6 +1,15 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap/lib/';
-import styles from '../Containers/Register/registerStyles';
+import registerStyles from '../Containers/Register/registerStyles';
+import createBankStyles from '../Containers/Manager/createBankPgStyles';
+
+let styles;
+
+if (window.location.pathName === 'register') {
+  styles = registerStyles;
+} else if (window.location.pathName.split('/')[0] === 'manager') {
+  styles = createBankStyles;
+}
 
 class InputCard extends PureComponent {
   onInputChange = (value, id) => this.props.onInputChange(value, id)

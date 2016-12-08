@@ -46,6 +46,15 @@ class CreateBank extends React.Component {
       vWarning: 8,
       vError: 1,
     },
+    photoUrl: {
+      id: 'photoUrl',
+      name: 'Bank Photo',
+      required: true,
+      requiredMsg: ' http://i.imgur.com/bankphoto.png',
+      vSuccess: 12,
+      vWarning: 11,
+      vError: 1,
+    },
   }
   constructor(props) {
     super(props);
@@ -84,7 +93,7 @@ class CreateBank extends React.Component {
   this.setState(({ dropDownOpen }) => ({ dropDownOpen: !dropDownOpen }));
 
   validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
-    const inputs = ['bankName', 'bankCity', 'bankCountry', 'phone'];
+    const inputs = ['bankName', 'bankCity', 'bankCountry', 'phone', 'photoUrl'];
     if (inputs.includes(id)) {
       const length = this.state[id].length;
       if (length > vSuccess) return 'success';
@@ -170,17 +179,23 @@ class CreateBank extends React.Component {
                         value={this.state.phone}
                         validate={this.validate}
                       />
-                      <label htmlFor="transPhoto">
+                      <Inputcard
+                        {...CreateBank.PROPS.photoUrl}
+                        onInputChange={this.onInputChange}
+                        value={this.state.photoUrl}
+                        validate={this.validate}
+                      />
+                      {/* <label htmlFor="transPhoto">
                         Bank Photo(s)
-                      </label>
-                      <input
+                        </label>
+                        <input
                         id="transPhoto"
                         type="text"
                         value={this.state.photoUrl}
                         onChange={e =>
-                          this.setState({ photoUrl: e.target.value })
+                        this.setState({ photoUrl: e.target.value })
                         }
-                      />
+                      /> */}
                     </div>
                     <div>
                       <label htmlFor="transLegal">
