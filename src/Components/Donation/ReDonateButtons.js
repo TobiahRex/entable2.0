@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import { CircularProgress } from 'material-ui';
 
-console.log('CircularProgress: ', CircularProgress);
-
 const reDonateButtons = ({ reDonate }) => (
   <div className="redonateOptions">
     <div className="redonateContainer">

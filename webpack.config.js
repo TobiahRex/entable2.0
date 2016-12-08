@@ -1,7 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
 import dotenv from 'dotenv';
-import autoprefixer from 'autoprefixer';
 
 dotenv.config({ silent: true });
 
