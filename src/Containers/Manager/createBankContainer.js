@@ -104,7 +104,7 @@ class CreateBank extends React.Component {
     }
   }
 
-  toggleHover = id => this.setState(({ id: !this.state[id] }));
+  toggleHover = id => this.setState(({ [id]: !this.state[id] }));
 
   render() {
     const bankName = '<BankName>';
@@ -127,6 +127,7 @@ class CreateBank extends React.Component {
         color: '#fff',
       };
     }
+
     if (this.state.submitBnkHover) {
       submitBnkHoverStyle = {
         backgroundColor: '#fff',
@@ -216,6 +217,7 @@ class CreateBank extends React.Component {
                     </div>
                     <div id="submitTransaction">
                       <button
+                        id="submitBnkHover"
                         style={{ ...CreateBank.styles.submitBtnContainer,
                         ...submitBnkHoverStyle }}
                         onMouseEnter={e => this.toggleHover(e.target.getAttribute('id'))}
