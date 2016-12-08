@@ -91,8 +91,7 @@ class CreateBank extends React.Component {
   onInputChange = (value, id) =>
   this.setState({ [id]: value });
 
-  toggleDropdown = () =>
-  this.setState(({ dropDownOpen }) => ({ dropDownOpen: !dropDownOpen }));
+  toggleDropdown = () => this.setState(({ dropDownOpen: !this.state.DropdownButton }));
 
   validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
     const inputs = ['bankName', 'bankCity', 'bankCountry', 'phone', 'photoUrl'];
@@ -104,8 +103,7 @@ class CreateBank extends React.Component {
     }
   }
 
-  toggleHover = () => this.setState(({ hover }) =>
-  this.setState({ hover: !hover }))
+  toggleHover = () => this.setState(({ hover: !this.state.hover }));
 
   render() {
     const bankName = '<BankName>';
@@ -116,7 +114,7 @@ class CreateBank extends React.Component {
     const currentDate = moment().format('lll');
 
     let registerBtnHover = {};
-    if (this.props.hover) {
+    if (this.state.hover) {
       registerBtnHover = {
         backgroundColor: '#fff',
         color: '#222',
