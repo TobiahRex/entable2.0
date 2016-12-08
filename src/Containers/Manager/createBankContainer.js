@@ -126,6 +126,7 @@ class CreateBank extends React.Component {
           <div id="welcomeBalances">
             <div id="createBankContainer">
               <button
+                style={CreateBank.styles.createBnkBtnContainer}
                 onClick={this.toggleDropdown}
               >
                 {this.state.dropDownOpen ? 'Cancel' : 'Create Bank'}

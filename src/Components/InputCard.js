@@ -13,7 +13,6 @@ class InputCard extends PureComponent {
   render() {
     let styles;
     const pathName = window.location.pathname.split('/')[1];
-    console.log('pathName: ', pathName);
     if (pathName === 'register') {
       styles = registerStyles;
     } else if (pathName === 'manager') {
@@ -21,7 +20,6 @@ class InputCard extends PureComponent {
     } else if (pathName === 'login') {
       styles = loginStyles;
     }
-    console.log('styles: ', styles);
 
     return (
       <div style={styles.userInfoInput}>
