@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import moment from 'moment';
 import { Collapse, DropdownButton, MenuItem } from 'react-bootstrap/lib';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import createBankPgStyles from './createBankPgStyles';
 import Inputcard from '../../Components/InputCard';
-import Countries from '../../Services/CountryConstants';
+// import Countries from '../../Services/CountryConstants';
+import CountryDropdown from '../../Components/CountryDropdown';
+import CreateBankDesc from './createBank.description';
 
 class CreateBank extends React.Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }
   static styles = createBankPgStyles
   static breadcrumbs = [{
     href: '/',
@@ -75,18 +81,18 @@ class CreateBank extends React.Component {
       submitBnkHover: false,
     };
 
-    this.countries = Countries.map((country, i) => (
-      <MenuItem
-        key={`country${i}`}
-        eventKey={i + 1}
-        onClick={() =>
-          this.onInputChange({
-            name: country.name,
-            code: country.code,
-          }, 'bankCountry')
-        }
-      >{country.name} - ({country.code})
-      </MenuItem>));
+    // this.countries = Countries.map((country, i) => (
+    //   <MenuItem
+    //     key={`country${i}`}
+    //     eventKey={i + 1}
+    //     onClick={() =>
+    //       this.onInputChange({
+    //         name: country.name,
+    //         code: country.code,
+    //       }, 'bankCountry')
+    //     }
+    //   >{country.name} - ({country.code})
+    //   </MenuItem>));
   }
 
   onInputChange = (value, id) =>
@@ -107,13 +113,6 @@ class CreateBank extends React.Component {
   toggleHover = id => this.setState(({ [id]: !this.state[id] }));
 
   render() {
-    const bankName = '<BankName>';
-    const currentBal = '<Current Balance>';
-    const startingBal = '<Starting Balance>';
-    const growthBal = '<Growth Balance>';
-    const ddButtonTitle = '<dd Button Bal>';
-    const currentDate = moment().format('lll');
-
     let createBnkHoverStyle = {};
     let submitBnkHoverStyle = {};
     if (this.state.createBnkHover) {
@@ -144,14 +143,7 @@ class CreateBank extends React.Component {
       <div>
         <Breadcrumbs paths={CreateBank.breadcrumbs} />
         <div style={CreateBank.styles.mainContainer}>
-          <div id="ctaWelcomeMessage">
-            <h4>Thanks for Becoming a Bank Manager</h4>
-            <p>{'Let\'s get started by creating a Virtual Bank on Entable.'}</p>
-            <p>{'This virtual bank is where you will manage and record the distribution of Donations to Bank members in your area, as well track and document their return payments to the Bank.'}</p>
-            <p>{'Bank managers track the distribution of the donated funds "out, and the re-payments "in". Future and Past donors will be relying on the Bank Managers to provide transparent and reliable transaction information.'}</p>
-            <br />
-            <p>{'Click the "Create Bank" button below to get started.'}</p>
-          </div>
+          <CreateBankDesc />
           <div id="welcomeBalances">
             <div id="createBankContainer">
               <button
@@ -173,18 +165,24 @@ class CreateBank extends React.Component {
                         value={this.state.bankName}
                         validate={this.validate}
                       />
-                      <div>
+                      <CountryDropdown
+                        id={this.props.id}
+                        title={this.props.title}
+                      />
+                      {/* This is the previous country component block.
+
+                        <div>
                         <label htmlFor="country">
-                          Country:
-                          <span style={CreateBank.styles.required}> *</span>
+                        Country:
+                        <span style={CreateBank.styles.required}> *</span>
                         </label>
                         <br />
                         <DropdownButton
-                          title={this.state.bankCountry.name}
-                          id="bankCountry"
+                        title={this.props.title}
+                        id={this.props.id}
                         >{this.countries}
                         </DropdownButton>
-                      </div>
+                      </div> */}
                       <br />
                       <Inputcard
                         {...CreateBank.PROPS.bankCity}
