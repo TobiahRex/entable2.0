@@ -77,7 +77,10 @@ bankSchema.statics.findBankByManagerId = (managerId, cb) => {
   if (!managerId) return cb({ error: 'Did not provide manager id.' });
 
   return Bank.find({ people: { chair: managerId } })
-  .then(dbBankArray => cb(null, dbBankArray[0]))
+  .then((dbBankArray) => {
+    if (!dbBankArray.length) return cb(null, { _id: managerId });
+    return cb(null, dbBankArray[0]);
+  })
   .catch(error => cb({ problem: 'Could not find a bank with that manager id.', error }));
 };
 
