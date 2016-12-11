@@ -24,6 +24,11 @@ export default {
     height: 50,
     width: 300,
   },
+  createBankForm: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   submitBtnContainer: {
     display: 'flex',
     flexDirection: 'row',

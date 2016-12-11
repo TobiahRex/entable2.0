@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
-import { Collapse, DropdownButton, MenuItem } from 'react-bootstrap/lib';
+import { Collapse } from 'react-bootstrap/lib';
 import Breadcrumbs from '../../Components/Breadcrumb';
 import createBankPgStyles from './createBankPgStyles';
 import Inputcard from '../../Components/InputCard';
@@ -80,25 +80,13 @@ class CreateBank extends React.Component {
       createBnkHover: false,
       submitBnkHover: false,
     };
-
-    // this.countries = Countries.map((country, i) => (
-    //   <MenuItem
-    //     key={`country${i}`}
-    //     eventKey={i + 1}
-    //     onClick={() =>
-    //       this.onInputChange({
-    //         name: country.name,
-    //         code: country.code,
-    //       }, 'bankCountry')
-    //     }
-    //   >{country.name} - ({country.code})
-    //   </MenuItem>));
   }
 
   onInputChange = (value, id) =>
   this.setState({ [id]: value });
 
-  toggleDropdown = () => this.setState(({ dropDownOpen: !this.state.DropdownButton }));
+  toggleDropdown = () =>
+  this.setState(({ dropDownOpen: !this.state.dropDownOpen }));
 
   validate = (id, vSuccess, vWarn, vError) => { //eslint-disable-line
     const inputs = ['bankName', 'bankCity', 'bankCountry', 'phone', 'photoUrl'];
@@ -138,7 +126,7 @@ class CreateBank extends React.Component {
         color: '#fff',
       };
     }
-
+    console.log('this.state.dropDownOpen: ', this.state.dropDownOpen);
     return (
       <div>
         <Breadcrumbs paths={CreateBank.breadcrumbs} />
@@ -153,12 +141,11 @@ class CreateBank extends React.Component {
                   onMouseEnter={e => this.toggleHover(e.target.getAttribute('id'))}
                   onMouseLeave={e => this.toggleHover(e.target.getAttribute('id'))}
                   onClick={this.toggleDropdown}
-                >
-                  {this.state.dropDownOpen ? 'Cancel' : 'Create Bank'}
+                > {this.state.dropDownOpen ? 'Cancel' : 'Create Bank'}
                 </button>
               </div>
               <Collapse in={this.state.dropDownOpen}>
-                <div style={CreateBank.styles.wellContainer}>
+                <div>
                   <well>
                     <div style={CreateBank.styles.createBankForm}>
                       <Inputcard
@@ -171,20 +158,6 @@ class CreateBank extends React.Component {
                         id={this.props.id}
                         title={this.props.title}
                       />
-                      {/* This is the previous country component block.
-
-                        <div>
-                        <label htmlFor="country">
-                        Country:
-                        <span style={CreateBank.styles.required}> *</span>
-                        </label>
-                        <br />
-                        <DropdownButton
-                        title={this.props.title}
-                        id={this.props.id}
-                        >{this.countries}
-                        </DropdownButton>
-                      </div> */}
                       <br />
                       <Inputcard
                         {...CreateBank.PROPS.bankCity}
@@ -204,18 +177,18 @@ class CreateBank extends React.Component {
                         value={this.state.photoUrl}
                         validate={this.validate}
                       />
-                    </div>
-                    <div>
-                      <label htmlFor="transLegal">
-                        Legal Agreement:
-                        <span style={CreateBank.styles.required}> *</span>
-                      </label>
-                      <input
-                        id="transLegal"
-                        type="checkbox"
-                        value={this.state.agreement}
-                        onChange={e => this.setState({ agreement: e.target.value })}
-                      />
+                      <div>
+                        <label htmlFor="transLegal">
+                          Legal Agreement:
+                          <span style={CreateBank.styles.required}> *</span>
+                        </label>
+                        <input
+                          id="transLegal"
+                          type="checkbox"
+                          value={this.state.agreement}
+                          onChange={e => this.setState({ agreement: e.target.value })}
+                        />
+                      </div>
                     </div>
                     <div style={CreateBank.styles.submitBtnContainer}>
                       <button
