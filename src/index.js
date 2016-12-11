@@ -10,6 +10,7 @@ import routes from './Navigation/main';
 
 injectTapEventPlugin();
 const store = createStore();
+
 render(
   <Provider store={store}>
     <Router

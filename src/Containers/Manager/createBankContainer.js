@@ -146,15 +146,17 @@ class CreateBank extends React.Component {
           <CreateBankDesc />
           <div id="welcomeBalances">
             <div id="createBankContainer">
-              <button
-                id="createBnkHover"
-                onMouseEnter={e => this.toggleHover(e.target.getAttribute('id'))}
-                onMouseLeave={e => this.toggleHover(e.target.getAttribute('id'))}
-                style={{ ...CreateBank.styles.createBnkBtnContainer, ...createBnkHoverStyle }}
-                onClick={this.toggleDropdown}
-              >
-                {this.state.dropDownOpen ? 'Cancel' : 'Create Bank'}
-              </button>
+              <div style={CreateBank.styles.createBnkBtnContainer}>
+                <button
+                  id="createBnkHover"
+                  style={{ ...createBnkHoverStyle, ...CreateBank.styles.createBnkBtn }}
+                  onMouseEnter={e => this.toggleHover(e.target.getAttribute('id'))}
+                  onMouseLeave={e => this.toggleHover(e.target.getAttribute('id'))}
+                  onClick={this.toggleDropdown}
+                >
+                  {this.state.dropDownOpen ? 'Cancel' : 'Create Bank'}
+                </button>
+              </div>
               <Collapse in={this.state.dropDownOpen}>
                 <div style={CreateBank.styles.wellContainer}>
                   <well>

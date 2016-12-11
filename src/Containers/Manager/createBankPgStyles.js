@@ -15,8 +15,10 @@ export default {
   },
   createBnkBtnContainer: {
     display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'center',
+    padding: 25,
+  },
+  createBnkBtn: {
     padding: '10px 40px 10px 40px',
     textTransform: 'uppercase',
     height: 50,
