@@ -9,7 +9,7 @@ const { Types, Creators } = createActions({
 export default Creators;
 export const ManagerTypes = Types;
 export const INITIAL_STATE = {
-  _id: null,
+  bank_id: null,
   manager_active: false,
   bank: null,
   error: null,
@@ -19,14 +19,14 @@ export const INITIAL_STATE = {
 const success = (state, { bank }) => {
   if (bank) {
     return ({
-      _id: bank._id,
+      bank_id: bank._id || null,
       manager_active: true,
-      bank,
+      bank: bank || null,
       error: null,
     });
   }
   return ({
-    _id: null,
+    bank_id: null,
     manager_active: true,
     bank: null,
     error: null,
@@ -35,7 +35,7 @@ const success = (state, { bank }) => {
 
 
 const fail = (state, { error }) => ({
-  _id: null,
+  bank_id: null,
   manager_active: false,
   bank: null,
   error,
