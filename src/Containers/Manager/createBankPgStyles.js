@@ -36,4 +36,7 @@ export default {
     padding: '40px 40px 40px 40px',
     textTransform: 'uppercase',
   },
+  submitBtn: {
+    padding: '10px 40px 10px 40px',
+  },
 };

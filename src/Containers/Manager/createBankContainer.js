@@ -193,8 +193,7 @@ class CreateBank extends React.Component {
                     <div style={CreateBank.styles.submitBtnContainer}>
                       <button
                         id="submitBnkHover"
-                        style={{ ...CreateBank.styles.submitBtnContainer,
-                        ...submitBnkHoverStyle }}
+                        style={{ ...CreateBank.styles.submitBtn, ...submitBnkHoverStyle }}
                         onMouseEnter={e => this.toggleHover(e.target.getAttribute('id'))}
                         onMouseLeave={e => this.toggleHover(e.target.getAttribute('id'))}
                         onClick={() => console.log('this.state: \n', this.state)}
