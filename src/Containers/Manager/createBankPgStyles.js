@@ -33,7 +33,7 @@ export default {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    padding: '10px 40px 10px 40px',
+    padding: '40px 40px 40px 40px',
     textTransform: 'uppercase',
   },
 };
