@@ -27,7 +27,9 @@ const Footer = () => (
       </div>
     </footer>
     <div className="container-fluid credits">
-      <p>A project by: Holly Zhou - Ziya Emanet - Donavon Moore - Richard Mands - Joshua Maddox </p>
+      <p>Concept by: Holly Zhou - Ziya Emanet - Donavon Moore - Richard Mands - Joshua Maddox </p>
+      <br />
+      <p>Developed by: Tobiah Rex</p>
     </div>
   </div>
 );
