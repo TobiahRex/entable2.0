@@ -13,7 +13,7 @@ import webpackConfig from '../webpack.config';
 import api from './api/index';
 
 // CONSTANTS
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const MONGO = process.env.MONGODB_URI || 'mongodb://localhost/entable';
 const app = express();
 const compiler = webpack(webpackConfig);
