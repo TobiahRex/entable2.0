@@ -53,9 +53,26 @@ module.exports = {
       {
         test: /\.(jpe?g|png|giff|svg|ico)$/i,
         loaders: [
-          'file?hash=sha512&digest=hex&name=[hash].[ext]',
-          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
-        ],
+          'file?hash=sha512&digest=hex&name=[hash].[ext]', {
+            loader: 'image-webpack-loader',
+            query: {
+              mozjpeg: {
+                progressive: true,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              optipng: {
+                optimizationLevel: 4,
+              },
+              pngquant: {
+                quality: '75-90',
+                speed: 3,
+              },
+            },
+          }],
+        exclude: /node_modules/,
+        include: __dirname,
       },
     ],
   },
