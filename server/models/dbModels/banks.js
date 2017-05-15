@@ -86,14 +86,14 @@ bankSchema.statics.findBankByManagerId = (managerId, cb) => {
 
 bankSchema.statics.assignManagerAsChair = (id, managerId, cb) => {
   if (!id || !managerId) return cb({ error: 'Did not provide required id\'s' });
-  const options = {
+  const $setOptions = {
     $set: {
       people: {
         chair: managerId,
       },
     },
   };
-  return Bank.findByIdAndUpdate(id, options, { new: true })
+  return Bank.findByIdAndUpdate(id, $setOptions, { new: true })
   .exec()
   .then(updatedBank => cb(null, updatedBank))
   .catch(error => cb({ problem: 'Could not assign bank manager.', error }));
