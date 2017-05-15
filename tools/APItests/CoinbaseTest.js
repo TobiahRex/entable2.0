@@ -8,7 +8,7 @@ import Promise from 'bluebird';
 import coinbaseNode from 'coinbase';
 
 dotenv.load({ silent: true });
-
+console.log(process.env.COINBASE_VAULT_API_KEY);
 const Client = coinbaseNode.Client;
 const CoinbaseUSD = new Client({
   apiKey: process.env.COINBASE_VAULT_API_KEY,
@@ -20,11 +20,11 @@ const coinbase = new Client({
   apiSecret: process.env.COINBASE_VAULT_API_KEY,
   // accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
 });
-const coinbase = new Client({
-  // apiKey: process.env.COINBASE_VAULT_API_KEY,
-  // apiSecret: process.env.COINBASE_VAULT_API_KEY,
-  accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
-});
+// const coinbase = new Client({
+//   // apiKey: process.env.COINBASE_VAULT_API_KEY,
+//   // apiSecret: process.env.COINBASE_VAULT_API_KEY,
+//   accessToken: process.env.COINBASE_DEVELOPER_ACCESS_TOKEN,
+// });
 
 export const findAccounts = () =>
 Promise.fromCallback(cb => coinbase.getAccounts({}, cb));
@@ -35,10 +35,10 @@ Promise.fromCallback((cb) => {
   return coinbase.getBuyPrice({ currencyPair: `BTC-${cross}` }, cb);
 });
 
-export const orderBuy = (orderObj) =>
-Promise(cb => {
-  coinbase.
-})
+// export const orderBuy = (orderObj) =>
+// Promise(cb => {
+//   coinbase.
+// })
 
 
 // Use the "accountBuys" with "getPendingBuys" together.

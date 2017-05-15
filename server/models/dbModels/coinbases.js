@@ -58,7 +58,10 @@ cbAccountSchema.statics.buyBitcoin = (id, amount, cb) => {
     return CoinbaseUSD.placeBuyOrder(order);
   })
   .then(buyOrder => CoinbaseUSD.commitBuy(buyOrder))
-  .then(res => cb(null, { SUCCESS: 'Coinbase has successfully purchased Bitcoin using your USD wallet on file.', details: res }))
+  .then(res => cb(null, {
+    SUCCESS: 'Coinbase has successfully purchased Bitcoin using your USD wallet on file.',
+    details: res,
+  }))
   .catch(error => cb({ ERROR: 'Could not buy Bitcoin.', error }));
 };
 

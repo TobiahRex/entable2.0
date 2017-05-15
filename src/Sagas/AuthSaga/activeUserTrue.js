@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { browserHistory } from 'react-router';
 import authActions from '../../Redux/AuthRedux';
 import apiActions from '../../Redux/ApiRedux';
 
