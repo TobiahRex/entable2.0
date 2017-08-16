@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 import twilio from 'twilio';
-import http from 'http';
 import express from 'express';
 
 dotenv.load({ silent: true });

@@ -7,8 +7,12 @@ import loginStyles from '../Containers/Login/loginStyles';
 class InputCard extends PureComponent {
   onInputChange = (value, id) => this.props.onInputChange(value, id)
 
-  validateChange = () =>
-  this.props.validate(this.props.id, this.props.vSuccess, this.props.vWarn, this.props.vError)
+  validateChange = () => this.props.validate(
+    this.props.id,
+    this.props.vSuccess,
+    this.props.vWarn,
+    this.props.vError
+  )
 
   render() {
     let styles;
@@ -23,9 +27,7 @@ class InputCard extends PureComponent {
 
     return (
       <div style={styles.userInfoInput}>
-        <FormGroup
-          validationState={this.validateChange()}
-        >
+        <FormGroup validationState={this.validateChange()} >
           <ControlLabel htmlFor={this.props.id}>{this.props.name}:
             {this.props.required ? <span style={styles.required}> *{this.props.requiredMsg}</span> : ''}
           </ControlLabel>

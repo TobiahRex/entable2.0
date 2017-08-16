@@ -5,15 +5,17 @@ import styles from './registerStyles';
 
 import Countries from '../../Services/CountryConstants';
 
+const { string, objectOf, func } = PropTypes;
+
 class personalDetails extends PureComponent {
   static propTypes = {
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    email: PropTypes.string,
-    postZip: PropTypes.string,
-    country: PropTypes.objectOf(PropTypes.string),
-    onInputChange: PropTypes.func.isRequired,
-    validate: PropTypes.func.isRequired,
+    firstName: string,
+    lastName: string,
+    email: string,
+    postZip: string,
+    country: objectOf(string),
+    onInputChange: func.isRequired,
+    validate: func.isRequired,
   }
   static PROPS = {
     firstName: {
